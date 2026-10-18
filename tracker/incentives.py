@@ -47,34 +47,27 @@ def offer_id(builder_slug: str, text: str) -> str:
     return builder_slug + ":" + hashlib.sha1(norm.encode()).hexdigest()[:12]
 
 
+UI_WORDS = re.compile(r"\s*\b(tap to expand|get offer|learn more|see details|view details|read more|"
+                      r"click here|shop now|explore offers?)\b\s*[→>»]*", re.I)
+
+
 def extract_offers(html: str, max_offers: int = 25) -> list[dict]:
+    from .extract import incentive_snippets
     soup = BeautifulSoup(html, "lxml")
     for t in soup(["script", "style", "noscript", "form", "select", "nav"]):
         t.decompose()
-    blocks = []
-    for el in soup.find_all(["h1", "h2", "h3", "h4", "p", "li", "span", "div", "a"]):
-        # only leaf-ish blocks so the same sentence isn't counted at every nesting level
-        if el.find(["p", "li", "div", "h1", "h2", "h3", "h4"]):
-            continue
-        txt = re.sub(r"\s+", " ", el.get_text(" ", strip=True))
-        if txt:
-            blocks.append(txt)
+    text = soup.get_text("  ", strip=True)
     offers, seen = [], set()
-    for b in blocks:
-        for sent in re.split(r"(?<=[.!?])\s+(?=[A-Z*])", b):
-            s = sent.strip(" *")
-            if not (12 <= len(s) <= 400):
-                continue
-            if not INCENTIVE_WORDS.search(s) or not re.search(r"[\d$%]", s):
-                continue
-            key = s.lower()
-            if key in seen:
-                continue
-            seen.add(key)
-            offers.append({"text": s, "kind": classify(s), "headline_amount": headline_amount(s),
-                           "rate": lowest_rate(s)})
-            if len(offers) >= max_offers:
-                return offers
+    for s in incentive_snippets(text, limit=max_offers * 2):
+        s = UI_WORDS.sub(" ", s).strip(" *|")
+        s = re.sub(r"\s{2,}", " ", s)
+        key = re.sub(r"[^a-z0-9$%]", "", s.lower())
+        if len(s) < 6 or key in seen or any((key in k or k in key) and min(len(k), len(key)) > 24 for k in seen):
+            continue
+        seen.add(key)
+        offers.append({"text": s, "kind": classify(s), "headline_amount": headline_amount(s), "rate": lowest_rate(s)})
+        if len(offers) >= max_offers:
+            break
     return offers
 
 

@@ -166,6 +166,8 @@ class Recorder:
                     h[k] = obs[k]
             if h.get("incentive_text"):
                 h["offer_since"] = now
+            if h.get("status"):
+                h["status_rank"] = rank
             self.event(b, "new_home", h, new=price)
             self.stat(b["slug"], "new_homes")
         else:
@@ -191,11 +193,18 @@ class Recorder:
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "url"):
                 if obs.get(k) not in (None, "") and not h.get(k):
                     h[k] = obs[k]
-            for k in ("status", "move_in", "builder_was_price"):
-                if obs.get(k) not in (None, ""):
-                    if k == "status" and h.get(k) and obs[k].lower() != str(h[k]).lower():
-                        self.event(b, "status_change", h, detail=f'{h[k]} -> {obs[k]}')
-                    h[k] = obs[k]
+            # status / move-in / was-price follow the same source ranking as price
+            if rank >= int(h.get("status_rank") or 0):
+                st_new = obs.get("status") or ""
+                if (st_new and h.get("status") and st_new.lower() != str(h["status"]).lower()
+                        and rank == int(h.get("status_rank") or 0) and seen_rank is None
+                        and h.get("first_seen") != now):
+                    self.event(b, "status_change", h, detail=f'{h["status"]} -> {st_new}')
+                for k in ("status", "move_in", "builder_was_price"):
+                    if obs.get(k) not in (None, ""):
+                        h[k] = obs[k]
+                if st_new:
+                    h["status_rank"] = rank
             new_inc = obs.get("incentive_text") or ""
             old_inc = h.get("incentive_text") or ""
             if obs.get("from_detail"):  # the home's own page is the authority on its offer

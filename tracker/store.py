@@ -15,7 +15,7 @@ TABS = {
               "price", "builder_was_price", "first_price", "prev_price", "change_since_first",
               "pct_since_first", "last_change", "last_change_at", "cuts", "price_per_sqft", "status", "move_in",
               "incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since",
-              "url", "first_seen", "last_seen", "last_checked", "active", "pending_price", "price_source"],
+              "url", "first_seen", "last_seen", "last_checked", "active", "pending_price", "price_source", "status_rank"],
     "Price Drops": ["at", "builder", "address", "community", "city", "old", "new", "delta", "pct", "offer", "url"],
     "Home Offers": ["builder", "address", "community", "city", "price", "change_since_first", "offer_type",
                     "offer_amount", "offer_rate", "incentive_text", "offer_since", "url"],
@@ -33,7 +33,7 @@ DERIVED_TABS = ["Summary", "Price Drops", "Home Offers"]
 NUMERIC = {"beds", "baths", "sqft", "price", "builder_was_price", "first_price", "prev_price",
            "change_since_first", "pct_since_first", "last_change", "cuts", "price_per_sqft", "headline_amount",
            "rate", "misses", "pending_price", "last_status", "old", "new", "delta", "pct", "offer_amount",
-           "offer_rate", "price_source"}
+           "offer_rate", "price_source", "status_rank"}
 
 
 def _coerce(k: str, v):

@@ -27,6 +27,11 @@ jobs:
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Load latest saved data
+        run: git pull --ff-only origin main   # a queued run must start from the previous run's data
 
       - uses: actions/setup-python@v5
         with:
