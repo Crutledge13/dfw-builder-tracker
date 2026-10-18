@@ -204,3 +204,22 @@ def test_json_endpoint_with_html_cards():
     cards = card_homes(r.text, r.url, b["detail_re"])
     assert len(cards) == 1 and cards[0]["price"] == 389990 and cards[0]["address"] == "1212 Oak Hollow Lane"
     assert cards[0]["city"] == "Anna" and "Flex Cash" in cards[0]["incentive_text"]
+
+
+def test_sources_disagree_no_fake_changes():
+    """Listing data shows a plan base price; the home's own page shows the real price."""
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp)
+        t0 = R.now_local()
+        listing = listing_page([("1404 Amber Way", 578375, 2104, "Plan")])
+        pages = {"https://tb.example/qmi": listing, DETAIL: detail_page(609900)}
+        _, ch = run_once(store, pages, t0)
+        assert [c["event"] for c in ch] == ["new_home"] and ch[0]["new"] == 609900, ch
+        _, ch = run_once(store, pages, t0 + timedelta(hours=1))   # same disagreement again: nothing
+        assert ch == [], ch
+        pages2 = dict(pages, **{DETAIL: detail_page(599900)})       # real cut on the home's page
+        _, ch = run_once(store, pages2, t0 + timedelta(hours=2))
+        assert [(c["event"], c["delta"]) for c in ch] == [("price_cut", -10000)], ch
+    finally:
+        shutil.rmtree(tmp)

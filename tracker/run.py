@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from . import discover, incentives
-from .extract import DFW_CITY_RE, address_key, card_homes, extract_homes, to_price
+from .extract import DFW_CITY_RE, address_from_url, address_key, card_homes, extract_homes, same_address, to_price
 from .fetch import PoliteClient
 from .store import State, store_from_env
 
@@ -95,6 +95,8 @@ class Recorder:
         self.st, self.now, self.changes = st, now, []
         self.stats: dict[str, dict] = {}
         self.lock = threading.RLock()
+        self.run_rank: dict[str, int] = {}  # home_id -> best source rank read this run
+        self.run_applied: dict[str, bool] = {}  # home_id -> did this run's best reading set the price
 
     @locked
     def stat(self, slug, key, n=1):
@@ -126,13 +128,37 @@ class Recorder:
         hid = self.home_id(b, obs)
         if not hid or not obs.get("price"):
             return
-        self.stat(b["slug"], "homes_seen")
         now = ts(self.now)
         price = int(obs["price"])
+        # How much to trust this reading: the home's own page > a listing card > listing-page data.
+        rank = 3 if obs.get("from_detail") else 2 if obs.get("source") == "card" else 1
+        seen_rank = self.run_rank.get(hid)
+        if seen_rank is None:
+            self.stat(b["slug"], "homes_seen")
+        elif seen_rank >= rank:
+            return hid  # already have an equal or better reading of this home this run
+        self.run_rank[hid] = rank
         h = self.st.homes.get(hid)
+        applied_earlier = self.run_applied.get(hid, False)
+        self.run_applied[hid] = True
+        if h is not None and seen_rank is not None and applied_earlier and h.get("price") != price:
+            # a better source this run disagrees with an earlier reading this run: take it, no event
+            if h.get("first_seen") == now:
+                h["first_price"] = price
+                for c in self.changes:
+                    if c["home_id"] == hid and c["event"] == "new_home":
+                        c["new"] = price
+            h["price"], h["price_source"] = price, rank
+        elif h is not None and int(h.get("price_source") or 1) > rank and h.get("price") != price:
+            price = h["price"]  # a weaker source disagrees with what a stronger one said: ignore it
+            self.run_applied[hid] = False
+        elif h is not None and int(h.get("price_source") or 1) < rank and h.get("price") != price:
+            h["price"], h["price_source"] = price, rank  # first reading from a stronger source: adopt quietly
+        if h is not None:
+            h["price_source"] = max(int(h.get("price_source") or 1), rank)
         if h is None:
             h = {"home_id": hid, "builder": b["name"], "first_price": price, "price": price, "cuts": 0,
-                 "first_seen": now, "active": True}
+                 "first_seen": now, "active": True, "price_source": rank}
             self.st.homes[hid] = h
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "status", "move_in",
                       "url", "builder_was_price", "incentive_text"):
@@ -174,7 +200,9 @@ class Recorder:
             old_inc = h.get("incentive_text") or ""
             if obs.get("from_detail"):  # the home's own page is the authority on its offer
                 if new_inc and new_inc != old_inc:
-                    if old_inc:
+                    if h.get("first_seen") == now:
+                        pass  # brand-new home: its offer is part of the new_home record
+                    elif old_inc:
                         self.event(b, "home_offer_changed", h, detail=f"{old_inc}  ->  {new_inc}")
                     else:
                         self.event(b, "home_offer_new", h, detail=new_inc)
@@ -184,7 +212,8 @@ class Recorder:
                     for k in ("incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since"):
                         h[k] = None
             elif new_inc and not old_inc:  # listing cards only fill a gap
-                self.event(b, "home_offer_new", h, detail=new_inc)
+                if h.get("first_seen") != now:
+                    self.event(b, "home_offer_new", h, detail=new_inc)
                 h["incentive_text"], h["offer_since"] = new_inc, now
         if h.get("incentive_text"):
             t = h["incentive_text"]
@@ -294,6 +323,9 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
         for h in homes:
             if h.get("url") and not b["detail_re"].search(urlparse(h["url"]).path):
                 h["url"] = ""  # a link to a community/plan page, not the home
+            ua = address_from_url(h["url"]) if h.get("url") else ""
+            if ua and h.get("address") and not same_address(ua, h["address"]):
+                h["url"] = ""  # the link belongs to a different home
             rec.observe(b, h)
             if h.get("url"):
                 covered.add(h["url"].rstrip("/").lower())
