@@ -126,7 +126,12 @@ def test_two_runs_track_changes():
         amber = next(h for h in st2.homes.values() if h["address"] == "1404 Amber Way")
         assert amber["first_price"] == 424990 and amber["price"] == 399990 and amber["cuts"] == 1
         assert amber["change_since_first"] == -25000
+        offers = list(__import__("csv").DictReader(open(f"{tmp}/home_offers.csv")))
+        amber_offer = next(o for o in offers if o["address"] == "1404 Amber Way")
+        assert amber_offer["offer_type"] == "closing_costs" and amber_offer["offer_amount"] == "15000"
+        assert "closing costs" in amber_offer["incentive_text"]
         drops = open(f"{tmp}/price_drops.csv").read()
+        assert "toward closing costs" in drops  # each drop shows that home's advertised offer
         assert "1404 Amber Way" in drops and "1500 Elm Street" in drops
     finally:
         shutil.rmtree(tmp)

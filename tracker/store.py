@@ -14,8 +14,11 @@ TABS = {
     "Homes": ["home_id", "builder", "community", "city", "zip", "address", "plan", "beds", "baths", "sqft",
               "price", "builder_was_price", "first_price", "prev_price", "change_since_first",
               "pct_since_first", "last_change", "last_change_at", "cuts", "price_per_sqft", "status", "move_in",
-              "incentive_text", "url", "first_seen", "last_seen", "last_checked", "active", "pending_price"],
-    "Price Drops": ["at", "builder", "address", "community", "city", "old", "new", "delta", "pct", "url"],
+              "incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since",
+              "url", "first_seen", "last_seen", "last_checked", "active", "pending_price"],
+    "Price Drops": ["at", "builder", "address", "community", "city", "old", "new", "delta", "pct", "offer", "url"],
+    "Home Offers": ["builder", "address", "community", "city", "price", "change_since_first", "offer_type",
+                    "offer_amount", "offer_rate", "incentive_text", "offer_since", "url"],
     "Changes": ["at", "builder", "event", "home_id", "address", "community", "city", "old", "new", "delta",
                 "pct", "url", "detail"],
     "Incentives": ["offer_id", "builder", "kind", "headline_amount", "rate", "text", "source_url",
@@ -26,10 +29,11 @@ TABS = {
 }
 STATE_TABS = ["Homes", "Incentives", "Frontier"]
 LOG_TABS = ["Changes", "Run Log"]
-DERIVED_TABS = ["Summary", "Price Drops"]
+DERIVED_TABS = ["Summary", "Price Drops", "Home Offers"]
 NUMERIC = {"beds", "baths", "sqft", "price", "builder_was_price", "first_price", "prev_price",
            "change_since_first", "pct_since_first", "last_change", "cuts", "price_per_sqft", "headline_amount",
-           "rate", "misses", "pending_price", "last_status", "old", "new", "delta", "pct"}
+           "rate", "misses", "pending_price", "last_status", "old", "new", "delta", "pct", "offer_amount",
+           "offer_rate"}
 
 
 def _coerce(k: str, v):
@@ -38,7 +42,7 @@ def _coerce(k: str, v):
     if k in NUMERIC:
         try:
             f = float(str(v).replace(",", "").replace("$", "").replace("%", ""))
-            return int(f) if f.is_integer() and k not in {"baths", "pct", "pct_since_first", "rate"} else f
+            return int(f) if f.is_integer() and k not in {"baths", "pct", "pct_since_first", "rate", "offer_rate"} else f
         except ValueError:
             return None
     if k == "active":
@@ -152,7 +156,7 @@ class SheetStore:
             ws.update([TABS[tab]], "A1", value_input_option="RAW")
             ws.freeze(rows=1)
             ws.format("1:1", {"textFormat": {"bold": True}})
-            money = {"Homes": ["K:R"], "Price Drops": ["F:H"], "Changes": ["H:J"],
+            money = {"Homes": ["K:R"], "Price Drops": ["F:H"], "Changes": ["H:J"], "Home Offers": ["E:F", "H:H"],
                      "Summary": ["E:G"], "Incentives": ["D:D"]}.get(tab, [])
             for rng in money:
                 ws.format(rng, {"numberFormat": {"type": "CURRENCY", "pattern": "$#,##0"}})

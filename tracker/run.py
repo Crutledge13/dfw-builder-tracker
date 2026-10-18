@@ -137,6 +137,8 @@ class Recorder:
                       "url", "builder_was_price", "incentive_text"):
                 if obs.get(k) not in (None, ""):
                     h[k] = obs[k]
+            if h.get("incentive_text"):
+                h["offer_since"] = now
             self.event(b, "new_home", h, new=price)
             self.stat(b["slug"], "new_homes")
         else:
@@ -167,12 +169,28 @@ class Recorder:
                     if k == "status" and h.get(k) and obs[k].lower() != str(h[k]).lower():
                         self.event(b, "status_change", h, detail=f'{h[k]} -> {obs[k]}')
                     h[k] = obs[k]
-            if "incentive_text" in obs:
-                new_inc = obs.get("incentive_text") or ""
-                if new_inc and h.get("incentive_text") and new_inc != h["incentive_text"]:
-                    self.event(b, "home_offer_changed", h, detail=new_inc)
-                if new_inc:
-                    h["incentive_text"] = new_inc
+            new_inc = obs.get("incentive_text") or ""
+            old_inc = h.get("incentive_text") or ""
+            if obs.get("from_detail"):  # the home's own page is the authority on its offer
+                if new_inc and new_inc != old_inc:
+                    if old_inc:
+                        self.event(b, "home_offer_changed", h, detail=f"{old_inc}  ->  {new_inc}")
+                    else:
+                        self.event(b, "home_offer_new", h, detail=new_inc)
+                    h["incentive_text"], h["offer_since"] = new_inc, now
+                elif not new_inc and old_inc:
+                    self.event(b, "home_offer_removed", h, detail=old_inc)
+                    for k in ("incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since"):
+                        h[k] = None
+            elif new_inc and not old_inc:  # listing cards only fill a gap
+                self.event(b, "home_offer_new", h, detail=new_inc)
+                h["incentive_text"], h["offer_since"] = new_inc, now
+        if h.get("incentive_text"):
+            t = h["incentive_text"]
+            h["offer_type"] = incentives.classify(t)
+            h["offer_amount"] = incentives.headline_amount(t)
+            h["offer_rate"] = incentives.lowest_rate(t)
+            h.setdefault("offer_since", h.get("first_seen"))
         h["last_seen"] = now
         fp, p = h.get("first_price"), h.get("price")
         if fp and p:
@@ -378,8 +396,10 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
     for c in allc:
         at = parse_ts(c.get("at"))
         if c.get("event") == "price_cut" and at and at >= d90:
-            drops.append({k: c.get(k) for k in ("at", "builder", "address", "community", "city", "old", "new",
-                                                 "delta", "pct", "url")})
+            row = {k: c.get(k) for k in ("at", "builder", "address", "community", "city", "old", "new",
+                                         "delta", "pct", "url")}
+            row["offer"] = (st.homes.get(c.get("home_id")) or {}).get("incentive_text", "")
+            drops.append(row)
     drops.sort(key=lambda r: r["at"], reverse=True)
     last_run = {r["builder"]: r for r in runlog}
     summary = []
@@ -404,7 +424,12 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
             "active_offers": sum(1 for o in st.incentives.values() if o.get("builder") == n and o.get("active")),
             "last_run": lr.get("run_at", ""), "last_run_status": lr.get("status", ""),
         })
-    return {"Summary": summary, "Price Drops": drops}
+    offers = [{k: h.get(k) for k in ("builder", "address", "community", "city", "price", "change_since_first",
+                                      "offer_type", "offer_amount", "offer_rate", "incentive_text", "offer_since",
+                                      "url")}
+              for h in st.homes.values() if h.get("active") and h.get("incentive_text")]
+    offers.sort(key=lambda r: (-(r.get("offer_amount") or 0), r.get("builder") or ""))
+    return {"Summary": summary, "Price Drops": drops, "Home Offers": offers}
 
 
 def main(argv=None):

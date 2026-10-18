@@ -410,11 +410,19 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     }
 
 
+DISCLAIMER = re.compile(r"(\bapr\b.*based on|fico|not all (borrowers|buyers)|subject to (credit|change)|"
+                        r"sales price of|loan amount|per \$1,?000|nmls|cannot be combined|terms and conditions|"
+                        r"based on a|example|payments? (exclude|of \$))", re.I)
+
+
 def incentive_snippets(text: str, limit: int = 3) -> list[str]:
+    """Headline-style offer sentences (not the fine print)."""
     out = []
-    for sent in re.split(r"(?<=[.!?])\s+|\s{2,}|\n", text):
-        s = sent.strip()
-        if 15 <= len(s) <= 300 and INCENTIVE_WORDS.search(s) and re.search(r"[\d$%]", s):
+    for sent in re.split(r"(?<=[.!?])\s+|\s{2,}|\n|\s\|\s", text):
+        s = sent.strip(" *")
+        if DISCLAIMER.search(s):
+            continue
+        if 12 <= len(s) <= 200 and INCENTIVE_WORDS.search(s) and re.search(r"[\d$%]", s):
             if s not in out:
                 out.append(s)
         if len(out) >= limit:
@@ -454,6 +462,7 @@ def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
             continue
         seen.add(key)
         h["source"] = "card"
+        h["incentive_text"] = " | ".join(incentive_snippets(box.get_text("  ", strip=True), limit=2))
         h["status"] = h["status"] or ""
         if not h["address"] or not same_address(h["address"], address_from_url(url) or h["address"]):
             h["address"] = address_from_url(url) or h["address"]
@@ -506,9 +515,12 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
             for k, v in fb.items():
                 if not homes[0].get(k) and v and k not in ("price", "builder_was_price"):
                     homes[0][k] = v
+        main = soup.find("main") or soup.body or soup
+        main_text = main.get_text("  ", strip=True)
         for h in homes:
             h["url"] = page_url
             if not h.get("address") and url_addr:
                 h["address"] = url_addr
-            h["incentive_text"] = " | ".join(incentive_snippets(page_text))
+            h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(page_text))
+            h["from_detail"] = True
     return homes

@@ -23,9 +23,10 @@ same CSVs (or load them into a database; the columns are already shaped for that
 |---|---|
 | **Summary** | One row per builder: active homes, cuts in the last 24h / 7 days, total and biggest cut, new and removed homes, active offers, last run status. |
 | **Homes** | One row per home (current state): builder, community, city, address, plan, beds, baths, sqft, price, the builder's own "was" price when shown, first price we saw, previous price, change since first seen ($ and %), number of cuts, $/sqft, status, move-in, the home's offer text, link, first/last seen, active. |
-| **Price Drops** | Every price cut in the last 90 days, newest first. |
+| **Price Drops** | Every price cut in the last 90 days, newest first, with that home's advertised offer. "Detected" is when the tracker saw the new price; homes are rechecked every 1–3 hours. |
+| **Home Offers** | Every active home whose own listing advertises an offer: the offer text, type (rate, closing costs, price reduction, cash/credit), $ amount, rate, and since when it's been shown. |
 | **Changes** | Append-only history: `new_home`, `price_cut`, `price_increase`, `price_unconfirmed`, `status_change`, `removed`, `relisted`, `offer_new`, `offer_changed`, `offer_removed`, `home_offer_changed`. |
-| **Incentives** | Every offer found on each builder's promotions pages: type, headline $ amount, lowest rate, full text, source page, first/last seen, still active. |
+| **Builder Offers** | Builder-wide offers found on each builder's promotions pages: type, headline $ amount, lowest rate, full text, source page, first/last seen, still active. |
 | **Run Log** | Per builder, per run: pages read, homes seen, changes, `ok` / `no data` / `blocked` and why. |
 
 Price changes are measured from the first price this tracker saw, not the builder's

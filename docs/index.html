@@ -60,21 +60,27 @@ td a{color:var(--accent)}
   <div class="count" id="count"></div>
 </main>
 <script>
-const MONEY = new Set(["price","builder_was_price","first_price","prev_price","change_since_first","last_change","old","new","delta","total_cut_7d","avg_cut_7d","biggest_cut_7d","headline_amount","price_per_sqft"]);
+const LABELS = {at:"Detected", run_at:"Run At", incentive_text:"Advertised Offer", offer:"Advertised Offer",
+  offer_type:"Offer Type", offer_amount:"Offer $", offer_rate:"Offer Rate", offer_since:"Offer Seen Since",
+  builder_was_price:"Builder's Was Price", last_change_at:"Last Change Detected", change_since_first:"Change Since First Seen",
+  first_price:"First Price Seen", old:"Old Price", new:"New Price", delta:"Change", text:"Offer", headline_amount:"Offer $",
+  kind:"Offer Type", first_seen:"First Seen", last_seen:"Last Seen", source_url:"Source"};
+const MONEY = new Set(["price","builder_was_price","first_price","prev_price","change_since_first","last_change","old","new","delta","total_cut_7d","avg_cut_7d","biggest_cut_7d","headline_amount","price_per_sqft","offer_amount"]);
 const SIGNED = new Set(["change_since_first","last_change","delta","pct","pct_since_first"]);
 const PCT = new Set(["pct","pct_since_first"]);
-const TEXT = new Set(["text","incentive_text","detail","note"]);
+const TEXT = new Set(["text","incentive_text","detail","note","offer"]);
 const TABS = {
   "Summary":    {file:"summary.csv", cols:["builder","active_homes","price_cuts_24h","price_cuts_7d","total_cut_7d","avg_cut_7d","biggest_cut_7d","new_homes_7d","removed_7d","active_offers","last_run","last_run_status"], sort:["price_cuts_7d",-1]},
-  "Price Drops":{file:"price_drops.csv", cols:["at","builder","address","community","city","old","new","delta","pct","url"], sort:["at",-1]},
-  "Homes":      {file:"homes.csv", cols:["builder","community","city","address","plan","beds","baths","sqft","price","first_price","change_since_first","pct_since_first","cuts","last_change","last_change_at","builder_was_price","price_per_sqft","status","move_in","incentive_text","first_seen","last_seen","url"], sort:["change_since_first",1], active:true},
-  "Incentives": {file:"incentives.csv", cols:["builder","kind","headline_amount","rate","text","first_seen","last_seen","source_url"], sort:["last_seen",-1], active:true},
+  "Price Drops":{file:"price_drops.csv", cols:["at","builder","address","community","city","old","new","delta","pct","offer","url"], sort:["at",-1]},
+  "Home Offers":{file:"home_offers.csv", cols:["builder","address","community","city","price","change_since_first","offer_type","offer_amount","offer_rate","incentive_text","offer_since","url"], sort:["offer_amount",-1]},
+  "Homes":      {file:"homes.csv", cols:["builder","community","city","address","plan","beds","baths","sqft","price","incentive_text","first_price","change_since_first","pct_since_first","cuts","last_change","last_change_at","builder_was_price","price_per_sqft","status","move_in","first_seen","last_seen","url"], sort:["change_since_first",1], active:true},
+  "Builder Offers": {file:"incentives.csv", cols:["builder","kind","headline_amount","rate","text","first_seen","last_seen","source_url"], sort:["last_seen",-1], active:true},
   "Changes":    {file:"changes.csv", cols:["at","builder","event","address","community","city","old","new","delta","pct","detail","url"], sort:["at",-1]},
   "Run Log":    {file:"run_log.csv", cols:["run_at","builder","pages","homes_seen","new_homes","price_cuts","price_increases","offers_seen","offer_changes","status","note"], sort:["run_at",-1]},
 };
 const data = {}; let tab = "Price Drops"; let sort = null;
 const $ = id => document.getElementById(id);
-const label = c => c.replace(/_/g," ").replace(/\b(\w)/g, m=>m.toUpperCase()).replace("Pct","%").replace("Url","Link");
+const label = c => LABELS[c] || c.replace(/_/g," ").replace(/\b(\w)/g, m=>m.toUpperCase()).replace("Pct","%").replace("Url","Link");
 const num = v => v===""||v==null ? null : Number(v);
 const fmtMoney = v => (v<0?"−":"")+"$"+Math.abs(Math.round(v)).toLocaleString();
 const esc = s => String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -83,6 +89,8 @@ function cell(c, v){
   if (v==="" || v==null) return "<td></td>";
   if (c==="url"||c==="source_url"){ const u=String(v); if(!/^https?:\/\//.test(u)) return "<td></td>"; return `<td><a href="${esc(u)}" target="_blank" rel="noopener">open</a></td>`; }
   if (c==="active") return `<td>${/^true$/i.test(v)?"yes":"no"}</td>`;
+  if (c==="offer_type" && v) return `<td><span class="pill">${esc(String(v).replace("_"," "))}</span></td>`;
+  if (c==="offer_rate") return `<td class="num">${num(v)}%</td>`;
   if (c==="event"||c==="kind"||c==="last_run_status"||c==="status" && tab==="Run Log") return `<td><span class="pill">${esc(v)}</span></td>`;
   const n = num(v);
   if (!isNaN(n) && n!==null && (MONEY.has(c)||PCT.has(c)||/^(beds|baths|sqft|cuts|pages|rate)$|_7d$|_24h$|homes|offers|changes|increases|^price_cuts/.test(c))){
@@ -117,9 +125,9 @@ function stats(){
   const homes=(data["Homes"]||[]).filter(h=>/^true$/i.test(h.active));
   const drops=data["Price Drops"]||[]; const wk=Date.now()-7*864e5;
   const d7=drops.filter(d=>new Date(d.at.replace(" ","T"))>=wk);
-  const offers=(data["Incentives"]||[]).filter(o=>/^true$/i.test(o.active));
+  const offers=(data["Builder Offers"]||[]).filter(o=>/^true$/i.test(o.active));
   const tot=d7.reduce((s,d)=>s-Number(d.delta||0),0);
-  const items=[[homes.length.toLocaleString(),"active homes tracked"],[d7.length.toLocaleString(),"price cuts, last 7 days"],[fmtMoney(tot),"total cut, last 7 days"],[offers.length.toLocaleString(),"live builder offers"]];
+  const items=[[homes.length.toLocaleString(),"active homes tracked"],[d7.length.toLocaleString(),"price cuts, last 7 days"],[fmtMoney(tot),"total cut, last 7 days"],[offers.length.toLocaleString(),"live builder-wide offers"],[(data["Home Offers"]||[]).length.toLocaleString(),"homes with an advertised offer"]];
   $("stats").innerHTML=items.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
 }
 
