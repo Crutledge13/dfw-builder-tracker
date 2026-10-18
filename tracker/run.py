@@ -23,7 +23,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from . import discover, incentives
-from .extract import DFW_CITY_RE, address_key, extract_homes, to_price
+from .extract import DFW_CITY_RE, address_key, card_homes, extract_homes, to_price
 from .fetch import PoliteClient
 from .store import State, store_from_env
 
@@ -74,6 +74,7 @@ def load_config(path="builders.yaml") -> list[dict]:
         bb = {**d, **b}
         bb["detail_re"] = re.compile(bb["detail_pattern"], re.I)
         bb["filter_re"] = re.compile(bb["sitemap_filter"], re.I) if bb.get("sitemap_filter") else None
+        bb["hub_re"] = re.compile(bb["hub_pattern"], re.I) if bb.get("hub_pattern") else None
         out.append(bb)
     return out
 
@@ -244,6 +245,30 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
                 return
             fr[cu] = {"url": cu, "builder": b["name"], "kind": kind, "discovered_at": ts(now), "misses": 0}
 
+    def process_listing(r):
+        """Record homes found on a listing/hub page; queue home and hub links. Returns pagination links."""
+        homes = extract_homes(r.text, r.url)
+        covered = set()
+        for h in homes:
+            if h.get("url") and not b["detail_re"].search(urlparse(h["url"]).path):
+                h["url"] = ""  # a link to a community/plan page, not the home
+            rec.observe(b, h)
+            if h.get("url"):
+                covered.add(h["url"].rstrip("/").lower())
+                queue(h["url"])
+        for h in card_homes(r.text, r.url, b["detail_re"]):
+            if h["url"].rstrip("/").lower() not in covered:
+                rec.observe(b, h)
+        links, more = discover.links_from_html(r.text, r.url)
+        for l in links:
+            path = urlparse(l).path
+            if b["detail_re"].search(path) and (b.get("dfw_only") or not b.get("filter_re")
+                                                or b["filter_re"].search(l)):
+                queue(l)
+            elif b.get("hub_re") and b["hub_re"].search(path):
+                queue(l, "hub")
+        return more
+
     # 1) listing pages (+ pagination)
     seeds_ok = 0
     todo, done = list(b.get("seeds") or []), set()
@@ -257,18 +282,30 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
             notes.append(f"seed {r.status if r else 'skipped'}: {url}")
             continue
         seeds_ok += 1
-        for h in extract_homes(r.text, r.url):
-            if h.get("url") and not b["detail_re"].search(urlparse(h["url"]).path):
-                h["url"] = ""  # a link to a community/plan page, not the home
-            rec.observe(b, h)
-            if h.get("url"):
-                queue(h["url"])
-        links, more = discover.links_from_html(r.text, r.url)
-        for l in links:
-            if b["detail_re"].search(urlparse(l).path) and (b.get("dfw_only") or not b.get("filter_re")
-                                                             or b["filter_re"].search(l)):
-                queue(l)
+        more = process_listing(r)
         todo.extend(p for p in more if p not in done)
+
+    # 1b) hub pages (community / city pages that list homes), stalest first, within budget
+    with rec.lock:
+        hubs = [f for f in fr.values() if f.get("builder") == b["name"] and f.get("kind") == "hub"
+                and int(f.get("misses") or 0) < 3]
+    hubs.sort(key=lambda f: (bool(f.get("last_checked")), str(f.get("last_checked") or "")))
+    hub_budget = pages + int(budget * 0.6)
+    for f in hubs:
+        if pages >= hub_budget:
+            break
+        r = fetch(f["url"])
+        if r is None:
+            if client._host(f["url"]) in client.blocked:
+                break
+            continue
+        f["last_checked"], f["last_status"] = ts(now), r.status
+        if r.status in (404, 410):
+            f["misses"] = int(f.get("misses") or 0) + 1
+            continue
+        if r.status == 200:
+            seeds_ok += 1
+            process_listing(r)
 
     # 2) sitemap discovery, every few hours
     if b.get("sitemap"):
@@ -278,8 +315,13 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
         if not last or now - last >= timedelta(hours=SITEMAP_EVERY_H):
             before = client.requests_made
             for u in discover.discover_from_sitemaps(client, b["site"], b["detail_re"],
-                                                     None if b.get("dfw_only") else b.get("filter_re")):
+                                                     None if b.get("dfw_only") else b.get("filter_re"),
+                                                     roots=b.get("sitemaps")):
                 queue(u)
+            if b.get("hub_re"):
+                for u in discover.discover_from_sitemaps(client, b["site"], b["hub_re"], b.get("filter_re"),
+                                                         max_sitemaps=10, roots=b.get("sitemaps")):
+                    queue(u, "hub")
             pages += client.requests_made - before
             with rec.lock:
                 fr[key] = {"url": key, "builder": b["name"], "kind": "sitemap", "discovered_at": ts(now),

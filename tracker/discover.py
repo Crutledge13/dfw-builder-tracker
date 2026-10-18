@@ -51,9 +51,12 @@ def parse_sitemap(xml: str) -> tuple[list[str], list[str]]:
 
 
 def discover_from_sitemaps(client, site: str, detail_re: re.Pattern, filter_re: re.Pattern | None,
-                           max_sitemaps: int = 40, max_urls: int = 20000) -> set[str]:
-    roots = client.sitemaps_from_robots(site) or [urljoin(site, "/sitemap.xml"),
-                                                  urljoin(site, "/sitemap_index.xml")]
+                           max_sitemaps: int = 40, max_urls: int = 20000, roots: list | None = None) -> set[str]:
+    if not roots:
+        # robots.txt sitemap lines are sometimes malformed ("url Sitemap: other"); keep the first token
+        roots = [urljoin(site, (r.split() or [""])[0]) for r in client.sitemaps_from_robots(site)]
+        roots = [r for r in roots if r.startswith("http")] or [urljoin(site, "/sitemap.xml"),
+                                                               urljoin(site, "/sitemap_index.xml")]
     queue, seen, found = list(dict.fromkeys(roots)), set(), set()
     while queue and len(seen) < max_sitemaps and len(found) < max_urls:
         sm = queue.pop(0)
@@ -66,6 +69,8 @@ def discover_from_sitemaps(client, site: str, detail_re: re.Pattern, filter_re: 
         r = client.get(sm)
         if not r or r.status != 200:
             continue
+        if "<loc>" not in r.text[:200000].lower():
+            continue  # not a sitemap (e.g. an HTML error page)
         children, urls = parse_sitemap(r.text)
         if filter_re is not None:
             children = sorted(children, key=lambda c: 0 if filter_re.search(c) else 1)

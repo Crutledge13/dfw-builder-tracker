@@ -31,14 +31,26 @@ def main():
                   [("promo", u) for u in (b.get("promos") or [])[:1]] + [("home", u) for u in homes]
         for sm in c.sitemaps_from_robots(b["site"])[:2]:
             targets.append(("sitemap", sm))
-        for i, (kind, url) in enumerate(targets):
+        hub_seen = 0
+        i = 0
+        while i < len(targets):
+            kind, url = targets[i]
             r = c.get(url)
+            if r and kind == "seed" and r.status == 200 and b.get("hub_re"):
+                from .discover import links_from_html
+                from urllib.parse import urlparse
+                links, _ = links_from_html(r.text, r.url)
+                for l in sorted(links):
+                    if hub_seen < 2 and b["hub_re"].search(urlparse(l).path):
+                        targets.append(("hub", l))
+                        hub_seen += 1
             status = r.status if r else "skipped"
             name = f"{i:02d}-{kind}.html"
             if r:
                 (d / name).write_text(r.text[:3_000_000], encoding="utf-8")
             index.write(f"{b['slug']}\t{kind}\t{status}\t{len(r.text) if r else 0}\t{name}\t{url}\n")
             index.flush()
+            i += 1
         print(b["slug"], "done", c.blocked or "")
 
 

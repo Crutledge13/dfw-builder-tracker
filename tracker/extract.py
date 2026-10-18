@@ -177,6 +177,15 @@ def _json_blobs(soup: BeautifulSoup) -> Iterator[tuple[str, Any]]:
                 continue
         elif not tag.get("src") and re.search(r"price", raw, re.I):
             yield from (("embedded", o) for o in _objects_in_js(raw))
+            if '\\"price' in raw or "\\u0022price" in raw:
+                for lit in re.findall(r'"((?:[^"\\]|\\.){40,}?)"', raw):
+                    if "price" not in lit:
+                        continue
+                    try:
+                        decoded = json.loads('"' + lit + '"')
+                    except ValueError:
+                        continue
+                    yield from (("embedded", o) for o in _objects_in_js(decoded, max_tries=400))
     for el in soup.find_all(attrs=True):
         for k, v in el.attrs.items():
             if k.startswith("data-") and isinstance(v, str) and v[:1] in "{[" and "price" in v.lower():
@@ -189,7 +198,7 @@ def _json_blobs(soup: BeautifulSoup) -> Iterator[tuple[str, Any]]:
 def _objects_in_js(js: str, max_tries: int = 60) -> Iterator[Any]:
     dec = json.JSONDecoder()
     tries = 0
-    for m in re.finditer(r"(?:=|\(|:)\s*([\[{])", js):
+    for m in re.finditer(r"(?:=|\(|:|^|\n)\s*([\[{])", js):
         tries += 1
         if tries > max_tries:
             break
@@ -286,7 +295,7 @@ def _is_struck(el) -> bool:
         if getattr(p, "name", None) in ("del", "s", "strike"):
             return True
         cls = " ".join(p.get("class") or []) if hasattr(p, "get") else ""
-        if re.search(r"(strike|was|orig|old-price|previous|line-through)", cls, re.I):
+        if re.search(r"(strike|\bwas\b|was-|orig|old-price|previous|line-through|slash|regular-price|list-price)", cls, re.I):
             return True
         style = p.get("style", "") if hasattr(p, "get") else ""
         if "line-through" in style:
@@ -296,8 +305,60 @@ def _is_struck(el) -> bool:
     return False
 
 
+SKIP_CTX = re.compile(r"(per month|/mo\b|monthly|est\.? payment|payment|closing|savings|save|\boff\b|credit|"
+                      r"hoa|tax|deposit|sales price of|loan amount|based on|income|starting|from the|from \$)", re.I)
+SALE_CTX = re.compile(r"(sale|now|reduced|special|new price|your price|current price|net price)\W*$", re.I)
+
+
+def _pick_price(main):
+    """Choose the home's asking price among the dollar amounts on the page.
+    Struck-through amounts and amounts labeled like the 'before' price count as was-price;
+    an amount labeled Sale/Now/Reduced wins; payment, HOA, credits etc. are skipped."""
+    cands = []
+    for el in main.find_all(True):
+        own = el.get_text(" ", strip=True)
+        if len(own) > 40 or not re.search(r"\$\s?\d{2,3}(?:,\d{3})+", own):
+            continue
+        if any(re.search(r"\$\s?\d", c.get_text(" ", strip=True)) for c in el.find_all(True)):
+            continue  # innermost element holding a price
+        p = to_price(re.search(r"\$\s?([\d,]+)", own).group(1))
+        if p is None:
+            continue
+        before = ""
+        prev = el.find_previous(string=True)
+        hops = 0
+        while prev is not None and hops < 3 and len(before) < 40:
+            t = prev.strip()
+            if t and not re.search(r"\$\s?\d", t):
+                before = t + " " + before
+            hops += 1
+            prev = prev.find_previous(string=True)
+        label = (before + " " + own.split("$")[0]).strip()
+        if SKIP_CTX.search(label[-40:]) or SKIP_CTX.search(own):
+            continue
+        cands.append({"price": p, "struck": _is_struck(el), "sale": bool(SALE_CTX.search(label[-25:]))})
+        if len(cands) >= 6:
+            break
+    if not cands:
+        return None, None
+    was = next((c["price"] for c in cands if c["struck"]), None)
+    live = [c for c in cands if not c["struck"]]
+    if not live:
+        return None, was
+    sale = next((i for i, c in enumerate(live) if c["sale"]), None)
+    if sale is not None:
+        if sale > 0 and was is None and live[sale - 1]["price"] > live[sale]["price"]:
+            was = live[sale - 1]["price"]
+        return live[sale]["price"], was
+    first = live[0]["price"]
+    if was is None and len(live) > 1 and live[1]["price"] < first and live[1]["price"] > first * 0.7:
+        # "Priced at $702,050  $609,900" with no markup: the second, lower number is the current price
+        return live[1]["price"], first
+    return first, was
+
+
 def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
-    for t in soup(["script", "style", "noscript", "header", "footer", "nav"]):
+    for t in soup(["script", "style", "noscript", "footer", "nav"]):
         t.decompose()
     main = soup.find("main") or soup.body or soup
     price = was = None
@@ -305,18 +366,9 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     if meta:
         price = to_price(meta.get("content") or meta.get_text())
     if price is None:
-        for node in main.find_all(string=re.compile(r"\$\s?\d{2,3}(,\d{3})+")):
-            p = to_price(re.search(r"\$\s?([\d,]+)", node).group(1))
-            if p is None:
-                continue
-            if _is_struck(node.parent):
-                was = was or p
-                continue
-            ctx = node.parent.get_text(" ", strip=True).lower()
-            if re.search(r"(per month|/mo|monthly|closing|savings|save|off|credit|hoa|tax)", ctx):
-                continue
-            price = p
-            break
+        price, was = _pick_price(main)
+    if price is None and main is not soup.body and soup.body is not None:
+        price, was = _pick_price(soup.body)
     if price is None:
         return None
     text = main.get_text(" ", strip=True)
@@ -363,6 +415,49 @@ def incentive_snippets(text: str, limit: int = 3) -> list[str]:
                 out.append(s)
         if len(out) >= limit:
             break
+    return out
+
+
+def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
+    """Listing pages that render each home as a card: find links to home pages, climb to the
+    smallest container holding just that home, and read price/beds/baths/sqft from it."""
+    soup = BeautifulSoup(html, "lxml")
+    for t in soup(["script", "style", "noscript"]):
+        t.decompose()
+    out, seen = [], set()
+    for a in soup.find_all("a", href=True):
+        url = urljoin(page_url, a["href"]).split("#")[0].split("?")[0]
+        if not url.startswith("http") or not detail_re.search(urlparse(url).path):
+            continue
+        key = url.rstrip("/").lower()
+        if key in seen:
+            continue
+        box = a
+        for _ in range(8):
+            parent = box.parent
+            if parent is None or parent.name in ("body", "html"):
+                break
+            hrefs = {urljoin(page_url, x["href"]).split("#")[0].split("?")[0].rstrip("/").lower()
+                     for x in parent.find_all("a", href=True)
+                     if detail_re.search(urlparse(urljoin(page_url, x["href"])).path)}
+            if len(hrefs) > 1:
+                break
+            box = parent
+            if re.search(r"\$\s?\d{2,3},\d{3}", box.get_text(" ", strip=True)):
+                break
+        h = _html_home(BeautifulSoup(str(box), "lxml"), url)
+        if not h:
+            continue
+        seen.add(key)
+        h["source"] = "card"
+        h["status"] = h["status"] or ""
+        if not h["address"] or not same_address(h["address"], address_from_url(url) or h["address"]):
+            h["address"] = address_from_url(url) or h["address"]
+        if not h["city"]:
+            h["city"] = city_from_url(url)
+        if not h["address"]:
+            continue  # without an address a card can't be told apart from a promo tile
+        out.append(h)
     return out
 
 

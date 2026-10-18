@@ -177,3 +177,12 @@ def test_detail_page_ignores_similar_homes():
     # nothing on the page is this home -> no JSON record is used
     url2 = "https://www.meritagehomes.com/state/tx/dallasft-worth/9999-other-lane"
     assert all(x["address"] != "11033 Cottonbowl Drive" for x in extract_homes(html, url2, single=True))
+
+
+def test_sale_price_beats_list_price_and_payment_is_ignored():
+    html = '''<html><body><div class="hero"><h1>2208 Continent Court</h1><p>Krum, Texas 76249</p>
+      <p>Priced at <span class="price slash">$702,050</span> Sale <span class="price sale-price">$609,900</span></p>
+      <p>Est. Payment <span>$3,410</span>/mo</p></div><main><p>Sales Price of $450,000 example</p></main></body></html>'''
+    url = "https://www.riversidehomebuilders.com/quick-move-in/2208-continent-court"
+    h = extract_homes(html, url, single=True)[0]
+    assert (h["price"], h["builder_was_price"], h["address"], h["city"]) == (609900, 702050, "2208 Continent Court", "Krum")

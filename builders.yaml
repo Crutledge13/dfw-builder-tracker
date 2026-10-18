@@ -9,6 +9,9 @@
 #   promos         Pages where the builder publishes offers/incentives. Fetched every run.
 #   detail_pattern Regex a URL must match to count as a single-home (QMI) page.
 #                  Default (when omitted) matches address-like slugs: /1234-some-street/
+#   hub_pattern    Regex for community/city pages that list homes. Found on seed pages and in the
+#                  sitemap, then read in rotation (stalest first) each run.
+#   sitemaps       Explicit sitemap URLs (when robots.txt doesn't list a usable one).
 #   sitemap        true = also discover home pages from the site's sitemap (every 6 hours).
 #   sitemap_filter Regex a sitemap URL must match (use it to keep national builders to DFW).
 #   dfw_only       true = everything this builder publishes is DFW (local builders);
@@ -38,7 +41,9 @@ builders:
       - https://www.drhorton.com/texas/fort-worth
     promos: [https://www.drhorton.com/texas/dallas, https://www.drhorton.com/texas/fort-worth]
     detail_pattern: '/texas/(dallas|fort-worth)/[^/]+/[^/]+/.+'
+    hub_pattern: '^/texas/(dallas|fort-worth)/[^/]+/[^/]+/?$'
     sitemap_filter: '/texas/(dallas|fort-worth)/'
+    sitemaps: [https://www.drhorton.com/sitemaps/website.xml]
     verified: false
 
   - name: First Texas Homes
@@ -47,6 +52,7 @@ builders:
     seeds: [https://www.firsttexashomes.com/quick-move-in-homes/]
     promos: [https://www.firsttexashomes.com/promos/index.php]
     detail_pattern: '/(quick-move-in|home)[^?#]*/\d+'
+    hub_pattern: '^/quick-move-in-homes/city/[a-z-]+/?$'
     dfw_only: true
     verified: true
 
@@ -87,7 +93,7 @@ builders:
   - name: Pyvot Homes
     slug: pyvot
     site: https://www.pyvothomes.com/
-    seeds: [https://www.pyvothomes.com/quick-move-in-homes/]
+    seeds: [https://pyvothomes.com/available-homes/]
     promos: [https://www.pyvothomes.com/]
     dfw_only: true
     verified: false
@@ -98,6 +104,7 @@ builders:
     site: https://www.centurycommunities.com/
     seeds: [https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro]
     promos: [https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro]
+    detail_pattern: '/lots/[^/]+/?$'
     sitemap_filter: 'dallas-fort-worth'
     verified: true
 
@@ -112,7 +119,7 @@ builders:
     slug: khov
     site: https://www.khov.com/
     seeds: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
-    promos: [https://www.khov.com/promotions]
+    promos: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
     sitemap_filter: '/texas/'
     verified: false
 
@@ -131,7 +138,8 @@ builders:
     site: https://www.beazer.com/
     seeds: [https://www.beazer.com/dallas-tx]
     promos: [https://www.beazer.com/dallas-tx]
-    sitemap_filter: 'dallas'
+    hub_pattern: '^/dallas-tx/[a-z-]+/[a-z0-9-]+/?$'
+    sitemap_filter: '/dallas-tx/'
     verified: false
 
   - name: Coventry Homes
@@ -153,7 +161,7 @@ builders:
   - name: Meritage Homes
     slug: meritage
     site: https://www.meritagehomes.com/
-    seeds: [https://www.meritagehomes.com/state/tx/dallas-fort-worth]
+    seeds: []
     promos: [https://www.meritagehomes.com/promotions]
     sitemap_filter: '/tx/(dallas|fort-worth|dallas-fort-worth)'
     verified: false
@@ -161,9 +169,9 @@ builders:
   - name: Perry Homes
     slug: perry
     site: https://www.perryhomes.com/
-    seeds: [https://www.perryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
-    promos: [https://www.perryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
-    sitemap_filter: 'dallas'
+    seeds: []
+    promos: []
+    sitemap_filter: '/new-homes/texas/dallas/'
     verified: false
 
   - name: KB Home
@@ -171,6 +179,7 @@ builders:
     site: https://www.kbhome.com/
     seeds: [https://www.kbhome.com/new-homes-dallas-fort-worth]
     promos: [https://www.kbhome.com/new-homes-dallas-fort-worth]
+    hub_pattern: '^/new-homes-dallas-fort-worth/[a-z0-9-]+/?$'
     sitemap_filter: 'dallas-fort-worth'
     verified: false
 
@@ -179,6 +188,7 @@ builders:
     site: https://www.davidweekleyhomes.com/
     seeds: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
     promos: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
+    detail_pattern: '/homes-ready-soon/tx/dallas-ft-worth/[^/]+/[^/]+/\d{5,}/?$'
     sitemap_filter: '/tx/dallas-ft-worth/'
     verified: false
 
