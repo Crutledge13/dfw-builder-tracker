@@ -415,16 +415,47 @@ DISCLAIMER = re.compile(r"(\bapr\b.*based on|fico|not all (borrowers|buyers)|sub
                         r"based on a|example|payments? (exclude|of \$))", re.I)
 
 
+OFFER_RE = re.compile(
+    r"(\$\s?[\d,.]+\s?k?\s*(?:off\b|in flex cash|flex cash|toward|towards|in closing|closing cost|"
+    r"seller credit|in savings|savings|incentive|bonus|allowance|price reduction|design (?:center )?(?:credit|upgrades?))"
+    r"|(?:reduced|save|savings of|price reduction of|price drop of)\s*(?:up to\s*)?\$\s?[\d,.]+\s?k?"
+    r"|up to \$\s?[\d,.]+\s?k?"
+    r"|\d+(?:\.\d+)?\s?%\s*(?:towards?|to|seller|in)\s*(?:closing|contribution|seller)"
+    r"|(?:rates?|financing|interest)\s*(?:as low as|starting at|from|of)\s*\d+(?:\.\d+)?\s?%"
+    r"|\d+(?:\.\d+)?\s?%\s*(?:fixed|rate|\(\d|apr)"
+    r"|\d/\d(?:/\d)?\s*buy ?-?down|\bbuy ?-?down|zero down|\$0 down|flex cash)", re.I)
+SPEC_RE = re.compile(r"\b(beds?|baths?|sq\.? ?ft|stories|garage|homesite|schedule a tour|est\.? completion)\b", re.I)
+
+
+def _offer_window(s: str, m: re.Match, width: int = 70) -> str:
+    """Trim a long block of text to the words around the offer phrase."""
+    if len(s) <= 120 and not SPEC_RE.search(s) and not re.search(r"\$[\d,]{6,}|completion|skip to", s, re.I):
+        return s
+    a, b = max(0, m.start() - width), min(len(s), m.end() + width)
+    piece = s[a:b]
+    # cut back to clause boundaries / spec words so neighbouring listing details don't leak in
+    left = re.split(r"(?:\s[|•*]\s|\b(?:beds?|baths?|sq\.? ?ft|stories|garage|completion|main content)\b|\$[\d,]{6,})",
+                    s[a:m.start()], flags=re.I)[-1]
+    right = re.split(r"(?:\s[|•*]\s|[.!](?:\s|$)|\b(?:beds?|baths?|est\.|completion|homesite)\b)",
+                     s[m.start():b], flags=re.I)[0]
+    piece = (left + right).strip(" ,;:-|*•")
+    return piece if len(piece) >= 6 else s[m.start():m.end()]
+
+
 def incentive_snippets(text: str, limit: int = 3) -> list[str]:
-    """Headline-style offer sentences (not the fine print)."""
+    """Phrases that state an offer (not fine print, calculators or listing specs)."""
     out = []
     for sent in re.split(r"(?<=[.!?])\s+|\s{2,}|\n|\s\|\s", text):
-        s = sent.strip(" *")
-        if DISCLAIMER.search(s):
+        s = sent.strip(" *•")
+        if len(s) < 6 or DISCLAIMER.search(s):
             continue
-        if 12 <= len(s) <= 200 and INCENTIVE_WORDS.search(s) and re.search(r"[\d$%]", s):
-            if s not in out:
-                out.append(s)
+        m = OFFER_RE.search(s)
+        if not m:
+            continue
+        piece = _offer_window(s, m)
+        piece = re.sub(r"^[\s|•*:,;-]+|[\s|•*:,;-]+$|\s+est\.?$", "", piece, flags=re.I)
+        if 6 <= len(piece) <= 220 and piece not in out and not any(piece in o for o in out):
+            out.append(piece)
         if len(out) >= limit:
             break
     return out
