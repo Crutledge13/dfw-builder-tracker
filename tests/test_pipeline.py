@@ -161,3 +161,19 @@ def test_parallel_builders_share_state_safely():
     with ThreadPoolExecutor(8) as pool:
         list(pool.map(lambda bc: R.crawl_builder(bc[0], bc[1], rec, 60), builders))
     assert len(st.homes) == 12 * 40
+
+
+def test_detail_page_ignores_similar_homes():
+    others = [{"@type": "SingleFamilyResidence", "address": {"streetAddress": "11033 Cottonbowl Drive",
+               "addressLocality": "Fort Worth", "postalCode": "76126"}, "offers": {"price": 276733},
+               "numberOfBedrooms": 3, "floorSize": {"value": 1800}},
+              {"@type": "SingleFamilyResidence", "address": {"streetAddress": "3037 New Chapel Street",
+               "addressLocality": "Fort Worth", "postalCode": "76126"}, "offers": {"price": 332362},
+               "numberOfBedrooms": 4, "floorSize": {"value": 2200}}]
+    html = f'<html><body><script type="application/ld+json">{json.dumps(others)}</script></body></html>'
+    url = "https://www.meritagehomes.com/state/tx/dallasft-worth/3037-new-chapel-street"
+    h = extract_homes(html, url, single=True)
+    assert len(h) == 1 and h[0]["address"] == "3037 New Chapel Street" and h[0]["price"] == 332362
+    # nothing on the page is this home -> no JSON record is used
+    url2 = "https://www.meritagehomes.com/state/tx/dallasft-worth/9999-other-lane"
+    assert all(x["address"] != "11033 Cottonbowl Drive" for x in extract_homes(html, url2, single=True))

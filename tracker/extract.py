@@ -15,7 +15,7 @@ from __future__ import annotations
 import json
 import re
 from typing import Any, Iterator
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
@@ -60,7 +60,7 @@ STREET_RE = re.compile(
     r"\b\d{2,6}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z0-9'.]*(?:\s+[A-Z][A-Za-z0-9'.]*){0,4}\s+"
     r"(?:Street|St|Drive|Dr|Lane|Ln|Road|Rd|Court|Ct|Way|Trail|Trl|Avenue|Ave|Boulevard|Blvd|Circle|Cir|"
     r"Place|Pl|Parkway|Pkwy|Loop|Path|Run|Cove|Cv|Ridge|Bend|Pass|Point|Pt|Terrace|Ter|Row|Crossing|Xing|"
-    r"Hollow|Glen|Grove|Meadow|Meadows|Park|View|Vista|Square|Sq)\b\.?")
+    r"Hollow|Glen|Grove|Meadow|Meadows|Park|View|Vista)\b\.?")
 
 
 # --------------------------------------------------------------------------- helpers
@@ -115,6 +115,37 @@ def to_text(v: Any) -> str:
 def clean_address(s: str) -> str:
     s = re.sub(r"\s+", " ", s or "").strip(" ,|-")
     return s[:120]
+
+
+SUFFIXES = {"street", "st", "drive", "dr", "lane", "ln", "road", "rd", "court", "ct", "way", "trail", "trl",
+            "avenue", "ave", "boulevard", "blvd", "circle", "cir", "place", "pl", "parkway", "pkwy", "loop",
+            "path", "run", "cove", "cv", "ridge", "bend", "pass", "point", "pt", "terrace", "ter", "row",
+            "crossing", "xing", "hollow", "glen", "grove", "meadow", "meadows", "park", "view", "vista", "walk",
+            "trace", "landing", "creek", "hill", "hills", "heights", "court", "commons", "alley", "spur"}
+
+
+def address_from_url(url: str) -> str:
+    """'.../lots/1124-433-landyn-street/' -> '433 Landyn Street' (only if it ends in a street suffix)."""
+    seg = [x for x in urlparse(url).path.lower().split("/") if x]
+    if not seg:
+        return ""
+    m = re.search(r"(?:^|-)(\d{2,6})-((?:[a-z]+-?){1,5})$", seg[-1])
+    if not m:
+        return ""
+    words = m.group(2).strip("-").split("-")
+    if words[-1] not in SUFFIXES or len(words) < 2:
+        return ""
+    return m.group(1) + " " + " ".join(w.capitalize() for w in words)
+
+
+def city_from_url(url: str) -> str:
+    m = DFW_CITY_RE.search(urlparse(url).path.replace("-", " ").replace("/", " / "))
+    return m.group(1).title() if m else ""
+
+
+def same_address(a: str, b: str) -> bool:
+    ka, kb = address_key(a).split("-"), address_key(b).split("-")
+    return len(ka) > 1 and len(kb) > 1 and ka[:2] == kb[:2]
 
 
 def address_key(addr: str) -> str:
@@ -351,19 +382,34 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
                 continue
             seen.add(key)
             homes.append(h)
+    for h in homes:
+        if h.get("url"):
+            if not h.get("address"):
+                h["address"] = address_from_url(h["url"])
+            if not h.get("city"):
+                h["city"] = city_from_url(h["url"])
     page_text = soup.get_text(" ", strip=True)
     if single:
-        if len(homes) > 1:
-            same = [h for h in homes if h["url"] and h["url"].rstrip("/") == page_url.rstrip("/")]
-            homes = same[:1] or homes[:1]
+        # Home pages often also list "similar homes"; keep only the record that is this page's home.
+        url_addr = address_from_url(page_url)
+        mine = [h for h in homes if h["url"] and h["url"].rstrip("/").lower() == page_url.rstrip("/").lower()]
+        if not mine and url_addr:
+            mine = [h for h in homes if h["address"] and same_address(h["address"], url_addr)]
+        if not mine and len(homes) == 1 and (not url_addr or not homes[0]["address"]):
+            mine = homes
+        homes = mine[:1]
         fb = _html_home(BeautifulSoup(html, "lxml"), page_url)
+        if fb and url_addr and fb["address"] and not same_address(fb["address"], url_addr):
+            fb["address"] = url_addr  # the address the HTML scan found belongs to another listing
         if not homes and fb:
             homes = [fb]
         elif homes and fb:  # fill gaps from the visible page
             for k, v in fb.items():
-                if not homes[0].get(k) and v:
+                if not homes[0].get(k) and v and k not in ("price", "builder_was_price"):
                     homes[0][k] = v
         for h in homes:
             h["url"] = page_url
+            if not h.get("address") and url_addr:
+                h["address"] = url_addr
             h["incentive_text"] = " | ".join(incentive_snippets(page_text))
     return homes
