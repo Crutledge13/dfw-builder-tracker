@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DFW Builder Tracker</title>
+<meta name="description" content="Live price drops and incentives from Dallas–Fort Worth new-home builders, updated hourly from builders' own websites.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<style>
+:root{--bg:#f7f6f2;--card:#fff;--ink:#1d1d1b;--muted:#6b6a64;--line:#e4e2da;--accent:#2f5d50;--down:#1f7a4d;--up:#b3412f;--chip:#efede6}
+@media (prefers-color-scheme:dark){:root{--bg:#141413;--card:#1d1d1b;--ink:#ecebe6;--muted:#9b9a93;--line:#2e2d2a;--accent:#7fb8a4;--down:#5cc28c;--up:#e0806f;--chip:#262522}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{padding:24px 16px 8px;max-width:1400px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--muted)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 4px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:150px}
+.stat b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:12px}
+main{max-width:1400px;margin:0 auto;padding:0 16px 40px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin:16px 0 12px}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:8px 12px;color:var(--muted);font:inherit;cursor:pointer}
+.tabs button.on{color:var(--ink);border-color:var(--accent);font-weight:600}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+input,select{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+input[type=search]{flex:1;min-width:180px}
+label.chk{display:flex;gap:6px;align-items:center;color:var(--muted)}
+a.dl{margin-left:auto;color:var(--accent);text-decoration:none}
+.wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);max-height:72vh}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap;max-width:420px;overflow:hidden;text-overflow:ellipsis}
+th{position:sticky;top:0;background:var(--chip);font-weight:600;font-size:12px;cursor:pointer;user-select:none;z-index:1}
+th.sorted::after{content:" ▾"}th.sorted.asc::after{content:" ▴"}
+td.num{text-align:right}
+td.text{white-space:normal;min-width:280px}
+tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+.down{color:var(--down);font-weight:600}.up{color:var(--up);font-weight:600}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;background:var(--chip);font-size:12px}
+.count{color:var(--muted);font-size:12px;margin:8px 2px}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+td a{color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <h1>DFW Builder Price Tracker</h1>
+  <div class="sub">Quick move-in homes, price drops and builder incentives, read from each builder's own website every hour. <span id="updated"></span></div>
+  <div class="stats" id="stats"></div>
+</header>
+<main>
+  <nav class="tabs" id="tabs"></nav>
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search address, community, city, offer…">
+    <select id="builder"><option value="">All builders</option></select>
+    <label class="chk" id="activeWrap"><input type="checkbox" id="active" checked> Active only</label>
+    <a class="dl" id="dl" href="#" download>Download CSV</a>
+  </div>
+  <div class="wrap"><table id="t"></table></div>
+  <div class="count" id="count"></div>
+</main>
+<script>
+const MONEY = new Set(["price","builder_was_price","first_price","prev_price","change_since_first","last_change","old","new","delta","total_cut_7d","avg_cut_7d","biggest_cut_7d","headline_amount","price_per_sqft"]);
+const SIGNED = new Set(["change_since_first","last_change","delta","pct","pct_since_first"]);
+const PCT = new Set(["pct","pct_since_first"]);
+const TEXT = new Set(["text","incentive_text","detail","note"]);
+const TABS = {
+  "Summary":    {file:"summary.csv", cols:["builder","active_homes","price_cuts_24h","price_cuts_7d","total_cut_7d","avg_cut_7d","biggest_cut_7d","new_homes_7d","removed_7d","active_offers","last_run","last_run_status"], sort:["price_cuts_7d",-1]},
+  "Price Drops":{file:"price_drops.csv", cols:["at","builder","address","community","city","old","new","delta","pct","url"], sort:["at",-1]},
+  "Homes":      {file:"homes.csv", cols:["builder","community","city","address","plan","beds","baths","sqft","price","first_price","change_since_first","pct_since_first","cuts","last_change","last_change_at","builder_was_price","price_per_sqft","status","move_in","incentive_text","first_seen","last_seen","url"], sort:["change_since_first",1], active:true},
+  "Incentives": {file:"incentives.csv", cols:["builder","kind","headline_amount","rate","text","first_seen","last_seen","source_url"], sort:["last_seen",-1], active:true},
+  "Changes":    {file:"changes.csv", cols:["at","builder","event","address","community","city","old","new","delta","pct","detail","url"], sort:["at",-1]},
+  "Run Log":    {file:"run_log.csv", cols:["run_at","builder","pages","homes_seen","new_homes","price_cuts","price_increases","offers_seen","offer_changes","status","note"], sort:["run_at",-1]},
+};
+const data = {}; let tab = "Price Drops"; let sort = null;
+const $ = id => document.getElementById(id);
+const label = c => c.replace(/_/g," ").replace(/\b(\w)/g, m=>m.toUpperCase()).replace("Pct","%").replace("Url","Link");
+const num = v => v===""||v==null ? null : Number(v);
+const fmtMoney = v => (v<0?"−":"")+"$"+Math.abs(Math.round(v)).toLocaleString();
+const esc = s => String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function cell(c, v){
+  if (v==="" || v==null) return "<td></td>";
+  if (c==="url"||c==="source_url"){ const u=String(v); if(!/^https?:\/\//.test(u)) return "<td></td>"; return `<td><a href="${esc(u)}" target="_blank" rel="noopener">open</a></td>`; }
+  if (c==="active") return `<td>${/^true$/i.test(v)?"yes":"no"}</td>`;
+  if (c==="event"||c==="kind"||c==="last_run_status"||c==="status" && tab==="Run Log") return `<td><span class="pill">${esc(v)}</span></td>`;
+  const n = num(v);
+  if (!isNaN(n) && n!==null && (MONEY.has(c)||PCT.has(c)||/^(beds|baths|sqft|cuts|pages|rate)$|_7d$|_24h$|homes|offers|changes|increases|^price_cuts/.test(c))){
+    let s = PCT.has(c) ? n.toFixed(1)+"%" : MONEY.has(c) ? fmtMoney(n) : c==="rate" ? n+"%" : n.toLocaleString();
+    if (SIGNED.has(c) && n>0) s = "+"+s;
+    const cls = SIGNED.has(c) ? (n<0?" down":n>0?" up":"") : "";
+    return `<td class="num${cls}">${s}</td>`;
+  }
+  return `<td class="${TEXT.has(c)?"text":""}" title="${esc(v)}">${esc(v)}</td>`;
+}
+
+function render(){
+  const cfg = TABS[tab], rows = data[tab] || [];
+  $("activeWrap").style.display = cfg.active ? "" : "none";
+  $("dl").href = "data/"+cfg.file;
+  const q = $("q").value.toLowerCase().trim(), b = $("builder").value, act = $("active").checked;
+  let r = rows.filter(x => (!b || x.builder===b) && (!cfg.active || !act || /^true$/i.test(x.active))
+          && (!q || cfg.cols.some(c => String(x[c]??"").toLowerCase().includes(q))));
+  const [sc, sd] = sort || cfg.sort;
+  r.sort((a,z)=>{ const A=a[sc],Z=z[sc]; const nA=num(A), nZ=num(Z);
+    if (A===""||A==null) return 1; if (Z===""||Z==null) return -1;
+    return (!isNaN(nA)&&!isNaN(nZ) ? nA-nZ : String(A).localeCompare(String(Z))) * sd; });
+  const shown = r.slice(0, 2000);
+  $("t").innerHTML = "<thead><tr>"+cfg.cols.map(c=>`<th data-c="${c}" class="${c===sc?"sorted"+(sd>0?" asc":""):""}">${label(c)}</th>`).join("")+"</tr></thead><tbody>"+
+    (shown.length ? shown.map(x=>"<tr>"+cfg.cols.map(c=>cell(c,x[c])).join("")+"</tr>").join("") :
+     `<tr><td colspan="${cfg.cols.length}" class="empty">${rows.length? "No rows match." : "No data yet. The first hourly run fills this in."}</td></tr>`)+"</tbody>";
+  $("count").textContent = `${r.length.toLocaleString()} rows` + (r.length>2000 ? " (showing first 2,000; refine search or download CSV)" : "");
+  document.querySelectorAll("th").forEach(th=>th.onclick=()=>{ const c=th.dataset.c; const cur=sort||cfg.sort; sort=[c, cur[0]===c ? -cur[1] : (MONEY.has(c)||SIGNED.has(c)?1:-1)]; render(); });
+}
+
+function stats(){
+  const homes=(data["Homes"]||[]).filter(h=>/^true$/i.test(h.active));
+  const drops=data["Price Drops"]||[]; const wk=Date.now()-7*864e5;
+  const d7=drops.filter(d=>new Date(d.at.replace(" ","T"))>=wk);
+  const offers=(data["Incentives"]||[]).filter(o=>/^true$/i.test(o.active));
+  const tot=d7.reduce((s,d)=>s-Number(d.delta||0),0);
+  const items=[[homes.length.toLocaleString(),"active homes tracked"],[d7.length.toLocaleString(),"price cuts, last 7 days"],[fmtMoney(tot),"total cut, last 7 days"],[offers.length.toLocaleString(),"live builder offers"]];
+  $("stats").innerHTML=items.map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+}
+
+async function load(){
+  $("tabs").innerHTML = Object.keys(TABS).map(t=>`<button data-t="${t}" class="${t===tab?"on":""}">${t}</button>`).join("");
+  document.querySelectorAll(".tabs button").forEach(bt=>bt.onclick=()=>{ tab=bt.dataset.t; sort=null;
+    document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===bt)); render(); });
+  const bust = "?t="+Math.floor(Date.now()/300000);
+  await Promise.all(Object.entries(TABS).map(async ([t,cfg])=>{
+    try{ const res=await fetch("data/"+cfg.file+bust); if(!res.ok) throw 0;
+      data[t]=Papa.parse(await res.text(),{header:true,skipEmptyLines:true}).data; }catch(e){ data[t]=[]; }
+  }));
+  try{ const u=await (await fetch("data/updated.txt"+bust)).text(); if(u.trim()) $("updated").textContent="Last updated "+u.trim()+" (Central)."; }catch(e){}
+  const names=[...new Set((data["Summary"]||[]).map(r=>r.builder).concat((data["Homes"]||[]).map(r=>r.builder)))].filter(Boolean).sort();
+  $("builder").innerHTML='<option value="">All builders</option>'+names.map(n=>`<option>${esc(n)}</option>`).join("");
+  stats(); render();
+}
+["q","builder","active"].forEach(id=>$(id).addEventListener("input",render));
+load(); setInterval(load, 15*60*1000);
+</script>
+</body>
+</html>

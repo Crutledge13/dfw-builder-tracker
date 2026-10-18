@@ -1,0 +1,199 @@
+# Builders tracked for Dallas–Fort Worth.
+#
+# Fields
+#   name           Display name used in the sheet.
+#   slug           Short id (used in home ids). Never change once data exists.
+#   site           Builder homepage. Used for robots.txt and sitemap discovery.
+#   seeds          Quick move-in listing pages for DFW. Fetched every run. Homes embedded
+#                  in these pages are recorded directly, and links to home pages are queued.
+#   promos         Pages where the builder publishes offers/incentives. Fetched every run.
+#   detail_pattern Regex a URL must match to count as a single-home (QMI) page.
+#                  Default (when omitted) matches address-like slugs: /1234-some-street/
+#   sitemap        true = also discover home pages from the site's sitemap (every 6 hours).
+#   sitemap_filter Regex a sitemap URL must match (use it to keep national builders to DFW).
+#   dfw_only       true = everything this builder publishes is DFW (local builders);
+#                  false = keep only homes whose city/zip is in DFW.
+#   verified       true = seed URLs were checked by hand on 2026-10-18. false = best guess;
+#                  check the "Run Log" tab after the first run and fix if a builder shows 0 homes.
+
+defaults:
+  detail_pattern: '/\d{2,6}-[a-z0-9-]+/?$'
+  sitemap: true
+  dfw_only: false
+
+builders:
+  - name: Bloomfield Homes
+    slug: bloomfield
+    site: https://www.bloomfieldhomes.com/
+    seeds: [https://www.bloomfieldhomes.com/new-homes/available/]
+    promos: [https://www.bloomfieldhomes.com/]
+    dfw_only: true
+    verified: true
+
+  - name: D.R. Horton
+    slug: dr-horton
+    site: https://www.drhorton.com/
+    seeds:
+      - https://www.drhorton.com/texas/dallas
+      - https://www.drhorton.com/texas/fort-worth
+    promos: [https://www.drhorton.com/texas/dallas, https://www.drhorton.com/texas/fort-worth]
+    detail_pattern: '/texas/(dallas|fort-worth)/[^/]+/[^/]+/.+'
+    sitemap_filter: '/texas/(dallas|fort-worth)/'
+    verified: false
+
+  - name: First Texas Homes
+    slug: first-texas
+    site: https://www.firsttexashomes.com/
+    seeds: [https://www.firsttexashomes.com/quick-move-in-homes/]
+    promos: [https://www.firsttexashomes.com/promos/index.php]
+    detail_pattern: '/(quick-move-in|home)[^?#]*/\d+'
+    dfw_only: true
+    verified: true
+
+  - name: Riverside Homebuilders
+    slug: riverside
+    site: https://www.riversidehomebuilders.com/
+    seeds: [https://www.riversidehomebuilders.com/quick-move-in/]
+    promos:
+      - https://www.riversidehomebuilders.com/current-incentives/
+      - https://www.riversidehomebuilders.com/quick-move-in-specials/
+    dfw_only: true
+    verified: true
+
+  - name: Trophy Signature Homes
+    slug: trophy-signature
+    site: https://trophysignaturehomes.com/
+    seeds: [https://trophysignaturehomes.com/communities/dallas-ft-worth]
+    promos: [https://trophysignaturehomes.com/promotions]
+    sitemap_filter: '(dallas|fort-worth|ft-worth|/tx/)'
+    verified: false
+
+  - name: Highland Homes
+    slug: highland
+    site: https://www.highlandhomes.com/
+    seeds: [https://www.highlandhomes.com/dfw/homes-for-sale]
+    promos: [https://www.highlandhomes.com/dfw/promotions]
+    sitemap_filter: '/dfw/'
+    verified: false
+
+  - name: Graham Hart Home Builder
+    slug: graham-hart
+    site: https://www.grahamhart.com/
+    seeds: [https://www.grahamhart.com/quick-move-in-homes/]
+    promos: [https://www.grahamhart.com/]
+    dfw_only: true
+    verified: false
+
+  - name: Pyvot Homes
+    slug: pyvot
+    site: https://www.pyvothomes.com/
+    seeds: [https://www.pyvothomes.com/quick-move-in-homes/]
+    promos: [https://www.pyvothomes.com/]
+    dfw_only: true
+    verified: false
+
+  # "Century Homes" in DFW is assumed to be Century Communities (and Century Complete).
+  - name: Century Communities
+    slug: century
+    site: https://www.centurycommunities.com/
+    seeds: [https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro]
+    promos: [https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro]
+    sitemap_filter: 'dallas-fort-worth'
+    verified: true
+
+  - name: HistoryMaker Homes
+    slug: historymaker
+    site: https://www.historymaker.com/
+    seeds: [https://www.historymaker.com/quick-move-in-homes/]
+    promos: [https://www.historymaker.com/promotions/]
+    verified: false
+
+  - name: K. Hovnanian Homes
+    slug: khov
+    site: https://www.khov.com/
+    seeds: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
+    promos: [https://www.khov.com/promotions]
+    sitemap_filter: '/texas/'
+    verified: false
+
+  - name: Pacesetter Homes Texas
+    slug: pacesetter
+    site: https://pacesetterhomestexas.com/
+    seeds: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
+    promos: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
+    detail_pattern: '/quick-move-in-home/[^/]+/?$'
+    sitemap_filter: 'new-homes-for-sale-dallas'
+    dfw_only: true
+    verified: true
+
+  - name: Beazer Homes
+    slug: beazer
+    site: https://www.beazer.com/
+    seeds: [https://www.beazer.com/dallas-tx]
+    promos: [https://www.beazer.com/dallas-tx]
+    sitemap_filter: 'dallas'
+    verified: false
+
+  - name: Coventry Homes
+    slug: coventry
+    site: https://www.coventryhomes.com/
+    seeds: [https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
+    promos: [https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
+    sitemap_filter: 'dallas-ft-worth|/new-homes/tx/'
+    verified: true
+
+  - name: DRB Homes
+    slug: drb
+    site: https://www.drbhomes.com/
+    seeds: [https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth]
+    promos: [https://www.drbhomes.com/drbhomes/promotions]
+    sitemap_filter: '(texas|dallas|fort-worth)'
+    verified: false
+
+  - name: Meritage Homes
+    slug: meritage
+    site: https://www.meritagehomes.com/
+    seeds: [https://www.meritagehomes.com/state/tx/dallas-fort-worth]
+    promos: [https://www.meritagehomes.com/promotions]
+    sitemap_filter: '/tx/(dallas|fort-worth|dallas-fort-worth)'
+    verified: false
+
+  - name: Perry Homes
+    slug: perry
+    site: https://www.perryhomes.com/
+    seeds: [https://www.perryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
+    promos: [https://www.perryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
+    sitemap_filter: 'dallas'
+    verified: false
+
+  - name: KB Home
+    slug: kb
+    site: https://www.kbhome.com/
+    seeds: [https://www.kbhome.com/new-homes-dallas-fort-worth]
+    promos: [https://www.kbhome.com/new-homes-dallas-fort-worth]
+    sitemap_filter: 'dallas-fort-worth'
+    verified: false
+
+  - name: David Weekley Homes
+    slug: david-weekley
+    site: https://www.davidweekleyhomes.com/
+    seeds: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
+    promos: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
+    sitemap_filter: '/tx/dallas-ft-worth/'
+    verified: false
+
+  - name: M/I Homes
+    slug: mi-homes
+    site: https://www.mihomes.com/
+    seeds: [https://www.mihomes.com/new-homes/texas/dallas-fort-worth-area]
+    promos: [https://www.mihomes.com/new-homes/texas/dallas-fort-worth-area]
+    sitemap_filter: 'dallas'
+    verified: false
+
+  - name: Shaddock Homes
+    slug: shaddock
+    site: https://www.shaddockhomes.com/
+    seeds: [https://www.shaddockhomes.com/quick-move-in-homes/]
+    promos: [https://www.shaddockhomes.com/]
+    dfw_only: true
+    verified: false
