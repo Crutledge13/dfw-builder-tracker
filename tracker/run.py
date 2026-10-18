@@ -377,8 +377,8 @@ def main(argv=None):
 
     builders = load_config(args.config)
     selected = [b for b in builders if not args.only or b["slug"] in args.only]
-    ua = os.environ.get("CRAWLER_USER_AGENT",
-                        "DFWNewHomeTracker/1.0 (+https://example.com/bot; price-tracking crawler)")
+    ua = os.environ.get("CRAWLER_USER_AGENT") or (
+                        "DFWBuilderTracker/1.0 (+https://github.com/Crutledge13/dfw-builder-tracker)")
     store = store_from_env()
     st = store.load()
     now = now_local()
