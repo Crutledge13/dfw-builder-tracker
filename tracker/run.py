@@ -10,6 +10,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import re
@@ -243,6 +244,28 @@ class Recorder:
 
 
 # ------------------------------------------------------------------ crawling
+def unwrap_json_html(r):
+    """Some builder pages load their listings from a JSON endpoint that returns ready-made HTML
+    ({"success": true, "html": "<div>..."}). Return a response whose text is that HTML."""
+    t = r.text.lstrip()
+    if not t.startswith("{"):
+        return r
+    try:
+        data = json.loads(t)
+    except ValueError:
+        return r
+    best = ""
+    for d in [data] + [v for v in data.values() if isinstance(v, dict)]:
+        for v in d.values():
+            if isinstance(v, str) and "<a " in v and len(v) > len(best):
+                best = v
+    if not best:
+        return r
+    from .fetch import Response
+    return Response(r.url, r.status, best + "<script type=application/json>" + t[:2_000_000] + "</script>")
+
+
+
 def crawl_builder(b, client, rec: Recorder, budget: int):
     slug, now = b["slug"], rec.now
     pages = 0
@@ -265,6 +288,7 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
 
     def process_listing(r):
         """Record homes found on a listing/hub page; queue home and hub links. Returns pagination links."""
+        r = unwrap_json_html(r)
         homes = extract_homes(r.text, r.url)
         covered = set()
         for h in homes:

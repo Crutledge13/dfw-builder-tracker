@@ -49,9 +49,11 @@ builders:
   - name: First Texas Homes
     slug: first-texas
     site: https://www.firsttexashomes.com/
-    seeds: [https://www.firsttexashomes.com/quick-move-in-homes/]
+    seeds:
+      - https://www.firsttexashomes.com/include/ajax/qmi.php   # the JSON the QMI page loads its cards from
+      - https://www.firsttexashomes.com/quick-move-in-homes/
     promos: [https://www.firsttexashomes.com/promos/index.php]
-    detail_pattern: '/(quick-move-in|home)[^?#]*/\d+'
+    detail_pattern: '(/\d{2,6}-[a-z0-9-]+/?$)|(/quick-move-in-homes?/(?!city/)[^?#]*\d[^?#]*$)'
     hub_pattern: '^/quick-move-in-homes/city/[a-z-]+/?$'
     dfw_only: true
     verified: true
@@ -138,7 +140,7 @@ builders:
     site: https://www.beazer.com/
     seeds: [https://www.beazer.com/dallas-tx]
     promos: [https://www.beazer.com/dallas-tx]
-    hub_pattern: '^/dallas-tx/[a-z-]+/[a-z0-9-]+/?$'
+    hub_pattern: '^/dallas-tx/[a-z-]+(/[a-z0-9-]+)?/?$'
     sitemap_filter: '/dallas-tx/'
     verified: false
 

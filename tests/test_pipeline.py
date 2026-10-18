@@ -191,3 +191,16 @@ def test_sale_price_beats_list_price_and_payment_is_ignored():
     url = "https://www.riversidehomebuilders.com/quick-move-in/2208-continent-court"
     h = extract_homes(html, url, single=True)[0]
     assert (h["price"], h["builder_was_price"], h["address"], h["city"]) == (609900, 702050, "2208 Continent Court", "Krum")
+
+
+def test_json_endpoint_with_html_cards():
+    card = ('<div class="card"><a href="/quick-move-in-homes/anna/16513/1212-oak-hollow-lane">1212 Oak Hollow Lane</a>'
+            '<p>Anna, TX 75409</p><p class="price">$389,990</p><p>4 Beds 3 Baths 2,301 Sq Ft</p>'
+            '<p>Up to $20K Flex Cash</p></div>')
+    payload = json.dumps({"success": True, "count": 1, "html": card})
+    r = R.unwrap_json_html(Response("https://www.firsttexashomes.com/include/ajax/qmi.php", 200, payload))
+    b = dict(B, detail_re=re.compile(r"(/\d{2,6}-[a-z0-9-]+/?$)|(/quick-move-in-homes?/(?!city/)[^?#]*\d[^?#]*$)"))
+    from tracker.extract import card_homes
+    cards = card_homes(r.text, r.url, b["detail_re"])
+    assert len(cards) == 1 and cards[0]["price"] == 389990 and cards[0]["address"] == "1212 Oak Hollow Lane"
+    assert cards[0]["city"] == "Anna" and "Flex Cash" in cards[0]["incentive_text"]
