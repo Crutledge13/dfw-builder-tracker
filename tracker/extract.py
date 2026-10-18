@@ -380,12 +380,16 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     baths = re.search(r"(\d(?:\.\d)?)\s*(?:-\s*\d(?:\.\d)?\s*)?(?:baths?|ba|bathrooms?)\b", text, re.I)
     sqft = re.search(r"(\d[\d,]{2,5})\s*(?:-\s*[\d,]+\s*)?(?:sq\.?\s*ft|sqft|square feet|sf)\b", text, re.I)
     status = STATUS_WORDS.search(text)
-    zipm = re.search(r",\s*TX\s+(\d{5})", text)
+    full = (soup.body or soup).get_text(" ", strip=True)
+    zipm = re.search(r",\s*(?:TX|Texas)\s+(\d{5})", text) or re.search(r",\s*(?:TX|Texas)\s+(\d{5})", full)
     city = None
-    for cm in re.finditer(r",\s*(?:TX|Texas)\b", text):
-        found = list(DFW_CITY_RE.finditer(text[max(0, cm.start() - 40):cm.start()]))
-        if found:
-            city = found[-1]
+    for src in (text, full):
+        for cm in re.finditer(r",\s*(?:TX|Texas)\b", src):
+            found = list(DFW_CITY_RE.finditer(src[max(0, cm.start() - 40):cm.start()]))
+            if found:
+                city = found[-1]
+                break
+        if city:
             break
     sq = to_number(sqft.group(1)) if sqft else None
     return {
