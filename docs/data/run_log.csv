@@ -1,0 +1,22 @@
+run_at,builder,pages,homes_seen,new_homes,price_cuts,price_increases,offers_seen,offer_changes,status,note
+2026-10-18 15:40,Bloomfield Homes,122,0,0,0,0,0,0,ok,
+2026-10-18 15:40,D.R. Horton,6,0,0,0,0,0,0,ok,
+2026-10-18 15:40,First Texas Homes,5,0,0,0,0,12,12,ok,
+2026-10-18 15:40,Riverside Homebuilders,123,12,12,0,0,12,6,ok,
+2026-10-18 15:40,Trophy Signature Homes,122,442,324,0,0,0,0,ok,
+2026-10-18 15:40,Highland Homes,122,112,80,13,9,0,0,ok,
+2026-10-18 15:40,Graham Hart Home Builder,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.grahamhart.com/quick-move-in-homes/; seed 403: https://www.grahamhart.com/quick-move-in-homes/
+2026-10-18 15:40,Pyvot Homes,37,3,3,0,0,0,0,ok,seed 404: https://www.pyvothomes.com/quick-move-in-homes/
+2026-10-18 15:40,Century Communities,41,21,19,1,1,1,1,ok,
+2026-10-18 15:40,HistoryMaker Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.historymaker.com/quick-move-in-homes/; seed 403: https://www.historymaker.com/quick-move-in-homes/
+2026-10-18 15:40,K. Hovnanian Homes,4,0,0,0,0,0,0,ok,
+2026-10-18 15:40,Pacesetter Homes Texas,2,0,0,0,0,0,0,blocked,HTTP 403 on https://pacesetterhomestexas.com/new-homes-for-sale-dallas/; seed 403: https://pacesetterhomestexas.com/new-homes-for-sale-dallas/
+2026-10-18 15:40,Beazer Homes,4,0,0,0,0,1,1,ok,
+2026-10-18 15:40,Coventry Homes,122,135,133,0,1,1,1,ok,
+2026-10-18 15:40,DRB Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth; seed 403: https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth
+2026-10-18 15:40,Meritage Homes,122,117,15,21,25,0,0,ok,seed 404: https://www.meritagehomes.com/state/tx/dallas-fort-worth
+2026-10-18 15:40,Perry Homes,122,0,0,0,0,0,0,ok,seed 404: https://www.perryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/
+2026-10-18 15:40,KB Home,4,0,0,0,0,3,3,ok,
+2026-10-18 15:40,David Weekley Homes,4,0,0,0,0,0,0,ok,
+2026-10-18 15:40,M/I Homes,122,118,116,0,2,0,0,ok,
+2026-10-18 15:40,Shaddock Homes,106,181,79,0,0,3,3,ok,
