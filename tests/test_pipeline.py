@@ -223,3 +223,15 @@ def test_sources_disagree_no_fake_changes():
         assert [(c["event"], c["delta"]) for c in ch] == [("price_cut", -10000)], ch
     finally:
         shutil.rmtree(tmp)
+
+
+def test_lot_code_page_uses_title_address_and_skips_plans():
+    similar = [{"@type": "SingleFamilyResidence", "address": {"streetAddress": "1557 Thicket Hill Drive"},
+                "offers": {"price": 503990}, "numberOfBedrooms": 4, "floorSize": {"value": 2600}}]
+    html = (f'<html><head><title>New Home for Sale: 2616 Manzanar Mews, Celina, TX 75009</title></head><body>'
+            f'<h1>Highland Homes</h1><main><p class="price">$562,926</p><p>4 Beds 3 Baths 2,458 Sq Ft</p></main>'
+            f'<script type="application/ld+json">{json.dumps(similar)}</script></body></html>')
+    h = extract_homes(html, "https://www.highlandhomes.com/dfw/celina/the-parks-at-wilson-creek/829-108", single=True)
+    assert len(h) == 1 and h[0]["address"] == "2616 Manzanar Mews" and h[0]["price"] == 562926, h
+    plan = '<html><head><title>New Home Plan Picasso in Sherman, TX 75092</title></head><body><p>$352,990</p></body></html>'
+    assert extract_homes(plan, "https://www.highlandhomes.com/dfw/sherman/heritage-ranch/831-PICA-AM", single=True) == []

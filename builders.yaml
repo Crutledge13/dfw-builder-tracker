@@ -81,6 +81,7 @@ builders:
     site: https://www.highlandhomes.com/
     seeds: [https://www.highlandhomes.com/dfw/homes-for-sale]
     promos: [https://www.highlandhomes.com/dfw/promotions]
+    detail_pattern: '/dfw/[^/]+/[^/]+/\d{2,4}-\d{2,4}[a-z]?(-[a-z0-9]+)?/?$'   # lot pages; '8009-DAVE-A' style = plans
     sitemap_filter: '/dfw/'
     verified: false
 

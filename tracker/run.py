@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from . import discover, incentives
-from .extract import DFW_CITY_RE, address_from_url, address_key, card_homes, extract_homes, same_address, to_price
+from .extract import DFW_CITY_RE, NON_HOME_RE, address_from_url, address_key, card_homes, extract_homes, same_address, to_price
 from .fetch import PoliteClient
 from .store import State, store_from_env
 
@@ -310,6 +310,8 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
 
     def queue(url, kind="home"):
         cu = discover.canonical_url(url)
+        if kind == "home" and NON_HOME_RE.search(cu):
+            return
         with rec.lock:
             if cu in fr:
                 return
@@ -323,6 +325,8 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
         for h in homes:
             if h.get("url") and not b["detail_re"].search(urlparse(h["url"]).path):
                 h["url"] = ""  # a link to a community/plan page, not the home
+            if h.get("url") and NON_HOME_RE.search(h["url"]):
+                h["url"] = ""
             ua = address_from_url(h["url"]) if h.get("url") else ""
             if ua and h.get("address") and not same_address(ua, h["address"]):
                 h["url"] = ""  # the link belongs to a different home

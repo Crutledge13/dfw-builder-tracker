@@ -60,7 +60,7 @@ STREET_RE = re.compile(
     r"\b\d{2,6}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z0-9'.]*(?:\s+[A-Z][A-Za-z0-9'.]*){0,4}\s+"
     r"(?:Street|St|Drive|Dr|Lane|Ln|Road|Rd|Court|Ct|Way|Trail|Trl|Avenue|Ave|Boulevard|Blvd|Circle|Cir|"
     r"Place|Pl|Parkway|Pkwy|Loop|Path|Run|Cove|Cv|Ridge|Bend|Pass|Point|Pt|Terrace|Ter|Row|Crossing|Xing|"
-    r"Hollow|Glen|Grove|Meadow|Meadows|Park|View|Vista)\b\.?")
+    r"Hollow|Glen|Grove|Meadow|Meadows|Park|View|Vista|Mews|Walk|Trace|Landing|Creek|Hill|Hills|Heights|Commons|Tr|Pass|Bnd|Gln)\b\.?")
 
 
 # --------------------------------------------------------------------------- helpers
@@ -121,7 +121,14 @@ SUFFIXES = {"street", "st", "drive", "dr", "lane", "ln", "road", "rd", "court", 
             "avenue", "ave", "boulevard", "blvd", "circle", "cir", "place", "pl", "parkway", "pkwy", "loop",
             "path", "run", "cove", "cv", "ridge", "bend", "pass", "point", "pt", "terrace", "ter", "row",
             "crossing", "xing", "hollow", "glen", "grove", "meadow", "meadows", "park", "view", "vista", "walk",
-            "trace", "landing", "creek", "hill", "hills", "heights", "court", "commons", "alley", "spur"}
+            "trace", "landing", "creek", "hill", "hills", "heights", "court", "commons", "alley", "spur", "mews",
+            "tr", "ln", "cv", "gln", "holw", "hl", "lndg", "trce", "vw", "xing", "sq", "bnd", "ridge", "rdg"}
+
+
+NOT_STREET = {"plan", "plans", "series", "collection", "homes", "home", "phase", "lot", "lots", "model", "floor",
+              "floorplan", "elevation", "smart", "estates", "village", "classic", "classics", "garden"}
+NON_HOME_RE = re.compile(r"/(floor-?plans?|plans?|series|collections?|models?|amenities|gallery|blog|news)(/|$)"
+                         r"|-(plan|series|collection)/?$", re.I)
 
 
 def address_from_url(url: str) -> str:
@@ -129,11 +136,23 @@ def address_from_url(url: str) -> str:
     seg = [x for x in urlparse(url).path.lower().split("/") if x]
     if not seg:
         return ""
-    m = re.search(r"(?:^|-)(\d{2,6})-((?:[a-z]+-?){1,5})$", seg[-1])
+    last = seg[-1]
+    tail = re.search(r"-(?:tx|texas)(?:-\d{5})?$", last)
+    if tail:  # "...-cross-timber-tr-rowlett-tx-75089": drop the city, state and zip
+        words = last[:tail.start()].split("-")
+        for k in (3, 2, 1):
+            if len(words) > k + 1 and DFW_CITY_RE.fullmatch(" ".join(words[-k:])):
+                words = words[:-k]
+                break
+        last = "-".join(words)
+    last = re.sub(r"-unit-[a-z0-9]+$", "", last)
+    m = re.search(r"(?:^|-)(\d{2,6})-((?:[a-z]+-?){1,5})$", last)
     if not m:
         return ""
     words = m.group(2).strip("-").split("-")
-    if words[-1] not in SUFFIXES or len(words) < 2:
+    if words[-1] in NOT_STREET or any(w in NOT_STREET for w in words) or len(words[-1]) < 2:
+        return ""
+    if words[-1] not in SUFFIXES and len(words) < 2:
         return ""
     return m.group(1) + " " + " ".join(w.capitalize() for w in words)
 
@@ -372,9 +391,13 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     if price is None:
         return None
     text = main.get_text(" ", strip=True)
+    # The page's own address is in its title/heading; addresses elsewhere may be neighbouring listings.
+    heads = [soup.title.get_text(" ", strip=True) if soup.title else ""]
+    og = soup.find("meta", attrs={"property": "og:title"})
+    heads.append(og.get("content", "") if og else "")
     h1 = soup.find("h1")
-    title = h1.get_text(" ", strip=True) if h1 else ""
-    m = STREET_RE.search(title) or STREET_RE.search(text[:4000])
+    heads.append(h1.get_text(" ", strip=True) if h1 else "")
+    m = next((STREET_RE.search(t) for t in heads if t and STREET_RE.search(t)), None)
     address = clean_address(m.group(0)) if m else ""
     beds = re.search(r"(\d(?:\.\d)?)\s*(?:-\s*\d\s*)?(?:beds?|bd|br|bedrooms?)\b", text, re.I)
     baths = re.search(r"(\d(?:\.\d)?)\s*(?:-\s*\d(?:\.\d)?\s*)?(?:baths?|ba|bathrooms?)\b", text, re.I)
@@ -419,11 +442,11 @@ OFFER_RE = re.compile(
     r"(\$\s?[\d,.]+\s?k?\s*(?:off\b|in flex cash|flex cash|toward|towards|in closing|closing cost|"
     r"seller credit|in savings|savings|incentive|bonus|allowance|price reduction|design (?:center )?(?:credit|upgrades?))"
     r"|(?:reduced|save|savings of|price reduction of|price drop of)\s*(?:up to\s*)?\$\s?[\d,.]+\s?k?"
-    r"|up to \$\s?[\d,.]+\s?k?"
+    r"|up to \$\s?[\d,.]+\s?k?(?=[^.|]{0,60}(?:closing|flex|credit|incentive|toward|upgrade|design|savings|\boff\b|bonus))"
     r"|\d+(?:\.\d+)?\s?%\s*(?:towards?|to|seller|in)\s*(?:closing|contribution|seller)"
     r"|(?:rates?|financing|interest)\s*(?:as low as|starting at|from|of)\s*\d+(?:\.\d+)?\s?%"
     r"|\d+(?:\.\d+)?\s?%\s*(?:fixed|rate|\(\d|apr)"
-    r"|\d/\d(?:/\d)?\s*buy ?-?down|\bbuy ?-?down|zero down|\$0 down|flex cash)", re.I)
+    r"|\d/\d(?:/\d)?\s*buy ?-?down|zero down|\$0 down|flex cash)", re.I)
 SPEC_RE = re.compile(r"\b(beds?|baths?|sq\.? ?ft|stories|garage|homesite|schedule a tour|est\.? completion)\b", re.I)
 
 
@@ -475,7 +498,7 @@ def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
     out, seen = [], set()
     for a in soup.find_all("a", href=True):
         url = urljoin(page_url, a["href"]).split("#")[0].split("?")[0]
-        if not url.startswith("http") or not detail_re.search(urlparse(url).path):
+        if not url.startswith("http") or not detail_re.search(urlparse(url).path) or NON_HOME_RE.search(url):
             continue
         key = url.rstrip("/").lower()
         if key in seen:
@@ -532,8 +555,11 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
                 h["address"] = address_from_url(h["url"])
             if not h.get("city"):
                 h["city"] = city_from_url(h["url"])
-    page_text = soup.get_text(" ", strip=True)
+    page_text = soup.get_text("  ", strip=True)
     if single:
+        title = soup.title.get_text(" ", strip=True) if soup.title else ""
+        if re.search(r"\b(home plan|floor ?plan|plan \w+ in)\b", title, re.I) and not STREET_RE.search(title):
+            return []  # a floor-plan page, not a home for sale
         # Home pages often also list "similar homes"; keep only the record that is this page's home.
         url_addr = address_from_url(page_url)
         mine = [h for h in homes if h["url"] and h["url"].rstrip("/").lower() == page_url.rstrip("/").lower()]
@@ -545,6 +571,9 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
         fb = _html_home(BeautifulSoup(html, "lxml"), page_url)
         if fb and url_addr and fb["address"] and not same_address(fb["address"], url_addr):
             fb["address"] = url_addr  # the address the HTML scan found belongs to another listing
+        if not url_addr and fb and fb["address"]:
+            # no address in the URL: the title's address identifies this home; JSON records must match it
+            homes = [h for h in homes if h["address"] and same_address(h["address"], fb["address"])][:1]
         if not homes and fb:
             homes = [fb]
         elif homes and fb:  # fill gaps from the visible page
