@@ -458,6 +458,11 @@ def incentive_snippets(text: str, limit: int = 3) -> list[str]:
             out.append(piece)
         if len(out) >= limit:
             break
+    # Several "$NK off"-style per-home discounts on one page means a list of other homes is shown;
+    # the first one belongs to this home.
+    per_home = [o for o in out if re.fullmatch(r"\$[\d,.]+\s?k?\s*off", o, re.I)]
+    if len(per_home) > 1:
+        out = [o for o in out if o not in per_home[1:]]
     return out
 
 
