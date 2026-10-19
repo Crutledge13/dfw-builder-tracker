@@ -115,7 +115,8 @@ class Recorder:
 
     def home_id(self, b, obs) -> str | None:
         if obs.get("address"):
-            return f'{b["slug"]}:{address_key(obs["address"])}'
+            unit = re.search(r"-unit-([a-z0-9]+)/?$", (obs.get("url") or "").lower())
+            return f'{b["slug"]}:{address_key(obs["address"])}' + (f"-unit-{unit.group(1)}" if unit else "")
         if obs.get("url"):
             return f'{b["slug"]}:{urlparse(obs["url"]).path.strip("/").lower()}'
         return None
@@ -168,6 +169,8 @@ class Recorder:
                 h["offer_since"] = now
             if h.get("status"):
                 h["status_rank"] = rank
+            if obs.get("from_detail"):
+                h["page_read"] = True
             self.event(b, "new_home", h, new=price)
             self.stat(b["slug"], "new_homes")
         else:
@@ -207,16 +210,19 @@ class Recorder:
                     h["status_rank"] = rank
             new_inc = obs.get("incentive_text") or ""
             old_inc = h.get("incentive_text") or ""
+            first_page_read = obs.get("from_detail") and not h.get("page_read")
+            if obs.get("from_detail"):
+                h["page_read"] = True
             if obs.get("from_detail"):  # the home's own page is the authority on its offer
                 if new_inc and new_inc != old_inc:
-                    if h.get("first_seen") == now:
-                        pass  # brand-new home: its offer is part of the new_home record
+                    if h.get("first_seen") == now or first_page_read:
+                        pass  # brand-new home, or first look at its page: not a change
                     elif old_inc:
                         self.event(b, "home_offer_changed", h, detail=f"{old_inc}  ->  {new_inc}")
                     else:
                         self.event(b, "home_offer_new", h, detail=new_inc)
                     h["incentive_text"], h["offer_since"] = new_inc, now
-                elif not new_inc and old_inc:
+                elif not new_inc and old_inc and not first_page_read:
                     self.event(b, "home_offer_removed", h, detail=old_inc)
                     for k in ("incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since"):
                         h[k] = None
@@ -501,16 +507,19 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
     d30 = now - timedelta(days=30)
     new_homes, gone = [], []
     # the first run of each builder records everything as new; that's the baseline, not new listings
-    baseline = {}
+    # A builder's first 24 hours of tracking are its baseline: homes found then were already for sale
+    # (large sites are discovered over several runs), so they aren't listed as new.
+    first_run = {}
     for c in allc:
         if c.get("event") == "new_home" and c.get("at"):
-            baseline[c["builder"]] = min(baseline.get(c["builder"], c["at"]), c["at"])
+            first_run[c["builder"]] = min(first_run.get(c["builder"], c["at"]), c["at"])
+    baseline = {k: parse_ts(v) + timedelta(hours=24) for k, v in first_run.items() if parse_ts(v)}
     for c in allc:
         at = parse_ts(c.get("at"))
         if not at:
             continue
         h = st.homes.get(c.get("home_id")) or {}
-        if c.get("event") == "new_home" and at >= d30 and c["at"] != baseline.get(c.get("builder")):
+        if c.get("event") == "new_home" and at >= d30 and at > baseline.get(c.get("builder"), at - timedelta(1)):
             new_homes.append({"at": c["at"], "builder": c.get("builder"), "address": c.get("address"),
                               "community": c.get("community"), "city": c.get("city"), "price": c.get("new"),
                               "beds": h.get("beds"), "baths": h.get("baths"), "sqft": h.get("sqft"),
