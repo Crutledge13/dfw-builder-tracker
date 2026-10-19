@@ -498,7 +498,35 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
                                       "url")}
               for h in st.homes.values() if h.get("active") and h.get("incentive_text")]
     offers.sort(key=lambda r: (-(r.get("offer_amount") or 0), r.get("builder") or ""))
-    return {"Summary": summary, "Price Drops": drops, "Home Offers": offers}
+    d30 = now - timedelta(days=30)
+    new_homes, gone = [], []
+    # the first run of each builder records everything as new; that's the baseline, not new listings
+    baseline = {}
+    for c in allc:
+        if c.get("event") == "new_home" and c.get("at"):
+            baseline[c["builder"]] = min(baseline.get(c["builder"], c["at"]), c["at"])
+    for c in allc:
+        at = parse_ts(c.get("at"))
+        if not at:
+            continue
+        h = st.homes.get(c.get("home_id")) or {}
+        if c.get("event") == "new_home" and at >= d30 and c["at"] != baseline.get(c.get("builder")):
+            new_homes.append({"at": c["at"], "builder": c.get("builder"), "address": c.get("address"),
+                              "community": c.get("community"), "city": c.get("city"), "price": c.get("new"),
+                              "beds": h.get("beds"), "baths": h.get("baths"), "sqft": h.get("sqft"),
+                              "incentive_text": h.get("incentive_text"), "url": c.get("url")})
+        elif c.get("event") == "removed" and at >= d90 and not h.get("active"):
+            first = parse_ts(h.get("first_seen"))
+            fp, lp = h.get("first_price"), c.get("old") or h.get("price")
+            gone.append({"at": c["at"], "builder": c.get("builder"), "address": c.get("address"),
+                         "community": c.get("community"), "city": c.get("city"), "last_price": lp,
+                         "first_price": fp, "total_change": (lp - fp) if lp and fp else None,
+                         "days_listed": (at - first).days if first else None, "cuts": h.get("cuts"),
+                         "url": c.get("url")})
+    new_homes.sort(key=lambda r: r["at"], reverse=True)
+    gone.sort(key=lambda r: r["at"], reverse=True)
+    return {"Summary": summary, "Price Drops": drops, "Home Offers": offers, "New Homes": new_homes,
+            "Sold / Removed": gone}
 
 
 def main(argv=None):

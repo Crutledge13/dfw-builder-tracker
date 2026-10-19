@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -17,6 +18,10 @@ TABS = {
               "incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since",
               "url", "first_seen", "last_seen", "last_checked", "active", "pending_price", "price_source", "status_rank"],
     "Price Drops": ["at", "builder", "address", "community", "city", "old", "new", "delta", "pct", "offer", "url"],
+    "New Homes": ["at", "builder", "address", "community", "city", "price", "beds", "baths", "sqft",
+                  "incentive_text", "url"],
+    "Sold / Removed": ["at", "builder", "address", "community", "city", "last_price", "first_price",
+                       "total_change", "days_listed", "cuts", "url"],
     "Home Offers": ["builder", "address", "community", "city", "price", "change_since_first", "offer_type",
                     "offer_amount", "offer_rate", "incentive_text", "offer_since", "url"],
     "Changes": ["at", "builder", "event", "home_id", "address", "community", "city", "old", "new", "delta",
@@ -29,11 +34,12 @@ TABS = {
 }
 STATE_TABS = ["Homes", "Incentives", "Frontier"]
 LOG_TABS = ["Changes", "Run Log"]
-DERIVED_TABS = ["Summary", "Price Drops", "Home Offers"]
+DERIVED_TABS = ["Summary", "Price Drops", "Home Offers", "New Homes", "Sold / Removed"]
 NUMERIC = {"beds", "baths", "sqft", "price", "builder_was_price", "first_price", "prev_price",
            "change_since_first", "pct_since_first", "last_change", "cuts", "price_per_sqft", "headline_amount",
            "rate", "misses", "pending_price", "last_status", "old", "new", "delta", "pct", "offer_amount",
-           "offer_rate", "price_source", "status_rank"}
+           "offer_rate", "price_source", "status_rank", "last_price", "total_change",
+           "days_listed"}
 
 
 def _coerce(k: str, v):
@@ -95,7 +101,7 @@ class LocalStore:
         self.dir.mkdir(parents=True, exist_ok=True)
 
     def _path(self, tab):
-        return self.dir / (tab.lower().replace(" ", "_") + ".csv")
+        return self.dir / (re.sub(r"[^a-z0-9]+", "_", tab.lower()).strip("_") + ".csv")
 
     def _read(self, tab):
         p = self._path(tab)

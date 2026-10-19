@@ -120,6 +120,11 @@ def test_two_runs_track_changes():
         st, ch = run_once(store, pages3, t0 + timedelta(hours=73))
         removed = [c["address"] for c in ch if c["event"] == "removed"]
         assert removed == ["1510 Elm Street"], ch
+        sold = list(__import__("csv").DictReader(open(f"{tmp}/sold_removed.csv")))
+        assert [r["address"] for r in sold] == ["1510 Elm Street"] and sold[0]["last_price"] == "519990"
+        assert sold[0]["days_listed"] == "3"
+        new = list(__import__("csv").DictReader(open(f"{tmp}/new_homes.csv")))
+        assert new == []  # everything here was in the first (baseline) run
 
         # the sheet-shaped files exist and round-trip
         st2 = store.load()

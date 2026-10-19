@@ -64,14 +64,16 @@ const LABELS = {at:"Detected", run_at:"Run At", incentive_text:"Advertised Offer
   offer_type:"Offer Type", offer_amount:"Offer $", offer_rate:"Offer Rate", offer_since:"Offer Seen Since",
   builder_was_price:"Builder's Was Price", last_change_at:"Last Change Detected", change_since_first:"Change Since First Seen",
   first_price:"First Price Seen", old:"Old Price", new:"New Price", delta:"Change", text:"Offer", headline_amount:"Offer $",
-  kind:"Offer Type", first_seen:"First Seen", last_seen:"Last Seen", source_url:"Source"};
-const MONEY = new Set(["price","builder_was_price","first_price","prev_price","change_since_first","last_change","old","new","delta","total_cut_7d","avg_cut_7d","biggest_cut_7d","headline_amount","price_per_sqft","offer_amount"]);
-const SIGNED = new Set(["change_since_first","last_change","delta","pct","pct_since_first"]);
+  kind:"Offer Type", days_listed:"Days Listed", last_price:"Last Price", total_change:"Total Change", first_seen:"First Seen", last_seen:"Last Seen", source_url:"Source"};
+const MONEY = new Set(["price","builder_was_price","first_price","prev_price","change_since_first","last_change","old","new","delta","total_cut_7d","avg_cut_7d","biggest_cut_7d","headline_amount","price_per_sqft","offer_amount","last_price","total_change"]);
+const SIGNED = new Set(["change_since_first","last_change","delta","pct","pct_since_first","total_change"]);
 const PCT = new Set(["pct","pct_since_first"]);
 const TEXT = new Set(["text","incentive_text","detail","note","offer"]);
 const TABS = {
   "Summary":    {file:"summary.csv", cols:["builder","active_homes","price_cuts_24h","price_cuts_7d","total_cut_7d","avg_cut_7d","biggest_cut_7d","new_homes_7d","removed_7d","active_offers","last_run","last_run_status"], sort:["price_cuts_7d",-1]},
   "Price Drops":{file:"price_drops.csv", cols:["at","builder","address","community","city","old","new","delta","pct","offer","url"], sort:["at",-1]},
+  "New Homes":  {file:"new_homes.csv", cols:["at","builder","address","community","city","price","beds","baths","sqft","incentive_text","url"], sort:["at",-1]},
+  "Sold / Removed":{file:"sold_removed.csv", cols:["at","builder","address","community","city","last_price","first_price","total_change","days_listed","cuts","url"], sort:["at",-1]},
   "Home Offers":{file:"home_offers.csv", cols:["builder","address","community","city","price","change_since_first","offer_type","offer_amount","offer_rate","incentive_text","offer_since","url"], sort:["offer_amount",-1]},
   "Homes":      {file:"homes.csv", cols:["builder","community","city","address","plan","beds","baths","sqft","price","incentive_text","first_price","change_since_first","pct_since_first","cuts","last_change","last_change_at","builder_was_price","price_per_sqft","status","move_in","first_seen","last_seen","url"], sort:["change_since_first",1], active:true},
   "Builder Offers": {file:"incentives.csv", cols:["builder","kind","headline_amount","rate","text","first_seen","last_seen","source_url"], sort:["last_seen",-1], active:true},
@@ -93,7 +95,7 @@ function cell(c, v){
   if (c==="offer_rate") return `<td class="num">${num(v)}%</td>`;
   if (c==="event"||c==="kind"||c==="last_run_status"||c==="status" && tab==="Run Log") return `<td><span class="pill">${esc(v)}</span></td>`;
   const n = num(v);
-  if (!isNaN(n) && n!==null && (MONEY.has(c)||PCT.has(c)||/^(beds|baths|sqft|cuts|pages|rate)$|_7d$|_24h$|homes|offers|changes|increases|^price_cuts/.test(c))){
+  if (!isNaN(n) && n!==null && (MONEY.has(c)||PCT.has(c)||/^(beds|baths|sqft|cuts|pages|rate)$|_7d$|_24h$|homes|offers|changes|increases|^price_cuts/.test(c)||c==="days_listed")){
     let s = PCT.has(c) ? n.toFixed(1)+"%" : MONEY.has(c) ? fmtMoney(n) : c==="rate" ? n+"%" : n.toLocaleString();
     if (SIGNED.has(c) && n>0) s = "+"+s;
     const cls = SIGNED.has(c) ? (n<0?" down":n>0?" up":"") : "";
