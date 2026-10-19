@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>This Week in DFW New Homes</title>
+<style>
+  /* Page wrapper only — when pasting into another site, copy from "THIS WEEK TAB START" to "THIS WEEK TAB END". */
+  body { margin: 0; background: #f6f5f1; }
+  @media (prefers-color-scheme: dark) { body { background: #141413; } }
+</style>
+</head>
+<body>
+
+<!-- ===================== THIS WEEK TAB START ===================== -->
+<section id="week-tab">
+  <style>
+    #week-tab {
+      --wk-card: #ffffff; --wk-ink: #1d1d1b; --wk-muted: #6b6a64; --wk-line: #e4e2da; --wk-chip: #efede6;
+      --wk-accent: #2f5d50; --wk-accent-soft: #e6efeb; --wk-down: #1f7a4d; --wk-up: #b3412f;
+      color: var(--wk-ink); max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px;
+      font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      #week-tab { --wk-card: #1d1d1b; --wk-ink: #ecebe6; --wk-muted: #9b9a93; --wk-line: #2e2d2a; --wk-chip: #262522;
+        --wk-accent: #7fb8a4; --wk-accent-soft: #1f2d28; --wk-down: #5cc28c; --wk-up: #e0806f; }
+    }
+    #week-tab * { box-sizing: border-box; }
+    #week-tab h2 { font-size: 26px; margin: 0 0 4px; letter-spacing: -.01em; }
+    #week-tab h3 { font-size: 18px; margin: 32px 0 4px; }
+    #week-tab .wk-sub, #week-tab .wk-hint { color: var(--wk-muted); margin: 0 0 12px; }
+    #week-tab .wk-hint { font-size: 13px; }
+    #week-tab .wk-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 16px 0 8px; }
+    #week-tab .wk-stat { background: var(--wk-card); border: 1px solid var(--wk-line); border-radius: 12px; padding: 12px 14px; }
+    #week-tab .wk-stat b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+    #week-tab .wk-stat span { color: var(--wk-muted); font-size: 13px; }
+    #week-tab .wk-down { color: var(--wk-down); }
+    #week-tab .wk-up { color: var(--wk-up); }
+    #week-tab .wk-table { width: 100%; border-collapse: collapse; background: var(--wk-card); border: 1px solid var(--wk-line);
+      border-radius: 12px; overflow: hidden; font-variant-numeric: tabular-nums; }
+    #week-tab .wk-table th, #week-tab .wk-table td { padding: 9px 12px; border-bottom: 1px solid var(--wk-line); text-align: left; }
+    #week-tab .wk-table th { font-size: 12px; color: var(--wk-muted); font-weight: 600; background: var(--wk-chip); }
+    #week-tab .wk-table td.n, #week-tab .wk-table th.n { text-align: right; white-space: nowrap; }
+    #week-tab .wk-table tr:last-child td { border-bottom: 0; }
+    #week-tab .wk-table a, #week-tab .wk-card a { color: inherit; }
+    #week-tab .wk-small { display: block; color: var(--wk-muted); font-size: 12px; }
+    #week-tab .wk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    #week-tab .wk-card { background: var(--wk-card); border: 1px solid var(--wk-line); border-radius: 12px; padding: 14px;
+      display: flex; flex-direction: column; gap: 6px; }
+    #week-tab .wk-card .wk-price { font-size: 18px; font-weight: 650; font-variant-numeric: tabular-nums; }
+    #week-tab .wk-pill { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      background: var(--wk-chip); color: var(--wk-muted); border-radius: 99px; padding: 2px 8px; }
+    #week-tab .wk-pill.wk-good { background: var(--wk-accent-soft); color: var(--wk-accent); }
+    #week-tab .wk-more { margin-top: 8px; font: inherit; font-size: 14px; background: none; border: 1px solid var(--wk-line);
+      border-radius: 8px; padding: 6px 12px; color: var(--wk-ink); cursor: pointer; }
+    #week-tab .wk-empty { color: var(--wk-muted); background: var(--wk-card); border: 1px dashed var(--wk-line);
+      border-radius: 12px; padding: 18px; text-align: center; }
+    #week-tab .wk-foot { color: var(--wk-muted); font-size: 12px; margin-top: 28px; }
+    #week-tab .wk-show-sm { display: none; }
+    @media (max-width: 640px) { #week-tab .wk-hide-sm { display: none; } #week-tab .wk-show-sm { display: block; } }
+  </style>
+
+  <h2>This week in DFW new construction</h2>
+  <p class="wk-sub" id="wk-range">Loading…</p>
+  <div class="wk-stats" id="wk-stats"></div>
+
+  <h3>The week's biggest price cuts</h3>
+  <p class="wk-hint">Single price changes in the last 7 days, largest first.</p>
+  <div id="wk-cuts"></div>
+
+  <h3>New and changed incentives</h3>
+  <p class="wk-hint">Builder offers that appeared or changed this week.</p>
+  <div id="wk-offers"></div>
+
+  <h3>New inventory</h3>
+  <p class="wk-hint">Homes that appeared on builders' sites this week.</p>
+  <div id="wk-new"></div>
+
+  <h3>Sold or off the market</h3>
+  <p class="wk-hint">Homes that left the builder's site this week (usually sold or under contract).</p>
+  <div id="wk-gone"></div>
+
+  <h3>Past estimated completion</h3>
+  <p class="wk-hint">Still listed after the month the builder said it would be finished.</p>
+  <div id="wk-past"></div>
+
+  <h3>Most active communities</h3>
+  <p class="wk-hint">Ranked by price, offer and inventory changes this week.</p>
+  <div id="wk-communities"></div>
+
+  <h3>Builders this week</h3>
+  <div id="wk-builders"></div>
+
+  <p class="wk-foot" id="wk-note"></p>
+
+  <script>
+  (function () {
+    const API = "https://crutledge13.github.io/dfw-builder-tracker/data/api/";
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const usd = (n) => n == null ? "—" : "$" + Math.round(n).toLocaleString();
+    const k = (n) => n == null ? "—" : n >= 1e6 ? "$" + (n / 1e6).toFixed(2).replace(/\.?0+$/, "") + "M"
+      : n >= 1000 ? "$" + Math.round(n / 1000).toLocaleString() + "k" : "$" + n.toLocaleString();
+    const ago = (iso) => {
+      if (!iso) return "";
+      const h = Math.max(0, Math.round((Date.now() - new Date(iso)) / 36e5));
+      return h < 1 ? "within the hour" : h < 48 ? `${h} hour${h === 1 ? "" : "s"} ago` : `${Math.round(h / 24)} days ago`;
+    };
+    const day = (iso) => iso ? new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "";
+    const link = (url, text) => url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)}</a>` : esc(text);
+    const where = (r) => [r.community, r.city].filter(Boolean).map(esc).join(" · ");
+    const empty = (msg) => `<div class="wk-empty">${msg}</div>`;
+
+    function expandable(id, items, renderAll, first = 6) {
+      const el = $(id);
+      const draw = (n) => {
+        el.innerHTML = renderAll(items.slice(0, n)) + (items.length > n
+          ? `<button class="wk-more" type="button">Show ${Math.min(items.length - n, 19)} more</button>` : "");
+        const b = el.querySelector(".wk-more");
+        if (b) b.onclick = () => draw(Math.min(items.length, n + 19));
+      };
+      draw(first);
+    }
+
+    function cutsTable(rows) {
+      return `<table class="wk-table"><thead><tr><th>Home</th><th class="wk-hide-sm">Builder</th>
+        <th class="n wk-hide-sm">Was</th><th class="n">Now</th><th class="n">Cut</th></tr></thead><tbody>${rows.map((r) => `<tr>
+        <td>${link(r.url, r.address)}<span class="wk-small">${where(r)} · ${esc(day(r.detected_at))}${r.cuts > 1 ? ` · ${r.cuts} cuts total` : ""}</span></td>
+        <td class="wk-hide-sm">${esc(r.builder)}</td>
+        <td class="n wk-hide-sm">${usd(r.old_price)}</td><td class="n">${usd(r.new_price)}<span class="wk-small wk-show-sm">was ${usd(r.old_price)}</span></td>
+        <td class="n wk-down">−${k(r.drop)}<span class="wk-small">${r.drop_pct}%</span></td></tr>`).join("")}</tbody></table>`;
+    }
+
+    function offerCards(rows) {
+      return `<div class="wk-grid">${rows.map((o) => `<div class="wk-card">
+        <div><span class="wk-pill ${o.change === "new" ? "wk-good" : ""}">${o.change === "new" ? "New offer" : "Changed"}</span></div>
+        <strong>${esc(o.builder)}</strong>
+        <div>${esc(o.text)}</div>
+        ${o.previous_text ? `<span class="wk-small">Was: ${esc(o.previous_text)}</span>` : ""}
+        <span class="wk-small">${o.homes ? `On ${o.homes.toLocaleString()} home${o.homes === 1 ? "" : "s"}${o.cities && o.cities.length ? " in " + o.cities.map(esc).join(", ") : ""}` : "Builder-wide"}
+          · ${esc(day(o.detected_at))}${o.source_url ? ` · ${link(o.source_url, "source")}` : ""}</span>
+      </div>`).join("")}</div>`;
+    }
+
+    function homeCards(rows, kind) {
+      return `<div class="wk-grid">${rows.map((r) => `<div class="wk-card">
+        <div class="wk-price">${usd(kind === "gone" ? r.last_price : r.price)}
+          ${kind === "gone" ? `<span class="wk-small">last listed price</span>` : ""}</div>
+        <div>${link(r.url, r.address)}<span class="wk-small">${where(r)} · ${esc(r.builder)}</span></div>
+        ${kind === "new" ? `<span class="wk-small">${[r.card && r.card.beds, r.card && r.card.baths, r.card && r.card.sqft, r.move_in].filter(Boolean).map(esc).join(" · ")}</span>
+          <span class="wk-small">First seen ${esc(day(r.first_seen_at))}${r.has_offer ? ' · <span class="wk-pill wk-good">Offer</span>' : ""}</span>` : ""}
+        ${kind === "gone" ? `<span class="wk-small">${r.days_tracked != null ? `Tracked ${r.days_tracked} day${r.days_tracked === 1 ? "" : "s"}` : ""}${r.total_drop ? ` · dropped ${k(r.total_drop)}` : ""}${r.cuts ? ` in ${r.cuts} cut${r.cuts === 1 ? "" : "s"}` : ""} · gone ${esc(day(r.detected_at))}</span>` : ""}
+        ${kind === "past" ? `<span class="wk-small">Estimated ${esc(r.estimated_completion)} · ${esc(r.move_in || "")}${r.total_drop ? ` · <span class="wk-down">down ${k(r.total_drop)}</span>` : ""}</span>` : ""}
+      </div>`).join("")}</div>`;
+    }
+
+    function rankTable(rows, nameFn) {
+      return `<table class="wk-table"><thead><tr><th>${nameFn ? "Community" : "Builder"}</th>
+        <th class="n">Changes</th><th class="n">Price cuts</th><th class="n">Total cut</th>
+        <th class="n wk-hide-sm">New</th><th class="n wk-hide-sm">Sold</th><th class="n wk-hide-sm">Offer changes</th></tr></thead>
+        <tbody>${rows.map((r) => `<tr><td>${nameFn ? nameFn(r) : esc(r.builder)}<span class="wk-small">${(r.homes_available || 0).toLocaleString()} homes available${r.ready_now != null ? ` · ${r.ready_now} ready now` : ""}</span></td>
+        <td class="n">${r.changes}</td><td class="n">${r.price_cuts}</td>
+        <td class="n ${r.total_cut ? "wk-down" : ""}">${r.total_cut ? k(r.total_cut) : "—"}</td>
+        <td class="n wk-hide-sm">${r.new_homes}</td><td class="n wk-hide-sm">${r.sold_removed}</td><td class="n wk-hide-sm">${r.offer_changes}</td></tr>`).join("")}</tbody></table>`;
+    }
+
+    async function load() {
+      let w;
+      try { w = await fetch(API + "this_week.json", { cache: "no-store" }).then((r) => r.json()); }
+      catch (e) { $("wk-range").textContent = "Couldn't load this week's data. Please try again shortly."; return; }
+      const s = w.stats;
+      $("wk-range").textContent = `${day(w.range.start)} – ${day(w.range.end)} · updated ${ago(w.generated_at)}`;
+      const stat = (v, label, cls = "") => `<div class="wk-stat"><b class="${cls}">${v}</b><span>${label}</span></div>`;
+      $("wk-stats").innerHTML =
+        stat(s.price_cuts.toLocaleString(), "price cuts", s.price_cuts ? "wk-down" : "") +
+        stat(k(s.total_cut || 0), "total cut", s.total_cut ? "wk-down" : "") +
+        stat(s.new_homes.toLocaleString(), "new homes") +
+        stat(s.sold_removed.toLocaleString(), "sold or off market") +
+        stat(s.offer_changes.toLocaleString(), "new or changed offers") +
+        stat(s.homes_tracked.toLocaleString(), `homes tracked · ${s.homes_with_offer.toLocaleString()} with an offer`);
+
+      const building = "Fills in as the week goes on.";
+      w.biggest_cuts.length ? expandable("wk-cuts", w.biggest_cuts, cutsTable) : ($("wk-cuts").innerHTML = empty("No price cuts recorded yet this week. " + building));
+      w.offer_changes.length ? expandable("wk-offers", w.offer_changes, offerCards) : ($("wk-offers").innerHTML = empty("No new or changed offers yet this week."));
+      w.new_homes.length ? expandable("wk-new", w.new_homes, (r) => homeCards(r, "new")) : ($("wk-new").innerHTML = empty("No new listings yet this week. " + building));
+      w.sold_removed.length ? expandable("wk-gone", w.sold_removed, (r) => homeCards(r, "gone")) : ($("wk-gone").innerHTML = empty("No homes have left the market yet this week. " + building));
+      w.past_completion.length ? expandable("wk-past", w.past_completion, (r) => homeCards(r, "past")) : ($("wk-past").innerHTML = empty("No listed homes are past their estimated completion month."));
+      w.most_active_communities.length
+        ? expandable("wk-communities", w.most_active_communities, (r) => rankTable(r, (x) => `${esc(x.community)}<span class="wk-small">${esc(x.builder)} · ${esc(x.city || "")}</span>`))
+        : ($("wk-communities").innerHTML = empty("No community activity yet this week."));
+      const bs = w.builders.filter((b) => b.changes);
+      bs.length ? expandable("wk-builders", bs, (r) => rankTable(r), 10) : ($("wk-builders").innerHTML = empty("No builder activity yet this week."));
+      $("wk-note").textContent = w.notes + " Confirm prices and offers with the builder.";
+    }
+    load();
+    setInterval(load, 15 * 60 * 1000);
+  })();
+  </script>
+</section>
+<!-- ===================== THIS WEEK TAB END ===================== -->
+
+</body>
+</html>

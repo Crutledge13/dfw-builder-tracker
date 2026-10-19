@@ -15,6 +15,7 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
 | `home_offers.json` | Homes whose own listing advertises an offer (same shape as `homes.json`). |
 | `builder_offers.json` | Builder-wide promotions (rate buydowns, closing costs, flex cash…). |
 | `builders.json` | **One record per builder**: headline incentive, builder-wide offers, offers repeated across its homes, inventory, price range, 7-day activity, cities. Powers a Builders tab. |
+| `this_week.json` | **The last 7 days**: headline stats, biggest price cuts, new/changed offers, new inventory, sold/off market, homes past estimated completion, most active communities, builders and cities. Powers a "This week" page. |
 | `summary.json` | One row per builder: active homes, cuts in 24h / 7 days, $ cut, new, removed, offers. |
 | `map.json` | Lightweight list for map pins: id, lat, lng, precision, price, builder, address, city, beds, sqft, change, offer (true/false), url. |
 | `homes.geojson` | Every mapped home as GeoJSON (works directly with Leaflet, Mapbox, Google Maps data layers). |
@@ -108,13 +109,33 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
   [docs/builders-tab.html](builders-tab.html) and live at
   https://crutledge13.github.io/dfw-builder-tracker/builders-tab.html
 
+## This week (`this_week.json`)
+
+One object, rebuilt every hour for the 7 days ending now:
+
+- `range` {start, end, days}, `generated_at`, `notes`
+- `stats`: price_cuts, total_cut, average_cut, biggest_cut, price_increases, new_homes, sold_removed,
+  offer_changes, homes_tracked, homes_with_offer, builders_with_cuts
+- `biggest_cuts` (largest single cuts first): address, city, community, builder, detected_at, old_price,
+  new_price, drop, drop_pct, current_price, total_drop, cuts, beds, baths, sqft, move_in, lat, lng, card, url
+- `offer_changes` (newest first): kind (`builder_offer` | `home_offer`), change (`new` | `changed`), builder,
+  text, previous_text, homes (count for home offers), cities, detected_at, source_url
+- `new_homes`: homes first seen this week (each builder's first day of tracking is a baseline and excluded)
+- `sold_removed`: homes that left the builder's site: last_price, first_price, total_drop, cuts, days_tracked
+- `past_completion`: still listed after the builder's estimated completion month
+- `most_active_communities`, `builders`, `cities`: changes, price_cuts, total_cut, new_homes, sold_removed,
+  offer_changes, homes_available (communities also ready_now, with_offer)
+
+Lists are capped at 25 rows. A ready-made page is in [docs/this-week-tab.html](this-week-tab.html), live at
+https://crutledge13.github.io/dfw-builder-tracker/this-week-tab.html
+
 ## Paste this into ChatGPT to build the site
 
 > Build a website that shows new-construction homes in Dallas–Fort Worth with price drops and builder
 > incentives. Load all data in the browser with `fetch()` from
 > `https://crutledge13.github.io/dfw-builder-tracker/data/api/` — files: meta.json, homes.json,
 > price_drops.json, new_homes.json, sold_removed.json, home_offers.json, builder_offers.json,
-> summary.json, builders.json, price_history.json, map.json, homes.geojson. The field definitions are at
+> summary.json, builders.json, this_week.json, price_history.json, map.json, homes.geojson. The field definitions are at
 > https://github.com/Crutledge13/dfw-builder-tracker/blob/main/docs/API.md (read it).
 > Never hard-code or copy the data into the site; always fetch it so the site stays current (it updates
 > hourly). Pages: home (latest price drops + biggest offers), browse homes (filters: builder, city, price,

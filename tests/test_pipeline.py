@@ -544,3 +544,33 @@ def test_gone_home_and_quiet_correction():
         assert [c["event"] for c in ch] == ["removed"] and next(iter(st.homes.values()))["price"] == 424990
     finally:
         shutil.rmtree(tmp)
+
+
+def test_this_week_sections():
+    from types import SimpleNamespace
+    from tracker.export import this_week
+    run_at = "2026-10-26 10:00"
+    homes = {"a": {"id": "a", "builder": "B", "address": "1 A St", "city": "Celina", "community": "Mosaic", "price": 380000,
+                   "total_drop": 20000, "cuts": 2, "move_in_label": "Ready Sep 2026", "move_in": "Est. Sep 2026", "url": "ua"},
+             "n": {"id": "n", "builder": "B", "address": "2 B St", "city": "Celina", "community": "Mosaic", "price": 300000,
+                   "move_in_label": "Under construction", "url": "un"}}
+    ch = [{"at": "2026-10-18 09:00", "event": "new_home", "builder": "B", "home_id": "a", "new": 400000},   # baseline
+          {"at": "2026-10-10 09:00", "event": "price_cut", "builder": "B", "home_id": "a", "old": 410000, "new": 400000},  # too old
+          {"at": "2026-10-21 09:00", "event": "price_cut", "builder": "B", "home_id": "a", "old": 400000, "new": 390000,
+           "community": "Mosaic", "city": "Celina", "address": "1 A St", "url": "ua"},
+          {"at": "2026-10-24 09:00", "event": "price_cut", "builder": "B", "home_id": "a", "old": 390000, "new": 380000,
+           "community": "Mosaic", "city": "Celina", "address": "1 A St", "url": "ua"},
+          {"at": "2026-10-23 09:00", "event": "new_home", "builder": "B", "home_id": "n", "new": 300000,
+           "community": "Mosaic", "city": "Celina", "url": "un"},
+          {"at": "2026-10-25 09:00", "event": "removed", "builder": "B", "home_id": "g", "old": 450000,
+           "community": "Mosaic", "city": "Celina", "address": "3 C St", "url": "ug"}]
+    st = SimpleNamespace(changes=ch, homes={"g": {"home_id": "g", "first_seen": "2026-10-18 09:00", "first_price": 470000}},
+                         incentives={})
+    w = this_week(st, homes, run_at)
+    assert (w["stats"]["price_cuts"], w["stats"]["total_cut"], w["stats"]["new_homes"], w["stats"]["sold_removed"]) == (2, 20000, 1, 1)
+    assert [r["drop"] for r in w["biggest_cuts"]] == [10000, 10000]
+    assert w["new_homes"][0]["address"] == "2 B St"
+    assert w["sold_removed"][0]["total_drop"] == 20000 and w["sold_removed"][0]["days_tracked"] == 7
+    assert w["past_completion"][0]["address"] == "1 A St"
+    c = w["most_active_communities"][0]
+    assert (c["community"], c["changes"], c["price_cuts"], c["total_cut"], c["new_homes"], c["sold_removed"]) == ("Mosaic", 4, 2, 20000, 1, 1)

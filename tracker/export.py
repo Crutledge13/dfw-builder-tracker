@@ -261,6 +261,214 @@ def builder_profiles(st, homes: dict, derived: dict, run_at: str) -> list[dict]:
     return out
 
 
+MONTHS = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov",
+                                       "dec"], 1)}
+
+
+def _completion_month(label: str | None, move_in: str | None):
+    """(year, month) from 'Ready Nov 2026' / 'Est. completion Oct 2026' style text, else None."""
+    t = f"{label or ''} {move_in or ''}".lower()
+    m = re.search(r"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s*(?:\d{1,2}(?!\d),?\s*)?(20\d\d)?", t)
+    if not m:
+        return None
+    return int(m.group(2)) if m.group(2) else None, MONTHS[m.group(1)]
+
+
+def this_week(st, homes: dict, run_at: str, days: int = 7) -> dict:
+    """Everything that changed in the last 7 days, in sections ready for a 'This week' page."""
+    from collections import Counter, defaultdict
+    now = datetime.strptime(run_at, "%Y-%m-%d %H:%M").replace(tzinfo=TZ) if run_at else datetime.now(TZ)
+    start = now - __import__("datetime").timedelta(days=days)
+
+    def when(c):
+        try:
+            return datetime.strptime(c.get("at") or "", "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+        except ValueError:
+            return None
+
+    # each builder's first day of tracking is its baseline, not new inventory
+    first = {}
+    for c in st.changes:
+        t = when(c)
+        if c.get("event") == "new_home" and t:
+            first[c.get("builder")] = min(first.get(c.get("builder"), t), t)
+    baseline_end = {b: t + __import__("datetime").timedelta(hours=24) for b, t in first.items()}
+
+    week = [c for c in st.changes if (when(c) or start) > start]
+    all_by_id = {h.get("home_id"): h for h in st.homes.values()}
+
+    def home_bits(hid, url=None):
+        h = homes.get(hid)
+        if h is None and url:
+            h = next((x for x in homes.values() if x.get("url") == url), None)
+        return h or {}
+
+    cuts = [c for c in week if c.get("event") == "price_cut" and c.get("old") and c.get("new")]
+    incs = [c for c in week if c.get("event") == "price_increase"]
+    new = [c for c in week if c.get("event") == "new_home" and when(c) > baseline_end.get(c.get("builder"), when(c))]
+    gone = [c for c in week if c.get("event") == "removed"]
+    offer_events = [c for c in week if c.get("event") in ("offer_new", "offer_changed", "home_offer_new",
+                                                          "home_offer_changed", "offer_removed")]
+
+    def drop_row(c):
+        h = home_bits(c.get("home_id"), c.get("url"))
+        old, new_ = int(c["old"]), int(c["new"])
+        return {"home_id": c.get("home_id"), "address": c.get("address"), "city": c.get("city"),
+                "community": c.get("community"), "builder": c.get("builder"), "detected_at": iso(c.get("at")),
+                "old_price": old, "new_price": new_, "drop": old - new_, "drop_pct": round((old - new_) / old * 100, 1),
+                "current_price": h.get("price"), "total_drop": h.get("total_drop"), "cuts": h.get("cuts"),
+                "beds": h.get("beds"), "baths": h.get("baths"), "sqft": h.get("sqft"),
+                "move_in": h.get("move_in_label"), "lat": h.get("lat"), "lng": h.get("lng"),
+                "card": h.get("card"), "url": c.get("url") or h.get("url")}
+
+    biggest = sorted((drop_row(c) for c in cuts), key=lambda r: -r["drop"])
+
+    # offers: builder-wide offers new/changed this week, plus per-home offers grouped by builder + text
+    offers = []
+    for c in offer_events:
+        if c.get("event") in ("offer_new", "offer_changed"):
+            text = (c.get("detail") or "").split("  ->  ")[-1]
+            offers.append({"kind": "builder_offer", "change": "new" if c["event"] == "offer_new" else "changed",
+                           "builder": c.get("builder"), "text": text,
+                           "previous_text": (c.get("detail") or "").split("  ->  ")[0] if c["event"] == "offer_changed" else None,
+                           "amount": c.get("new"), "detected_at": iso(c.get("at")), "homes": None,
+                           "source_url": c.get("url")})
+    grouped = defaultdict(lambda: {"homes": 0, "last": None, "cities": Counter(), "communities": set(), "prev": Counter()})
+    for c in offer_events:
+        if c.get("event") in ("home_offer_new", "home_offer_changed"):
+            text = (c.get("detail") or "").split("  ->  ")[-1]
+            g = grouped[(c.get("builder"), text, c["event"])]
+            g["homes"] += 1
+            g["last"] = max(g["last"] or c["at"], c["at"])
+            if "  ->  " in (c.get("detail") or ""):
+                g["prev"][c["detail"].split("  ->  ")[0]] += 1
+            if c.get("city"):
+                g["cities"][c["city"]] += 1
+            if c.get("community"):
+                g["communities"].add(c["community"])
+    for (b, text, ev), g in grouped.items():
+        offers.append({"kind": "home_offer", "change": "new" if ev == "home_offer_new" else "changed",
+                       "builder": b, "text": text,
+                       "previous_text": g["prev"].most_common(1)[0][0] if g["prev"] else None, "amount": None,
+                       "detected_at": iso(g["last"]), "homes": g["homes"],
+                       "cities": [c for c, _ in g["cities"].most_common(3)],
+                       "communities": len(g["communities"]), "source_url": None})
+    offers.sort(key=lambda o: (o["detected_at"] or ""), reverse=True)
+
+    new_rows = []
+    for c in sorted(new, key=lambda c: c.get("at") or "", reverse=True):
+        h = home_bits(c.get("home_id"), c.get("url"))
+        if not h:
+            continue
+        new_rows.append({"home_id": h.get("id"), "address": h.get("address"), "city": h.get("city"),
+                         "community": h.get("community"), "builder": h.get("builder"), "price": h.get("price"),
+                         "beds": h.get("beds"), "baths": h.get("baths"), "sqft": h.get("sqft"),
+                         "move_in": h.get("move_in_label"), "has_offer": bool(h.get("offer")),
+                         "first_seen_at": iso(c.get("at")), "checked_at": h.get("checked_at"),
+                         "lat": h.get("lat"), "lng": h.get("lng"), "card": h.get("card"), "url": h.get("url")})
+
+    gone_rows = []
+    for c in sorted(gone, key=lambda c: c.get("at") or "", reverse=True):
+        h = all_by_id.get(c.get("home_id")) or {}
+        fs = h.get("first_seen")
+        days_listed = None
+        try:
+            days_listed = (when(c) - datetime.strptime(fs, "%Y-%m-%d %H:%M").replace(tzinfo=TZ)).days
+        except (TypeError, ValueError):
+            pass
+        last = c.get("old") or h.get("price")
+        gone_rows.append({"home_id": c.get("home_id"), "address": c.get("address"), "city": c.get("city"),
+                          "community": c.get("community"), "builder": c.get("builder"), "last_price": last,
+                          "first_price": h.get("first_price"),
+                          "total_drop": (h.get("first_price") - last) if h.get("first_price") and last and h.get("first_price") > last else 0,
+                          "cuts": sum(1 for x in st.changes if x.get("home_id") == c.get("home_id") and x.get("event") == "price_cut"),
+                          "days_tracked": days_listed, "detected_at": iso(c.get("at")), "url": c.get("url")})
+
+    # past estimated completion: still listed after the month the builder said it would be finished
+    past = []
+    for h in homes.values():
+        ym = _completion_month(h.get("move_in_label"), h.get("move_in"))
+        if not ym or h.get("move_in_label") in ("Ready now", "Pending"):
+            continue
+        y, m = ym
+        y = y or now.year
+        if (y, m) < (now.year, now.month):
+            past.append({"home_id": h.get("id"), "address": h.get("address"), "city": h.get("city"),
+                         "community": h.get("community"), "builder": h.get("builder"), "price": h.get("price"),
+                         "estimated_completion": f"{y}-{m:02d}", "move_in": h.get("move_in_label"),
+                         "total_drop": h.get("total_drop"), "cuts": h.get("cuts"), "checked_at": h.get("checked_at"),
+                         "card": h.get("card"), "url": h.get("url")})
+    past.sort(key=lambda r: (r["estimated_completion"], -(r["total_drop"] or 0)))
+
+    # rankings
+    new_ids = {id(c) for c in new}
+    COUNTED = {"price_cut", "price_increase", "removed", "status_change", "offer_new", "offer_changed",
+               "home_offer_new", "home_offer_changed", "offer_removed"}
+
+    def rank(key_fn, label_fn):
+        agg = defaultdict(lambda: {"changes": 0, "price_cuts": 0, "total_cut": 0, "new_homes": 0, "sold_removed": 0,
+                                   "offer_changes": 0})
+        for c in week:
+            ev, k = c.get("event"), key_fn(c)
+            if not k or not (ev in COUNTED or id(c) in new_ids):
+                continue
+            a = agg[k]
+            a["changes"] += 1
+            if ev == "price_cut" and c.get("old") and c.get("new"):
+                a["price_cuts"] += 1
+                a["total_cut"] += int(c["old"]) - int(c["new"])
+            elif ev == "new_home":
+                a["new_homes"] += 1
+            elif ev == "removed":
+                a["sold_removed"] += 1
+            elif "offer" in ev:
+                a["offer_changes"] += 1
+        rows = [label_fn(k) | v for k, v in agg.items()]
+        return sorted(rows, key=lambda r: (-r["changes"], -r["total_cut"]))
+
+    def comm_label(k):
+        b, comm, city = k
+        hs = [h for h in homes.values() if h.get("builder") == b and h.get("community") == comm]
+        return {"community": comm, "builder": b, "city": city, "homes_available": len(hs),
+                "ready_now": sum(1 for h in hs if h.get("move_in_label") == "Ready now"),
+                "with_offer": sum(1 for h in hs if h.get("offer"))}
+
+    communities = rank(lambda c: (c.get("builder"), c.get("community"), c.get("city")) if c.get("community") else None,
+                       comm_label)
+    builders = rank(lambda c: c.get("builder"),
+                    lambda b: {"builder": b, "homes_available": sum(1 for h in homes.values() if h.get("builder") == b)})
+    cities = rank(lambda c: c.get("city"),
+                  lambda city: {"city": city, "homes_available": sum(1 for h in homes.values() if h.get("city") == city)})
+
+    total_cut = sum(r["drop"] for r in biggest)
+    return {
+        "range": {"start": start.isoformat(), "end": now.isoformat(), "days": days},
+        "generated_at": iso(run_at),
+        "stats": {
+            "price_cuts": len(cuts), "total_cut": total_cut,
+            "average_cut": round(total_cut / len(cuts)) if cuts else None,
+            "biggest_cut": biggest[0]["drop"] if biggest else None,
+            "price_increases": len(incs),
+            "new_homes": len(new_rows), "sold_removed": len(gone_rows),
+            "offer_changes": len(offers),
+            "homes_tracked": len(homes),
+            "homes_with_offer": sum(1 for h in homes.values() if h.get("offer")),
+            "builders_with_cuts": len({r["builder"] for r in biggest}),
+        },
+        "biggest_cuts": biggest[:25],
+        "offer_changes": offers[:25],
+        "new_homes": new_rows[:25],
+        "sold_removed": gone_rows[:25],
+        "past_completion": past[:25],
+        "most_active_communities": communities[:15],
+        "builders": builders,
+        "cities": cities[:25],
+        "notes": "Price changes are measured from when this tracker first saw a home (tracking began 2026-10-18). "
+                 "Each builder's first day of tracking counts as its baseline, not as new inventory. "
+                 "'sold_removed' = homes that left the builder's site (usually sold or under contract).",
+    }
+
+
 def _write(path: Path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":"), default=str), encoding="utf-8")
 
@@ -315,6 +523,7 @@ def export_json(folder: Path, st, derived: dict, run_at: str):
                                 for o in st.incentives.values() if o.get("active")],
         "summary.json": rows("Summary"),
         "builders.json": builder_profiles(st, homes, derived, run_at),
+        "this_week.json": this_week(st, homes, run_at),
         "map.json": [{"id": h["id"], "lat": h["lat"], "lng": h["lng"], "precision": h["location_precision"],
                       "price": h["price"], "builder": h["builder"], "address": h["address"], "city": h["city"],
                       "beds": h["beds"], "sqft": h["sqft"], "change": h["change_since_first"],
