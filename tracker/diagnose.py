@@ -20,6 +20,19 @@ def main():
         "DFWBuilderTracker/1.0 (+https://github.com/Crutledge13/dfw-builder-tracker)"
     frontier = list(csv.DictReader(open("docs/data/frontier.csv"))) if Path("docs/data/frontier.csv").exists() else []
     index = open(out / "index.tsv", "w")
+    urls = [u.strip() for u in os.environ.get("DIAG_URLS", "").replace(",", " ").split() if u.strip()]
+    if urls:   # specific pages only
+        c = PoliteClient(ua, min_delay=1.5)
+        d = out / "urls"
+        d.mkdir(exist_ok=True)
+        for i, u in enumerate(urls):
+            r = c.get(u)
+            name = f"{i:02d}.html"
+            if r:
+                (d / name).write_text(r.text[:3_000_000], encoding="utf-8")
+            index.write(f"urls\turl\t{r.status if r else 'skipped'}\t{len(r.text) if r else 0}\t{name}\t{u}\n")
+            index.flush()
+        return
     for b in load_config():
         if only and b["slug"] not in only:
             continue

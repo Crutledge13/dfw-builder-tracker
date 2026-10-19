@@ -7,6 +7,10 @@ on:
         description: "Builder slugs (space-separated, blank = all)"
         required: false
         default: ""
+      urls:
+        description: "Specific page URLs to save instead (space-separated)"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -24,6 +28,7 @@ jobs:
       - name: Save sample pages
         env:
           ONLY_BUILDERS: ${{ github.event.inputs.only }}
+          DIAG_URLS: ${{ github.event.inputs.urls }}
         run: |
           # shellcheck disable=SC2086
           python -m tracker.diagnose $(echo "$ONLY_BUILDERS" | tr -cd 'a-z0-9- ')
