@@ -15,6 +15,8 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
 | `home_offers.json` | Homes whose own listing advertises an offer (same shape as `homes.json`). |
 | `builder_offers.json` | Builder-wide promotions (rate buydowns, closing costs, flex cash…). |
 | `summary.json` | One row per builder: active homes, cuts in 24h / 7 days, $ cut, new, removed, offers. |
+| `map.json` | Lightweight list for map pins: id, lat, lng, precision, price, builder, address, city, beds, sqft, change, offer (true/false), url. |
+| `homes.geojson` | Every mapped home as GeoJSON (works directly with Leaflet, Mapbox, Google Maps data layers). |
 | `price_history.json` | `{ "<home id>": [ {"at": "...", "price": 449990}, … ] }` — for price charts. |
 
 ## A home (`homes.json`, `home_offers.json`)
@@ -32,6 +34,7 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
   "status": "Under Construction", "move_in": "",
   "offer": {"text": "4% Towards Closing Costs on All Specs!", "type": "closing_costs",
             "amount": null, "rate": null, "since": "2026-10-18 18:59"},
+  "lat": 32.416827, "lng": -97.217663, "location_precision": "builder",
   "url": "https://www.bloomfieldhomes.com/new-homes/tx/alvarado/sunset-ridge/cypress-ii/214-seminole-trail",
   "first_seen": "2026-10-18 18:59", "last_seen": "2026-10-19 09:12"
 }
@@ -42,6 +45,10 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
   not the builder's original list price. `builder_was_price` is the builder's own struck-through price.
 - Times are Central (`YYYY-MM-DD HH:MM`) and mean "when the tracker detected it" (checked hourly).
 - `offer.type` is one of `rate`, `closing_costs`, `price_reduction`, `cash_credit`, `other`.
+- `lat` / `lng` place the home on a map. `location_precision`: `builder` = the pin from the builder's
+  own page, `address` = U.S. Census geocode of the street address, `zip` = center of the ZIP code
+  (approximate; show these differently, e.g. a lighter pin, or hide them when zoomed in).
+  Brand-new streets can take a few days to geocode, so some homes start as `zip` and get upgraded.
 - `url` is the builder's own page for the home — link to it for final pricing and terms.
 
 ## Paste this into ChatGPT to build the site
@@ -54,7 +61,9 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
 > https://github.com/Crutledge13/dfw-builder-tracker/blob/main/docs/API.md (read it).
 > Never hard-code or copy the data into the site; always fetch it so the site stays current (it updates
 > hourly). Pages: home (latest price drops + biggest offers), browse homes (filters: builder, city, price,
-> beds, has offer, price cut), home detail (price history chart from price_history.json keyed by id, offer,
+> beds, has offer, price cut) with a map view (Leaflet + OpenStreetMap tiles, no API key needed; load
+> map.json for pins, cluster them, color pins with a price cut, show a lighter pin when precision is "zip",
+> and filter the map together with the list), home detail (price history chart from price_history.json keyed by id, offer,
 > link to the builder's page), builder pages (from summary.json), and "recently sold". Show "Updated <time>"
 > from meta.json. Note on each page that prices and offers come from builders' websites and must be
 > confirmed with the builder.

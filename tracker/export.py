@@ -8,7 +8,7 @@ from pathlib import Path
 HOME_FIELDS = ["builder", "community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "price",
                "first_price", "prev_price", "change_since_first", "pct_since_first", "cuts", "last_change",
                "last_change_at", "builder_was_price", "price_per_sqft", "status", "move_in", "url", "first_seen",
-               "last_seen"]
+               "last_seen", "lat", "lng", "location_precision"]
 
 
 def _clean(v):
@@ -59,20 +59,33 @@ def export_json(folder: Path, st, derived: dict, run_at: str):
                                  "first_seen": o.get("first_seen"), "last_seen": o.get("last_seen")}
                                 for o in st.incentives.values() if o.get("active")],
         "summary.json": rows("Summary"),
+        "map.json": [{"id": h["id"], "lat": h["lat"], "lng": h["lng"], "precision": h["location_precision"],
+                      "price": h["price"], "builder": h["builder"], "address": h["address"], "city": h["city"],
+                      "beds": h["beds"], "sqft": h["sqft"], "change": h["change_since_first"],
+                      "offer": bool(h["offer"]), "url": h["url"]}
+                     for h in homes.values() if h["lat"] is not None],
         "price_history.json": {hid: pts for hid, pts in history.items() if hid in homes},
     }
+    files["homes.geojson"] = {"type": "FeatureCollection", "features": [
+        {"type": "Feature", "geometry": {"type": "Point", "coordinates": [h["lng"], h["lat"]]},
+         "properties": {k: v for k, v in h.items() if k not in ("lat", "lng")}}
+        for h in homes.values() if h["lat"] is not None]}
     for name, data in files.items():
         _write(api / name, data)
     _write(api / "meta.json", {
         "updated_at": run_at, "timezone": "America/Chicago",
-        "counts": {k.removesuffix(".json"): len(v) for k, v in files.items()},
+        "counts": {(k[:-5] if k.endswith(".json") else k.replace(".", "_")):
+                   len(v["features"] if k.endswith(".geojson") else v) for k, v in files.items()},
         "builders": sorted({h["builder"] for h in active if h.get("builder")}),
         "files": sorted(files) + ["meta.json"],
+        "mapped": sum(1 for h in homes.values() if h["lat"] is not None),
         "notes": {
             "price changes": "Measured from the first price this tracker saw, not the builder's original list "
                              "price. 'at'/'last_change_at' is when the change was detected (hourly checks).",
             "builder_was_price": "The builder's own struck-through price, when the page shows one.",
             "sold_removed": "Gone from the builder's site for 48+ hours (usually sold or under contract).",
             "ids": "Home 'id' is stable across runs and keys price_history.json.",
+            "location_precision": "builder = pin from the builder's own page; address = U.S. Census geocode of "
+                                  "the street address; zip = center of the ZIP code (approximate).",
         },
     })

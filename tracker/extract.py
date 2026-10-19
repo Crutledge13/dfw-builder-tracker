@@ -45,7 +45,20 @@ ALIASES = {
     "move_in": ["moveindate", "availabledate", "estimatedcompletion", "completiondate", "readydate",
                 "estimatedmoveindate", "estcompletiondate", "availabilitydate"],
     "url": ["url", "detailurl", "pageurl", "permalink", "canonicalurl", "link", "href", "homeurl", "slug"],
+    "lat": ["lat", "latitude", "geolat", "maplat", "homelat"],
+    "lng": ["lng", "lon", "long", "longitude", "geolng", "geolon", "maplng", "maplon", "homelng"],
 }
+DFW_BOUNDS = (31.3, 34.6, -98.8, -95.3)   # lat min/max, lng min/max: anything outside is not a DFW home
+
+
+def valid_coords(lat, lng):
+    try:
+        lat, lng = float(lat), float(lng)
+    except (TypeError, ValueError):
+        return None
+    if DFW_BOUNDS[0] <= lat <= DFW_BOUNDS[1] and DFW_BOUNDS[2] <= lng <= DFW_BOUNDS[3]:
+        return round(lat, 6), round(lng, 6)
+    return None
 _ALIAS_LOOKUP = {a: field for field, names in ALIASES.items() for a in names}
 
 INCENTIVE_WORDS = re.compile(
@@ -255,6 +268,12 @@ def _fields(d: dict) -> dict:
         p = offers.get("price") or offers.get("lowPrice")
         if p is not None:
             out["price"] = p
+    for key in ("geo", "_geoloc", "geoloc", "location", "coordinates", "position", "latlng", "geocode"):
+        g = d.get(key)
+        if isinstance(g, dict) and "lat" not in out:
+            gf = {_ALIAS_LOOKUP.get(norm_key(k)): v for k, v in g.items()}
+            if gf.get("lat") is not None and gf.get("lng") is not None:
+                out["lat"], out["lng"] = gf["lat"], gf["lng"]
     addr = d.get("address")
     if isinstance(addr, dict):
         out["address"] = addr.get("streetAddress") or addr.get("street") or addr.get("address1") or ""
@@ -291,7 +310,9 @@ def _home_from_dict(d: dict, base_url: str, source: str) -> dict | None:
     if url and not url.startswith("http"):
         url = ""
     was = to_price(f.get("was_price"))
+    coords = valid_coords(f.get("lat"), f.get("lng"))
     return {
+        "lat": coords[0] if coords else None, "lng": coords[1] if coords else None,
         "address": address,
         "city": to_text(f.get("city")),
         "state": to_text(f.get("state")),
@@ -430,6 +451,7 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
         "move_in": "",
         "url": url,
         "source": "html",
+        "lat": None, "lng": None,
     }
 
 
@@ -495,6 +517,19 @@ def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
     soup = BeautifulSoup(html, "lxml")
     for t in soup(["script", "style", "noscript"]):
         t.decompose()
+    # map markers carried as attributes: data-latitude/-longitude, keyed by a data-*-id the card also has
+    def el_coords(el):
+        a = el.attrs
+        lat = a.get("data-latitude") or a.get("data-lat")
+        lng = a.get("data-longitude") or a.get("data-lng") or a.get("data-lon")
+        return valid_coords(lat, lng) if lat and lng else None
+    marker_by_id = {}
+    for el in soup.find_all(lambda t: t.has_attr("data-latitude") or t.has_attr("data-lat")):
+        c = el_coords(el)
+        if c:
+            for k, v in el.attrs.items():
+                if k.startswith("data-") and k.endswith("id") and isinstance(v, str) and v.strip():
+                    marker_by_id.setdefault(v.strip(), c)
     out, seen = [], set()
     for a in soup.find_all("a", href=True):
         url = urljoin(page_url, a["href"]).split("#")[0].split("?")[0]
@@ -519,6 +554,18 @@ def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
         h = _html_home(BeautifulSoup(str(box), "lxml"), url)
         if not h:
             continue
+        for el in [box, *box.find_all(True), *list(box.parents)[:5]]:
+            if el.name in ("body", "html", "[document]") or el.find_all("a", href=True, limit=40).__len__() > 30:
+                continue
+            c = el_coords(el)
+            if not c:
+                for k, v in el.attrs.items():
+                    if k.startswith("data-") and k.endswith("id") and isinstance(v, str) and v.strip() in marker_by_id:
+                        c = marker_by_id[v.strip()]
+                        break
+            if c:
+                h["lat"], h["lng"] = c
+                break
         seen.add(key)
         h["source"] = "card"
         h["incentive_text"] = " | ".join(incentive_snippets(box.get_text("  ", strip=True), limit=2))
@@ -533,13 +580,45 @@ def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
     return out
 
 
+def _geo_index_from_blobs(blobs) -> dict:
+    """address key -> (lat, lng) for every record on the page that has both an address and coordinates
+    (map-marker lists often carry coordinates without prices)."""
+    idx = {}
+    for _src, blob in blobs:
+        for d in _walk(blob):
+            f = _fields(d)
+            coords = valid_coords(f.get("lat"), f.get("lng"))
+            if not coords:
+                continue
+            addr = to_text(f.get("address"))
+            if not re.match(r"^\d", addr or ""):
+                name = to_text(d.get("name") or d.get("title"))
+                addr = name if re.match(r"^\d{2,6}\s+\w", name or "") else ""
+            if addr:
+                idx.setdefault(address_key(clean_address(addr)), coords)
+    return idx
+
+
+def page_geo_index(html: str) -> dict:
+    return _geo_index_from_blobs(list(_json_blobs(BeautifulSoup(html, "lxml"))))
+
+
+def fill_coords(homes: list[dict], idx: dict):
+    for h in homes:
+        if h.get("lat") is None and h.get("address"):
+            c = idx.get(address_key(h["address"]))
+            if c:
+                h["lat"], h["lng"] = c
+
+
 # --------------------------------------------------------------------------- entry points
 def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
     """single=True: page is one home's page. Falls back to visible HTML and attaches the page URL."""
     soup = BeautifulSoup(html, "lxml")
     homes: list[dict] = []
     seen: set[tuple] = set()
-    for source, blob in _json_blobs(soup):
+    blobs = list(_json_blobs(soup))
+    for source, blob in blobs:
         for d in _walk(blob):
             h = _home_from_dict(d, page_url, source)
             if not h:
@@ -549,6 +628,7 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
                 continue
             seen.add(key)
             homes.append(h)
+    fill_coords(homes, _geo_index_from_blobs(blobs))
     for h in homes:
         if h.get("url"):
             if not h.get("address"):
@@ -582,10 +662,15 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
                     homes[0][k] = v
         main = soup.find("main") or soup.body or soup
         main_text = main.get_text("  ", strip=True)
+        maps = {valid_coords(m.group(1), m.group(2)) for m in re.finditer(
+            r"google\.[a-z.]+/maps[^\"'<>\s]*?[?&](?:q|query|ll|daddr)=(-?\d{2}\.\d{4,}),\s*(-?\d{2,3}\.\d{4,})", html)}
+        maps.discard(None)
         for h in homes:
             h["url"] = page_url
             if not h.get("address") and url_addr:
                 h["address"] = url_addr
+            if h.get("lat") is None and len(maps) == 1:
+                h["lat"], h["lng"] = next(iter(maps))  # the page's own "view on map" link
             h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(page_text))
             h["from_detail"] = True
     return homes

@@ -16,7 +16,8 @@ TABS = {
               "price", "builder_was_price", "first_price", "prev_price", "change_since_first",
               "pct_since_first", "last_change", "last_change_at", "cuts", "price_per_sqft", "status", "move_in",
               "incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since",
-              "url", "first_seen", "last_seen", "last_checked", "active", "pending_price", "price_source", "status_rank", "page_read"],
+              "url", "first_seen", "last_seen", "last_checked", "active", "pending_price", "price_source", "status_rank", "page_read",
+              "lat", "lng", "location_precision", "geocode_tried"],
     "Price Drops": ["at", "builder", "address", "community", "city", "old", "new", "delta", "pct", "offer", "url"],
     "New Homes": ["at", "builder", "address", "community", "city", "price", "beds", "baths", "sqft",
                   "incentive_text", "url"],
@@ -39,7 +40,7 @@ NUMERIC = {"beds", "baths", "sqft", "price", "builder_was_price", "first_price",
            "change_since_first", "pct_since_first", "last_change", "cuts", "price_per_sqft", "headline_amount",
            "rate", "misses", "pending_price", "last_status", "old", "new", "delta", "pct", "offer_amount",
            "offer_rate", "price_source", "status_rank", "last_price", "total_change",
-           "days_listed"}
+           "days_listed", "lat", "lng"}
 
 
 def _coerce(k: str, v):
@@ -48,7 +49,7 @@ def _coerce(k: str, v):
     if k in NUMERIC:
         try:
             f = float(str(v).replace(",", "").replace("$", "").replace("%", ""))
-            return int(f) if f.is_integer() and k not in {"baths", "pct", "pct_since_first", "rate", "offer_rate"} else f
+            return int(f) if f.is_integer() and k not in {"baths", "pct", "pct_since_first", "rate", "offer_rate", "lat", "lng"} else f
         except ValueError:
             return None
     if k in ("active", "page_read"):

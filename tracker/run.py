@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from . import discover, incentives
-from .extract import DFW_CITY_RE, NON_HOME_RE, address_from_url, address_key, card_homes, extract_homes, same_address, to_price
+from .extract import DFW_CITY_RE, NON_HOME_RE, address_from_url, fill_coords, page_geo_index, address_key, card_homes, extract_homes, same_address, to_price
 from .fetch import PoliteClient
 from .store import State, store_from_env
 
@@ -257,6 +257,8 @@ class Recorder:
             h["offer_amount"] = incentives.headline_amount(t)
             h["offer_rate"] = incentives.lowest_rate(t)
             h.setdefault("offer_since", h.get("first_seen"))
+        if obs.get("lat") is not None and obs.get("lng") is not None:
+            h.update(lat=obs["lat"], lng=obs["lng"], location_precision="builder")
         h["last_seen"] = now
         fp, p = h.get("first_price"), h.get("price")
         if fp and p:
@@ -356,6 +358,7 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
     def process_listing(r):
         """Record homes found on a listing/hub page; queue home and hub links. Returns pagination links."""
         r = unwrap_json_html(r)
+        builder_geo.update({k: v for k, v in page_geo_index(r.text).items() if k not in builder_geo})
         homes = extract_homes(r.text, r.url)
         covered = set()
         for h in homes:
@@ -370,7 +373,9 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
             if h.get("url"):
                 covered.add(h["url"].rstrip("/").lower())
                 queue(h["url"])
-        for h in card_homes(r.text, r.url, b["detail_re"]):
+        cards = card_homes(r.text, r.url, b["detail_re"])
+        fill_coords(cards, page_geo_index(r.text))
+        for h in cards:
             if h["url"].rstrip("/").lower() not in covered:
                 rec.observe(b, h)
         links, more = discover.links_from_html(r.text, r.url)
@@ -382,6 +387,8 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
             elif b.get("hub_re") and b["hub_re"].search(path):
                 queue(l, "hub")
         return more
+
+    builder_geo: dict = {}   # address key -> coordinates seen on any of this builder's pages this run
 
     # 1) listing pages (+ pagination)
     seeds_ok = 0
@@ -475,6 +482,14 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
         pages += 1
         if r and r.status == 200:
             rec.offers(b, url, incentives.extract_offers(r.text))
+
+    # map pins listed on a different page than the home itself (e.g. a map-marker list)
+    with rec.lock:
+        for h in rec.st.homes.values():
+            if h.get("builder") == b["name"] and h.get("location_precision") != "builder" and h.get("address"):
+                c = builder_geo.get(address_key(h["address"]))
+                if c:
+                    h.update(lat=c[0], lng=c[1], location_precision="builder")
 
     if reachable:
         rec.retire_unseen(b)
@@ -602,6 +617,12 @@ def main(argv=None):
         for n, row in pool.map(one, selected):
             total_requests += n
             runlog.append(row)
+    if os.environ.get("GEOCODE", "1") != "0":
+        try:
+            from .geocode import fill_missing
+            log.info("geocoding: %s", fill_missing(st.homes, now, FMT, ua))
+        except Exception:
+            log.exception("geocoding failed; continuing without it")
     store.save(st, rec.changes, runlog, derived_tabs(st, rec.changes, now, runlog, builders))
     log.info("done: %d changes recorded, %d requests", len(rec.changes), total_requests)
 

@@ -246,3 +246,47 @@ def test_lot_code_page_uses_title_address_and_skips_plans():
     assert len(h) == 1 and h[0]["address"] == "2616 Manzanar Mews" and h[0]["price"] == 562926, h
     plan = '<html><head><title>New Home Plan Picasso in Sherman, TX 75092</title></head><body><p>$352,990</p></body></html>'
     assert extract_homes(plan, "https://www.highlandhomes.com/dfw/sherman/heritage-ranch/831-PICA-AM", single=True) == []
+
+
+def test_card_pins_matched_by_listing_id():
+    from tracker.extract import card_homes
+    html = '''<div class="card spec-card" data-card-listing-id="1769117"><div class="row">
+        <a href="/new-homes/tx/aledo/parks/cypress/131-kingfisher-lane">131 Kingfisher Lane</a>
+        <p>Aledo, TX 76008</p><p class="price">$469,990</p><p>3 Beds 2,034 Sq Ft</p></div></div>
+      <div class="card spec-card" data-card-listing-id="1769118"><div class="row">
+        <a href="/new-homes/tx/aledo/parks/cypress/137-kingfisher-lane">137 Kingfisher Lane</a>
+        <p>Aledo, TX 76008</p><p class="price">$539,990</p><p>4 Beds 2,454 Sq Ft</p></div></div>
+      <div class="oi-map-item" data-listing-id="1769118" data-latitude="32.702917" data-longitude="-97.623828"></div>
+      <div class="oi-map-item" data-listing-id="1769117" data-latitude="32.702953" data-longitude="-97.623091"></div>
+      <div class="office" data-id="hq" data-latitude="40.0" data-longitude="-75.0"></div>'''
+    c = {h["address"]: (h["lat"], h["lng"]) for h in card_homes(html, "https://www.bloomfieldhomes.com/x", B["detail_re"])}
+    assert c == {"131 Kingfisher Lane": (32.702953, -97.623091), "137 Kingfisher Lane": (32.702917, -97.623828)}
+
+
+def test_geocode_census_then_zip_fallback(tmp_path, monkeypatch):
+    from tracker import geocode
+    zf = tmp_path / "zips.csv"
+    zf.write_text("zip,lat,lng\n75009,33.33,-96.78\n")
+    monkeypatch.setattr(geocode, "ZIP_FILE", zf)
+
+    class FakeSession:
+        posts = 0
+        def post(self, url, data, files, timeout):
+            FakeSession.posts += 1
+            class R:
+                text = ('"a","1404 Amber Way, Celina, TX, 75009","Match","Exact","1404 AMBER WAY","-96.7801,33.3101","1","L"\n'
+                        '"b","9 New Street, Celina, TX, 75009","No_Match"\n')
+                def raise_for_status(self): pass
+            return R()
+    homes = {"a": {"active": True, "address": "1404 Amber Way", "city": "Celina", "zip": "75009"},
+             "b": {"active": True, "address": "9 New Street", "city": "Celina", "zip": "75009"},
+             "c": {"active": True, "address": "1 Pin Lane", "city": "Celina", "zip": "75009",
+                   "lat": 33.3, "lng": -96.7, "location_precision": "builder"}}
+    now = R.now_local()
+    out = geocode.fill_missing(homes, now, R.FMT, "test", session=FakeSession())
+    assert homes["a"]["location_precision"] == "address" and (homes["a"]["lat"], homes["a"]["lng"]) == (33.3101, -96.7801)
+    assert homes["b"]["location_precision"] == "zip" and homes["b"]["lat"] == 33.33
+    assert homes["c"]["location_precision"] == "builder"          # builder pins are never overwritten
+    assert out == {"census_tried": 2, "census_matched": 1, "zip_fallback": 1}
+    geocode.fill_missing(homes, now + timedelta(hours=1), R.FMT, "test", session=FakeSession())
+    assert FakeSession.posts == 1    # the unmatched street isn't retried for 7 days
