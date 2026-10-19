@@ -32,7 +32,7 @@ ALIASES = {
     "baths": ["baths", "bathrooms", "totalbaths", "numberofbathroomstotal", "bathroomcount", "bathsmax", "maxbaths",
               "fullbaths"],
     "half_baths": ["halfbaths", "numberofhalfbaths", "halfbathrooms"],
-    "sqft": ["sqft", "squarefeet", "squarefootage", "livingarea", "floorsize", "homesize", "sqftmax", "maxsqft",
+    "sqft": ["sqft", "squarefeet", "squarefoot", "squarefootage", "livingarea", "floorsize", "homesize", "sqftmax", "maxsqft",
              "totalsqft", "size", "area"],
     "address": ["streetaddress", "address1", "addressline1", "street", "homeaddress", "lotaddress", "address",
                 "displayaddress", "fulladdress"],
@@ -216,7 +216,50 @@ def address_key(addr: str) -> str:
 
 
 # --------------------------------------------------------------------------- JSON sources
+FLIGHT_RE = re.compile(r'self\.__next_f\.push\(\[1,\s*"((?:[^"\\]|\\.)*)"\]\)')
+
+
+def _flight_objects(soup: BeautifulSoup) -> Iterator[Any]:
+    """Next.js App Router pages stream their data as string chunks (self.__next_f.push([1,"..."]))
+    that only make sense joined together: 'id:JSON' lines (e.g. Beazer community pages)."""
+    chunks = []
+    for tag in soup.find_all("script"):
+        raw = tag.string or ""
+        if "__next_f" not in raw:
+            continue
+        for lit in FLIGHT_RE.findall(raw):
+            try:
+                chunks.append(json.loads('"' + lit + '"'))
+            except ValueError:
+                continue
+    stream = "".join(chunks).encode("utf-8")
+    if not re.search(rb'price"\s*:\s*\d', stream, re.I):
+        return
+    # rows: '<hex id>:<json>\n', or '<hex id>:T<hex byte length>,<text>' (no newline after the text)
+    pos, n = 0, len(stream)
+    row = re.compile(rb"([0-9a-fA-F]+):(T([0-9a-fA-F]+),)?")
+    while pos < n:
+        m = row.match(stream, pos)
+        if not m:
+            nl = stream.find(b"\n", pos)
+            pos = n if nl < 0 else nl + 1
+            continue
+        if m.group(2):
+            pos = m.end() + int(m.group(3), 16)
+            continue
+        nl = stream.find(b"\n", m.end())
+        end = n if nl < 0 else nl
+        body = stream[m.end():end]
+        pos = end + 1
+        if body[:1] in (b"[", b"{"):
+            try:
+                yield json.loads(body)
+            except ValueError:
+                continue
+
+
 def _json_blobs(soup: BeautifulSoup) -> Iterator[tuple[str, Any]]:
+    yield from (("embedded", o) for o in _flight_objects(soup))
     for tag in soup.find_all("script"):
         t = (tag.get("type") or "").lower()
         raw = tag.string or tag.get_text() or ""
@@ -268,7 +311,7 @@ def _objects_in_js(js: str, max_tries: int = 60) -> Iterator[Any]:
 
 
 def _walk(obj: Any, depth: int = 0) -> Iterator[dict]:
-    if depth > 14:
+    if depth > 24:   # React server payloads nest homes ~20 levels deep
         return
     if isinstance(obj, dict):
         yield obj
@@ -335,6 +378,9 @@ def _home_from_dict(d: dict, base_url: str, source: str) -> dict | None:
     if url and not url.startswith("http"):
         url = ""
     was = to_price(f.get("was_price"))
+    status, move_in = to_text(f.get("status")), to_text(f.get("move_in"))
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}(T[\d:.]+Z?)?", status):  # an 'Availability' date, not a status
+        move_in, status = move_in or status[:10], ""
     coords = valid_coords(f.get("lat"), f.get("lng"))
     return {
         "lat": coords[0] if coords else None, "lng": coords[1] if coords else None,
@@ -347,8 +393,8 @@ def _home_from_dict(d: dict, base_url: str, source: str) -> dict | None:
         "beds": beds, "baths": baths, "sqft": int(sqft) if sqft else None,
         "price": price,
         "builder_was_price": was if was and was > price else None,
-        "status": to_text(f.get("status"))[:60],
-        "move_in": to_text(f.get("move_in"))[:40],
+        "status": status[:60],
+        "move_in": move_in[:40],
         "url": url,
         "source": source,
     }

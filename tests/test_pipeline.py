@@ -369,3 +369,37 @@ def test_seed_network_error_is_retried_once():
     pages = {"https://tb.example/qmi": listing_page([("1500 Elm Street", 489990, 2450, "Seaberry")])}
     _, status, note = R.crawl_builder(B, Flaky(pages), rec, budget=20)
     assert status == "ok" and "seed" not in note and len(st.homes) == 1
+
+
+def test_nextjs_flight_stream_homes():
+    """Beazer community pages stream homes in self.__next_f chunks: rows split across scripts, a text (T) row
+    with no newline after it, homes nested ~20 levels deep, an Availability date, and plan elevations."""
+    home = {"__typename": "HomeDetailPage", "Url": "https://www.beazer.com/dallas-TX/denton/stark-farms/berkshire/0415",
+            "StreetAddress": "2300 Briarbrook Drive", "City": "Denton", "StateID": "TX", "Zip": "76207",
+            "Beds": 4, "Baths": 2.5, "SquareFoot": 2323, "Availability": "2026-10-22T04:00:00Z", "HomePrice": 399990,
+            "Elevation": {"Expanded": {"Price": 415990, "SquareFoot": 2323, "Beds": 4, "Baths": 2.5}}}
+    nested = home
+    for _ in range(9):     # ~20 levels, as on the real page
+        nested = {"children": [nested]}
+    text = "<p>Your contract\nwill define what is included.</p>"
+    stream = (f'1:HL["/_next/static/css/a.css","style"]\n'
+              f'2:T{len(text.encode()):x},{text}'
+              f'3:["$","section",null,{json.dumps(nested)}]\n')
+    half = len(stream) // 2
+    scripts = "".join(f"<script>self.__next_f.push([1,{json.dumps(part)}])</script>"
+                      for part in (stream[:half], stream[half:]))
+    html = f"<html><body><script>(self.__next_f=self.__next_f||[]).push([0])</script>{scripts}</body></html>"
+    homes = [h for h in extract_homes(html, "https://www.beazer.com/dallas-TX/denton/stark-farms") if h["address"]]
+    assert len(homes) == 1
+    h = homes[0]
+    assert (h["address"], h["price"], h["sqft"], h["zip"]) == ("2300 Briarbrook Drive", 399990, 2323, "76207")
+    assert h["status"] == "" and h["move_in"] == "2026-10-22"
+    b = dict(B, slug="beazer", name="Beazer Homes", dfw_only=False, url_parts={"community": -3, "plan": -2},
+             detail_re=re.compile(r"/dallas-tx/[^/]+/[^/]+/[^/]+/\d{3,5}/?$", re.I))
+    st = LocalStore(tempfile.mkdtemp()).load()
+    rec = R.Recorder(st, R.now_local())
+    pages = {"https://tb.example/qmi": html}
+    R.crawl_builder(b, FakeClient(pages), rec, budget=5)
+    rec_h = st.homes["beazer:2300-briarbrook-dr"]
+    assert (rec_h["community"], rec_h["plan"], rec_h["price"]) == ("Stark Farms", "Berkshire", 399990)
+    assert len(st.homes) == 1   # plan elevations are not homes

@@ -149,7 +149,10 @@ builders:
 
   - name: Beazer Homes
     slug: beazer
+    url_parts: {community: -3, plan: -2}
     site: https://www.beazer.com/
+    # community pages carry their quick move-in homes in the Next.js data stream; home = /<plan>/<homesite no.>
+    detail_pattern: '/dallas-tx/[^/]+/[^/]+/[^/]+/\d{3,5}/?$'
     seeds: [https://www.beazer.com/dallas-tx]
     promos: [https://www.beazer.com/dallas-tx]
     hub_pattern: '^/dallas-tx/[a-z-]+(/[a-z0-9-]+)?/?$'
