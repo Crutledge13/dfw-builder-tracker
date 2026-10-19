@@ -67,6 +67,28 @@ def in_dfw(h: dict) -> bool:
     return bool(DFW_CITY_RE.search(h.get("city") or ""))
 
 
+def outside_dfw(h: dict) -> bool:
+    """True when a home's own data puts it in another Texas metro (Austin, San Antonio, Houston, ...):
+    a non-DFW Texas ZIP and no DFW city stated on the page. Such homes are never tracked, even when the
+    builder is marked DFW-only or its URL matched the builder's DFW filter."""
+    z = (h.get("zip") or "")[:5]
+    if not z.isdigit():
+        return False
+    n = int(z)
+    tx_other = 73300 <= n <= 73399 or 75500 <= n <= 75999 or 76500 <= n <= 79999
+    return tx_other and not DFW_CITY_RE.fullmatch((h.get("city") or "").strip())
+
+
+STATUS_SAME = {"readynow": "ready", "moveinready": "ready", "movein": "ready", "availablenow": "ready",
+               "quickmovein": "ready", "completed": "ready", "complete": "ready", "finished": "ready"}
+
+
+def status_key(s) -> str:
+    """'Move-in ready' and 'Ready Now' are the same status worded differently."""
+    k = re.sub(r"[^a-z]", "", str(s or "").lower())
+    return STATUS_SAME.get(k, k)
+
+
 def load_config(path="builders.yaml") -> list[dict]:
     cfg = yaml.safe_load(open(path))
     d = cfg.get("defaults", {})
@@ -143,6 +165,8 @@ class Recorder:
 
     @locked
     def observe(self, b, obs):
+        if outside_dfw(obs):
+            return
         if not b.get("dfw_only") and not in_dfw(obs) and not (
                 obs.get("url") and b.get("filter_re") and b["filter_re"].search(obs["url"])):
             return
@@ -152,7 +176,7 @@ class Recorder:
         self.url_parts(b, obs)
         now = ts(self.now)
         price = int(obs["price"])
-        url_city = city_from_url(obs["url"]) if obs.get("url") else ""
+        url_city = city_from_url(obs["url"], (b.get("url_parts") or {}).values()) if obs.get("url") else ""
         if url_city and (not obs.get("city") or obs["city"].lower() in ("dallas", "fort worth", "ft worth")):
             obs["city"] = url_city   # metro name in the data, actual town in the URL
         if obs.get("city"):
@@ -228,7 +252,7 @@ class Recorder:
             # status / move-in / was-price follow the same source ranking as price
             if rank >= int(h.get("status_rank") or 0):
                 st_new = obs.get("status") or ""
-                if (st_new and h.get("status") and st_new.lower() != str(h["status"]).lower()
+                if (st_new and h.get("status") and status_key(st_new) != status_key(h["status"])
                         and rank == int(h.get("status_rank") or 0) and seen_rank is None
                         and h.get("first_seen") != now):
                     self.event(b, "status_change", h, detail=f'{h["status"]} -> {st_new}')
@@ -407,6 +431,8 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
             continue
         done.add(url)
         r = fetch(url)
+        if r is not None and r.status == 0:
+            r = fetch(url)  # network hiccup (timeout/reset, not a refusal): one more try
         if not r or r.status != 200:
             notes.append(f"seed {r.status if r else 'skipped'}: {url}")
             continue

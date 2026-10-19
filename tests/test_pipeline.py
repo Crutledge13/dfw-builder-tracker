@@ -305,3 +305,67 @@ def test_community_center_beats_zip(tmp_path, monkeypatch):
     geocode.fill_missing(homes, R.now_local(), R.FMT, "t", session=object())
     assert homes["x"]["location_precision"] == "community" and homes["x"]["lat"] == 33.302
     assert homes["y"]["location_precision"] == "zip"
+
+
+def test_homes_in_other_texas_metros_are_not_tracked():
+    """Coventry/Pacesetter/Shaddock also build in Austin, San Antonio and Houston; a builder's DFW flag or URL
+    filter must not let those in, and a plan named after a DFW town isn't the home's city."""
+    st = LocalStore(tempfile.mkdtemp()).load()
+    rec = R.Recorder(st, R.now_local())
+    b = dict(B, slug="coventry", name="Coventry Homes", dfw_only=True, url_parts={"community": -3, "plan": -2},
+             filter_re=re.compile(r"/new-homes/tx/"))
+    sa = {"address": "8332 Rocket View", "zip": "78263", "price": 334990,
+          "url": "https://www.coventryhomes.com/new-homes/tx/san-antonio/garden-grove-50/young/8332-rocket-view"}
+    plan_town = {"address": "2216 Crimson Sunset Drive", "zip": "78628", "price": 499990,
+                 "url": "https://www.coventryhomes.com/new-homes/tx/georgetown/wolf-ranch/kaufman/2216-crimson-sunset-drive"}
+    dfw = {"address": "1000 Goldenwave Trail", "zip": "75098", "price": 459990,
+           "url": "https://www.coventryhomes.com/new-homes/tx/wylie/dominion-50/kennedale/1000-goldenwave-trail"}
+    for o in (sa, plan_town, dfw):
+        rec.observe(b, dict(o))
+    assert list(st.homes) == ["coventry:1000-goldenwave-trl"]
+    assert st.homes["coventry:1000-goldenwave-trl"]["city"] == "Wylie"   # not the 'Kennedale' plan
+    # a DFW town on the page wins over a bogus ZIP
+    rec.observe(b, {"address": "1002 Perrin Lane", "city": "Van Alstyne", "zip": "79495", "price": 300000})
+    assert "coventry:1002-perrin-ln" in st.homes
+    from tracker.extract import city_from_url
+    assert city_from_url("https://x/new-homes/tx/heartland/heartland/howard/123-oak-lane", [-3, -2]) == "Heartland"
+
+
+def test_status_rewording_is_not_a_status_change():
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    rec = R.Recorder(st, t0)
+    h = {"address": "2709 Grapevine Way", "city": "Celina", "zip": "75009", "price": 400000,
+         "url": "https://tb.example/2709-grapevine-way", "from_detail": True}
+    rec.observe(B, dict(h, status="move-in ready"))
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, status="Ready Now"))
+    assert [c["event"] for c in rec.changes] == []
+    rec = R.Recorder(st, t0 + timedelta(hours=2))
+    rec.observe(B, dict(h, status="Under Construction"))
+    assert [c["event"] for c in rec.changes] == ["status_change"]
+
+
+def test_fine_print_is_not_an_offer():
+    from tracker.extract import incentive_snippets
+    text = ("Zero Down & Rates as Low as 3.99% | Restrictions apply; promotional 5/1 ARM rate offer and Flex Cash "
+            "incentives available on select inventory when financing with preferred lender | Zero Down Available")
+    assert incentive_snippets(text) == ["Zero Down & Rates as Low as 3.99%", "Zero Down Available"]
+    fp = ("<p>Builder forward commitments (BFCs), special fixed interest rates and flex cash offerings are limited "
+          "and may be discontinued without prior notice.</p><p>Get $10,000 in flex cash on select homes.</p>")
+    assert [o["text"] for o in extract_offers(fp)] == ["Get $10,000 in flex cash on select homes"]
+
+
+def test_seed_network_error_is_retried_once():
+    class Flaky(FakeClient):
+        def get(self, url):
+            if url.rstrip("/").endswith("/qmi") and not getattr(self, "failed", False):
+                self.failed = True
+                self.requests_made += 1
+                return Response(url, 0, "")
+            return super().get(url)
+    st = LocalStore(tempfile.mkdtemp()).load()
+    rec = R.Recorder(st, R.now_local())
+    pages = {"https://tb.example/qmi": listing_page([("1500 Elm Street", 489990, 2450, "Seaberry")])}
+    _, status, note = R.crawl_builder(B, Flaky(pages), rec, budget=20)
+    assert status == "ok" and "seed" not in note and len(st.homes) == 1

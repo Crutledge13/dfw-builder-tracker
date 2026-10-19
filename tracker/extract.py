@@ -68,7 +68,7 @@ INCENTIVE_WORDS = re.compile(
 STATUS_WORDS = re.compile(
     r"(move-?in ready|ready now|available now|under construction|coming soon|under contract|sold|pending|"
     r"ready (?:in )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? ?\d{0,4})", re.I)
-DFW_CITY_RE = re.compile(r"\b(" + "|".join(sorted((re.escape(c) for c in "Allen|Anna|Argyle|Arlington|Aubrey|Azle|Balch Springs|Bedford|Benbrook|Burleson|Caddo Mills|Carrollton|Cedar Hill|Celina|Cleburne|Colleyville|Commerce|Coppell|Corinth|Crandall|Crowley|Dallas|Decatur|Denton|DeSoto|Duncanville|Ennis|Euless|Farmers Branch|Farmersville|Fate|Ferris|Flower Mound|Forney|Fort Worth|Frisco|Gainesville|Garland|Glenn Heights|Godley|Granbury|Grand Prairie|Grapevine|Greenville|Gunter|Haltom City|Haslet|Heath|Howe|Hurst|Irving|Josephine|Joshua|Justin|Kaufman|Keller|Kennedale|Krum|Lancaster|Lavon|Lewisville|Little Elm|Lucas|Mansfield|McKinney|McLendon-Chisholm|Melissa|Mesquite|Midlothian|Murphy|Nevada|New Fairview|Northlake|North Richland Hills|Oak Point|Ovilla|Parker|Pilot Point|Plano|Ponder|Princeton|Prosper|Providence Village|Red Oak|Rhome|Richardson|Roanoke|Rockwall|Rowlett|Royse City|Sachse|Saginaw|Sanger|Seagoville|Sherman|Southlake|Springtown|Sunnyvale|Terrell|Trenton|Van Alstyne|Venus|Watauga|Waxahachie|Weatherford|Westlake|Wylie|Aledo|Alvarado|Denison|Lantana|Tioga".split("|")), key=len, reverse=True)) + r")\b", re.I)
+DFW_CITY_RE = re.compile(r"\b(" + "|".join(sorted((re.escape(c) for c in "Allen|Anna|Argyle|Arlington|Aubrey|Azle|Balch Springs|Bedford|Benbrook|Burleson|Caddo Mills|Carrollton|Cedar Hill|Celina|Cleburne|Colleyville|Commerce|Coppell|Corinth|Crandall|Crowley|Dallas|Decatur|Denton|DeSoto|Duncanville|Ennis|Euless|Farmers Branch|Farmersville|Fate|Ferris|Flower Mound|Forney|Fort Worth|Frisco|Gainesville|Garland|Glenn Heights|Godley|Granbury|Grand Prairie|Grapevine|Greenville|Gunter|Haltom City|Haslet|Heath|Howe|Hurst|Irving|Josephine|Joshua|Justin|Kaufman|Keller|Kennedale|Krum|Lancaster|Lavon|Lewisville|Little Elm|Lucas|Mansfield|McKinney|McLendon-Chisholm|Melissa|Mesquite|Midlothian|Murphy|Nevada|New Fairview|Northlake|North Richland Hills|Oak Point|Ovilla|Parker|Pilot Point|Plano|Ponder|Princeton|Prosper|Providence Village|Red Oak|Rhome|Richardson|Roanoke|Rockwall|Rowlett|Royse City|Sachse|Saginaw|Sanger|Seagoville|Sherman|Southlake|Springtown|Sunnyvale|Terrell|Trenton|Van Alstyne|Venus|Watauga|Waxahachie|Weatherford|Westlake|Wylie|Aledo|Alvarado|Denison|Lantana|Tioga|Heartland|Poolville".split("|")), key=len, reverse=True)) + r")\b", re.I)
 STREET_RE = re.compile(
     r"\b\d{2,6}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z0-9'.]*(?:\s+[A-Z][A-Za-z0-9'.]*){0,4}\s+"
     r"(?:Street|St|Drive|Dr|Lane|Ln|Road|Rd|Court|Ct|Way|Trail|Trl|Avenue|Ave|Boulevard|Blvd|Circle|Cir|"
@@ -185,9 +185,14 @@ def canonical_city(name: str) -> str:
     return DFW_CITY_NAMES.get(n.lower(), n)
 
 
-def city_from_url(url: str) -> str:
-    """The most specific DFW city in the URL path: '/texas/dallas/crandall/…' -> 'Crandall'."""
-    segs = [x for x in urlparse(url).path.split("/") if x][:-1]   # last segment is the home itself
+def city_from_url(url: str, skip=()) -> str:
+    """The most specific DFW city in the URL path: '/texas/dallas/crandall/…' -> 'Crandall'.
+    `skip` = path positions counted back from the home (-1) that hold a community or plan name,
+    which can be a town name (Coventry's 'Kennedale' plan in a Georgetown community)."""
+    allsegs = [x for x in urlparse(url).path.split("/") if x]
+    n = len(allsegs)
+    skipped = {n + p for p in skip if isinstance(p, int) and p < 0}
+    segs = [s for i, s in enumerate(allsegs[:-1]) if i not in skipped]   # last segment is the home itself
     for seg in reversed(segs):
         m = DFW_CITY_RE.fullmatch(seg.replace("-", " "))
         if m:
@@ -477,7 +482,8 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
 
 DISCLAIMER = re.compile(r"(\bapr\b.*based on|fico|not all (borrowers|buyers)|subject to (credit|change)|"
                         r"sales price of|loan amount|per \$1,?000|nmls|cannot be combined|terms and conditions|"
-                        r"based on a|example|payments? (exclude|of \$))", re.I)
+                        r"based on a|example|payments? (exclude|of \$)|restrictions apply|without (prior )?notice|"
+                        r"may be (changed|modified|discontinued|withdrawn)|forward commitments)", re.I)
 
 
 OFFER_RE = re.compile(

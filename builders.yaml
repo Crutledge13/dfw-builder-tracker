@@ -144,7 +144,7 @@ builders:
     promos: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
     detail_pattern: '/quick-move-in-home/[^/]+/?$'
     sitemap_filter: 'new-homes-for-sale-dallas'
-    dfw_only: true
+    dfw_only: false              # also builds in Austin (/new-homes-for-sale-austin/)
     verified: true
 
   - name: Beazer Homes
@@ -162,7 +162,8 @@ builders:
     site: https://www.coventryhomes.com/
     seeds: [https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
     promos: [https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
-    sitemap_filter: 'dallas-ft-worth|/new-homes/tx/'
+    # Coventry builds across Texas; its URLs carry the town (/new-homes/tx/<town>/...), so only DFW towns.
+    sitemap_filter: 'dallas-ft-worth|/new-homes/tx/(aledo|allen|alvarado|anna|argyle|arlington|aubrey|azle|balch-springs|bedford|benbrook|burleson|caddo-mills|carrollton|cedar-hill|celina|cleburne|colleyville|commerce|coppell|corinth|crandall|crowley|dallas|decatur|denison|denton|desoto|duncanville|ennis|euless|farmers-branch|farmersville|fate|ferris|flower-mound|forney|fort-worth|frisco|gainesville|garland|glenn-heights|godley|granbury|grand-prairie|grapevine|greenville|gunter|haltom-city|haslet|heartland|heath|howe|hurst|irving|josephine|joshua|justin|kaufman|keller|kennedale|krum|lancaster|lantana|lavon|lewisville|little-elm|lucas|mansfield|mckinney|mclendon-chisholm|melissa|mesquite|midlothian|murphy|nevada|new-fairview|north-richland-hills|northlake|oak-point|ovilla|parker|pilot-point|plano|ponder|poolville|princeton|prosper|providence-village|red-oak|rhome|richardson|roanoke|rockwall|rowlett|royse-city|sachse|saginaw|sanger|seagoville|sherman|southlake|springtown|sunnyvale|terrell|tioga|trenton|van-alstyne|venus|watauga|waxahachie|weatherford|westlake|wylie)/'
     verified: true
 
   - name: DRB Homes
@@ -224,5 +225,6 @@ builders:
     site: https://www.shaddockhomes.com/
     seeds: [https://www.shaddockhomes.com/quick-move-in-homes/]
     promos: [https://www.shaddockhomes.com/]
-    dfw_only: true
+    sitemap_filter: '/dallas-fort-worth/'
+    dfw_only: false              # also builds in Austin (/homes/austin/)
     verified: false

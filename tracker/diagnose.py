@@ -29,6 +29,10 @@ def main():
         homes = [f["url"] for f in frontier if f["builder"] == b["name"] and f["kind"] == "home"][:2]
         targets = [("seed", u) for u in (b.get("seeds") or [])[:2]] + \
                   [("promo", u) for u in (b.get("promos") or [])[:1]] + [("home", u) for u in homes]
+        # deepest known hub pages (community pages) too, so pages one level below the seed can be checked
+        fhubs = sorted((f["url"] for f in frontier if f["builder"] == b["name"] and f["kind"] == "hub"),
+                       key=lambda u: -u.rstrip("/").count("/"))[:1]
+        targets += [("hub", u) for u in fhubs]
         for sm in c.sitemaps_from_robots(b["site"])[:2]:
             targets.append(("sitemap", sm))
         hub_seen = 0
