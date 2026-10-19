@@ -64,5 +64,6 @@ jobs:
           for f in tracker/zip_centroids.csv tracker/place_centroids.csv; do [ -f "$f" ] && git add "$f"; done; true
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Data update $(TZ=America/Chicago date '+%Y-%m-%d %H:%M %Z')"
-          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
+          # this run's data is the newest; if a code or manual push touched the same data files meanwhile, keep ours
+          for i in 1 2 3; do git pull --rebase -q -X theirs && git push -q && exit 0; git rebase --abort 2>/dev/null; sleep 5; done
           exit 1
