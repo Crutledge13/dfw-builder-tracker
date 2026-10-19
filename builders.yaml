@@ -95,7 +95,7 @@ builders:
     slug: graham-hart
     url_parts: {community: -2}
     site: https://www.grahamhart.com/
-    seeds: [https://www.grahamhart.com/quick-move-in-homes/]
+    seeds: [https://www.grahamhart.com/available-homes/]   # /quick-move-in-homes/ is gone (404)
     promos: [https://www.grahamhart.com/]
     dfw_only: true
     verified: false
@@ -123,7 +123,7 @@ builders:
     slug: historymaker
     url_parts: {community: -2}
     site: https://www.historymaker.com/
-    seeds: [https://www.historymaker.com/quick-move-in-homes/]
+    seeds: [https://www.historymaker.com/new-home-communities/quick-move-ins/dallas-fort-worth]   # old /quick-move-in-homes/ is 404
     promos: [https://www.historymaker.com/promotions/]
     verified: false
 
@@ -140,8 +140,8 @@ builders:
     slug: pacesetter
     url_parts: {community: -3}
     site: https://pacesetterhomestexas.com/
-    seeds: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
-    promos: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
+    seeds: [https://pacesetterhomestexas.com/]   # /new-homes-for-sale-dallas/ is 404; homes come from the sitemap
+    promos: [https://pacesetterhomestexas.com/]
     detail_pattern: '/quick-move-in-home/[^/]+/?$'
     sitemap_filter: 'new-homes-for-sale-dallas'
     dfw_only: false              # also builds in Austin (/new-homes-for-sale-austin/)
