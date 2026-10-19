@@ -125,3 +125,24 @@ run_at,builder,pages,homes_seen,new_homes,price_cuts,price_increases,offers_seen
 2026-10-19 01:14,David Weekley Homes,106,102,0,0,0,0,0,ok,
 2026-10-19 01:14,M/I Homes,122,118,0,0,0,0,0,ok,
 2026-10-19 01:14,Shaddock Homes,83,79,0,0,0,2,0,ok,
+2026-10-19 07:03,Bloomfield Homes,122,596,0,0,0,0,0,ok,
+2026-10-19 07:03,D.R. Horton,123,585,20,0,0,0,0,ok,
+2026-10-19 07:03,First Texas Homes,122,262,0,0,0,5,0,ok,
+2026-10-19 07:03,Riverside Homebuilders,123,151,0,0,0,2,0,ok,
+2026-10-19 07:03,Trophy Signature Homes,122,324,0,0,0,1,0,ok,
+2026-10-19 07:03,Highland Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.highlandhomes.com/dfw/homes-for-sale; seed 403: https://www.highlandhomes.com/dfw/homes-for-sale
+2026-10-19 07:03,Graham Hart Home Builder,28,25,0,0,0,0,0,ok,seed 404: https://www.grahamhart.com/quick-move-in-homes/
+2026-10-19 07:03,Pyvot Homes,7,3,0,0,0,0,0,ok,
+2026-10-19 07:03,Century Communities,91,88,0,0,0,1,0,ok,
+2026-10-19 07:03,HistoryMaker Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.historymaker.com/quick-move-in-homes/; seed 403: https://www.historymaker.com/quick-move-in-homes/
+2026-10-19 07:03,K. Hovnanian Homes,3,88,0,0,0,1,0,ok,
+2026-10-19 07:03,Pacesetter Homes Texas,122,119,0,0,0,0,0,ok,seed 404: https://pacesetterhomestexas.com/new-homes-for-sale-dallas/
+2026-10-19 07:03,Beazer Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.beazer.com/dallas-tx; seed 403: https://www.beazer.com/dallas-tx
+2026-10-19 07:03,Coventry Homes,122,291,0,1,0,2,0,ok,
+2026-10-19 07:03,DRB Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth; seed 403: https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth
+2026-10-19 07:03,Meritage Homes,122,119,0,0,0,0,0,ok,
+2026-10-19 07:03,Perry Homes,121,94,0,0,0,0,0,ok,
+2026-10-19 07:03,KB Home,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.kbhome.com/new-homes-dallas-fort-worth; seed 403: https://www.kbhome.com/new-homes-dallas-fort-worth
+2026-10-19 07:03,David Weekley Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth; seed 403: https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth
+2026-10-19 07:03,M/I Homes,122,119,0,0,0,0,0,ok,
+2026-10-19 07:03,Shaddock Homes,79,76,0,0,0,2,0,ok,
