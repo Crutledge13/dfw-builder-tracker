@@ -231,3 +231,14 @@ builders:
     sitemap_filter: '/dallas-fort-worth/'
     dfw_only: false              # also builds in Austin (/homes/austin/)
     verified: false
+
+  - name: Ashlyn Homes
+    slug: ashlyn
+    site: https://www.ashlynhomes.com/
+    seeds: [https://www.ashlynhomes.com/find-your-home/]
+    promos: [https://www.ashlynhomes.com/]
+    detail_pattern: '/house/[a-z0-9-]+/?$'
+    hub_pattern: '^/communities/[a-z0-9-]+/?$'
+    url_parts: {}
+    dfw_only: true        # Fort Worth builder (Tarrant, Parker, Wise, Hood counties)
+    verified: false
