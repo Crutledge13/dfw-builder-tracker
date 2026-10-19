@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DFW Builders &amp; Incentives</title>
+<style>
+  /* Page wrapper only — when pasting into another site, copy from "BUILDERS TAB START" to "BUILDERS TAB END". */
+  body { margin: 0; background: #f6f5f1; font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  @media (prefers-color-scheme: dark) { body { background: #141413; } }
+</style>
+</head>
+<body>
+
+<!-- ===================== BUILDERS TAB START ===================== -->
+<section id="builders-tab">
+  <style>
+    #builders-tab {
+      --bt-bg: #f6f5f1; --bt-card: #ffffff; --bt-ink: #1d1d1b; --bt-muted: #6b6a64; --bt-line: #e4e2da;
+      --bt-accent: #2f5d50; --bt-accent-soft: #e6efeb; --bt-down: #1f7a4d; --bt-chip: #efede6; --bt-warn: #9a5b13;
+      color: var(--bt-ink); max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px;
+      font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      #builders-tab { --bt-bg: #141413; --bt-card: #1d1d1b; --bt-ink: #ecebe6; --bt-muted: #9b9a93; --bt-line: #2e2d2a;
+        --bt-accent: #7fb8a4; --bt-accent-soft: #1f2d28; --bt-down: #5cc28c; --bt-chip: #262522; --bt-warn: #e0a35a; }
+    }
+    #builders-tab * { box-sizing: border-box; }
+    #builders-tab h2 { font-size: 24px; margin: 0 0 4px; letter-spacing: -.01em; }
+    #builders-tab .bt-sub { color: var(--bt-muted); margin: 0 0 16px; }
+    #builders-tab .bt-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    #builders-tab input, #builders-tab select {
+      font: inherit; padding: 8px 10px; border: 1px solid var(--bt-line); border-radius: 8px;
+      background: var(--bt-card); color: var(--bt-ink); }
+    #builders-tab input[type=search] { flex: 1; min-width: 200px; }
+    #builders-tab input[type=checkbox] { width: 16px; height: 16px; margin: 0; accent-color: var(--bt-accent); }
+    #builders-tab label.bt-chk { display: flex; align-items: center; gap: 6px; color: var(--bt-muted); }
+    #builders-tab .bt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
+    #builders-tab .bt-card { background: var(--bt-card); border: 1px solid var(--bt-line); border-radius: 12px;
+      padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    #builders-tab .bt-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+    #builders-tab .bt-name { font-weight: 650; font-size: 17px; }
+    #builders-tab .bt-name a { color: inherit; text-decoration: none; }
+    #builders-tab .bt-name a:hover { text-decoration: underline; }
+    #builders-tab .bt-count { color: var(--bt-muted); font-size: 13px; white-space: nowrap; }
+    #builders-tab .bt-headline { background: var(--bt-accent-soft); color: var(--bt-accent); border-radius: 8px;
+      padding: 8px 10px; font-weight: 600; }
+    #builders-tab .bt-headline.bt-none { background: var(--bt-chip); color: var(--bt-muted); font-weight: 500; }
+    #builders-tab .bt-offers { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    #builders-tab .bt-offers li { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; }
+    #builders-tab .bt-pill { flex: none; font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+      background: var(--bt-chip); color: var(--bt-muted); border-radius: 99px; padding: 2px 8px; margin-top: 1px; }
+    #builders-tab .bt-meta { color: var(--bt-muted); font-size: 12px; display: block; margin-top: 2px; }
+    #builders-tab .bt-meta a { color: var(--bt-accent); }
+    #builders-tab .bt-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+      border-top: 1px solid var(--bt-line); padding-top: 12px; }
+    #builders-tab .bt-stat b { display: block; font-size: 16px; font-variant-numeric: tabular-nums; }
+    #builders-tab .bt-stat span { color: var(--bt-muted); font-size: 12px; }
+    #builders-tab .bt-down { color: var(--bt-down); }
+    #builders-tab .bt-cities { color: var(--bt-muted); font-size: 13px; }
+    #builders-tab .bt-foot { color: var(--bt-muted); font-size: 12px; margin-top: 20px; }
+    #builders-tab .bt-empty { color: var(--bt-muted); padding: 40px 0; text-align: center; }
+    #builders-tab .bt-status { color: var(--bt-warn); font-size: 12px; }
+  </style>
+
+  <h2>Builders &amp; incentives</h2>
+  <p class="bt-sub" id="bt-updated">Loading…</p>
+  <div class="bt-bar">
+    <input type="search" id="bt-q" placeholder="Search builder, city or offer…" aria-label="Search builders">
+    <select id="bt-sort" aria-label="Sort builders">
+      <option value="homes">Most homes</option>
+      <option value="rate">Lowest advertised rate</option>
+      <option value="cash">Biggest cash / closing offer</option>
+      <option value="cuts">Most price cuts (7 days)</option>
+      <option value="price">Lowest median price</option>
+      <option value="name">Name A–Z</option>
+    </select>
+    <label class="bt-chk"><input type="checkbox" id="bt-offers-only"> Has an offer</label>
+  </div>
+  <div class="bt-grid" id="bt-grid"></div>
+  <p class="bt-foot">Offers are read from each builder's own website and are usually conditional (often on using the
+    builder's lender, on select homes, or by a closing date). Confirm terms with the builder.</p>
+
+  <script>
+  (function () {
+    const API = "https://crutledge13.github.io/dfw-builder-tracker/data/api/";
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    const money = (n) => n == null ? "—" : n >= 1e6 ? "$" + (n / 1e6).toFixed(2).replace(/\.00$/, "") + "M"
+      : n >= 1000 ? "$" + Math.round(n / 1000).toLocaleString() + "k" : "$" + n.toLocaleString();
+    const ago = (iso) => {
+      if (!iso) return "";
+      const h = Math.max(0, Math.round((Date.now() - new Date(iso)) / 36e5));
+      return h < 1 ? "checked within the hour" : h < 48 ? `checked ${h} hour${h === 1 ? "" : "s"} ago`
+        : `checked ${Math.round(h / 24)} days ago`;
+    };
+    const TYPE = { rate: "Rate", closing_costs: "Closing", cash_credit: "Cash", price_reduction: "Savings", other: "Offer" };
+    let builders = [];
+
+    const allOffers = (b) => [...b.blanket_offers, ...b.common_home_offers];
+    const bestRate = (b) => Math.min(...allOffers(b).map((o) => o.rate).filter(Boolean), Infinity);
+    const bestCash = (b) => Math.max(0, ...allOffers(b).filter((o) => o.type !== "rate" || o.amount).map((o) => o.amount || 0));
+
+    function offerItem(o, total) {
+      const where = o.homes
+        ? `on ${o.homes.toLocaleString()} of ${total.toLocaleString()} homes`
+        : o.source_url ? "on the builder's promotions page" : "";
+      const link = o.source_url ? ` · <a href="${esc(o.source_url)}" target="_blank" rel="noopener">source</a>` : "";
+      return `<li><span class="bt-pill">${TYPE[o.type] || "Offer"}</span>
+        <span>${esc(o.text)}<span class="bt-meta">${esc(where)}${o.says_all_homes ? " (builder says all homes)" : ""}${link}</span></span></li>`;
+    }
+
+    function card(b) {
+      const offers = allOffers(b);
+      const h = b.homes, p = b.prices, a = b.activity;
+      const cities = b.cities.slice(0, 6).join(", ") + (b.cities.length > 6 ? ` +${b.cities.length - 6} more` : "");
+      return `<article class="bt-card">
+        <div class="bt-head">
+          <div class="bt-name">${b.website ? `<a href="${esc(b.website)}" target="_blank" rel="noopener">${esc(b.builder)}</a>` : esc(b.builder)}</div>
+          <div class="bt-count">${h.active.toLocaleString()} homes</div>
+        </div>
+        <div class="bt-headline ${b.headline_offer ? "" : "bt-none"}">${esc(b.headline_offer || "No builder-wide offer published right now")}</div>
+        ${offers.length ? `<ul class="bt-offers">${offers.map((o) => offerItem(o, h.active)).join("")}</ul>` : ""}
+        <div class="bt-stats">
+          <div class="bt-stat"><b>${money(p.min)}–${money(p.max)}</b><span>price range</span></div>
+          <div class="bt-stat"><b>${p.median_per_sqft ? "$" + p.median_per_sqft : "—"}</b><span>median $/sq ft</span></div>
+          <div class="bt-stat"><b>${h.with_offer.toLocaleString()}</b><span>homes with an offer</span></div>
+          <div class="bt-stat"><b class="${a.price_cuts_7d ? "bt-down" : ""}">${a.price_cuts_7d}</b><span>price cuts, 7 days</span></div>
+          <div class="bt-stat"><b class="${a.total_cut_7d ? "bt-down" : ""}">${a.total_cut_7d ? money(a.total_cut_7d) : "—"}</b><span>total cut, 7 days</span></div>
+          <div class="bt-stat"><b>${h.ready_now.toLocaleString()}</b><span>ready now</span></div>
+        </div>
+        ${cities ? `<div class="bt-cities">${esc(cities)}</div>` : ""}
+        <div class="bt-meta">${b.status === "ok" ? esc(ago(b.checked_at)) : `<span class="bt-status">Not readable right now (${esc(b.status)})</span>`}</div>
+      </article>`;
+    }
+
+    function render() {
+      const q = $("bt-q").value.trim().toLowerCase();
+      const only = $("bt-offers-only").checked;
+      const sort = $("bt-sort").value;
+      let list = builders.filter((b) => (!only || allOffers(b).length) &&
+        (!q || [b.builder, b.headline_offer, ...b.cities, ...allOffers(b).map((o) => o.text)].join(" ").toLowerCase().includes(q)));
+      const by = {
+        homes: (x, y) => y.homes.active - x.homes.active,
+        rate: (x, y) => bestRate(x) - bestRate(y),
+        cash: (x, y) => bestCash(y) - bestCash(x),
+        cuts: (x, y) => y.activity.price_cuts_7d - x.activity.price_cuts_7d || y.activity.total_cut_7d - x.activity.total_cut_7d,
+        price: (x, y) => (x.prices.median ?? Infinity) - (y.prices.median ?? Infinity),
+        name: (x, y) => x.builder.localeCompare(y.builder),
+      }[sort];
+      list.sort(by);
+      $("bt-grid").innerHTML = list.length ? list.map(card).join("") : `<div class="bt-empty">No builders match.</div>`;
+    }
+
+    async function load() {
+      try {
+        const [res, meta] = await Promise.all([
+          fetch(API + "builders.json", { cache: "no-store" }).then((r) => r.json()),
+          fetch(API + "meta.json", { cache: "no-store" }).then((r) => r.json()).catch(() => ({})),
+        ]);
+        builders = res.filter((b) => b.homes.active > 0 || b.blanket_offers.length);
+        const withOffers = builders.filter((b) => allOffers(b).length).length;
+        $("bt-updated").textContent = `${builders.length} builders tracked · ${withOffers} advertising an incentive` +
+          (meta.updated_at ? ` · updated ${meta.updated_at} Central` : "");
+        render();
+      } catch (e) {
+        $("bt-updated").textContent = "Couldn't load builder data right now. Please try again shortly.";
+      }
+    }
+    ["bt-q", "bt-sort", "bt-offers-only"].forEach((id) => $(id).addEventListener("input", render));
+    load();
+    setInterval(load, 15 * 60 * 1000);
+  })();
+  </script>
+</section>
+<!-- ===================== BUILDERS TAB END ===================== -->
+
+</body>
+</html>

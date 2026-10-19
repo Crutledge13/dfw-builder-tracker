@@ -14,6 +14,7 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
 | `sold_removed.json` | Homes that left the market in the last 90 days (usually sold or under contract). |
 | `home_offers.json` | Homes whose own listing advertises an offer (same shape as `homes.json`). |
 | `builder_offers.json` | Builder-wide promotions (rate buydowns, closing costs, flex cash…). |
+| `builders.json` | **One record per builder**: headline incentive, builder-wide offers, offers repeated across its homes, inventory, price range, 7-day activity, cities. Powers a Builders tab. |
 | `summary.json` | One row per builder: active homes, cuts in 24h / 7 days, $ cut, new, removed, offers. |
 | `map.json` | Lightweight list for map pins: id, lat, lng, precision, price, builder, address, city, beds, sqft, change, offer (true/false), url. |
 | `homes.geojson` | Every mapped home as GeoJSON (works directly with Leaflet, Mapbox, Google Maps data layers). |
@@ -69,13 +70,51 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
   Brand-new streets can take a few days to geocode, so some homes start as `zip` and get upgraded.
 - `url` is the builder's own page for the home — link to it for final pricing and terms.
 
+## A builder (`builders.json`)
+
+```json
+{
+  "builder": "First Texas Homes", "slug": "first-texas", "website": "https://www.firsttexashomes.com/",
+  "status": "ok", "checked_at": "2026-10-19T09:01:00-05:00",
+  "headline_offer": "Rates as low as 2.99% · Up to $30k flex cash",
+  "blanket_offers": [
+    {"type": "rate", "amount": 20000, "rate": 2.99, "text": "As Low As 2.99% Rate Buydown or Up to $20K Flex Cash",
+     "source_url": "https://www.firsttexashomes.com/promos/index.php", "homes": null,
+     "first_seen": "2026-10-18T18:59:00-05:00", "last_seen": "2026-10-19T09:01:00-05:00"}
+  ],
+  "common_home_offers": [
+    {"text": "Zero Down & Rates as Low as 3.99%", "type": "rate", "amount": null, "rate": 3.99,
+     "homes": 175, "share": 0.59, "says_all_homes": false}
+  ],
+  "homes": {"active": 296, "with_offer": 290, "with_price_cut": 1, "with_builder_discount": 0,
+            "ready_now": 120, "under_construction": 60, "pending": 4},
+  "prices": {"min": 289950, "max": 1250000, "median": 489990, "median_per_sqft": 188,
+             "avg_builder_discount": null, "max_total_savings": 30000},
+  "activity": {"price_cuts_24h": 0, "price_cuts_7d": 1, "total_cut_7d": 5000, "biggest_cut_7d": 5000,
+               "new_homes_7d": 2, "sold_removed_7d": 0},
+  "cities": ["Celina", "Forney", "Midlothian", "..."], "communities": 40
+}
+```
+
+- `blanket_offers`: promotions the builder publishes for its homes in general (its promotions page or
+  DFW landing page). `homes` = how many of its homes also show that offer, when known.
+- `common_home_offers`: offers that appear on many of the builder's own home listings (at least 5% of
+  them, or the text says "all specs"/"all homes"), up to 3, not repeating a blanket offer.
+  `share` = fraction of the builder's homes showing it.
+- `headline_offer`: one line summarizing the best advertised rate and the biggest cash / closing-cost
+  offer across both lists; `null` when the builder publishes no incentive.
+- `status`: `ok`, `blocked` (the builder's site refuses automated reading), `no data`, or `error`.
+- A ready-made Builders tab (plain HTML + JavaScript, no libraries) is in
+  [docs/builders-tab.html](builders-tab.html) and live at
+  https://crutledge13.github.io/dfw-builder-tracker/builders-tab.html
+
 ## Paste this into ChatGPT to build the site
 
 > Build a website that shows new-construction homes in Dallas–Fort Worth with price drops and builder
 > incentives. Load all data in the browser with `fetch()` from
 > `https://crutledge13.github.io/dfw-builder-tracker/data/api/` — files: meta.json, homes.json,
 > price_drops.json, new_homes.json, sold_removed.json, home_offers.json, builder_offers.json,
-> summary.json, price_history.json, map.json, homes.geojson. The field definitions are at
+> summary.json, builders.json, price_history.json, map.json, homes.geojson. The field definitions are at
 > https://github.com/Crutledge13/dfw-builder-tracker/blob/main/docs/API.md (read it).
 > Never hard-code or copy the data into the site; always fetch it so the site stays current (it updates
 > hourly). Pages: home (latest price drops + biggest offers), browse homes (filters: builder, city, price,
@@ -86,6 +125,8 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
 > "Checked <x> hours ago" from checked_at, plan, community, builder, card.beds, card.baths, card.sqft,
 > card.move_in, and card.savings ("$133k incentive"); sort options include biggest total_drop and most cuts.
 > Home detail (price history chart from price_history.json keyed by id, offer,
-> link to the builder's page), builder pages (from summary.json), and "recently sold". Show "Updated <time>"
+> link to the builder's page), a Builders tab from builders.json (one card per builder: headline_offer,
+> each blanket offer and common home offer with its "on N of M homes" count, price range, homes with an
+> offer, 7-day price cuts; sort by most homes, lowest rate, biggest cash offer; filter "has an offer"), and "recently sold". Show "Updated <time>"
 > from meta.json. Note on each page that prices and offers come from builders' websites and must be
 > confirmed with the builder.

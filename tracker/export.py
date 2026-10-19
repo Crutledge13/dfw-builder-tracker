@@ -134,6 +134,133 @@ def add_card(out: dict, stats: dict):
     return out
 
 
+ALL_HOMES_RE = re.compile(r"\b(all|every|any)\s+(specs?|homes?|quick move-?ins?|qmis?|inventory|available homes)\b|"
+                          r"\bon all\b|\bany lender\b", re.I)
+PER_HOME_ONLY = re.compile(r"^\$[\d,.]+\s?k?\s*off$", re.I)   # "$62K off" on a listing page = one home's markdown
+OFFER_ORDER = {"rate": 0, "closing_costs": 1, "cash_credit": 2, "price_reduction": 3, "other": 4}
+
+
+def _norm_offer(t: str) -> str:
+    return re.sub(r"[^a-z0-9$%]", "", (t or "").lower())
+
+
+def builder_profiles(st, homes: dict, derived: dict, run_at: str) -> list[dict]:
+    """One record per builder: inventory, prices, activity, blanket (builder-wide) offers and the offers
+    that appear on most of its homes."""
+    import statistics
+    try:
+        import yaml
+        cfg = yaml.safe_load(open(Path(__file__).resolve().parent.parent / "builders.yaml"))["builders"]
+    except Exception:
+        cfg = []
+    meta = {b["name"]: b for b in cfg}
+    summary = {r["builder"]: r for r in derived.get("Summary", [])}
+    names = list(dict.fromkeys([b["name"] for b in cfg] + sorted({h["builder"] for h in homes.values()})))
+
+    out = []
+    for name in names:
+        hs = [h for h in homes.values() if h["builder"] == name]
+        prices = sorted(h["price"] for h in hs if h.get("price"))
+        ppsf = [h["price_per_sqft"] for h in hs if h.get("price_per_sqft")]
+        disc = [h["builder_discount"] for h in hs if h.get("builder_discount")]
+        b = meta.get(name, {})
+        sm = summary.get(name, {})
+
+        # blanket offers from the builder's promotions pages, de-duplicated
+        blanket, seen = [], set()
+        for o in sorted((o for o in st.incentives.values() if o.get("builder") == name and o.get("active")),
+                        key=lambda o: (OFFER_ORDER.get(o.get("kind"), 9), -(o.get("headline_amount") or 0))):
+            text = (o.get("text") or "").strip()
+            if not text or PER_HOME_ONLY.match(text):
+                continue
+            key = (o.get("kind"), o.get("headline_amount") or None, o.get("rate") or None)
+            if key in seen or _norm_offer(text) in seen:
+                continue
+            seen.update({key, _norm_offer(text)})
+            blanket.append({"type": o.get("kind"), "amount": _clean(o.get("headline_amount")),
+                            "rate": _clean(o.get("rate")), "text": text, "source_url": o.get("source_url"),
+                            "first_seen": iso(o.get("first_seen")), "last_seen": iso(o.get("last_seen"))})
+
+        # offers repeated across many of the builder's homes = a de-facto blanket incentive
+        counts: dict = {}
+        for h in hs:
+            for part in ((h.get("offer") or {}).get("text") or "").split(" | "):
+                part = part.strip()
+                if part and not PER_HOME_ONLY.match(part):
+                    k = _norm_offer(part)
+                    c = counts.setdefault(k, {"text": part, "homes": 0})
+                    c["homes"] += 1
+        from .incentives import classify, headline_amount, lowest_rate
+        common = []
+        kept = {(o["type"], o["rate"], o["amount"]) for o in blanket} | {_norm_offer(o["text"]) for o in blanket}
+        for c in sorted(counts.values(), key=lambda c: -c["homes"]):
+            share = c["homes"] / len(hs) if hs else 0
+            says_all = bool(ALL_HOMES_RE.search(c["text"]))
+            if not (c["homes"] >= 3 and (share >= 0.05 or says_all)):
+                continue
+            o = {"text": c["text"], "type": classify(c["text"]), "amount": headline_amount(c["text"]),
+                 "rate": lowest_rate(c["text"]), "homes": c["homes"], "share": round(share, 2),
+                 "says_all_homes": says_all}
+            key = (o["type"], o["rate"], o["amount"])
+            vague = o["rate"] is None and o["amount"] is None and any(k[0] == o["type"] for k in kept if isinstance(k, tuple))
+            if key in kept or _norm_offer(o["text"]) in kept or vague:
+                for b2 in blanket:   # same offer as a promotions-page one: just note how many homes show it
+                    if (b2["type"], b2["rate"], b2["amount"]) == key:
+                        b2["homes"] = max(b2.get("homes") or 0, c["homes"])
+                continue
+            kept.update({key, _norm_offer(o["text"])})
+            common.append(o)
+            if len(common) == 3:
+                break
+
+        allo = blanket + common
+        rates = [o["rate"] for o in allo if o.get("rate")]
+        cash = [o["amount"] for o in allo if o.get("amount") and o.get("type") in ("closing_costs", "cash_credit", "price_reduction")]
+        bits = []
+        if rates:
+            bits.append(f"Rates as low as {min(rates):g}%")
+        if cash:
+            kinds = {o["type"] for o in allo if o.get("amount") == max(cash)}
+            label = "closing costs" if "closing_costs" in kinds else "flex cash" if "cash_credit" in kinds else "savings"
+            bits.append(f"Up to {money_k(max(cash))} {label}")
+        if not bits and allo:
+            bits.append(allo[0]["text"][:80])
+
+        out.append({
+            "builder": name, "slug": b.get("slug"), "website": b.get("site"),
+            "status": sm.get("last_run_status") or ("ok" if hs else "no data"),
+            "checked_at": iso(sm.get("last_run")) or iso(run_at),
+            "headline_offer": " · ".join(bits) or None,
+            "blanket_offers": blanket,
+            "common_home_offers": common,
+            "homes": {
+                "active": len(hs),
+                "with_offer": sum(1 for h in hs if h.get("offer")),
+                "with_price_cut": sum(1 for h in hs if h.get("cuts")),
+                "with_builder_discount": len(disc),
+                "ready_now": sum(1 for h in hs if h.get("move_in_label") == "Ready now"),
+                "under_construction": sum(1 for h in hs if h.get("move_in_label") == "Under construction"),
+                "pending": sum(1 for h in hs if h.get("move_in_label") == "Pending"),
+            },
+            "prices": {
+                "min": prices[0] if prices else None, "max": prices[-1] if prices else None,
+                "median": int(statistics.median(prices)) if prices else None,
+                "median_per_sqft": int(statistics.median(ppsf)) if ppsf else None,
+                "avg_builder_discount": int(statistics.mean(disc)) if disc else None,
+                "max_total_savings": max((h.get("total_savings") or 0) for h in hs) or None if hs else None,
+            },
+            "activity": {
+                "price_cuts_24h": sm.get("price_cuts_24h") or 0, "price_cuts_7d": sm.get("price_cuts_7d") or 0,
+                "total_cut_7d": sm.get("total_cut_7d") or 0, "biggest_cut_7d": sm.get("biggest_cut_7d"),
+                "new_homes_7d": sm.get("new_homes_7d") or 0, "sold_removed_7d": sm.get("removed_7d") or 0,
+            },
+            "cities": [c for c, _ in __import__("collections").Counter(h["city"] for h in hs if h.get("city")).most_common()],
+            "communities": len({h["community"] for h in hs if h.get("community")}),
+        })
+    out.sort(key=lambda r: -r["homes"]["active"])
+    return out
+
+
 def _write(path: Path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":"), default=str), encoding="utf-8")
 
@@ -187,6 +314,7 @@ def export_json(folder: Path, st, derived: dict, run_at: str):
                                  "first_seen": o.get("first_seen"), "last_seen": o.get("last_seen")}
                                 for o in st.incentives.values() if o.get("active")],
         "summary.json": rows("Summary"),
+        "builders.json": builder_profiles(st, homes, derived, run_at),
         "map.json": [{"id": h["id"], "lat": h["lat"], "lng": h["lng"], "precision": h["location_precision"],
                       "price": h["price"], "builder": h["builder"], "address": h["address"], "city": h["city"],
                       "beds": h["beds"], "sqft": h["sqft"], "change": h["change_since_first"],

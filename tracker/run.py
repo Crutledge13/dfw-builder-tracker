@@ -103,6 +103,15 @@ def load_config(path="builders.yaml") -> list[dict]:
 
 
 # ------------------------------------------------------------------ recording
+def offer_terms(text: str) -> frozenset:
+    """The numbers that make an offer what it is: dollar amounts, percentages, buydown structure."""
+    t = (text or "").lower().replace(",", "")
+    terms = set(re.findall(r"\$\s?\d+(?:\.\d+)?\s?k?", t)) | set(re.findall(r"\d+(?:\.\d+)?\s?%", t))
+    terms |= set(re.findall(r"\b\d/\d(?:/\d)?\b", t))
+    return frozenset(x.replace(" ", "") for x in terms)
+
+
+
 def locked(fn):
     def wrapper(self, *a, **kw):
         with self.lock:
@@ -268,13 +277,16 @@ class Recorder:
                 h["page_read"] = True
             if obs.get("from_detail"):  # the home's own page is the authority on its offer
                 if new_inc and new_inc != old_inc:
-                    if h.get("first_seen") == now or first_page_read:
-                        pass  # brand-new home, or first look at its page: not a change
-                    elif old_inc:
-                        self.event(b, "home_offer_changed", h, detail=f"{old_inc}  ->  {new_inc}")
+                    if old_inc and offer_terms(old_inc) == offer_terms(new_inc):
+                        h["incentive_text"] = new_inc   # same offer, reworded or cut differently: keep its date
                     else:
-                        self.event(b, "home_offer_new", h, detail=new_inc)
-                    h["incentive_text"], h["offer_since"] = new_inc, now
+                        if h.get("first_seen") == now or first_page_read:
+                            pass  # brand-new home, or first look at its page: not a change
+                        elif old_inc:
+                            self.event(b, "home_offer_changed", h, detail=f"{old_inc}  ->  {new_inc}")
+                        else:
+                            self.event(b, "home_offer_new", h, detail=new_inc)
+                        h["incentive_text"], h["offer_since"] = new_inc, now
                 elif not new_inc and old_inc and not first_page_read:
                     self.event(b, "home_offer_removed", h, detail=old_inc)
                     for k in ("incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since"):
@@ -547,6 +559,12 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
             drops.append(row)
     drops.sort(key=lambda r: r["at"], reverse=True)
     last_run = {r["builder"]: r for r in runlog}
+    summary_baseline = {}   # a builder's first 24h of tracking is its baseline, not new listings
+    for c in allc:
+        if c.get("event") == "new_home" and parse_ts(c.get("at")):
+            t = parse_ts(c["at"])
+            summary_baseline[c["builder"]] = min(summary_baseline.get(c["builder"], t + timedelta(hours=24)),
+                                                 t + timedelta(hours=24))
     summary = []
     for b in builders:
         n = b["name"]
@@ -563,7 +581,8 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
             "avg_cut_7d": round(sum(amounts) / len(amounts)) if amounts else None,
             "biggest_cut_7d": max(amounts) if amounts else None,
             "new_homes_7d": sum(1 for c in allc if c.get("builder") == n and c.get("event") == "new_home"
-                                and (parse_ts(c.get("at")) or d90) >= d7),
+                                and (parse_ts(c.get("at")) or d90) >= d7
+                                and (parse_ts(c.get("at")) or d90) > summary_baseline.get(n, d90)),
             "removed_7d": sum(1 for c in allc if c.get("builder") == n and c.get("event") == "removed"
                               and (parse_ts(c.get("at")) or d90) >= d7),
             "active_offers": sum(1 for o in st.incentives.values() if o.get("builder") == n and o.get("active")),

@@ -565,7 +565,11 @@ def _offer_window(s: str, m: re.Match, width: int = 70) -> str:
     """Trim a long block of text to the words around the offer phrase."""
     if len(s) <= 120 and not SPEC_RE.search(s) and not re.search(r"\$[\d,]{6,}|completion|skip to", s, re.I):
         return s
-    a, b = max(0, m.start() - width), min(len(s), m.end() + width)
+    a, b = max(0, m.start() - width), min(len(s), m.end() + 2 * width)   # right side runs to the sentence end
+    while a > 0 and not s[a - 1].isspace():          # never cut a word or number in half
+        a -= 1
+    while b < len(s) and not s[b].isspace():
+        b += 1
     piece = s[a:b]
     # cut back to clause boundaries / spec words so neighbouring listing details don't leak in
     left = re.split(r"(?:\s[|•*]\s|\b(?:beds?|baths?|sq\.? ?ft|stories|garage|completion|main content)\b|\$[\d,]{6,})",

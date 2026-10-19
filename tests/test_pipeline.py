@@ -462,3 +462,28 @@ def test_markdown_label_not_double_counted():
     h2 = {"price": 347990, "first_price": 347990, "offer": {"text": "$35K off"}}
     add_card(h2, {})
     assert h2["total_savings"] == 35000      # no was-price shown: the label is the only record of the markdown
+
+
+def test_reworded_offer_is_not_a_change():
+    from tracker.run import offer_terms
+    a = "Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,00"
+    b = "Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design"
+    assert offer_terms(a) != offer_terms("Up to $2,000 in closing costs")
+    assert offer_terms("2/1 Buydown, 3.25% first year") == offer_terms("Lower payments with a 2/1 buydown: 3.25% in year one")
+    assert offer_terms("2/1 Buydown, 3.25% first year") != offer_terms("2/1 Buydown, 2.99% first year")
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); t0 = R.now_local()
+        seed = {"https://tb.example/qmi": listing_page([])}     # links to the detail page
+        run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0)
+        st, _ = run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0 + timedelta(hours=1))
+        assert "closing costs" in next(iter(st.homes.values()))["incentive_text"]
+        reworded = detail_page(424990).replace("Get up to $15,000 toward closing costs on this home.",
+                                               "Receive up to $15,000 toward your closing costs!")
+        _, ch = run_once(store, dict(seed, **{DETAIL: reworded}), t0 + timedelta(hours=2))
+        assert not [c for c in ch if c["event"].startswith("home_offer")], ch
+        changed = reworded.replace("$15,000", "$20,000")
+        _, ch = run_once(store, dict(seed, **{DETAIL: changed}), t0 + timedelta(hours=3))
+        assert [c["event"] for c in ch if c["event"].startswith("home_offer")] == ["home_offer_changed"]
+    finally:
+        shutil.rmtree(tmp)
