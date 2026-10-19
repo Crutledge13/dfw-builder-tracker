@@ -57,7 +57,7 @@ Base URL: `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
 > incentives. Load all data in the browser with `fetch()` from
 > `https://crutledge13.github.io/dfw-builder-tracker/data/api/` — files: meta.json, homes.json,
 > price_drops.json, new_homes.json, sold_removed.json, home_offers.json, builder_offers.json,
-> summary.json, price_history.json. The field definitions are at
+> summary.json, price_history.json, map.json, homes.geojson. The field definitions are at
 > https://github.com/Crutledge13/dfw-builder-tracker/blob/main/docs/API.md (read it).
 > Never hard-code or copy the data into the site; always fetch it so the site stays current (it updates
 > hourly). Pages: home (latest price drops + biggest offers), browse homes (filters: builder, city, price,
