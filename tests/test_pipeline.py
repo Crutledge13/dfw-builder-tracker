@@ -403,3 +403,13 @@ def test_nextjs_flight_stream_homes():
     rec_h = st.homes["beazer:2300-briarbrook-dr"]
     assert (rec_h["community"], rec_h["plan"], rec_h["price"]) == ("Stark Farms", "Berkshire", 399990)
     assert len(st.homes) == 1   # plan elevations are not homes
+
+
+def test_town_and_numbered_street_in_home_slug():
+    from tracker.extract import address_from_url, city_from_url
+    u = "https://www.ashlynhomes.com/house/114-red-bud-road-boyd-tx-76023/"
+    assert (address_from_url(u), city_from_url(u)) == ("114 Red Bud Road", "Boyd")
+    u = "https://www.ashlynhomes.com/house/3221-nw-25th-street-fort-worth-tx-76106/"
+    assert (address_from_url(u), city_from_url(u)) == ("3221 NW 25th Street", "Fort Worth")
+    u = "https://www.ashlynhomes.com/house/140-prairie-winds-drive-poolville-texas-76487"
+    assert (address_from_url(u), city_from_url(u)) == ("140 Prairie Winds Drive", "Poolville")

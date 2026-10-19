@@ -68,9 +68,10 @@ INCENTIVE_WORDS = re.compile(
 STATUS_WORDS = re.compile(
     r"(move-?in ready|ready now|available now|under construction|coming soon|under contract|sold|pending|"
     r"ready (?:in )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? ?\d{0,4})", re.I)
-DFW_CITY_RE = re.compile(r"\b(" + "|".join(sorted((re.escape(c) for c in "Allen|Anna|Argyle|Arlington|Aubrey|Azle|Balch Springs|Bedford|Benbrook|Burleson|Caddo Mills|Carrollton|Cedar Hill|Celina|Cleburne|Colleyville|Commerce|Coppell|Corinth|Crandall|Crowley|Dallas|Decatur|Denton|DeSoto|Duncanville|Ennis|Euless|Farmers Branch|Farmersville|Fate|Ferris|Flower Mound|Forney|Fort Worth|Frisco|Gainesville|Garland|Glenn Heights|Godley|Granbury|Grand Prairie|Grapevine|Greenville|Gunter|Haltom City|Haslet|Heath|Howe|Hurst|Irving|Josephine|Joshua|Justin|Kaufman|Keller|Kennedale|Krum|Lancaster|Lavon|Lewisville|Little Elm|Lucas|Mansfield|McKinney|McLendon-Chisholm|Melissa|Mesquite|Midlothian|Murphy|Nevada|New Fairview|Northlake|North Richland Hills|Oak Point|Ovilla|Parker|Pilot Point|Plano|Ponder|Princeton|Prosper|Providence Village|Red Oak|Rhome|Richardson|Roanoke|Rockwall|Rowlett|Royse City|Sachse|Saginaw|Sanger|Seagoville|Sherman|Southlake|Springtown|Sunnyvale|Terrell|Trenton|Van Alstyne|Venus|Watauga|Waxahachie|Weatherford|Westlake|Wylie|Aledo|Alvarado|Denison|Lantana|Tioga|Heartland|Poolville".split("|")), key=len, reverse=True)) + r")\b", re.I)
+DFW_CITY_RE = re.compile(r"\b(" + "|".join(sorted((re.escape(c) for c in "Allen|Anna|Argyle|Arlington|Aubrey|Azle|Balch Springs|Bedford|Benbrook|Burleson|Caddo Mills|Carrollton|Cedar Hill|Celina|Cleburne|Colleyville|Commerce|Coppell|Corinth|Crandall|Crowley|Dallas|Decatur|Denton|DeSoto|Duncanville|Ennis|Euless|Farmers Branch|Farmersville|Fate|Ferris|Flower Mound|Forney|Fort Worth|Frisco|Gainesville|Garland|Glenn Heights|Godley|Granbury|Grand Prairie|Grapevine|Greenville|Gunter|Haltom City|Haslet|Heath|Howe|Hurst|Irving|Josephine|Joshua|Justin|Kaufman|Keller|Kennedale|Krum|Lancaster|Lavon|Lewisville|Little Elm|Lucas|Mansfield|McKinney|McLendon-Chisholm|Melissa|Mesquite|Midlothian|Murphy|Nevada|New Fairview|Northlake|North Richland Hills|Oak Point|Ovilla|Parker|Pilot Point|Plano|Ponder|Princeton|Prosper|Providence Village|Red Oak|Rhome|Richardson|Roanoke|Rockwall|Rowlett|Royse City|Sachse|Saginaw|Sanger|Seagoville|Sherman|Southlake|Springtown|Sunnyvale|Terrell|Trenton|Van Alstyne|Venus|Watauga|Waxahachie|Weatherford|Westlake|Wylie|Aledo|Alvarado|Denison|Lantana|Tioga|Heartland|Poolville|Boyd|Paradise|Bridgeport|Peaster|Millsap|Brock|Tolar|Cresson|Newark|Azle|Springtown|Mineral Wells|Haslet|Godley|Rhome|Burleson|Joshua".split("|")), key=len, reverse=True)) + r")\b", re.I)
 STREET_RE = re.compile(
-    r"\b\d{2,6}\s+(?:[NSEW]\.?\s+)?[A-Z][A-Za-z0-9'.]*(?:\s+[A-Z][A-Za-z0-9'.]*){0,4}\s+"
+    r"\b\d{1,6}\s+(?:(?:[NSEW]|NE|NW|SE|SW)\.?\s+)?(?:[A-Z][A-Za-z0-9'.]*|\d{1,3}(?:st|nd|rd|th))"
+    r"(?:\s+(?:[A-Z][A-Za-z0-9'.]*|\d{1,3}(?:st|nd|rd|th))){0,4}\s+"
     r"(?:Street|St|Drive|Dr|Lane|Ln|Road|Rd|Court|Ct|Way|Trail|Trl|Avenue|Ave|Boulevard|Blvd|Circle|Cir|"
     r"Place|Pl|Parkway|Pkwy|Loop|Path|Run|Cove|Cv|Ridge|Bend|Pass|Point|Pt|Terrace|Ter|Row|Crossing|Xing|"
     r"Hollow|Glen|Grove|Meadow|Meadows|Park|View|Vista|Mews|Walk|Trace|Landing|Creek|Hill|Hills|Heights|Commons|Tr|Pass|Bnd|Gln)\b\.?")
@@ -157,9 +158,14 @@ def address_from_url(url: str) -> str:
             if len(words) > k + 1 and DFW_CITY_RE.fullmatch(" ".join(words[-k:])):
                 words = words[:-k]
                 break
+        else:
+            # unknown town: the street ends at its last street-type word ("114-red-bud-road-boyd")
+            ends = [i for i, w in enumerate(words) if i >= 2 and w in SUFFIXES]
+            if ends and ends[-1] < len(words) - 1:
+                words = words[:ends[-1] + 1]
         last = "-".join(words)
     last = re.sub(r"-unit-[a-z0-9]+$", "", last)
-    m = re.search(r"(?:^|-)(\d{2,6})-((?:[a-z]+-?){1,5})$", last)
+    m = re.search(r"(?:^|-)(\d{1,6})-((?:(?:[a-z]+|\d{1,3}(?:st|nd|rd|th))-?){1,5})$", last)
     if not m:
         return ""
     words = m.group(2).strip("-").split("-")
@@ -167,7 +173,8 @@ def address_from_url(url: str) -> str:
         return ""
     if words[-1] not in SUFFIXES and len(words) < 2:
         return ""
-    return m.group(1) + " " + " ".join(w.capitalize() for w in words)
+    return m.group(1) + " " + " ".join(w.upper() if w in ("ne", "nw", "se", "sw", "n", "s", "e", "w") else
+                                       w if re.match(r"\d", w) else w.capitalize() for w in words)
 
 
 DFW_CITY_NAMES = {}
@@ -190,6 +197,16 @@ def city_from_url(url: str, skip=()) -> str:
     `skip` = path positions counted back from the home (-1) that hold a community or plan name,
     which can be a town name (Coventry's 'Kennedale' plan in a Georgetown community)."""
     allsegs = [x for x in urlparse(url).path.split("/") if x]
+    if allsegs:   # a home slug ending '-<town>-tx-<zip>'
+        t = re.search(r"-(?:tx|texas)(?:-\d{5})?$", allsegs[-1].lower())
+        if t:
+            words = allsegs[-1].lower()[:t.start()].split("-")
+            for k in (3, 2, 1):
+                if len(words) > k + 1 and DFW_CITY_RE.fullmatch(" ".join(words[-k:])):
+                    return canonical_city(" ".join(words[-k:]))
+            ends = [i for i, w in enumerate(words) if i >= 2 and w in SUFFIXES]
+            if ends and ends[-1] < len(words) - 1:
+                return " ".join(words[ends[-1] + 1:]).title()
     n = len(allsegs)
     skipped = {n + p for p in skip if isinstance(p, int) and p < 0}
     segs = [s for i, s in enumerate(allsegs[:-1]) if i not in skipped]   # last segment is the home itself

@@ -241,4 +241,4 @@ builders:
     hub_pattern: '^/communities/[a-z0-9-]+/?$'
     url_parts: {}
     dfw_only: true        # Fort Worth builder (Tarrant, Parker, Wise, Hood counties)
-    verified: false
+    verified: true
