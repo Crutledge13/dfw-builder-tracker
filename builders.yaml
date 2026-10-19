@@ -16,6 +16,8 @@
 #   sitemap_filter Regex a sitemap URL must match (use it to keep national builders to DFW).
 #   dfw_only       true = everything this builder publishes is DFW (local builders);
 #                  false = keep only homes whose city/zip is in DFW.
+#   url_parts      Where community / plan sit in a home's URL path, counting back from the home
+#                  (-1 = the home itself). Fills community/plan when the page doesn't state them.
 #   verified       true = seed URLs were checked by hand on 2026-10-18. false = best guess;
 #                  check the "Run Log" tab after the first run and fix if a builder shows 0 homes.
 
@@ -27,6 +29,7 @@ defaults:
 builders:
   - name: Bloomfield Homes
     slug: bloomfield
+    url_parts: {community: -3, plan: -2}
     site: https://www.bloomfieldhomes.com/
     seeds: [https://www.bloomfieldhomes.com/new-homes/available/]
     promos: [https://www.bloomfieldhomes.com/]
@@ -35,6 +38,7 @@ builders:
 
   - name: D.R. Horton
     slug: dr-horton
+    url_parts: {community: -3}
     site: https://www.drhorton.com/
     seeds:
       - https://www.drhorton.com/texas/dallas
@@ -70,6 +74,7 @@ builders:
 
   - name: Trophy Signature Homes
     slug: trophy-signature
+    url_parts: {community: -2}
     site: https://trophysignaturehomes.com/
     seeds: [https://trophysignaturehomes.com/communities/dallas-ft-worth]
     promos: [https://trophysignaturehomes.com/promotions]
@@ -78,6 +83,7 @@ builders:
 
   - name: Highland Homes
     slug: highland
+    url_parts: {community: -2}
     site: https://www.highlandhomes.com/
     seeds: [https://www.highlandhomes.com/dfw/homes-for-sale]
     promos: [https://www.highlandhomes.com/dfw/promotions]
@@ -87,6 +93,7 @@ builders:
 
   - name: Graham Hart Home Builder
     slug: graham-hart
+    url_parts: {community: -2}
     site: https://www.grahamhart.com/
     seeds: [https://www.grahamhart.com/quick-move-in-homes/]
     promos: [https://www.grahamhart.com/]
@@ -104,6 +111,7 @@ builders:
   # "Century Homes" in DFW is assumed to be Century Communities (and Century Complete).
   - name: Century Communities
     slug: century
+    url_parts: {community: -3}
     site: https://www.centurycommunities.com/
     seeds: [https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro]
     promos: [https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro]
@@ -113,6 +121,7 @@ builders:
 
   - name: HistoryMaker Homes
     slug: historymaker
+    url_parts: {community: -2}
     site: https://www.historymaker.com/
     seeds: [https://www.historymaker.com/quick-move-in-homes/]
     promos: [https://www.historymaker.com/promotions/]
@@ -120,6 +129,7 @@ builders:
 
   - name: K. Hovnanian Homes
     slug: khov
+    url_parts: {community: -2}
     site: https://www.khov.com/
     seeds: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
     promos: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
@@ -128,6 +138,7 @@ builders:
 
   - name: Pacesetter Homes Texas
     slug: pacesetter
+    url_parts: {community: -3}
     site: https://pacesetterhomestexas.com/
     seeds: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
     promos: [https://pacesetterhomestexas.com/new-homes-for-sale-dallas/]
@@ -147,6 +158,7 @@ builders:
 
   - name: Coventry Homes
     slug: coventry
+    url_parts: {community: -3, plan: -2}
     site: https://www.coventryhomes.com/
     seeds: [https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
     promos: [https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/]
@@ -171,6 +183,7 @@ builders:
 
   - name: Perry Homes
     slug: perry
+    url_parts: {community: -2}
     site: https://www.perryhomes.com/
     seeds: []
     promos: []
@@ -188,6 +201,7 @@ builders:
 
   - name: David Weekley Homes
     slug: david-weekley
+    url_parts: {community: -2}
     site: https://www.davidweekleyhomes.com/
     seeds: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
     promos: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
@@ -197,6 +211,7 @@ builders:
 
   - name: M/I Homes
     slug: mi-homes
+    url_parts: {community: -3, plan: -2}
     site: https://www.mihomes.com/
     seeds: [https://www.mihomes.com/new-homes/texas/dallas-fort-worth-area]
     promos: [https://www.mihomes.com/new-homes/texas/dallas-fort-worth-area]
@@ -205,6 +220,7 @@ builders:
 
   - name: Shaddock Homes
     slug: shaddock
+    url_parts: {community: -2}
     site: https://www.shaddockhomes.com/
     seeds: [https://www.shaddockhomes.com/quick-move-in-homes/]
     promos: [https://www.shaddockhomes.com/]

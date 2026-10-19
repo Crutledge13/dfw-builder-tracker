@@ -134,6 +134,9 @@ class LocalStore:
                                               (runlog[0]["run_at"] if runlog else ""))
         for tab, recs in derived.items():
             self._write(tab, [TABS[tab]] + [_row(TABS[tab], r) for r in recs])
+        from .export import export_json
+        st.changes = st.changes + list(new_changes)
+        export_json(self.dir, st, derived, runlog[0]["run_at"] if runlog else "")
 
 
 class SheetStore:

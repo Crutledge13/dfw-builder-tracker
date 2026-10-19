@@ -135,6 +135,12 @@ def test_two_runs_track_changes():
         amber_offer = next(o for o in offers if o["address"] == "1404 Amber Way")
         assert amber_offer["offer_type"] == "closing_costs" and amber_offer["offer_amount"] == "15000"
         assert "closing costs" in amber_offer["incentive_text"]
+        api = json.load(open(f"{tmp}/api/homes.json"))
+        a = next(x for x in api if x["address"] == "1404 Amber Way")
+        assert a["price"] == 399990 and a["first_price"] == 424990 and a["offer"]["amount"] == 15000
+        hist = json.load(open(f"{tmp}/api/price_history.json"))[a["id"]]
+        assert [p["price"] for p in hist] == [424990, 399990]
+        assert json.load(open(f"{tmp}/api/meta.json"))["counts"]["homes"] == len(api)
         drops = open(f"{tmp}/price_drops.csv").read()
         assert "toward closing costs" in drops  # each drop shows that home's advertised offer
         assert "1404 Amber Way" in drops and "1500 Elm Street" in drops

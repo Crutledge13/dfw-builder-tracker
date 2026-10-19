@@ -121,6 +121,26 @@ class Recorder:
             return f'{b["slug"]}:{urlparse(obs["url"]).path.strip("/").lower()}'
         return None
 
+    @staticmethod
+    def url_parts(b, obs):
+        parts = b.get("url_parts") or {}
+        url = obs.get("url") or ""
+        if not parts or not url:
+            return
+        segs = [x for x in urlparse(url).path.split("/") if x]
+        for field, pos in parts.items():
+            if obs.get(field) or not isinstance(pos, int) or len(segs) < abs(pos) + 2:
+                continue
+            seg = segs[pos]
+            if re.fullmatch(r"[\d-]+|lots?|series|quick-move-in-home|homes?", seg, re.I):
+                continue
+            small = {"at", "of", "on", "the", "and", "in"}
+            words = seg.split("-")
+            obs[field] = " ".join(
+                w.upper() if re.fullmatch(r"[ivx]{2,4}", w, re.I) else
+                w if w.isdigit() else w.lower() if (w.lower() in small and i > 0) else w.capitalize()
+                for i, w in enumerate(words))
+
     @locked
     def observe(self, b, obs):
         if not b.get("dfw_only") and not in_dfw(obs) and not (
@@ -129,6 +149,7 @@ class Recorder:
         hid = self.home_id(b, obs)
         if not hid or not obs.get("price"):
             return
+        self.url_parts(b, obs)
         now = ts(self.now)
         price = int(obs["price"])
         # How much to trust this reading: the home's own page > a listing card > listing-page data.

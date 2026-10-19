@@ -11,6 +11,10 @@ same CSVs (or load them into a database; the columns are already shaped for that
 
 ## Where to see it
 
+- **For your website:** JSON feed at `https://crutledge13.github.io/dfw-builder-tracker/data/api/`
+  (homes, price drops, new, sold/removed, offers, per-home price history). See [docs/API.md](docs/API.md),
+  which includes a prompt to paste into ChatGPT.
+
 - **Live spreadsheet page:** `https://<your-github-username>.github.io/<repo>/` — tabs for
   Summary, Price Drops, Homes, Incentives, Changes and Run Log, with search, builder filter,
   sorting and CSV download. Refreshes itself every 15 minutes; data updates hourly.
