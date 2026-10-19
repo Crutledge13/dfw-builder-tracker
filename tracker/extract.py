@@ -170,9 +170,29 @@ def address_from_url(url: str) -> str:
     return m.group(1) + " " + " ".join(w.capitalize() for w in words)
 
 
+DFW_CITY_NAMES = {}
+
+
+def canonical_city(name: str) -> str:
+    """'MCKINNEY' / 'Mckinney' -> 'McKinney' (known DFW cities); other names are returned trimmed."""
+    if not name:
+        return ""
+    if not DFW_CITY_NAMES:
+        for c in DFW_CITY_RE.pattern.split("(", 1)[1].rsplit(")", 1)[0].split("|"):
+            c = c.replace("\\", "")
+            DFW_CITY_NAMES[c.lower()] = c
+    n = re.sub(r"\s+", " ", name).strip()
+    return DFW_CITY_NAMES.get(n.lower(), n)
+
+
 def city_from_url(url: str) -> str:
-    m = DFW_CITY_RE.search(urlparse(url).path.replace("-", " ").replace("/", " / "))
-    return m.group(1).title() if m else ""
+    """The most specific DFW city in the URL path: '/texas/dallas/crandall/…' -> 'Crandall'."""
+    segs = [x for x in urlparse(url).path.split("/") if x][:-1]   # last segment is the home itself
+    for seg in reversed(segs):
+        m = DFW_CITY_RE.fullmatch(seg.replace("-", " "))
+        if m:
+            return canonical_city(m.group(1))
+    return ""
 
 
 def same_address(a: str, b: str) -> bool:

@@ -287,6 +287,21 @@ def test_geocode_census_then_zip_fallback(tmp_path, monkeypatch):
     assert homes["a"]["location_precision"] == "address" and (homes["a"]["lat"], homes["a"]["lng"]) == (33.3101, -96.7801)
     assert homes["b"]["location_precision"] == "zip" and homes["b"]["lat"] == 33.33
     assert homes["c"]["location_precision"] == "builder"          # builder pins are never overwritten
-    assert out == {"census_tried": 2, "census_matched": 1, "zip_fallback": 1}
+    assert out == {"census_tried": 2, "census_matched": 1, "community": 0, "zip": 1, "city": 0}
     geocode.fill_missing(homes, now + timedelta(hours=1), R.FMT, "test", session=FakeSession())
     assert FakeSession.posts == 1    # the unmatched street isn't retried for 7 days
+
+
+def test_community_center_beats_zip(tmp_path, monkeypatch):
+    from tracker import geocode
+    zf = tmp_path / "zips.csv"; zf.write_text("zip,lat,lng\n75009,33.33,-96.78\n")
+    monkeypatch.setattr(geocode, "ZIP_FILE", zf)
+    monkeypatch.setattr(geocode, "census_batch", lambda rows, session: {})
+    homes = {f"p{i}": {"active": True, "builder": "B", "community": "Mosaic", "city": "Celina", "zip": "75009",
+                       "address": f"{i} A St", "lat": 33.301 + i / 1000, "lng": -96.80, "location_precision": "builder"}
+             for i in range(3)}
+    homes["x"] = {"active": True, "builder": "B", "community": "Mosaic", "city": "Celina", "zip": "75009", "address": "9 B St"}
+    homes["y"] = {"active": True, "builder": "B", "community": "Elsewhere", "city": "Celina", "zip": "75009", "address": "8 C St"}
+    geocode.fill_missing(homes, R.now_local(), R.FMT, "t", session=object())
+    assert homes["x"]["location_precision"] == "community" and homes["x"]["lat"] == 33.302
+    assert homes["y"]["location_precision"] == "zip"

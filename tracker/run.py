@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from . import discover, incentives
-from .extract import DFW_CITY_RE, NON_HOME_RE, address_from_url, fill_coords, page_geo_index, address_key, card_homes, extract_homes, same_address, to_price
+from .extract import DFW_CITY_RE, NON_HOME_RE, address_from_url, canonical_city, city_from_url, fill_coords, page_geo_index, address_key, card_homes, extract_homes, same_address, to_price
 from .fetch import PoliteClient
 from .store import State, store_from_env
 
@@ -152,6 +152,11 @@ class Recorder:
         self.url_parts(b, obs)
         now = ts(self.now)
         price = int(obs["price"])
+        url_city = city_from_url(obs["url"]) if obs.get("url") else ""
+        if url_city and (not obs.get("city") or obs["city"].lower() in ("dallas", "fort worth", "ft worth")):
+            obs["city"] = url_city   # metro name in the data, actual town in the URL
+        if obs.get("city"):
+            obs["city"] = canonical_city(obs["city"])
         # How much to trust this reading: the home's own page > a listing card > listing-page data.
         rank = 3 if obs.get("from_detail") else 2 if obs.get("source") == "card" else 1
         seen_rank = self.run_rank.get(hid)
@@ -217,6 +222,9 @@ class Recorder:
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "url"):
                 if obs.get(k) not in (None, "") and not h.get(k):
                     h[k] = obs[k]
+            if obs.get("city") and h.get("city") != obs["city"] and str(h.get("city") or "").lower() in (
+                    "dallas", "fort worth", "ft worth", obs["city"].lower()):
+                h["city"] = obs["city"]
             # status / move-in / was-price follow the same source ranking as price
             if rank >= int(h.get("status_rank") or 0):
                 st_new = obs.get("status") or ""
