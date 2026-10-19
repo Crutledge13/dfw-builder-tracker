@@ -413,3 +413,52 @@ def test_town_and_numbered_street_in_home_slug():
     assert (address_from_url(u), city_from_url(u)) == ("3221 NW 25th Street", "Fort Worth")
     u = "https://www.ashlynhomes.com/house/140-prairie-winds-drive-poolville-texas-76487"
     assert (address_from_url(u), city_from_url(u)) == ("140 Prairie Winds Drive", "Poolville")
+
+
+def test_card_totals_match_example_listing():
+    """2202 Redding Drive: 10 cuts totaling $108k since first tracked, builder shows $777,670 -> $133k incentive."""
+    from types import SimpleNamespace
+    from tracker.export import export_json
+    tmp = tempfile.mkdtemp()
+    try:
+        hid = "bloomfield:2202-redding-dr"
+        prices = [752990, 742990, 732990, 722990, 712990, 702990, 692990, 682990, 672990, 662990, 644990]
+        changes = [{"at": "2026-09-04 08:00", "event": "new_home", "home_id": hid, "new": prices[0]}]
+        changes += [{"at": f"2026-10-{i + 1:02d} 08:00", "event": "price_cut", "home_id": hid, "old": a, "new": b,
+                     "url": "u"} for i, (a, b) in enumerate(zip(prices, prices[1:]))]
+        home = {"home_id": hid, "active": True, "builder": "Bloomfield Homes", "address": "2202 Redding Drive",
+                "community": "Somerset Classic 70s & 80s", "plan": "Magnolia II", "beds": 4, "baths": 3.5,
+                "sqft": 3430, "price": 644990, "first_price": 752990, "builder_was_price": 777670,
+                "status": "Move-In Ready", "last_seen": "2026-10-19 08:19", "url": "u"}
+        st = SimpleNamespace(homes={hid: home}, changes=changes, incentives={})
+        export_json(__import__("pathlib").Path(tmp), st, {}, "2026-10-19 08:19")
+        h = json.load(open(f"{tmp}/api/homes.json"))[0]
+        assert (h["total_drop"], h["cuts"], h["largest_cut"], h["builder_discount"]) == (108000, 10, 18000, 132680)
+        assert h["card"] == {"price_drop": "Down $108k since first tracked", "cuts": "10 cuts",
+                             "savings": "$133k incentive", "move_in": "Ready now", "beds": "4 bd",
+                             "baths": "3.5 ba", "sqft": "3,430 sq ft"}
+        assert h["checked_at"] == "2026-10-19T08:19:00-05:00"
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_move_in_and_offer_value():
+    from tracker.export import move_in_label as m, incentive_value as v
+    assert [m("Move-in Ready", None), m("Under Contract", None), m("Under Construction", "Est. Dec 2026"),
+            m("Active", None), m("under construction", None)] == \
+           ["Ready now", "Pending", "Ready Dec 2026", "Available", "Under construction"]
+    assert v("4% Towards Closing Costs on All Specs!", 500000) == 20000
+    assert v("+ Up to $15K towards Closing Costs/Rate Buydown | $25K towards Options", 600000) == 40000
+    assert v("Zero Down & Rates as Low as 3.99%", 400000) is None
+    assert v("Up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select homes", 1) == 10000
+
+
+def test_markdown_label_not_double_counted():
+    from tracker.export import add_card
+    h = {"price": 347990, "first_price": 399990, "builder_was_price": 383990,
+         "offer": {"text": "$35K off | Up to $10,000 toward closing costs"}}
+    add_card(h, {})
+    assert h["builder_discount"] == 36000 and h["offer"]["value"] == 10000 and h["total_savings"] == 46000
+    h2 = {"price": 347990, "first_price": 347990, "offer": {"text": "$35K off"}}
+    add_card(h2, {})
+    assert h2["total_savings"] == 35000      # no was-price shown: the label is the only record of the markdown
