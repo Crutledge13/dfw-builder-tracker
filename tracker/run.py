@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from . import discover, incentives
-from .extract import DFW_CITY_RE, NON_HOME_RE, address_from_url, canonical_city, city_from_url, fill_coords, page_geo_index, address_key, card_homes, extract_homes, same_address, to_price
+from .extract import DFW_CITY_RE, NON_HOME_RE, page_is_elsewhere, address_from_url, canonical_city, city_from_url, fill_coords, page_geo_index, address_key, card_homes, extract_homes, same_address, to_price
 from .fetch import PoliteClient
 from .store import State, store_from_env
 
@@ -32,6 +32,7 @@ log = logging.getLogger("tracker")
 TZ = ZoneInfo("America/Chicago")
 FMT = "%Y-%m-%d %H:%M"
 
+EXTRACT_VERSION = 2        # bump when price reading improves: homes re-read from their own page get corrected quietly
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
 REMOVE_AFTER_H = 48         # active home unseen this long (while its builder is readable) -> removed
@@ -128,6 +129,8 @@ class Recorder:
         self.lock = threading.RLock()
         self.run_rank: dict[str, int] = {}  # home_id -> best source rank read this run
         self.run_applied: dict[str, bool] = {}  # home_id -> did this run's best reading set the price
+        # homes with a real recorded price move; for the rest, a corrected first reading may replace first_price
+        self.priced = {c.get("home_id") for c in st.changes if c.get("event") in ("price_cut", "price_increase")}
 
     @locked
     def stat(self, slug, key, n=1):
@@ -199,6 +202,22 @@ class Recorder:
             return hid  # already have an equal or better reading of this home this run
         self.run_rank[hid] = rank
         h = self.st.homes.get(hid)
+        if h is not None and obs.get("from_detail") and int(h.get("price_version") or 0) < EXTRACT_VERSION:
+            # first reading of this home's own page with the improved price reader: a correction, not a change
+            if h.get("price") != price:
+                h["price"], h["pending_price"] = price, None
+                if hid not in self.priced:
+                    h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
+                if h.get("first_seen") == now:          # found earlier this same run: fix its new_home record
+                    for c in self.changes:
+                        if c["home_id"] == hid and c["event"] == "new_home":
+                            c["new"] = price
+            h["builder_was_price"] = obs.get("builder_was_price")
+            h["price_source"] = rank
+            if not h.get("active") and h.get("gone_unverified"):
+                h["gone_unverified"] = None
+        if h is not None and obs.get("from_detail"):
+            h["price_version"] = EXTRACT_VERSION
         applied_earlier = self.run_applied.get(hid, False)
         self.run_applied[hid] = True
         if h is not None and seen_rank is not None and applied_earlier and h.get("price") != price:
@@ -214,6 +233,8 @@ class Recorder:
             self.run_applied[hid] = False
         elif h is not None and int(h.get("price_source") or 1) < rank and h.get("price") != price:
             h["price"], h["price_source"] = price, rank  # first reading from a stronger source: adopt quietly
+            if hid not in self.priced:
+                h["first_price"] = price   # the weaker first reading was wrong; don't show it as a drop
         if h is not None:
             h["price_source"] = max(int(h.get("price_source") or 1), rank)
         if h is None:
@@ -230,6 +251,7 @@ class Recorder:
                 h["status_rank"] = rank
             if obs.get("from_detail"):
                 h["page_read"] = True
+                h["price_version"] = EXTRACT_VERSION
             self.event(b, "new_home", h, new=price)
             self.stat(b["slug"], "new_homes")
         else:
@@ -311,6 +333,21 @@ class Recorder:
         if p and h.get("sqft"):
             h["price_per_sqft"] = round(p / float(h["sqft"]))
         return hid
+
+    @locked
+    def home_gone(self, b, url):
+        """The builder's page for a home now shows a different page (usually its community): it's off the market."""
+        key = url.rstrip("/").lower()
+        for hid, h in self.st.homes.items():
+            if h.get("builder") != b["name"] or not h.get("active") or (h.get("url") or "").rstrip("/").lower() != key:
+                continue
+            verified = int(h.get("price_version") or 0) >= EXTRACT_VERSION or hid in self.priced
+            h["active"] = False
+            if verified:
+                self.event(b, "removed", h, old=h.get("price"),
+                           detail="builder's page for this home now shows its community page (sold or withdrawn)")
+            else:
+                h["gone_unverified"] = True   # never had a trustworthy price: drop quietly, no sold record
 
     @locked
     def retire_unseen(self, b):
@@ -498,7 +535,14 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
     with rec.lock:
         homes = [f for f in fr.values() if f.get("builder") == b["name"] and f.get("kind") == "home"
                  and int(f.get("misses") or 0) < 3]
-    homes.sort(key=lambda f: (bool(f.get("last_checked")), str(f.get("last_checked") or "")))
+    with rec.lock:
+        by_url = {(h.get("url") or "").rstrip("/").lower(): h for h in rec.st.homes.values()
+                  if h.get("builder") == b["name"]}
+    def unverified(f):
+        h = by_url.get(f["url"].rstrip("/").lower())
+        return h is not None and h.get("active") and int(h.get("price_version") or 0) < EXTRACT_VERSION
+    # never-checked pages first, then homes not yet read with the current price reader, then the stalest
+    homes.sort(key=lambda f: (bool(f.get("last_checked")), not unverified(f), str(f.get("last_checked") or "")))
     reachable = seeds_ok > 0
     for f in homes:
         if pages >= budget:
@@ -515,6 +559,10 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
         if r.status != 200:
             continue
         reachable = True
+        if page_is_elsewhere(f["url"], r.url, r.text):
+            f["misses"] = 3            # stop re-checking; it comes back through listing pages if relisted
+            rec.home_gone(b, f["url"])
+            continue
         found = extract_homes(r.text, f["url"], single=True)
         if found:
             f["misses"] = 0

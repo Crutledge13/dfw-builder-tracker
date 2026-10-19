@@ -438,6 +438,22 @@ SKIP_CTX = re.compile(r"(per month|/mo\b|monthly|est\.? payment|payment|closing|
 SALE_CTX = re.compile(r"(sale|now|reduced|special|new price|your price|current price|net price)\W*$", re.I)
 
 
+SIMILAR_RE = re.compile(r"(also for sale|similar homes|similar quick|you may also like|other homes|nearby homes|"
+                        r"more homes|related homes|homes like this|other quick move|more quick move|recently viewed|"
+                        r"explore more homes|other available homes|available homes in|other plans)", re.I)
+
+
+def _near(a, b, limit=200) -> bool:
+    """True when two elements sit in the same small block (e.g. 'Priced at $702,050  Sale $609,900')."""
+    pa = {id(x): x for x in a.parents}
+    for x in b.parents:
+        if id(x) in pa:
+            text = x.get_text(" ", strip=True)
+            addresses = {m.group(0).lower() for m in STREET_RE.finditer(text)}
+            return len(text) <= limit and len(addresses) <= 1   # a second address = another home's card
+    return False
+
+
 def _pick_price(main):
     """Choose the home's asking price among the dollar amounts on the page.
     Struck-through amounts and amounts labeled like the 'before' price count as was-price;
@@ -445,6 +461,8 @@ def _pick_price(main):
     cands = []
     for el in main.find_all(True):
         own = el.get_text(" ", strip=True)
+        if len(own) <= 80 and SIMILAR_RE.search(own) and not re.search(r"\$\s?\d", own):
+            break   # everything after a "similar homes / also for sale" heading belongs to other homes
         if len(own) > 40 or not re.search(r"\$\s?\d{2,3}(?:,\d{3})+", own):
             continue
         if any(re.search(r"\$\s?\d", c.get_text(" ", strip=True)) for c in el.find_all(True)):
@@ -464,7 +482,7 @@ def _pick_price(main):
         label = (before + " " + own.split("$")[0]).strip()
         if SKIP_CTX.search(label[-40:]) or SKIP_CTX.search(own):
             continue
-        cands.append({"price": p, "struck": _is_struck(el), "sale": bool(SALE_CTX.search(label[-25:]))})
+        cands.append({"price": p, "struck": _is_struck(el), "sale": bool(SALE_CTX.search(label[-25:])), "el": el})
         if len(cands) >= 6:
             break
     if not cands:
@@ -475,11 +493,13 @@ def _pick_price(main):
         return None, was
     sale = next((i for i, c in enumerate(live) if c["sale"]), None)
     if sale is not None:
-        if sale > 0 and was is None and live[sale - 1]["price"] > live[sale]["price"]:
+        if sale > 0 and was is None and live[sale - 1]["price"] > live[sale]["price"] \
+                and _near(live[sale - 1]["el"], live[sale]["el"]):
             was = live[sale - 1]["price"]
         return live[sale]["price"], was
     first = live[0]["price"]
-    if was is None and len(live) > 1 and live[1]["price"] < first and live[1]["price"] > first * 0.7:
+    if was is None and len(live) > 1 and live[1]["price"] < first and live[1]["price"] > first * 0.7 \
+            and _near(live[0]["el"], live[1]["el"]):
         # "Priced at $702,050  $609,900" with no markup: the second, lower number is the current price
         return live[1]["price"], first
     return first, was
@@ -767,3 +787,30 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
             h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(page_text))
             h["from_detail"] = True
     return homes
+
+
+def _path(u: str) -> str:
+    return urlparse(u or "").path.lower().rstrip("/")
+
+
+def page_is_elsewhere(requested_url: str, final_url: str, html: str) -> bool:
+    """True when a home's URL now lands on a different page (builders redirect a sold or withdrawn
+    home to its community or city page). Checks the URL we ended up on and the page's canonical link."""
+    want = _path(requested_url)
+    last = want.rsplit("/", 1)[-1]
+    if not last:
+        return False
+    candidates = [_path(final_url)]
+    head = html[:200_000]
+    m = (re.search(r'<link[^>]+rel=["\']canonical["\'][^>]*href=["\']([^"\']+)', head, re.I)
+         or re.search(r'<link[^>]+href=["\']([^"\']+)["\'][^>]*rel=["\']canonical', head, re.I)
+         or re.search(r'<meta[^>]+property=["\']og:url["\'][^>]*content=["\']([^"\']+)', head, re.I))
+    if m:
+        candidates.append(_path(m.group(1)))
+    for p in candidates:
+        if p and p != want and p.rsplit("/", 1)[-1] != last and want.startswith(p + "/"):
+            return True          # moved up the tree: /community/qmis/123-main-st -> /community
+        if p and p.rsplit("/", 1)[-1] != last and not re.search(r"\d", p.rsplit("/", 1)[-1]) \
+                and re.search(r"\d", last):
+            return True          # a home URL (has a number) now shows a page without one
+    return False

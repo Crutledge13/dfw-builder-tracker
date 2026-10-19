@@ -17,7 +17,7 @@ TABS = {
               "pct_since_first", "last_change", "last_change_at", "cuts", "price_per_sqft", "status", "move_in",
               "incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since",
               "url", "first_seen", "last_seen", "last_checked", "active", "pending_price", "price_source", "status_rank", "page_read",
-              "lat", "lng", "location_precision", "geocode_tried"],
+              "lat", "lng", "location_precision", "geocode_tried", "price_version", "gone_unverified"],
     "Price Drops": ["at", "builder", "address", "community", "city", "old", "new", "delta", "pct", "offer", "url"],
     "New Homes": ["at", "builder", "address", "community", "city", "price", "beds", "baths", "sqft",
                   "incentive_text", "url"],
@@ -40,7 +40,7 @@ NUMERIC = {"beds", "baths", "sqft", "price", "builder_was_price", "first_price",
            "change_since_first", "pct_since_first", "last_change", "cuts", "price_per_sqft", "headline_amount",
            "rate", "misses", "pending_price", "last_status", "old", "new", "delta", "pct", "offer_amount",
            "offer_rate", "price_source", "status_rank", "last_price", "total_change",
-           "days_listed", "lat", "lng"}
+           "days_listed", "lat", "lng", "price_version"}
 
 
 def _coerce(k: str, v):
@@ -52,7 +52,7 @@ def _coerce(k: str, v):
             return int(f) if f.is_integer() and k not in {"baths", "pct", "pct_since_first", "rate", "offer_rate", "lat", "lng"} else f
         except ValueError:
             return None
-    if k in ("active", "page_read"):
+    if k in ("active", "page_read", "gone_unverified"):
         return str(v).upper() in ("TRUE", "1", "YES")
     return v
 

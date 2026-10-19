@@ -487,3 +487,60 @@ def test_reworded_offer_is_not_a_change():
         assert [c["event"] for c in ch if c["event"].startswith("home_offer")] == ["home_offer_changed"]
     finally:
         shutil.rmtree(tmp)
+
+
+def test_similar_homes_section_is_not_this_home():
+    """2032 Naples Drive (Beazer): $474,038; the $349,905 below 'also for sale' belongs to 2116 Naples Drive."""
+    html = '''<html><head><title>2032 Naples Drive</title></head><body><main>
+      <h1>2032 Naples Drive</h1><p>Rowlett, TX 75088</p><span class="price">$474,038</span>
+      <p>3 Bedrooms 3.5 Bathrooms 2,167 Sq Ft</p>
+      <h2>See these other plans also for sale in Bayside</h2>
+      <div><span>Price Was $454,832!*</span> Caspian Home <span>$349,905</span> 2116 Naples Drive Rowlett, TX</div>
+      </main></body></html>'''
+    h = extract_homes(html, "https://www.beazer.com/dallas-TX/rowlett/bayside/caspian/0312", single=True)[0]
+    assert (h["price"], h["builder_was_price"]) == (474038, None)
+    # Riverside: own price, then a neighbor's price further down the page (not adjacent)
+    html2 = '''<html><body><main><div class="hero"><h1>508 Mitchell Blvd</h1><p>Weatherford, Texas 76087</p>
+      <p>Priced at <span class="price">$494,015</span></p></div>
+      <section><div class="card"><a href="/quick-move-in/524-mitchell-blvd">524 Mitchell Blvd</a>
+      <p>Weatherford, Texas 76087</p><p>Priced at <span class="price">$468,260</span></p></div></section></main></body></html>'''
+    h2 = extract_homes(html2, "https://www.riversidehomebuilders.com/quick-move-in/508-mitchell-blvd", single=True)[0]
+    assert (h2["price"], h2["builder_was_price"]) == (494015, None)
+
+
+def test_redirect_to_community_page_means_gone():
+    from tracker.extract import page_is_elsewhere as gone
+    home = "https://www.drhorton.com/texas/dallas/crandall/cartwright-ranch/qmis/1223-barkridge-st"
+    community = '<html><head><link rel="canonical" href="https://www.drhorton.com/texas/dallas/crandall"></head>' \
+                '<body><select><option>$150,000</option></select></body></html>'
+    assert gone(home, home, community)
+    assert gone(home, "https://www.drhorton.com/texas/dallas/crandall/cartwright-ranch", "<html></html>")
+    dw = "https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/arlington/elements/19420035"
+    assert gone(dw, dw, '<link rel="canonical" href="https://www.davidweekleyhomes.com/neighborhoods/tx/dallas-ft-worth/elements-at-viridian">')
+    ok = "https://www.riversidehomebuilders.com/quick-move-in/508-mitchell-blvd"
+    assert not gone(ok, ok, '<link rel="canonical" href="https://www.riversidehomebuilders.com/quick-move-in/508-mitchell-blvd/">')
+    hl = "https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-170"
+    assert not gone(hl, hl, '<link rel="canonical" href="https://highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-170">')
+
+
+def test_gone_home_and_quiet_correction():
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); t0 = R.now_local()
+        seed = {"https://tb.example/qmi": listing_page([])}
+        st, _ = run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0)
+        h = next(iter(st.homes.values()))
+        assert h["price_version"] == R.EXTRACT_VERSION
+        # an old, wrongly read price from before the fix gets corrected quietly on the next read
+        h.update(price=349905, price_version=1)
+        store.save(st, [], [], {})
+        st, ch = run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0 + timedelta(hours=1))
+        h = next(iter(st.homes.values()))
+        assert ch == [] and h["price"] == 424990 and h["first_price"] == 424990
+        # the home's page now redirects to the community page -> removed, not a $150,000 price
+        community = '<html><head><link rel="canonical" href="https://tb.example/new-homes/tx/celina/mosaic"></head>' \
+                    '<body><p>Budget $150,000</p></body></html>'
+        st, ch = run_once(store, dict(seed, **{DETAIL: community}), t0 + timedelta(hours=2))
+        assert [c["event"] for c in ch] == ["removed"] and next(iter(st.homes.values()))["price"] == 424990
+    finally:
+        shutil.rmtree(tmp)
