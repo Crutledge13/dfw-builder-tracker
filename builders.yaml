@@ -209,12 +209,14 @@ builders:
     slug: david-weekley
     url_parts: {community: -2}
     site: https://www.davidweekleyhomes.com/
-    seeds: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
+    seeds:
+      - https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth
+      - https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth/homes-ready-soon   # links every ready-soon home
     promos: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
     detail_pattern: '/homes-ready-soon/tx/dallas-ft-worth/[^/]+/[^/]+/\d{5,}/?$'
     # city and community pages: each community page carries its ready-soon homes (address, price, sq ft) as JSON
     baseline_until: '2026-10-22 12:00'   # community pages added 2026-10-20: homes found until then aren't new
-    hub_pattern: '^/new-homes/tx/dallas-ft-worth/(?!(design-center|promo|financing|close-out|coming-soon|model-home-gallery)/?$)[^/]+(/[^/]+)?/?$'
+    hub_pattern: '^/new-homes/tx/dallas-ft-worth/(?!(design-center|promo|financing|close-out|coming-soon|model-home-gallery|homes-ready-soon)/?$)[^/]+(/[^/]+)?/?$'
     sitemap_filter: '/tx/dallas-ft-worth/'
     verified: false
 
