@@ -1,15 +1,18 @@
 at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
-2026-10-20 14:15,Trophy Signature Homes,2021 Steeplechase Lane,,Seagoville,299990,4.0,2.0,1809,,
-2026-10-20 14:15,Highland Homes,2640 Paddington Drive,Cambridge Crossing,Celina,1250000,5.0,,4488,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/cambridge-crossing/147-124
-2026-10-20 14:15,Bloomfield Homes,216 Sweetwater Drive,East Oak Creek 60 65,Commerce,470015,4.0,2.5,3026,,https://www.bloomfieldhomes.com/new-homes/tx/commerce/east-oak-creek-60-65/bayberry-ii/216-sweetwater-drive/
-2026-10-20 14:15,Bloomfield Homes,105 Cedar Grove Court,Bear Creek Classic 60,Lavon,499322,4.0,3.5,2849,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/violet-iv/105-cedar-grove-court/
-2026-10-20 14:15,Bloomfield Homes,421 London Drive,Bear Creek Classic 60,Lavon,524777,4.0,2.5,3187,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/magnolia/421-london-drive/
-2026-10-20 14:15,Bloomfield Homes,1818 Firefly Drive,Rockwood,Mansfield,649975,3.0,3.0,2772,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/rockwood/carolina-ii/1818-firefly-drive/
-2026-10-20 14:15,D.R. Horton,7709 Royal Fern Drive,Monarch at the Meadows,Denton,298990,4.0,,1657,,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7709-royal-fern-drive
-2026-10-20 14:15,D.R. Horton,7741 Royal Fern Drive,Monarch at the Meadows,Denton,299990,4.0,,1657,,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7741-royal-fern-drive
-2026-10-20 14:15,D.R. Horton,7733 Royal Fern Drive,Monarch at the Meadows,Denton,301990,5.0,,1818,,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7733-royal-fern-drive
-2026-10-20 14:15,Shaddock Homes,7752 Switchwood Lane,,Fort Worth,679900,4.0,3.0,3375,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",
-2026-10-20 14:15,Shaddock Homes,7756 Switchwood Lane,,Fort Worth,699900,4.0,4.0,3397,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",
+2026-10-20 17:19,D.R. Horton,2413 Starlight Street,The Preserve at Forum,Grand Prairie,538990,5.0,,2775,,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/2413-starlight-street
+2026-10-20 17:19,D.R. Horton,2185 Serenity Ln,California Meadows,Arlington,385855,3.0,,1470,,https://www.drhorton.com/texas/fort-worth/arlington/california-meadows/qmis/2185-serenity-ln
+2026-10-20 17:19,Coventry Homes,711 Meadow Holly Drive,Dominion of Pleasant Valley 50,Wylie,599990,5.0,1.0,2765,$38K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/farnsworth/711-meadow-holly-drive/
+2026-10-20 14:15,Trophy Signature Homes,2021 Steeplechase Lane,,Seagoville,299990,4,2.0,1809,,
+2026-10-20 14:15,Highland Homes,2640 Paddington Drive,Cambridge Crossing,Celina,1250000,5,,4488,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/cambridge-crossing/147-124
+2026-10-20 14:15,Bloomfield Homes,216 Sweetwater Drive,East Oak Creek 60 65,Commerce,470015,4,2.5,3026,,https://www.bloomfieldhomes.com/new-homes/tx/commerce/east-oak-creek-60-65/bayberry-ii/216-sweetwater-drive/
+2026-10-20 14:15,Bloomfield Homes,105 Cedar Grove Court,Bear Creek Classic 60,Lavon,499322,4,3.5,2849,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/violet-iv/105-cedar-grove-court/
+2026-10-20 14:15,Bloomfield Homes,421 London Drive,Bear Creek Classic 60,Lavon,524777,4,2.5,3187,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/magnolia/421-london-drive/
+2026-10-20 14:15,Bloomfield Homes,1818 Firefly Drive,Rockwood,Mansfield,649975,3,3.0,2772,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/rockwood/carolina-ii/1818-firefly-drive/
+2026-10-20 14:15,D.R. Horton,7709 Royal Fern Drive,Monarch at the Meadows,Denton,298990,4,,1657,,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7709-royal-fern-drive
+2026-10-20 14:15,D.R. Horton,7741 Royal Fern Drive,Monarch at the Meadows,Denton,299990,4,,1657,,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7741-royal-fern-drive
+2026-10-20 14:15,D.R. Horton,7733 Royal Fern Drive,Monarch at the Meadows,Denton,301990,5,,1818,,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7733-royal-fern-drive
+2026-10-20 14:15,Shaddock Homes,7752 Switchwood Lane,,Fort Worth,679900,4,3.0,3375,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",
+2026-10-20 14:15,Shaddock Homes,7756 Switchwood Lane,,Fort Worth,699900,4,4.0,3397,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",
 2026-10-20 10:04,Beazer Homes,1504 Calanques Street,Verandah,Royse City,374990,4,2.0,2605,,https://www.beazer.com/dallas-TX/royse-city/verandah/cascade2/2801
 2026-10-20 10:04,D.R. Horton,184 Hibiscus Drive,Springhill South,Boyd,273735,5,,1818,,https://www.drhorton.com/texas/fort-worth/boyd/springhill-south/qmis/184-hibiscus-drive
 2026-10-20 07:05,Perry Homes,3229 Santolina Way,North Sky 55,Celina,625900,4,3.5,2493,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3229-santolina-way
