@@ -574,3 +574,112 @@ def test_this_week_sections():
     assert w["past_completion"][0]["address"] == "1 A St"
     c = w["most_active_communities"][0]
     assert (c["community"], c["changes"], c["price_cuts"], c["total_cut"], c["new_homes"], c["sold_removed"]) == ("Mosaic", 4, 2, 20000, 1, 1)
+
+
+def test_redirect_to_community_under_other_path_means_gone():
+    """David Weekley: a sold home's URL shows its community page, whose canonical is /new-homes/.../tavolo-park-50
+    (a path with a number, beside the home's path rather than above it). Its 'From $505,990' is not a home price."""
+    from tracker.extract import page_is_elsewhere as gone
+    dw = "https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/tavolo-park-50/19000126"
+    assert gone(dw, dw, '<link rel="canonical" href="https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth/'
+                        'fort-worth/tavolo-park-50" />')
+    live = dw.replace("19000126", "19000193")
+    assert not gone(live, live, f'<link rel="canonical" href="{live}" />')
+    bl = "https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-classic-50/cypress/921-ridgehurst-drive/"
+    assert not gone(bl, bl, f'<link rel="canonical" href="{bl}">')
+
+
+def test_nested_address_line1_and_whole_number_sqft():
+    """David Weekley community page: homes as JSON with Address.Line1; its home page says 'From $509,762 Sq Ft 2074'."""
+    rec = {"Address": {"Line1": "7852 Pondview Lane", "City": "Fort Worth", "StateAbbreviation": "TX",
+                       "ZipCode": "76123"}, "ReadyLabel": "Ready Now", "Price": 509762, "SquareFootage": 2074,
+           "Bedrooms": 3, "FullBaths": 2,
+           "Url": "/homes-ready-soon/tx/dallas-ft-worth/fort-worth/tavolo-park-50/19000193"}
+    html = f'<html><body><script type="application/json">{json.dumps({"homes": [rec]})}</script></body></html>'
+    h = extract_homes(html, "https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth/fort-worth/tavolo-park-50")[0]
+    assert (h["address"], h["city"], h["zip"], h["price"], h["sqft"]) == \
+        ("7852 Pondview Lane", "Fort Worth", "76123", 509762, 2074)
+    page = '''<html><head><title>New Home Ready Soon in Fort Worth, TX</title></head><body><main>
+      <div>Plan #T002</div><h2>The Tulip</h2><div class="pricing"><div class="att-label">From</div>
+      <div class="att-value">$509,762</div></div><div class="square-footage"><div class="att-label">Sq Ft</div>
+      <div class="att-value">2074</div></div><p>3 Bedrooms</p>
+      </main></body></html>'''
+    d = extract_homes(page, "https://www.davidweekleyhomes.com" + rec["Url"], single=True)[0]
+    assert (d["price"], d["sqft"]) == (509762, 2074)
+
+
+def test_home_page_without_address_joins_its_listing_card():
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); st = store.load(); rec = R.Recorder(st, R.now_local())
+        url = "https://tb.example/homes-ready-soon/celina/mosaic/19000193"
+        rec.observe(B, {"address": "7852 Pondview Lane", "price": 509762, "url": url, "city": "Celina", "source": "json"})
+        rec.observe(B, {"address": "", "price": 509762, "url": url, "city": "Celina", "from_detail": True, "sqft": 2074})
+        assert len(st.homes) == 1 and next(iter(st.homes.values()))["sqft"] in (2074, None)
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_unseen_home_waits_for_its_own_page_before_removal():
+    """Listing pages are read in rotation and runs can be hours apart: a home not on a listing for 48h is removed
+    only once its own page was re-checked and no longer shows it (or after a week)."""
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); t0 = R.now_local()
+        seed = {"https://tb.example/qmi": listing_page([])}
+        st, _ = run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0)
+        fr = st.frontier[DETAIL] if DETAIL in st.frontier else next(f for k, f in st.frontier.items()
+                                                                       if k.rstrip("/") == DETAIL)
+        fr["last_checked"] = R.ts(t0 + timedelta(days=30))     # pretend the page check is not due yet
+        store.save(st, [], [], {})
+        # 3 days later the home's page wasn't fetched (budget): still active
+        rec = R.Recorder(st, t0 + timedelta(days=3)); rec.retire_unseen(B)
+        assert rec.changes == [] and next(iter(st.homes.values()))["active"]
+        # its page was checked and no longer shows a home -> removed
+        fr["misses"] = 1
+        rec = R.Recorder(st, t0 + timedelta(days=3)); rec.retire_unseen(B)
+        assert [c["event"] for c in rec.changes] == ["removed"]
+        # a week unseen -> removed even without a page check
+        h = next(iter(st.homes.values())); h["active"] = True; fr["misses"] = 0
+        rec = R.Recorder(st, t0 + timedelta(days=8)); rec.retire_unseen(B)
+        assert [c["event"] for c in rec.changes] == ["removed"]
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_homes_found_after_coverage_repair_are_not_new():
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); t0 = R.now_local()
+        b = dict(B, baseline_until=R.ts(t0 + timedelta(hours=24.5)))
+        st = store.load(); rec = R.Recorder(st, t0)
+        rec.observe(b, {"address": "7852 Pondview Lane", "price": 509762, "city": "Celina", "source": "json"})
+        rec2 = R.Recorder(st, t0 + timedelta(hours=25))
+        rec2.observe(b, {"address": "7856 Pondview Lane", "price": 519762, "city": "Celina", "source": "json"})
+        allc = rec.changes + rec2.changes
+        assert [R.is_baseline(c) for c in allc] == [True, False]
+        # the builder's own first day was long before (its first-day baseline doesn't apply here)
+        allc = [{"at": R.ts(t0 - timedelta(days=5)), "builder": B["name"], "event": "new_home", "home_id": "x",
+                 "address": "1 Old St", "new": 300000}] + allc
+        st.changes = []
+        tabs = R.derived_tabs(st, allc, t0 + timedelta(days=2), [], [b])
+        new = tabs.get("new_homes") or tabs.get("New Homes") or next(v for k, v in tabs.items() if "new" in k.lower())
+        assert sorted(r["address"] for r in new) == ["7856 Pondview Lane"]
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_quietly_dropped_home_returns_quietly():
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); st = store.load(); t0 = R.now_local()
+        url = "https://tb.example/homes-ready-soon/celina/mosaic/19160142"
+        st.homes["test:x"] = {"home_id": "test:x", "builder": B["name"], "url": url, "price": 495990,
+                              "first_price": 495990, "active": False, "gone_unverified": True, "price_source": 3,
+                              "price_version": 2, "first_seen": R.ts(t0 - timedelta(days=2))}
+        rec = R.Recorder(st, t0)
+        rec.observe(B, {"address": "1501 Venture Drive", "price": 499000, "url": url, "city": "Celina", "source": "json"})
+        h = st.homes["test:x"]
+        assert rec.changes == [] and h["active"] and (h["price"], h["first_price"]) == (499000, 499000)
+    finally:
+        shutil.rmtree(tmp)

@@ -18,6 +18,8 @@
 #                  false = keep only homes whose city/zip is in DFW.
 #   url_parts      Where community / plan sit in a home's URL path, counting back from the home
 #                  (-1 = the home itself). Fills community/plan when the page doesn't state them.
+#   baseline_until 'YYYY-MM-DD HH:MM' (Central): homes first found before then are recorded but not listed
+#                  as new (tracking of the builder started or its coverage was repaired; they were already for sale).
 #   verified       true = seed URLs were checked by hand on 2026-10-18. false = best guess;
 #                  check the "Run Log" tab after the first run and fix if a builder shows 0 homes.
 
@@ -210,6 +212,9 @@ builders:
     seeds: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
     promos: [https://www.davidweekleyhomes.com/new-homes/tx/dallas-ft-worth]
     detail_pattern: '/homes-ready-soon/tx/dallas-ft-worth/[^/]+/[^/]+/\d{5,}/?$'
+    # city and community pages: each community page carries its ready-soon homes (address, price, sq ft) as JSON
+    baseline_until: '2026-10-22 12:00'   # community pages added 2026-10-20: homes found until then aren't new
+    hub_pattern: '^/new-homes/tx/dallas-ft-worth/(?!(design-center|promo|financing|close-out|coming-soon|model-home-gallery)/?$)[^/]+(/[^/]+)?/?$'
     sitemap_filter: '/tx/dallas-ft-worth/'
     verified: false
 

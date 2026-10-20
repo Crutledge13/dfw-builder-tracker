@@ -32,10 +32,12 @@ log = logging.getLogger("tracker")
 TZ = ZoneInfo("America/Chicago")
 FMT = "%Y-%m-%d %H:%M"
 
-EXTRACT_VERSION = 2        # bump when price reading improves: homes re-read from their own page get corrected quietly
+EXTRACT_VERSION = 3        # bump when price reading improves: homes re-read from their own page get corrected quietly
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
 REMOVE_AFTER_H = 48         # active home unseen this long (while its builder is readable) -> removed
+BASELINE_NOTE = "baseline: already for sale when tracking of this builder (re)started"
+STALE_REMOVE_H = 7 * 24     # ...even if its own page hasn't been re-checked yet
 SITEMAP_EVERY_H = 6
 MAX_PAGINATION = 8
 
@@ -90,6 +92,17 @@ def status_key(s) -> str:
     return STATUS_SAME.get(k, k)
 
 
+def in_baseline(b: dict, now: datetime) -> bool:
+    """builders.yaml 'baseline_until': homes first found before then were already for sale (tracking of the
+    builder started or its coverage was repaired), so they are recorded but not listed as new."""
+    until = parse_ts(str(b.get("baseline_until") or ""))
+    return bool(until and now < until)
+
+
+def is_baseline(c: dict) -> bool:
+    return str(c.get("detail") or "").startswith("baseline")
+
+
 def load_config(path="builders.yaml") -> list[dict]:
     cfg = yaml.safe_load(open(path))
     d = cfg.get("defaults", {})
@@ -131,6 +144,7 @@ class Recorder:
         self.run_applied: dict[str, bool] = {}  # home_id -> did this run's best reading set the price
         # homes with a real recorded price move; for the rest, a corrected first reading may replace first_price
         self.priced = {c.get("home_id") for c in st.changes if c.get("event") in ("price_cut", "price_increase")}
+        self._url_ix: dict | None = None   # (builder, home page URL) -> home_id
 
     @locked
     def stat(self, slug, key, n=1):
@@ -147,7 +161,19 @@ class Recorder:
                              "old": old, "new": new, "delta": delta, "pct": pct,
                              "url": h.get("url", "") or h.get("source_url", ""), "detail": detail[:500]})
 
+    def _by_url(self, b, url) -> str | None:
+        if self._url_ix is None:
+            self._url_ix = {(h.get("builder"), (h.get("url") or "").rstrip("/").lower()): hid
+                            for hid, h in self.st.homes.items() if h.get("url")}
+        return self._url_ix.get((b["name"], (url or "").rstrip("/").lower()))
+
     def home_id(self, b, obs) -> str | None:
+        # Same page, same home: a home page without an address (David Weekley) and the listing card
+        # that has one must land on one record, whichever was seen first.
+        if obs.get("url"):
+            known = self._by_url(b, obs["url"])
+            if known in self.st.homes and (not obs.get("address") or not self.st.homes[known].get("address")):
+                return known
         if obs.get("address"):
             unit = re.search(r"-unit-([a-z0-9]+)/?$", (obs.get("url") or "").lower())
             return f'{b["slug"]}:{address_key(obs["address"])}' + (f"-unit-{unit.group(1)}" if unit else "")
@@ -202,6 +228,12 @@ class Recorder:
             return hid  # already have an equal or better reading of this home this run
         self.run_rank[hid] = rank
         h = self.st.homes.get(hid)
+        if h is not None and not h.get("active") and h.get("gone_unverified"):
+            # dropped quietly because its price was never trustworthy: it comes back quietly at today's price,
+            # not as 'relisted' plus a change from the untrustworthy one
+            h.update(active=True, gone_unverified=None, price=price, pending_price=None, price_source=rank)
+            if hid not in self.priced:
+                h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
         if h is not None and obs.get("from_detail") and int(h.get("price_version") or 0) < EXTRACT_VERSION:
             # first reading of this home's own page with the improved price reader: a correction, not a change
             if h.get("price") != price:
@@ -241,6 +273,9 @@ class Recorder:
             h = {"home_id": hid, "builder": b["name"], "first_price": price, "price": price, "cuts": 0,
                  "first_seen": now, "active": True, "price_source": rank}
             self.st.homes[hid] = h
+            if obs.get("url"):
+                self._by_url(b, "")
+                self._url_ix.setdefault((b["name"], obs["url"].rstrip("/").lower()), hid)
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "status", "move_in",
                       "url", "builder_was_price", "incentive_text"):
                 if obs.get(k) not in (None, ""):
@@ -252,7 +287,7 @@ class Recorder:
             if obs.get("from_detail"):
                 h["page_read"] = True
                 h["price_version"] = EXTRACT_VERSION
-            self.event(b, "new_home", h, new=price)
+            self.event(b, "new_home", h, new=price, detail=BASELINE_NOTE if in_baseline(b, self.now) else "")
             self.stat(b["slug"], "new_homes")
         else:
             if not h.get("active"):
@@ -352,13 +387,23 @@ class Recorder:
     @locked
     def retire_unseen(self, b):
         cutoff = self.now - timedelta(hours=REMOVE_AFTER_H)
+        fr = self.st.frontier
         for h in self.st.homes.values():
             if h.get("builder") != b["name"] or not h.get("active"):
                 continue
             seen = parse_ts(h.get("last_seen"))
-            if seen and seen < cutoff:
-                h["active"] = False
-                self.event(b, "removed", h, old=h.get("price"), detail="no longer listed (sold, under contract or withdrawn)")
+            if not seen or seen >= cutoff:
+                continue
+            # A home with its own page waits until that page has been re-checked and no longer shows it:
+            # listing pages are read in rotation and runs can be hours apart, so 'not on a listing lately'
+            # alone isn't proof it sold. After STALE_REMOVE_H unseen it goes regardless.
+            page = fr.get(h.get("url") or "") or fr.get((h.get("url") or "").rstrip("/")) \
+                or fr.get((h.get("url") or "").rstrip("/") + "/")
+            if page and page.get("kind") == "home" and not int(page.get("misses") or 0) \
+                    and seen >= self.now - timedelta(hours=STALE_REMOVE_H):
+                continue
+            h["active"] = False
+            self.event(b, "removed", h, old=h.get("price"), detail="no longer listed (sold, under contract or withdrawn)")
 
     @locked
     def offers(self, b, url, found: list[dict]):
@@ -541,8 +586,14 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
     def unverified(f):
         h = by_url.get(f["url"].rstrip("/").lower())
         return h is not None and h.get("active") and int(h.get("price_version") or 0) < EXTRACT_VERSION
-    # never-checked pages first, then homes not yet read with the current price reader, then the stalest
-    homes.sort(key=lambda f: (bool(f.get("last_checked")), not unverified(f), str(f.get("last_checked") or "")))
+    def at_risk(f):   # an active home not seen on any page for a day: check its page before it would be retired
+        h = by_url.get(f["url"].rstrip("/").lower())
+        seen = parse_ts(h.get("last_seen")) if h is not None and h.get("active") else None
+        return bool(seen and seen < now - timedelta(hours=REMOVE_AFTER_H / 2))
+    # homes about to time out first, then never-checked pages, then homes not yet read with the
+    # current price reader, then the stalest
+    homes.sort(key=lambda f: (not at_risk(f), bool(f.get("last_checked")), not unverified(f),
+                              str(f.get("last_checked") or "")))
     reachable = seeds_ok > 0
     for f in homes:
         if pages >= budget:
@@ -629,6 +680,7 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
             "avg_cut_7d": round(sum(amounts) / len(amounts)) if amounts else None,
             "biggest_cut_7d": max(amounts) if amounts else None,
             "new_homes_7d": sum(1 for c in allc if c.get("builder") == n and c.get("event") == "new_home"
+                                and not is_baseline(c)
                                 and (parse_ts(c.get("at")) or d90) >= d7
                                 and (parse_ts(c.get("at")) or d90) > summary_baseline.get(n, d90)),
             "removed_7d": sum(1 for c in allc if c.get("builder") == n and c.get("event") == "removed"
@@ -656,7 +708,8 @@ def derived_tabs(st: State, new_changes: list, now: datetime, runlog: list, buil
         if not at:
             continue
         h = st.homes.get(c.get("home_id")) or {}
-        if c.get("event") == "new_home" and at >= d30 and at > baseline.get(c.get("builder"), at - timedelta(1)):
+        if c.get("event") == "new_home" and at >= d30 and at > baseline.get(c.get("builder"), at - timedelta(1)) \
+                and not is_baseline(c):
             new_homes.append({"at": c["at"], "builder": c.get("builder"), "address": c.get("address"),
                               "community": c.get("community"), "city": c.get("city"), "price": c.get("new"),
                               "beds": h.get("beds"), "baths": h.get("baths"), "sqft": h.get("sqft"),

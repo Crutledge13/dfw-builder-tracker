@@ -360,11 +360,15 @@ def _fields(d: dict) -> dict:
             if gf.get("lat") is not None and gf.get("lng") is not None:
                 out["lat"], out["lng"] = gf["lat"], gf["lng"]
     addr = d.get("address")
+    if not isinstance(addr, dict):
+        addr = next((v for k, v in d.items() if norm_key(k) == "address" and isinstance(v, dict)), None)
     if isinstance(addr, dict):
-        out["address"] = addr.get("streetAddress") or addr.get("street") or addr.get("address1") or ""
-        out.setdefault("city", addr.get("addressLocality") or addr.get("city"))
-        out.setdefault("state", addr.get("addressRegion") or addr.get("state"))
-        out.setdefault("zip", addr.get("postalCode") or addr.get("zip"))
+        a = {norm_key(k): v for k, v in addr.items() if v not in (None, "")}
+        out["address"] = a.get("streetaddress") or a.get("street") or a.get("address1") or a.get("line1") or ""
+        if not out.get("city") or isinstance(out.get("city"), dict):
+            out["city"] = a.get("addresslocality") or a.get("city")
+        out.setdefault("state", a.get("addressregion") or a.get("state") or a.get("stateabbreviation"))
+        out.setdefault("zip", a.get("postalcode") or a.get("zip") or a.get("zipcode"))
     return out
 
 
@@ -530,7 +534,9 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     address = clean_address(m.group(0)) if m else ""
     beds = re.search(r"(\d(?:\.\d)?)\s*(?:-\s*\d\s*)?(?:beds?|bd|br|bedrooms?)\b", text, re.I)
     baths = re.search(r"(\d(?:\.\d)?)\s*(?:-\s*\d(?:\.\d)?\s*)?(?:baths?|ba|bathrooms?)\b", text, re.I)
-    sqft = re.search(r"(\d[\d,]{2,5})\s*(?:-\s*[\d,]+\s*)?(?:sq\.?\s*ft|sqft|square feet|sf)\b", text, re.I)
+    # whole numbers only: "From $509,762 Sq Ft 2074" must not read as 9,762 sq ft
+    sqft = (re.search(r"(?<![\d,.$])(\d[\d,]{2,5})\s*(?:-\s*[\d,]+\s*)?(?:sq\.?\s*ft|sqft|square feet|sf)\b", text, re.I)
+            or re.search(r"\b(?:sq\.?\s*ft\.?|sqft|square feet)\s*:?\s*(\d,?\d{3}|\d{3})\b(?![\d,])", text, re.I))
     status = STATUS_WORDS.search(text)
     full = (soup.body or soup).get_text(" ", strip=True)
     zipm = re.search(r",\s*(?:TX|Texas)\s+(\d{5})", text) or re.search(r",\s*(?:TX|Texas)\s+(\d{5})", full)
@@ -807,7 +813,12 @@ def page_is_elsewhere(requested_url: str, final_url: str, html: str) -> bool:
          or re.search(r'<meta[^>]+property=["\']og:url["\'][^>]*content=["\']([^"\']+)', head, re.I))
     if m:
         candidates.append(_path(m.group(1)))
+    ancestors = set(want.split("/")[:-1]) - {""}
     for p in candidates:
+        tail = p.rsplit("/", 1)[-1] if p else ""
+        if p and tail != last and tail in ancestors and p.count("/") < want.count("/"):
+            return True          # now shows its community's page under another path:
+                                 # /homes-ready-soon/.../tavolo-park-50/19000126 -> /new-homes/.../tavolo-park-50
         if p and p != want and p.rsplit("/", 1)[-1] != last and want.startswith(p + "/"):
             return True          # moved up the tree: /community/qmis/123-main-st -> /community
         if p and p.rsplit("/", 1)[-1] != last and not re.search(r"\d", p.rsplit("/", 1)[-1]) \

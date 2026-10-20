@@ -305,7 +305,8 @@ def this_week(st, homes: dict, run_at: str, days: int = 7) -> dict:
 
     cuts = [c for c in week if c.get("event") == "price_cut" and c.get("old") and c.get("new")]
     incs = [c for c in week if c.get("event") == "price_increase"]
-    new = [c for c in week if c.get("event") == "new_home" and when(c) > baseline_end.get(c.get("builder"), when(c))]
+    new = [c for c in week if c.get("event") == "new_home" and when(c) > baseline_end.get(c.get("builder"), when(c))
+           and not str(c.get("detail") or "").startswith("baseline")]
     gone = [c for c in week if c.get("event") == "removed"]
     offer_events = [c for c in week if c.get("event") in ("offer_new", "offer_changed", "home_offer_new",
                                                           "home_offer_changed", "offer_removed")]
