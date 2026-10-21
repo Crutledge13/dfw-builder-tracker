@@ -418,6 +418,12 @@ class Recorder:
                     and seen >= self.now - timedelta(hours=STALE_REMOVE_H):
                 continue
             h["active"] = False
+            if h.get("page_read") and int(h.get("price_version") or 0) < EXTRACT_VERSION \
+                    and h.get("home_id") not in self.priced:
+                # its own page was only ever read by an older, faulty price reader (e.g. a neighbor's price from
+                # a 'similar homes' strip) and never confirmed since: drop quietly, no sold record at that price
+                h["gone_unverified"] = True
+                continue
             self.event(b, "removed", h, old=h.get("price"), detail="no longer listed (sold, under contract or withdrawn)")
 
     @locked

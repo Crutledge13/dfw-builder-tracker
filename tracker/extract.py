@@ -165,6 +165,10 @@ def address_from_url(url: str) -> str:
                 words = words[:ends[-1] + 1]
         last = "-".join(words)
     last = re.sub(r"-unit-[a-z0-9]+$", "", last)
+    rural = re.search(r"(?:^|-)(\d{1,6})-(cr|fm|county-road|farm-to-market-road|farm-to-market)-(\d{1,5})$", last)
+    if rural:   # '8685-cr-623' -> '8685 CR 623' (Riverside: county / farm-to-market roads)
+        kind = "CR" if rural.group(2) in ("cr", "county-road") else "FM"
+        return f"{rural.group(1)} {kind} {rural.group(3)}"
     m = re.search(r"(?:^|-)(\d{1,6})-((?:(?:[a-z]+|\d{1,3}(?:st|nd|rd|th))-?){1,5})$", last)
     if not m:
         return ""

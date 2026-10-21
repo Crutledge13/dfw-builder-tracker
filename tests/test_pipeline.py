@@ -712,3 +712,42 @@ def test_quietly_dropped_home_returns_quietly():
         assert rec.changes == [] and h["active"] and (h["price"], h["first_price"]) == (499000, 499000)
     finally:
         shutil.rmtree(tmp)
+
+
+def test_county_road_address_from_url():
+    """Riverside: '/quick-move-in/8685-cr-623' homes had no address at all."""
+    from tracker.extract import address_from_url
+    assert address_from_url("https://www.riversidehomebuilders.com/quick-move-in/8685-cr-623") == "8685 CR 623"
+    assert address_from_url("https://www.riversidehomebuilders.com/quick-move-in/1536-cr-4910/") == "1536 CR 4910"
+    assert address_from_url("https://x.example/homes/12-fm-1385") == "12 FM 1385"
+    # a sold CR home's page lists only 'Similar Homes Nearby': none of their prices is this home's
+    page = '''<html><head><title>8685 CR 623 - Riverside Home Builders</title></head><body><main>
+      <h1>8685 CR 623</h1><p>Blue Ridge, Texas 75424</p><h2>Similar Homes Nearby</h2>
+      <div class="card"><p>Priced at $603,591</p><a href="/quick-move-in/8473-cr-623">8473 CR 623</a></div>
+      <div class="card"><p>Priced at $555,200</p><a href="/quick-move-in/8489-cr-623">8489 CR 623</a></div>
+      </main></body></html>'''
+    found = extract_homes(page, "https://www.riversidehomebuilders.com/quick-move-in/8685-cr-623", single=True)
+    assert all(h.get("price") not in (603591, 555200) for h in found)
+
+
+def test_unconfirmed_old_price_is_not_a_sold_record():
+    """Riverside: 11 homes carried $468,260 (501 Mitchell Blvd's price, read from a 'similar homes' strip by the
+    old reader) and were logged as sold at that price. A home whose own page was only read by an older reader and
+    never confirmed is dropped quietly; a home only ever seen on listings is still removed with a record."""
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); t0 = R.now_local()
+        seed = {"https://tb.example/qmi": listing_page([("1500 Elm Street", 489990, 2450, "Seaberry")])}
+        st, _ = run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0)
+        amber = next(h for h in st.homes.values() if h["address"] == "1404 Amber Way")
+        amber.update(price=468260, price_version=None, page_read=True)    # read before the reader fix
+        store.save(st, [], [], {})
+        sold = '<html><head><title>1404 Amber Way</title></head><body><main><h1>1404 Amber Way</h1>' \
+               '<p>This home has been sold.</p></main></body></html>'
+        empty = {"https://tb.example/qmi": listing_page([])}
+        st, ch = run_once(store, dict(empty, **{DETAIL: sold}), t0 + timedelta(hours=73))
+        assert [c["address"] for c in ch if c["event"] == "removed"] == ["1500 Elm Street"]
+        amber = next(h for h in st.homes.values() if h["address"] == "1404 Amber Way")
+        assert not amber["active"] and amber["gone_unverified"]
+    finally:
+        shutil.rmtree(tmp)
