@@ -1,15 +1,22 @@
 at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
-2026-10-21 15:54,Highland Homes,2921 Moab Drive,Ridgeline,McKinney,645000,4.0,,2460,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-054
-2026-10-21 15:54,Highland Homes,2916 Moab Drive,Ridgeline,McKinney,712610,5.0,,3481,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-029
-2026-10-21 15:54,Highland Homes,1605 Buttercup Avenue,Sandbrock Ranch,Aubrey,503475,3.0,,2340,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/866-370
-2026-10-21 15:54,Riverside Homebuilders,8525 CR 623,,,537850,4.0,2.0,2229,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8525-cr-623
-2026-10-21 15:54,Riverside Homebuilders,8489 CR 623,,,555200,4.0,3.0,2426,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
-2026-10-21 15:54,Riverside Homebuilders,8341 CR 623,,,593339,4.0,3.0,2686,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8341-cr-623
-2026-10-21 15:54,Riverside Homebuilders,8629 CR 623,,,519152,3.0,2.0,2033,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8629-cr-623
-2026-10-21 15:54,D.R. Horton,148 Tributary Lane,Dry Creek,Bridgeport,284990,4.0,,1791,,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/148-tributary-lane
-2026-10-21 15:54,D.R. Horton,233 Mlm Parkway,Dry Creek,Bridgeport,288990,4.0,,1827,,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/233-mlm-parkway
-2026-10-21 15:54,D.R. Horton,191 Cavalry Lane,Saddlebrook,Waxahachie,332595,4.0,,1864,,https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/191-cavalry-lane
-2026-10-21 15:54,D.R. Horton,320 Ridan Drive,Saddlebrook,Waxahachie,401490,4.0,,2147,,https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/320-ridan-drive
+2026-10-21 17:19,Bloomfield Homes,2620 Steve Street,Parks at Panchasarp Farms 55 60,Burleson,449900,4.0,3.0,2102,,https://www.bloomfieldhomes.com/new-homes/tx/burleson/parks-at-panchasarp-farms-55-60/jasmine/2620-steve-street/
+2026-10-21 17:19,Bloomfield Homes,8925 Cisco Drive,Country Lakes Classic 60,Denton,582990,4.0,2.0,2098,,https://www.bloomfieldhomes.com/new-homes/tx/denton/country-lakes-classic-60/jasmine/8925-cisco-drive/
+2026-10-21 17:19,Riverside Homebuilders,8565 CR 623,,,524425,3.0,2.0,2020,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8565-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8935 CR 623,,,581850,4.0,3.0,2686,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8935-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8473 CR 623,,,603591,4.0,3.0,2499,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8473-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8519 CR 623,,,522494,4.0,2.0,2107,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8519-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8361 CR 623,,,578231,4.0,3.0,2499,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8361-cr-623
+2026-10-21 15:54,Highland Homes,2921 Moab Drive,Ridgeline,McKinney,645000,4,,2460,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-054
+2026-10-21 15:54,Highland Homes,2916 Moab Drive,Ridgeline,McKinney,712610,5,,3481,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-029
+2026-10-21 15:54,Highland Homes,1605 Buttercup Avenue,Sandbrock Ranch,Aubrey,503475,3,,2340,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/866-370
+2026-10-21 15:54,Riverside Homebuilders,8525 CR 623,,,537850,4,2.0,2229,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8525-cr-623
+2026-10-21 15:54,Riverside Homebuilders,8489 CR 623,,,555200,4,3.0,2426,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
+2026-10-21 15:54,Riverside Homebuilders,8341 CR 623,,,593339,4,3.0,2686,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8341-cr-623
+2026-10-21 15:54,Riverside Homebuilders,8629 CR 623,,,519152,3,2.0,2033,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8629-cr-623
+2026-10-21 15:54,D.R. Horton,148 Tributary Lane,Dry Creek,Bridgeport,284990,4,,1791,,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/148-tributary-lane
+2026-10-21 15:54,D.R. Horton,233 Mlm Parkway,Dry Creek,Bridgeport,288990,4,,1827,,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/233-mlm-parkway
+2026-10-21 15:54,D.R. Horton,191 Cavalry Lane,Saddlebrook,Waxahachie,332595,4,,1864,,https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/191-cavalry-lane
+2026-10-21 15:54,D.R. Horton,320 Ridan Drive,Saddlebrook,Waxahachie,401490,4,,2147,,https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/320-ridan-drive
 2026-10-21 13:37,D.R. Horton,1603 Somerville Dr Blue Ridge,Creekside Ranch,Dallas,247990,5,2.5,1964,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/blue-ridge/creekside-ranch/qmis/1603-somerville-dr
 2026-10-21 13:37,D.R. Horton,1605 Somerville Dr Blue Ridge,Creekside Ranch,Dallas,232990,3,2.0,1352,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/blue-ridge/creekside-ranch/qmis/1605-somerville-dr
 2026-10-21 13:37,D.R. Horton,1607 Somerville Dr Blue Ridge,Creekside Ranch,Dallas,235990,3,2.0,1500,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/blue-ridge/creekside-ranch/qmis/1607-somerville-dr
