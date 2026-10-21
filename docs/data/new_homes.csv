@@ -1,14 +1,31 @@
 at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
-2026-10-21 08:46,Riverside Homebuilders,1030 CR 200,,,459900,4.0,3.0,2499,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1030-cr-200
-2026-10-21 08:46,Riverside Homebuilders,2893 CR 658,,Farmersville,362500,4.0,2.0,2270,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/2893-county-road-658
-2026-10-21 08:46,Perry Homes,1713 Trailhead Drive,Ramble 60,Celina,761900,4.0,3.5,2944,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/1713-trailhead-drive
-2026-10-21 08:46,Perry Homes,1504 Fescue Ridge,Canyon Falls 50,Northlake,615900,4.0,3.0,2513,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1504-fescue-ridge
-2026-10-21 08:46,Perry Homes,1508 Fescue Ridge,Canyon Falls 50,Northlake,641900,4.0,3.0,2595,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1508-fescue-ridge
-2026-10-21 08:46,Perry Homes,2408 Junction Drive,Ramble 60,Celina,852900,5.0,4.5,3797,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/2408-junction-drive
-2026-10-21 08:46,Perry Homes,2305 Junction Drive,Ramble 60,Celina,767900,4.0,3.5,2994,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/2305-junction-drive
-2026-10-21 08:46,Perry Homes,2025 Forest Park Way,The Parks at Wilson Creek 60,Celina,848900,5.0,4.5,4016,,https://www.perryhomes.com/new-homes/texas/dallas/the-parks-at-wilson-creek/the-parks-at-wilson-creek-60/2025-forest-park-way
-2026-10-21 08:46,Perry Homes,1224 Greenbriar Avenue,Sweetgrass 50,Haslet,752900,5.0,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1224-greenbriar-avenue
-2026-10-21 08:46,Perry Homes,8164 Western Lakes Drive,Talon Hills 60 70,Dallas,779900,4.0,3.5,2999,,https://www.perryhomes.com/new-homes/texas/dallas/talon-hills/talon-hills-60-70/8164-western-lakes-drive
+2026-10-21 12:40,Trophy Signature Homes,1943 Paddock Lane,,Seagoville,354990,5.0,,2793,,
+2026-10-21 12:40,Trophy Signature Homes,1154 Bermuda Drive,,Lavon,312490,4.0,,2071,,
+2026-10-21 12:40,Trophy Signature Homes,1114 Sagebrush Lane,,Lavon,314990,4.0,,1800,,
+2026-10-21 12:40,Trophy Signature Homes,2219 Willowbank Drive,,Forney,334990,4.0,,2131,,
+2026-10-21 12:40,Trophy Signature Homes,1131 Sagebrush Lane,,Lavon,324990,3.0,,1992,,
+2026-10-21 12:40,Trophy Signature Homes,1611 Yorkie Drive,,Forney,314990,4.0,,1800,,
+2026-10-21 12:40,Trophy Signature Homes,1110 Sagebrush Lane,,Lavon,404990,5.0,,3116,,
+2026-10-21 12:40,Trophy Signature Homes,4113 Joe Pool Drive,,Farmersville,399990,5.0,,3594,,
+2026-10-21 12:40,Trophy Signature Homes,4208 Zoe Lane,,Farmersville,324990,4.0,,2536,,
+2026-10-21 12:40,Riverside Homebuilders,810 CR 200,,,531475,4.0,3.0,2891,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200/
+2026-10-21 12:40,Riverside Homebuilders,870 CR 200,,,469900,4.0,3.0,2499,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/870-cr-200/
+2026-10-21 12:40,Riverside Homebuilders,8707 CR 623,,,499900,4.0,2.0,2229,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
+2026-10-21 12:40,Riverside Homebuilders,8813 CR 623,,,499900,4.0,2.0,2426,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8813-cr-623/
+2026-10-21 12:40,Riverside Homebuilders,900 CR 200,,,469900,4.0,2.0,2483,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/900-cr-200/
+2026-10-21 12:40,Riverside Homebuilders,930 CR 200,,,529900,4.0,3.0,2686,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/930-cr-200/
+2026-10-21 12:40,Bloomfield Homes,945 Ford Drive,Homestead at Daniel Farm Phase 2,DeSoto,517586,3.0,2.5,2500,,https://www.bloomfieldhomes.com/new-homes/tx/desoto/homestead-at-daniel-farm-phase-2/rockcress/945-ford-drive/
+2026-10-21 12:40,D.R. Horton,122 Pheasant Run Road,Northspur,Terrell,293990,3.0,,1931,,https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/122-pheasant-run-road
+2026-10-21 08:46,Riverside Homebuilders,1030 CR 200,,,459900,4,3.0,2499,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1030-cr-200
+2026-10-21 08:46,Riverside Homebuilders,2893 CR 658,,Farmersville,362500,4,2.0,2270,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/2893-county-road-658
+2026-10-21 08:46,Perry Homes,1713 Trailhead Drive,Ramble 60,Celina,761900,4,3.5,2944,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/1713-trailhead-drive
+2026-10-21 08:46,Perry Homes,1504 Fescue Ridge,Canyon Falls 50,Northlake,615900,4,3.0,2513,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1504-fescue-ridge
+2026-10-21 08:46,Perry Homes,1508 Fescue Ridge,Canyon Falls 50,Northlake,641900,4,3.0,2595,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1508-fescue-ridge
+2026-10-21 08:46,Perry Homes,2408 Junction Drive,Ramble 60,Celina,852900,5,4.5,3797,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/2408-junction-drive
+2026-10-21 08:46,Perry Homes,2305 Junction Drive,Ramble 60,Celina,767900,4,3.5,2994,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/2305-junction-drive
+2026-10-21 08:46,Perry Homes,2025 Forest Park Way,The Parks at Wilson Creek 60,Celina,848900,5,4.5,4016,,https://www.perryhomes.com/new-homes/texas/dallas/the-parks-at-wilson-creek/the-parks-at-wilson-creek-60/2025-forest-park-way
+2026-10-21 08:46,Perry Homes,1224 Greenbriar Avenue,Sweetgrass 50,Haslet,752900,5,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1224-greenbriar-avenue
+2026-10-21 08:46,Perry Homes,8164 Western Lakes Drive,Talon Hills 60 70,Dallas,779900,4,3.5,2999,,https://www.perryhomes.com/new-homes/texas/dallas/talon-hills/talon-hills-60-70/8164-western-lakes-drive
 2026-10-21 07:05,D.R. Horton,2425 Poinsettia Dr Pilot Point,Windrose,Pilot Point,371990,4,2.0,2128,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/pilot-point/windrose/qmis/2425-poinsettia-dr
 2026-10-21 07:05,D.R. Horton,760 Snowdrop Dr Pilot Point,Windrose,Pilot Point,368490,4,2.0,2123,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/pilot-point/windrose/qmis/760-snowdrop-dr
 2026-10-21 07:05,D.R. Horton,766 Snowdrop Dr Pilot Point,Windrose,Pilot Point,373490,4,2.0,2066,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/pilot-point/windrose/qmis/766-snowdrop-dr
