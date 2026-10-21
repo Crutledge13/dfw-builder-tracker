@@ -3,6 +3,7 @@ name: Hourly builder price tracking
 on:
   schedule:
     - cron: "17 * * * *"      # every hour at :17 UTC (off the top of the hour, GitHub's busiest minute)
+    - cron: "47 * * * *"      # backup slot: GitHub often drops scheduled runs; skipped if the last run was < 45 min ago
   workflow_dispatch:
     inputs:
       only:
@@ -33,14 +34,26 @@ jobs:
       - name: Load latest saved data
         run: git pull --ff-only origin main   # a queued run must start from the previous run's data
 
+      - name: Skip if the last run was recent
+        id: gate
+        if: github.event_name == 'schedule'
+        run: |
+          last=$(TZ=America/Chicago date -d "$(cat docs/data/updated.txt 2>/dev/null)" +%s 2>/dev/null || echo 0)
+          age=$(( ($(date +%s) - last) / 60 ))
+          echo "Last run started $age min ago"
+          if [ "$age" -lt 45 ]; then echo "skip=true" >> "$GITHUB_OUTPUT"; fi
+
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.skip != 'true'
         with:
           python-version: "3.12"
           cache: pip
 
       - run: pip install -r requirements.txt
+        if: steps.gate.outputs.skip != 'true'
 
       - name: Run tracker
+        if: steps.gate.outputs.skip != 'true'
         env:
           # Optional: set both secrets to also write a Google Sheet. Otherwise data goes to docs/data/.
           SHEET_ID: ${{ secrets.SHEET_ID }}
@@ -57,6 +70,7 @@ jobs:
           fi
 
       - name: Save data
+        if: steps.gate.outputs.skip != 'true'
         run: |
           git config user.name  "builder-tracker-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

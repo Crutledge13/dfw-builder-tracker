@@ -541,7 +541,36 @@ def test_gone_home_and_quiet_correction():
         community = '<html><head><link rel="canonical" href="https://tb.example/new-homes/tx/celina/mosaic"></head>' \
                     '<body><p>Budget $150,000</p></body></html>'
         st, ch = run_once(store, dict(seed, **{DETAIL: community}), t0 + timedelta(hours=2))
+        assert ch == [] and next(iter(st.homes.values()))["active"]       # first redirect: confirm later
+        st, ch = run_once(store, dict(seed, **{DETAIL: community}), t0 + timedelta(hours=3))
         assert [c["event"] for c in ch] == ["removed"] and next(iter(st.homes.values()))["price"] == 424990
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_brief_redirect_while_repricing_is_not_a_sale():
+    """Trophy Signature: five live homes' pages showed the community page for one run (during a repricing),
+    were logged as sold, then 'relisted' three hours later. One redirect alone, or a redirect while a listing
+    still shows the home, must not record a sale."""
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp); t0 = R.now_local()
+        seed = {"https://tb.example/qmi": listing_page([])}
+        community = '<html><head><link rel="canonical" href="https://tb.example/new-homes/tx/celina/mosaic"></head>' \
+                    '<body><p>From $299,990</p></body></html>'
+        run_once(store, dict(seed, **{DETAIL: detail_page(424990)}), t0)
+        st, ch = run_once(store, dict(seed, **{DETAIL: community}), t0 + timedelta(hours=1))
+        h = next(iter(st.homes.values()))
+        assert ch == [] and h["active"] and h["gone_pending"]
+        st, ch = run_once(store, dict(seed, **{DETAIL: detail_page(419990)}), t0 + timedelta(hours=2))
+        h = next(iter(st.homes.values()))
+        assert [c["event"] for c in ch] == ["price_cut"] and h["active"] and not h["gone_pending"]
+        # a listing card shows the home in the same run its page redirects: still for sale, nothing pending
+        listed = {"https://tb.example/qmi": listing_page([("1404 Amber Way", 419990, 2104, "Oak")])}
+        for k in (3, 4):
+            st, ch = run_once(store, dict(listed, **{DETAIL: community}), t0 + timedelta(hours=k))
+            h = next(iter(st.homes.values()))
+            assert ch == [] and h["active"] and not h["gone_pending"]
     finally:
         shutil.rmtree(tmp)
 

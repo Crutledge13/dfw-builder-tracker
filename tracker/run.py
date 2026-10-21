@@ -361,6 +361,7 @@ class Recorder:
         if obs.get("lat") is not None and obs.get("lng") is not None:
             h.update(lat=obs["lat"], lng=obs["lng"], location_precision="builder")
         h["last_seen"] = now
+        h["gone_pending"] = None      # listed again: a single earlier redirect was not a sale
         fp, p = h.get("first_price"), h.get("price")
         if fp and p:
             h["change_since_first"] = p - fp
@@ -370,19 +371,33 @@ class Recorder:
         return hid
 
     @locked
-    def home_gone(self, b, url):
-        """The builder's page for a home now shows a different page (usually its community): it's off the market."""
+    def home_gone(self, b, url) -> bool:
+        """The builder's page for a home now shows a different page (usually its community): it's off the market.
+        A home with a trustworthy price is removed only when a later run sees the redirect again and no listing
+        showed it this run (builders briefly redirect live homes while repricing). True once settled."""
         key = url.rstrip("/").lower()
+        now = ts(self.now)
+        settled = True
         for hid, h in self.st.homes.items():
             if h.get("builder") != b["name"] or not h.get("active") or (h.get("url") or "").rstrip("/").lower() != key:
                 continue
             verified = int(h.get("price_version") or 0) >= EXTRACT_VERSION or hid in self.priced
-            h["active"] = False
-            if verified:
-                self.event(b, "removed", h, old=h.get("price"),
-                           detail="builder's page for this home now shows its community page (sold or withdrawn)")
-            else:
+            if not verified:
+                h["active"] = False
                 h["gone_unverified"] = True   # never had a trustworthy price: drop quietly, no sold record
+                continue
+            if hid in self.run_rank:          # a listing showed it this run: still for sale
+                settled = False
+                continue
+            first = h.get("gone_pending")
+            if not first or str(first) >= now:
+                h["gone_pending"] = first or now   # confirm on a later run before calling it sold
+                settled = False
+                continue
+            h["active"], h["gone_pending"] = False, None
+            self.event(b, "removed", h, old=h.get("price"),
+                       detail="builder's page for this home now shows its community page (sold or withdrawn)")
+        return settled
 
     @locked
     def retire_unseen(self, b):
@@ -586,13 +601,16 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
     def unverified(f):
         h = by_url.get(f["url"].rstrip("/").lower())
         return h is not None and h.get("active") and int(h.get("price_version") or 0) < EXTRACT_VERSION
+    def pending(f):   # redirected on an earlier run: re-check first to confirm before recording a sale
+        h = by_url.get(f["url"].rstrip("/").lower())
+        return bool(h is not None and h.get("active") and h.get("gone_pending"))
     def at_risk(f):   # an active home not seen on any page for a day: check its page before it would be retired
         h = by_url.get(f["url"].rstrip("/").lower())
         seen = parse_ts(h.get("last_seen")) if h is not None and h.get("active") else None
         return bool(seen and seen < now - timedelta(hours=REMOVE_AFTER_H / 2))
-    # homes about to time out first, then never-checked pages, then homes not yet read with the
+    # homes awaiting a sale confirmation first, then homes about to time out, then never-checked pages, then homes not yet read with the
     # current price reader, then the stalest
-    homes.sort(key=lambda f: (not at_risk(f), bool(f.get("last_checked")), not unverified(f),
+    homes.sort(key=lambda f: (not pending(f), not at_risk(f), bool(f.get("last_checked")), not unverified(f),
                               str(f.get("last_checked") or "")))
     reachable = seeds_ok > 0
     for f in homes:
@@ -611,8 +629,8 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
             continue
         reachable = True
         if page_is_elsewhere(f["url"], r.url, r.text):
-            f["misses"] = 3            # stop re-checking; it comes back through listing pages if relisted
-            rec.home_gone(b, f["url"])
+            if rec.home_gone(b, f["url"]):
+                f["misses"] = 3        # stop re-checking; it comes back through listing pages if relisted
             continue
         found = extract_homes(r.text, f["url"], single=True)
         if found:
