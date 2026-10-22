@@ -91,7 +91,16 @@ function collect(b, homesByBuilder) {
     const key = t.toLowerCase().replace(/[^a-z0-9%$]/g, "");
     if (seen.has(key)) return;
     seen.add(key);
-    offers.push({ text: t, type: o.type, k: kind(o.type), amount: o.amount, rate: o.rate, scope, since: o.first_seen, src: o.source_url });
+    // where the offer was read: the builder's promotions page, or (for offers printed on home listings)
+    // one of the builder's home pages that shows it
+    let src = o.source_url;
+    if (!src) {
+      const raw = String(o.text || "").trim().toLowerCase();
+      const home = (homesByBuilder[b.builder] || []).find((h) => h.url && (h.offer_full || "").toLowerCase().includes(raw));
+      src = home ? home.url : null;
+    }
+    offers.push({ text: t, type: o.type, k: kind(o.type), amount: o.amount, rate: o.rate, scope, since: o.first_seen,
+                  src, onHome: !o.source_url && !!src });
   };
   (b.blanket_offers || []).forEach((o) => add(o, "Builder-wide promotion"));
   (b.common_home_offers || []).forEach((o) => add(o, o.homes ? `On ${o.homes.toLocaleString()} of its listed homes` : ""));
@@ -100,6 +109,7 @@ function collect(b, homesByBuilder) {
   const cash = offers.filter((o) => o.k !== "rate" || o.amount).map((o) => o.amount || 0);
   return {
     name: b.builder, website: b.website, offers,
+    source: (offers.find((o) => o.src && !o.onHome) || offers.find((o) => o.src) || {}).src || b.website,
     bestRate: rates.length ? Math.min(...rates) : null,
     bestCash: cash.length ? Math.max(...cash) : 0,
     homes: hs.length,
@@ -121,12 +131,13 @@ function card(b) {
   return `<article class="inc">
     <div class="head"><div><h3>${esc(b.name)}</h3><div class="big">${esc(headline(b))}</div></div></div>
     <ul class="offers">${b.offers.map((o) => `<li><span class="k ${o.k}">${kindLabel[o.k]}</span>
-      <div>${esc(o.text)}<small>${esc([typeName[o.type] || "Offer", o.scope, o.since ? "seen since " + shortDate(o.since) : ""].filter(Boolean).join(" · "))}</small></div></li>`).join("")}</ul>
+      <div>${o.src ? `<a href="${esc(o.src)}" target="_blank" rel="noopener" style="color:inherit">${esc(o.text)}</a>` : esc(o.text)}<small>${esc([typeName[o.type] || "Offer", o.scope, o.since ? "seen since " + shortDate(o.since) : ""].filter(Boolean).join(" · "))}</small></div></li>`).join("")}</ul>
     <div class="nums"><div><b>${b.homes.toLocaleString()}</b><span>Homes listed</span></div>
       <div><b>${b.cuts.toLocaleString()}</b><span>With price cuts</span></div>
       <div><b>${b.marked.toLocaleString()}</b><span>Marked down</span></div></div>
     <div class="actions"><a class="btn small" href="${q}">See ${esc(b.name.replace(/ Homes?$| Homebuilders$| Home Builder$/, ""))} deals</a>
-      ${b.website ? `<a class="btn ghost small" href="${esc(b.website)}" target="_blank" rel="noopener">Builder site</a>` : ""}</div>
+      ${b.source ? `<a class="btn ghost small" href="${esc(b.source)}" target="_blank" rel="noopener"
+         title="The page on ${esc(b.name)}'s website where this incentive is posted">View offer on builder site</a>` : ""}</div>
   </article>`;
 }
 
