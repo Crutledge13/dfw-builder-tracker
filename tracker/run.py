@@ -296,9 +296,15 @@ class Recorder:
             old = h.get("price")
             if old and abs(price - old) >= MIN_CHANGE:
                 big = abs(price - old) / old > SUSPECT_PCT
-                if big and h.get("pending_price") != price:
+                # a jump back up to exactly the builder's own struck-through 'was' price is usually a page
+                # that briefly lost its sale price (Bloomfield, 2026-10-21): confirm it like a large move
+                was = h.get("builder_was_price")
+                back_to_was = price > old and was not in (None, "") and str(was) != "nan" and int(float(was)) == price
+                if (big or back_to_was) and h.get("pending_price") != price:
                     h["pending_price"] = price  # confirm on the next look before recording
-                    self.event(b, "price_unconfirmed", h, old, price, "large move; waiting for a second reading")
+                    self.event(b, "price_unconfirmed", h, old, price,
+                               "back to the builder's 'was' price; waiting for a second reading" if back_to_was
+                               else "large move; waiting for a second reading")
                 else:
                     kind = "price_cut" if price < old else "price_increase"
                     self.event(b, kind, h, old, price)

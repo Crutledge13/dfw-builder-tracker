@@ -751,3 +751,31 @@ def test_unconfirmed_old_price_is_not_a_sold_record():
         assert not amber["active"] and amber["gone_unverified"]
     finally:
         shutil.rmtree(tmp)
+
+
+def test_jump_back_to_was_price_needs_confirmation():
+    # Bloomfield 2026-10-21: a page briefly showed only the struck 'was' price; it was logged as a
+    # +$40,160 increase and, hours later, a -$40,160 'price drop' back to the unchanged sale price
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "1636 Granton Way", "city": "Forney", "zip": "75126",
+         "url": "https://tb.example/1636-granton-way", "from_detail": True}
+    rec = R.Recorder(st, t0)
+    rec.observe(B, dict(h, price=475000, builder_was_price=515160))
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, price=515160))
+    assert [c["event"] for c in rec.changes] == ["price_unconfirmed"]
+    rec = R.Recorder(st, t0 + timedelta(hours=2))
+    rec.observe(B, dict(h, price=475000, builder_was_price=515160))
+    assert [c["event"] for c in rec.changes] == []   # sale price back: nothing to report
+    hid = next(iter(st.homes))
+    assert st.homes[hid]["price"] == 475000 and not st.homes[hid].get("pending_price")
+    # seen twice in a row: the sale really ended, record it
+    for k in (3, 4):
+        rec = R.Recorder(st, t0 + timedelta(hours=k))
+        rec.observe(B, dict(h, price=515160))
+    assert st.homes[hid]["price"] == 515160
+    # an ordinary increase to some other price is recorded at once
+    rec = R.Recorder(st, t0 + timedelta(hours=5))
+    rec.observe(B, dict(h, price=519990))
+    assert [c["event"] for c in rec.changes] == ["price_increase"]
