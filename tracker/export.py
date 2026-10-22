@@ -470,6 +470,103 @@ def this_week(st, homes: dict, run_at: str, days: int = 7) -> dict:
     }
 
 
+def _short_offer(text: str | None) -> str | None:
+    """First offer phrase, trimmed for a listing card."""
+    if not text:
+        return None
+    t = text.split(" | ")[0].strip()
+    return t if len(t) <= 90 else t[:87].rsplit(" ", 1)[0] + "..."
+
+
+GENERIC_PROMO_RE = re.compile(r"\bup to\b.{0,40}\bon (select|selected|participating|qualifying)\s+(homes|inventory)\b", re.I)
+
+
+def consumer_site(st, homes: dict, run_at: str, weeks: int = 6) -> dict:
+    """Compact feed for the public site (docs/homes/): every active home with one 'deal' figure to sort by,
+    and Monday-to-Monday weeks of price drops and new incentives."""
+    from datetime import timedelta
+    now = datetime.strptime(run_at, "%Y-%m-%d %H:%M").replace(tzinfo=TZ) if run_at else datetime.now(TZ)
+    monday = (now - timedelta(days=now.weekday())).replace(hour=0, minute=0, second=0, microsecond=0)
+
+    def when(s):
+        try:
+            return datetime.strptime(str(s or ""), "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+        except ValueError:
+            return None
+
+    builders = sorted({h["builder"] for h in homes.values() if h.get("builder")})
+    rows = []
+    for h in homes.values():
+        if not h.get("price"):
+            continue
+        offer = h.get("offer") or {}
+        disc, drop = h.get("builder_discount") or 0, h.get("total_drop") or 0
+        ov = 0
+        for part in (offer.get("text") or "").split(" | "):
+            if GENERIC_PROMO_RE.search(part):
+                continue      # "Plus save up to $75,000 on select homes": not this home's own number
+            v = incentive_value(part, h.get("price")) or 0
+            if PRICE_CUT_RE.search(part) and v:
+                disc = max(disc, v)      # "$182K off" is this home's markdown, not an extra incentive
+            elif v not in (0, ov):
+                ov += v
+        deal = max(disc, drop) + ov          # builder's markdown or our observed drop (they overlap), + incentive
+        rows.append({
+            "id": h["id"], "builder": h.get("builder"), "address": h.get("address"), "city": h.get("city"),
+            "zip": h.get("zip"), "community": h.get("community"), "beds": h.get("beds"), "baths": h.get("baths"),
+            "sqft": h.get("sqft"), "price": h["price"], "was": h.get("builder_was_price"),
+            "first_price": h.get("first_price"), "drop": drop or None, "cuts": h.get("cuts") or 0,
+            "last_cut_at": h.get("last_cut_at"), "discount": disc or None, "offer_value": ov or None,
+            "offer": _short_offer(offer.get("text")), "offer_full": offer.get("text"),
+            "offer_type": offer.get("type"), "rate": offer.get("rate"),
+            "deal": deal or None, "deal_pct": round(deal / (h["price"] + max(disc, drop)) * 100, 1) if deal else None,
+            "move_in": h.get("move_in_label"), "url": h.get("url"), "lat": h.get("lat"), "lng": h.get("lng"),
+            "pin": h.get("location_precision"), "first_seen": h.get("first_seen_at"),
+        })
+    # biggest deal first; then rate offers (lowest rate first); then the rest, newest listings first
+    rows.sort(key=lambda r: (-(r["deal"] or 0), r["rate"] if r["rate"] else 99, -(int((r["first_seen"] or "0")[:10].replace("-", "") or 0))))
+
+    first_day = {}
+    for c in st.changes:
+        t = when(c.get("at"))
+        if c.get("event") == "new_home" and t:
+            first_day[c.get("builder")] = min(first_day.get(c.get("builder"), t), t)
+    out_weeks = []
+    for i in range(weeks):
+        start = monday - timedelta(days=7 * i)
+        end = start + timedelta(days=7)
+        if first_day and end <= min(first_day.values()) + timedelta(days=1):
+            break   # nothing tracked yet that week beyond the first-day baseline
+        drops, new_homes = [], 0
+        for c in st.changes:
+            t = when(c.get("at"))
+            if not t or not (start <= t < end):
+                continue
+            if c.get("event") == "price_cut" and c.get("home_id") in homes and c.get("old") and c.get("new"):
+                drops.append({"id": c["home_id"], "at": iso(c["at"]), "old": int(c["old"]), "new": int(c["new"]),
+                              "drop": int(c["old"]) - int(c["new"])})
+            elif c.get("event") == "new_home" and t >= first_day.get(c.get("builder"), t) + timedelta(hours=24):
+                new_homes += 1
+        drops.sort(key=lambda d: -d["drop"])
+        offers = []
+        for h in homes.values():
+            o = h.get("offer") or {}
+            t, seen = when(o.get("since")), when(h.get("first_seen"))
+            if t and start <= t < end and o.get("value") and t >= first_day.get(h.get("builder"), t) + timedelta(hours=24):
+                offers.append({"id": h["id"], "at": iso(o["since"]), "value": o["value"],
+                               "new_listing": bool(seen and seen >= start)})
+        offers.sort(key=lambda d: -d["value"])
+        out_weeks.append({"start": start.isoformat(), "end": end.isoformat(), "current": i == 0,
+                          "price_drops": drops, "total_dropped": sum(d["drop"] for d in drops),
+                          "new_incentives": offers, "new_listings": new_homes})
+    return {"updated_at": iso(run_at), "builders": builders,
+            "stats": {"homes": len(rows), "builders": len(builders),
+                      "with_deal": sum(1 for r in rows if r["deal"]),
+                      "with_drop": sum(1 for r in rows if r["drop"]),
+                      "with_offer": sum(1 for r in rows if r["offer"])},
+            "homes": rows, "weeks": out_weeks}
+
+
 def _write(path: Path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":"), default=str), encoding="utf-8")
 
@@ -532,6 +629,7 @@ def export_json(folder: Path, st, derived: dict, run_at: str):
                       "offer": bool(h["offer"]), "url": h["url"]}
                      for h in homes.values() if h["lat"] is not None],
         "price_history.json": {hid: pts for hid, pts in history.items() if hid in homes},
+        "site.json": consumer_site(st, homes, run_at),
     }
     files["homes.geojson"] = {"type": "FeatureCollection", "features": [
         {"type": "Feature", "geometry": {"type": "Point", "coordinates": [h["lng"], h["lat"]]},
@@ -542,7 +640,8 @@ def export_json(folder: Path, st, derived: dict, run_at: str):
     _write(api / "meta.json", {
         "updated_at": run_at, "timezone": "America/Chicago",
         "counts": {(k[:-5] if k.endswith(".json") else k.replace(".", "_")):
-                   len(v["features"] if k.endswith(".geojson") else v) for k, v in files.items()},
+                   len(v["features"] if k.endswith(".geojson") else v["homes"] if k == "site.json" else v)
+                   for k, v in files.items()},
         "builders": sorted({h["builder"] for h in active if h.get("builder")}),
         "files": sorted(files) + ["meta.json"],
         "mapped": sum(1 for h in homes.values() if h["lat"] is not None),

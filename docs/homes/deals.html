@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deals of the Week | DFW New Home Deals</title>
+<meta name="description" content="This week's price cuts and new incentives on Dallas–Fort Worth new-construction homes, Monday to Monday.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<main class="wrap" style="padding-top:26px">
+  <div class="sec-head"><div><h2>Deals of the week</h2><p>Every price cut and new incentive we caught, Monday to Monday.</p></div>
+    <div class="weekbar"><label for="wk" class="sub">Week</label><select id="wk"></select></div></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <section style="padding-top:18px">
+    <div class="sec-head"><div><h2 style="font-size:22px">Price cuts</h2><p id="dropNote">Biggest first.</p></div>
+      <div class="toggle"><button type="button" class="on" data-s="drop">Biggest $</button><button type="button" data-s="recent">Most recent</button></div></div>
+    <div class="grid" id="drops"><div class="loading">Loading…</div></div>
+    <div class="more"><button class="btn ghost" id="moreDrops" hidden>Show more price cuts</button></div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="sec-head"><div><h2 style="font-size:22px">New incentives</h2><p>Homes whose builder added or changed a dollar incentive this week.</p></div></div>
+    <div class="grid" id="offers"></div>
+    <div class="more"><button class="btn ghost" id="moreOffers" hidden>Show more incentives</button></div>
+  </section>
+
+  <div class="cta"><div><h3>See a home you like?</h3><p>I can help you tour it and make the most of the builder's incentive.</p></div>
+    <a class="btn" href="contact.html">Contact Conner</a></div>
+</main>
+
+<script src="site.js"></script>
+<script>
+shell("deals");
+const PAGE = 12;
+let D, W, dropSort = "drop", nDrops = PAGE, nOffers = PAGE;
+
+function render() {
+  // one card per home: a home cut twice this week shows once with its total
+  const per = new Map();
+  for (const x of W.price_drops) {
+    const p = per.get(x.id) || { id: x.id, drop: 0, n: 0, at: x.at, old: x.old };
+    p.drop += x.drop; p.n += 1;
+    if (x.at > p.at) p.at = x.at;
+    if (x.old > p.old) p.old = x.old;
+    per.set(x.id, p);
+  }
+  let drops = [...per.values()].filter((p) => D.byId[p.id]);
+  drops.sort(dropSort === "drop" ? (a, z) => z.drop - a.drop : (a, z) => z.at.localeCompare(a.at));
+  const offers = W.new_incentives.filter((o) => D.byId[o.id]);
+  const total = drops.reduce((s, p) => s + p.drop, 0);
+  const homesCut = drops.length;
+  $("#kpis").innerHTML = `
+    <div><b>${homesCut.toLocaleString()}</b><span>Homes with a price cut</span></div>
+    <div><b>${moneyK(total) || "$0"}</b><span>Total cut</span></div>
+    <div><b>${homesCut ? moneyK(Math.round(total / homesCut)) : "–"}</b><span>Average cut</span></div>
+    <div><b>${offers.length.toLocaleString()}</b><span>New incentives</span></div>`;
+  $("#dropNote").textContent = W.current ? "So far this week. New cuts show up within about an hour." : "For the whole week.";
+  $("#drops").innerHTML = drops.length ? drops.slice(0, nDrops).map((p) => {
+    const h = D.byId[p.id];
+    return card(h, `<div class="sub">Cut ${moneyK(p.drop)}${p.n > 1 ? ` in ${p.n} steps` : ""} · ${shortDate(p.at)} · was ${money(p.old)}</div>`);
+  }).join("") : `<div class="empty">No price cuts yet this week. Check back soon.</div>`;
+  $("#moreDrops").hidden = nDrops >= drops.length;
+  $("#offers").innerHTML = offers.length ? offers.slice(0, nOffers).map((o) => {
+    const h = D.byId[o.id];
+    return card(h, `<div class="sub">${moneyK(o.value)} incentive · ${o.new_listing ? "new listing" : "added"} ${shortDate(o.at)}</div>`);
+  }).join("") : `<div class="empty">No new incentives this week yet.</div>`;
+  $("#moreOffers").hidden = nOffers >= offers.length;
+}
+
+loadData().then((d) => {
+  D = d;
+  if (!d.weeks.length) { $("#drops").innerHTML = `<div class="empty">No weekly data yet.</div>`; return; }
+  $("#wk").innerHTML = d.weeks.map((w, i) => `<option value="${i}">${weekLabel(w)}</option>`).join("");
+  W = d.weeks[0];
+  render();
+}).catch((e) => fail($("#drops"), e));
+
+$("#wk").addEventListener("change", (e) => { W = D.weeks[+e.target.value]; nDrops = nOffers = PAGE; render(); });
+document.querySelectorAll("[data-s]").forEach((b) => b.addEventListener("click", () => {
+  dropSort = b.dataset.s;
+  document.querySelectorAll("[data-s]").forEach((x) => x.classList.toggle("on", x === b));
+  render();
+}));
+$("#moreDrops").addEventListener("click", () => { nDrops += PAGE; render(); });
+$("#moreOffers").addEventListener("click", () => { nOffers += PAGE; render(); });
+</script>
+</body>
+</html>

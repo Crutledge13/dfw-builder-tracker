@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Conner Rutledge | DFW New Home Deals</title>
+<meta name="description" content="Questions about a new-construction home, incentive or community in Dallas–Fort Worth? Contact Conner Rutledge.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<main class="wrap" style="padding-top:36px">
+  <div class="contact-card">
+    <h1>Conner Rutledge</h1>
+    <p class="sub" style="font-size:16px;margin:0 0 18px">New-construction homes across Dallas–Fort Worth</p>
+    <p>Saw a price cut or incentive you want to know more about? Call, text or email me. I can help you
+      tour homes, compare builders' incentives and work through the buying process.</p>
+    <div class="contact-line"><span>Phone</span><a id="phone" href="tel:+16366988868">(636) 698-8868</a></div>
+    <div class="contact-line"><span>Text</span><a id="sms" href="sms:+16366988868">(636) 698-8868</a></div>
+    <div class="contact-line"><span>Email</span><a id="email" href="mailto:conner@rutledgesellstexas.com">conner@rutledgesellstexas.com</a></div>
+    <p class="asking" id="asking" hidden></p>
+    <p style="margin-top:22px"><a class="btn" id="mailBtn" href="mailto:conner@rutledgesellstexas.com">Email Conner</a>
+      <a class="btn ghost" href="homes.html" style="margin-left:6px">Browse homes</a></p>
+  </div>
+</main>
+<script src="site.js"></script>
+<script>
+shell("contact");
+// "Ask about this home" links can pass ?home=<id>; mention it and prefill the email
+const id = new URLSearchParams(location.search).get("home");
+if (id) loadData().then((d) => {
+  const h = d.byId[id];
+  if (!h) return;
+  $("#asking").hidden = false;
+  $("#asking").textContent = `Asking about ${h.address}${h.city ? ", " + h.city : ""} (${h.builder}, ${money(h.price)})`;
+  $("#mailBtn").href = askLink(h);
+}).catch(() => {});
+</script>
+</body>
+</html>

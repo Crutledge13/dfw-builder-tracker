@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DFW New Home Deals | Conner Rutledge</title>
+<meta name="description" content="Price cuts, builder markdowns and incentives on new-construction homes across Dallas–Fort Worth, updated every hour.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="hero"><div class="wrap">
+  <h1>The best new-construction deals in Dallas–Fort Worth, in one place.</h1>
+  <p>We watch builders' websites around the clock for price cuts, markdowns and incentives, so you can see which new homes are actually on sale.</p>
+  <form class="search" action="homes.html" method="get">
+    <input name="q" placeholder="City, ZIP, community or builder" aria-label="Search homes">
+    <button class="btn" type="submit">Search homes</button>
+  </form>
+  <div class="stats" id="stats">
+    <div><b>–</b><span>New homes tracked</span></div><div><b>–</b><span>Builders</span></div>
+    <div><b>–</b><span>Homes with a deal</span></div><div><b>–</b><span>Price cuts this week</span></div>
+  </div>
+</div></div>
+
+<main>
+<section><div class="wrap">
+  <div class="sec-head"><div><h2>Top deals right now</h2><p>Biggest estimated savings: price cuts, builder markdowns and incentives combined.</p></div>
+    <a class="btn ghost" href="homes.html">See all homes</a></div>
+  <div class="grid" id="top"><div class="loading">Loading homes…</div></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><div><h2>Fresh price cuts this week</h2><p id="weekline">Price drops since Monday.</p></div>
+    <a class="btn ghost" href="deals.html">Deals of the week</a></div>
+  <div class="grid" id="drops"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="sec-head"><h2>How it works</h2></div>
+  <div class="steps">
+    <div><b>1. We check every hour</b><p>Prices and incentives come straight from 20+ DFW builders' own websites: D.R. Horton, Bloomfield, Highland, David Weekley and more.</p></div>
+    <div><b>2. Deals rise to the top</b><p>Every home is ranked by its estimated savings, so the biggest markdowns and incentives show first.</p></div>
+    <div><b>3. Get help buying</b><p>Found one you like? Reach out and I'll help you tour it, compare incentives and negotiate with the builder.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="cta"><div><h3>Want a hand with a new build?</h3><p>Questions about a home, an incentive or a community? Let's talk.</p></div>
+    <a class="btn" href="contact.html">Contact Conner</a></div>
+</div></section>
+</main>
+
+<script src="site.js"></script>
+<script>
+shell("home");
+loadData().then((d) => {
+  const week = d.weeks.find((w) => w.current) || d.weeks[0];
+  const s = $("#stats").children;
+  s[0].firstChild.textContent = d.stats.homes.toLocaleString();
+  s[1].firstChild.textContent = d.stats.builders;
+  s[2].firstChild.textContent = d.stats.with_deal.toLocaleString();
+  s[3].firstChild.textContent = week ? week.price_drops.length.toLocaleString() : "0";
+  // top deals: one home per community so the list isn't twelve copies of one subdivision
+  const seen = new Set(), top = [];
+  for (const h of d.homes) {
+    const k = h.builder;   // one per builder so the top list shows the range of builders
+    if (!h.deal || seen.has(k)) continue;
+    seen.add(k); top.push(h);
+    if (top.length === 6) break;
+  }
+  $("#top").innerHTML = top.map((h) => card(h)).join("");
+  if (week) {
+    $("#weekline").textContent = `Price drops ${weekLabel(week).replace(" (this week)", "")}.`;
+    const ids = new Set(), drops = [];
+    for (const x of week.price_drops) {
+      const h = d.byId[x.id];
+      if (!h || ids.has(x.id)) continue;
+      ids.add(x.id); drops.push([h, x]);
+      if (drops.length === 6) break;
+    }
+    $("#drops").innerHTML = drops.length ? drops.map(([h, x]) =>
+      card(h, `<div class="sub">Cut ${moneyK(x.drop)} on ${shortDate(x.at)}</div>`)).join("")
+      : `<div class="empty">No price cuts yet this week. Check back soon.</div>`;
+  }
+}).catch((e) => fail($("#top"), e));
+</script>
+</body>
+</html>

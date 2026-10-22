@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All Available Homes | DFW New Home Deals</title>
+<meta name="description" content="Every available new-construction home we track in Dallas–Fort Worth, sorted from the biggest deal down. Filter by city, builder, price and beds, or browse the map.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<main class="wrap" style="padding-top:26px">
+  <div class="sec-head"><div><h2>All available homes</h2><p>Sorted from the biggest deal down to homes at their regular price.</p></div></div>
+
+  <form class="filters" id="f" onsubmit="return false">
+    <label class="q">Search<input name="q" placeholder="City, ZIP, street, community or builder"></label>
+    <label>City<select name="city"><option value="">Any city</option></select></label>
+    <label>Builder<select name="builder"><option value="">Any builder</option></select></label>
+    <label>Min price<select name="min"><option value="">No min</option></select></label>
+    <label>Max price<select name="max"><option value="">No max</option></select></label>
+    <label>Beds<select name="beds"><option value="">Any</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label>
+    <div class="row2">
+      <button type="button" class="pill on" data-deal="">All homes</button>
+      <button type="button" class="pill" data-deal="any">Any deal</button>
+      <button type="button" class="pill" data-deal="drop">Price cuts</button>
+      <button type="button" class="pill" data-deal="mark">Builder markdowns</button>
+      <button type="button" class="pill" data-deal="offer">Incentives</button>
+      <button type="button" class="pill" data-deal="ready">Ready now</button>
+      <span style="flex:1"></span>
+      <label style="flex-direction:row;align-items:center;gap:8px">Sort
+        <select name="sort" style="width:auto">
+          <option value="deal">Best deal first</option><option value="drop">Biggest price cut</option>
+          <option value="pct">Biggest % savings</option><option value="low">Price: low to high</option>
+          <option value="high">Price: high to low</option><option value="new">Newest listings</option>
+        </select></label>
+      <button type="button" class="btn ghost small" id="reset">Reset</button>
+    </div>
+  </form>
+
+  <div class="bar"><div class="count" id="count">Loading homes…</div>
+    <div class="toggle" role="tablist"><button type="button" id="vList" class="on">List</button><button type="button" id="vMap">Map</button></div></div>
+
+  <div id="listView"><div class="grid" id="list"></div><div class="more"><button class="btn ghost" id="moreBtn" hidden>Show more homes</button></div></div>
+  <div id="mapView" hidden><div id="map"></div>
+    <div class="legend"><span><i style="background:#157a4a"></i>Save $25k+</span><span><i style="background:#3d9a5f"></i>Some savings</span><span><i style="background:#1f5c99"></i>Rate offer</span><span><i style="background:#7c8594"></i>Regular price</span><span>Pins in ZIP-code centers are approximate.</span></div></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script src="site.js"></script>
+<script>
+shell(location.hash === "#map" ? "map" : "homes");
+const F = $("#f"), PAGE = 24;
+let D, rows = [], shown = 0, deal = "", map, layer, mapDirty = true;
+
+const params = new URLSearchParams(location.search);
+for (const [k, v] of params) if (F.elements[k]) F.elements[k].value = v;
+if (params.get("deal")) deal = params.get("deal");
+
+function fill(sel, values, fmt = (v) => v) {
+  sel.insertAdjacentHTML("beforeend", values.map((v) => `<option value="${esc(v)}">${esc(fmt(v))}</option>`).join(""));
+}
+
+function apply() {
+  const q = F.q.value.trim().toLowerCase(), city = F.city.value, b = F.builder.value;
+  const min = +F.min.value || 0, max = +F.max.value || Infinity, beds = +F.beds.value || 0;
+  rows = D.homes.filter((h) => {
+    if (city && h.city !== city) return false;
+    if (b && h.builder !== b) return false;
+    if (h.price < min || h.price > max) return false;
+    if (beds && !(h.beds >= beds)) return false;
+    if (deal === "any" && !h.deal && !h.rate) return false;
+    if (deal === "drop" && !h.drop) return false;
+    if (deal === "mark" && !h.discount) return false;
+    if (deal === "offer" && !h.offer_value && !h.rate) return false;
+    if (deal === "ready" && !/ready|now|complete/i.test(h.move_in || "")) return false;
+    if (q && ![h.address, h.city, h.zip, h.community, h.builder].join(" ").toLowerCase().includes(q)) return false;
+    return true;
+  });
+  const s = F.sort.value;
+  const by = { deal: (a, z) => a.rank - z.rank, drop: (a, z) => (z.drop || 0) - (a.drop || 0) || a.rank - z.rank,
+               pct: (a, z) => (z.deal_pct || 0) - (a.deal_pct || 0) || a.rank - z.rank,
+               low: (a, z) => a.price - z.price, high: (a, z) => z.price - a.price,
+               new: (a, z) => (z.first_seen || "").localeCompare(a.first_seen || "") };
+  rows.sort(by[s] || by.deal);
+  shown = 0;
+  $("#list").innerHTML = "";
+  more();
+  const deals = rows.filter((h) => h.deal).length;
+  $("#count").textContent = `${rows.length.toLocaleString()} homes · ${deals.toLocaleString()} with savings`;
+  mapDirty = true;
+  if (!$("#mapView").hidden) drawMap();
+  // keep the filters in the address bar so a search can be shared or bookmarked
+  const p = new URLSearchParams();
+  for (const k of ["q", "city", "builder", "min", "max", "beds", "sort"]) if (F.elements[k].value && !(k === "sort" && F.sort.value === "deal")) p.set(k, F.elements[k].value);
+  if (deal) p.set("deal", deal);
+  history.replaceState(null, "", "?" + p.toString() + location.hash);
+}
+
+function more() {
+  const next = rows.slice(shown, shown + PAGE);
+  if (!rows.length) $("#list").innerHTML = `<div class="empty">No homes match these filters. Try widening the price range or clearing a filter.</div>`;
+  $("#list").insertAdjacentHTML("beforeend", next.map((h) => card(h)).join(""));
+  shown += next.length;
+  $("#moreBtn").hidden = shown >= rows.length;
+  $("#moreBtn").textContent = `Show more homes (${(rows.length - shown).toLocaleString()} more)`;
+}
+
+function color(h) {
+  if (h.deal >= 25000) return "#157a4a";
+  if (h.deal) return "#3d9a5f";
+  if (h.rate) return "#1f5c99";
+  return "#7c8594";
+}
+
+function popup(h) {
+  const specs = [h.beds && `${h.beds} bd`, h.baths && `${h.baths} ba`, h.sqft && `${h.sqft.toLocaleString()} sq ft`].filter(Boolean).join(" · ");
+  return `<div class="pop"><b>${money(h.price)}</b>${h.deal ? ` <span class="tag drop">Save ~${moneyK(h.deal)}</span>` : ""}<br>
+    ${esc(h.address || "")}<br><span class="sub">${esc([h.community, h.city].filter(Boolean).join(" · "))} · ${esc(h.builder)}</span><br>
+    ${specs ? specs + "<br>" : ""}${dealBits(h)}${h.offer ? `<div class="offer" style="margin-top:6px">${esc(h.offer)}</div>` : ""}
+    <div style="margin-top:8px">${h.url ? `<a href="${esc(h.url)}" target="_blank" rel="noopener">Builder's listing</a> · ` : ""}<a href="${askLink(h)}">Ask Conner</a></div>
+    ${h.pin === "zip" ? `<div class="sub" style="margin-top:4px">Pin shows the ZIP-code area, not the exact lot.</div>` : ""}</div>`;
+}
+
+function drawMap() {
+  if (!window.L) { $("#map").innerHTML = `<div class="empty">The map couldn't load. Please refresh.</div>`; return; }
+  if (!map) {
+    map = L.map("map", { scrollWheelZoom: true }).setView([32.9, -96.95], 9);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+      maxZoom: 19, subdomains: "abcd",
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    }).addTo(map);
+  }
+  if (!mapDirty) return;
+  if (layer) map.removeLayer(layer);
+  layer = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 45, chunkedLoading: true });
+  const pts = [];
+  for (const h of rows) {
+    if (h.lat == null || h.lng == null) continue;
+    const size = h.deal >= 25000 ? 16 : 13;
+    const m = L.marker([h.lat, h.lng], { icon: L.divIcon({ className: "", iconSize: [size, size],
+      html: `<div class="pin" style="width:${size}px;height:${size}px;background:${color(h)}"></div>` }) });
+    m.bindPopup(() => popup(h), { maxWidth: 290 });
+    layer.addLayer(m);
+    pts.push([h.lat, h.lng]);
+  }
+  map.addLayer(layer);
+  if (pts.length) map.fitBounds(L.latLngBounds(pts).pad(0.05), { maxZoom: 13 });
+  mapDirty = false;
+}
+
+function view(which) {
+  const isMap = which === "map";
+  $("#mapView").hidden = !isMap; $("#listView").hidden = isMap;
+  $("#vMap").classList.toggle("on", isMap); $("#vList").classList.toggle("on", !isMap);
+  document.querySelectorAll("nav.main a").forEach((a) => a.classList.toggle("on",
+    a.getAttribute("href") === (isMap ? "homes.html#map" : "homes.html")));
+  history.replaceState(null, "", location.search + (isMap ? "#map" : ""));
+  if (isMap) { drawMap(); setTimeout(() => map && map.invalidateSize(), 50); }
+}
+
+loadData().then((d) => {
+  D = d;
+  fill(F.city, [...new Set(d.homes.map((h) => h.city).filter(Boolean))].sort());
+  fill(F.builder, d.builders);
+  const steps = [200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 1000, 1500].map((k) => k * 1000);
+  fill(F.min, steps, (v) => moneyK(v)); fill(F.max, steps, (v) => moneyK(v));
+  for (const [k, v] of params) if (F.elements[k]) F.elements[k].value = v;   // selects now have their options
+  document.querySelectorAll("[data-deal]").forEach((b) => b.classList.toggle("on", b.dataset.deal === deal));
+  apply();
+  if (location.hash === "#map") view("map");
+}).catch((e) => fail($("#list"), e));
+
+let t;
+F.addEventListener("input", (e) => { clearTimeout(t); t = setTimeout(apply, e.target.name === "q" ? 250 : 0); });
+document.querySelectorAll("[data-deal]").forEach((b) => b.addEventListener("click", () => {
+  deal = b.dataset.deal;
+  document.querySelectorAll("[data-deal]").forEach((x) => x.classList.toggle("on", x === b));
+  apply();
+}));
+$("#reset").addEventListener("click", () => { F.reset(); deal = ""; document.querySelectorAll("[data-deal]").forEach((x) => x.classList.toggle("on", !x.dataset.deal)); apply(); });
+$("#moreBtn").addEventListener("click", more);
+$("#vList").addEventListener("click", () => view("list"));
+$("#vMap").addEventListener("click", () => view("map"));
+window.addEventListener("hashchange", () => view(location.hash === "#map" ? "map" : "list"));
+</script>
+</body>
+</html>

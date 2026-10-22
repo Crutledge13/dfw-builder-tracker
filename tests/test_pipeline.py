@@ -820,3 +820,29 @@ def test_hidden_spec_fields_and_own_page_specs_win():
     R.Recorder(st, t0 + timedelta(hours=1)).observe(B, dict(card, beds=4, baths=3.5, from_detail=True))
     home = next(iter(st.homes.values()))
     assert (home["beds"], home["baths"], home["sqft"]) == (4, 3.5, 3671)
+
+
+def test_consumer_site_feed():
+    from tracker.export import consumer_site
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp)
+        t0 = R.now_local()
+        run_once(store, {"https://tb.example/qmi": listing_page([("1500 Elm Street", 489990, 2450, "A"),
+                                                                  ("1502 Elm Street", 389990, 2050, "B")])}, t0)
+        run_once(store, {"https://tb.example/qmi": listing_page([("1500 Elm Street", 469990, 2450, "A"),
+                                                                  ("1502 Elm Street", 389990, 2050, "B")])},
+                 t0 + timedelta(hours=1))
+        site = json.load(open(f"{tmp}/api/site.json"))
+        first = site["homes"][0]
+        assert first["address"] == "1500 Elm Street" and first["drop"] == 20000 and first["deal"] == 20000
+        assert site["homes"][1]["deal"] is None            # regular-price homes sort after deals
+        assert site["weeks"][0]["current"] and site["stats"]["homes"] == 2
+        # generic "save up to ... on select homes" promos and "$X off" labels are not extra incentives
+        h = {"id": "x", "price": 300000, "builder": "B", "builder_discount": None, "total_drop": 0,
+             "offer": {"text": "Up to $10,000 in Flex Cash | Plus Save up to $75,000 on Select Homes | $20K off"}}
+        st = LocalStore(tempfile.mkdtemp()).load()
+        r = consumer_site(st, {"x": h}, R.ts(t0))["homes"][0]
+        assert (r["offer_value"], r["discount"], r["deal"]) == (10000, 20000, 30000), r
+    finally:
+        shutil.rmtree(tmp)

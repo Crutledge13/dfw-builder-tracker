@@ -129,6 +129,18 @@ One object, rebuilt every hour for the 7 days ending now:
 Lists are capped at 25 rows. A ready-made page is in [docs/this-week-tab.html](this-week-tab.html), live at
 https://crutledge13.github.io/dfw-builder-tracker/this-week-tab.html
 
+## Public site feed (`site.json`)
+
+Used by the ready-made consumer site in `docs/homes/` (https://crutledge13.github.io/dfw-builder-tracker/homes/).
+- `homes`: every active home, already sorted best deal first. `deal` = the larger of the builder's own markdown
+  (`discount`, including "$X off" labels) and the drop this tracker saw (`drop`), plus the advertised incentive's
+  dollar value (`offer_value`; generic "save up to $X on select homes" promos are not counted). `deal_pct` is
+  `deal` as a share of the pre-deal price. Homes without a dollar deal follow, rate offers (`rate`) first.
+- `weeks`: Monday 00:00 to Monday 00:00 Central, newest first (`current` = this week), each with
+  `price_drops` (`id`, `at`, `old`, `new`, `drop`), `total_dropped`, `new_incentives` (`id`, `at`, `value`,
+  `new_listing`) and `new_listings` (count). Look homes up by `id` in `homes`.
+- `stats`, `builders`, `updated_at`.
+
 ## Paste this into ChatGPT to build the site
 
 > Build a website that shows new-construction homes in Dallas–Fort Worth with price drops and builder
