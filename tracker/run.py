@@ -103,6 +103,18 @@ def is_baseline(c: dict) -> bool:
     return str(c.get("detail") or "").startswith("baseline")
 
 
+def _back_to_was(h: dict, price: int, obs: dict) -> bool:
+    """A reading that rises to exactly the home's stored struck-through 'was' price while the page shows no
+    'was' price of its own: usually a page that briefly lost its sale price, not a real increase."""
+    was = h.get("builder_was_price")
+    try:
+        was = int(float(was))
+    except (TypeError, ValueError):
+        return False
+    old = h.get("price")
+    return bool(old) and price > int(old) and was == price and not obs.get("builder_was_price")
+
+
 def load_config(path="builders.yaml") -> list[dict]:
     cfg = yaml.safe_load(open(path))
     d = cfg.get("defaults", {})
@@ -234,9 +246,12 @@ class Recorder:
             h.update(active=True, gone_unverified=None, price=price, pending_price=None, price_source=rank)
             if hid not in self.priced:
                 h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
+        lost_sale = h is not None and _back_to_was(h, price, obs)
         if h is not None and obs.get("from_detail") and int(h.get("price_version") or 0) < EXTRACT_VERSION:
             # first reading of this home's own page with the improved price reader: a correction, not a change
-            if h.get("price") != price:
+            # (unless the page just shows the builder's struck 'was' price without the sale price: Bloomfield
+            # 2026-10-20, where such 'corrections' became fake $40k-$114k drops when the sale price came back)
+            if h.get("price") != price and not lost_sale:
                 h["price"], h["pending_price"] = price, None
                 if hid not in self.priced:
                     h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
@@ -244,7 +259,8 @@ class Recorder:
                     for c in self.changes:
                         if c["home_id"] == hid and c["event"] == "new_home":
                             c["new"] = price
-            h["builder_was_price"] = obs.get("builder_was_price")
+            if not lost_sale:
+                h["builder_was_price"] = obs.get("builder_was_price")
             h["price_source"] = rank
             if not h.get("active") and h.get("gone_unverified"):
                 h["gone_unverified"] = None
@@ -263,7 +279,7 @@ class Recorder:
         elif h is not None and int(h.get("price_source") or 1) > rank and h.get("price") != price:
             price = h["price"]  # a weaker source disagrees with what a stronger one said: ignore it
             self.run_applied[hid] = False
-        elif h is not None and int(h.get("price_source") or 1) < rank and h.get("price") != price:
+        elif h is not None and int(h.get("price_source") or 1) < rank and h.get("price") != price and not lost_sale:
             h["price"], h["price_source"] = price, rank  # first reading from a stronger source: adopt quietly
             if hid not in self.priced:
                 h["first_price"] = price   # the weaker first reading was wrong; don't show it as a drop
@@ -298,8 +314,7 @@ class Recorder:
                 big = abs(price - old) / old > SUSPECT_PCT
                 # a jump back up to exactly the builder's own struck-through 'was' price is usually a page
                 # that briefly lost its sale price (Bloomfield, 2026-10-21): confirm it like a large move
-                was = h.get("builder_was_price")
-                back_to_was = price > old and was not in (None, "") and str(was) != "nan" and int(float(was)) == price
+                back_to_was = _back_to_was(h, price, obs)
                 if (big or back_to_was) and h.get("pending_price") != price:
                     h["pending_price"] = price  # confirm on the next look before recording
                     self.event(b, "price_unconfirmed", h, old, price,
@@ -318,6 +333,10 @@ class Recorder:
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "url"):
                 if obs.get(k) not in (None, "") and not h.get(k):
                     h[k] = obs[k]
+            if obs.get("from_detail"):   # the home's own page outranks a listing card for its specs too
+                for k in ("beds", "baths", "sqft"):
+                    if obs.get(k) not in (None, ""):
+                        h[k] = obs[k]
             if obs.get("city") and h.get("city") != obs["city"] and str(h.get("city") or "").lower() in (
                     "dallas", "fort worth", "ft worth", obs["city"].lower()):
                 h["city"] = obs["city"]

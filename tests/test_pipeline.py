@@ -779,3 +779,44 @@ def test_jump_back_to_was_price_needs_confirmation():
     rec = R.Recorder(st, t0 + timedelta(hours=5))
     rec.observe(B, dict(h, price=519990))
     assert [c["event"] for c in rec.changes] == ["price_increase"]
+
+
+def test_improved_reader_does_not_adopt_a_lost_sale_price():
+    # Bloomfield 2026-10-20: after a reader upgrade, pages read while they showed only the struck 'was'
+    # price were 'corrected' quietly (first price too); the sale price's return then looked like a $114k drop
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "14522 Herschel Street", "city": "Pilot Point", "zip": "76258",
+         "url": "https://tb.example/14522-herschel-street", "from_detail": True}
+    rec = R.Recorder(st, t0)
+    rec.observe(B, dict(h, price=509000, builder_was_price=622959))
+    hid = next(iter(st.homes))
+    st.homes[hid]["price_version"] = R.EXTRACT_VERSION - 1     # read by an older reader
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, price=622959))
+    home = st.homes[hid]
+    assert (home["price"], home["first_price"], home["builder_was_price"]) == (509000, 509000, 622959)
+    assert [c["event"] for c in rec.changes] == ["price_unconfirmed"]
+    rec = R.Recorder(st, t0 + timedelta(hours=2))
+    rec.observe(B, dict(h, price=509000, builder_was_price=622959))
+    assert rec.changes == [] and st.homes[hid]["price"] == 509000
+
+
+def test_hidden_spec_fields_and_own_page_specs_win():
+    html = '''<html><head><title>3518 Bastrop Drive | Meritage Homes</title></head><body><main>
+      <input id="bedrooms" type="hidden" value="5"/><input id="full_bathrooms" type="hidden" value="3"/>
+      <input id="half_bathrooms" type="hidden" value="1"/><input id="sqft" type="hidden" value="2791"/>
+      <p class="font-bold">$344,987</p><p>3518 Bastrop Drive, Farmersville, TX 75442</p>
+      <p>1 bed 5 baths filter</p></main></body></html>'''
+    url = "https://www.meritagehomes.com/state/tx/dallasft-worth/3518-bastrop-drive"
+    d = extract_homes(html, url, single=True)[0]
+    assert (d["price"], d["beds"], d["baths"], d["sqft"]) == (344987, 5, 3.5, 2791), d
+    # a listing card's garbled specs are replaced by the home's own page
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    card = {"address": "1329 Periwinkle Drive", "city": "Celina", "zip": "75009", "price": 500000,
+            "url": "https://tb.example/1329-periwinkle-drive", "beds": 1, "baths": 5, "sqft": 3671}
+    R.Recorder(st, t0).observe(B, dict(card, source="card"))
+    R.Recorder(st, t0 + timedelta(hours=1)).observe(B, dict(card, beds=4, baths=3.5, from_detail=True))
+    home = next(iter(st.homes.values()))
+    assert (home["beds"], home["baths"], home["sqft"]) == (4, 3.5, 3671)

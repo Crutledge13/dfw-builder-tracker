@@ -414,7 +414,7 @@ def _home_from_dict(d: dict, base_url: str, source: str) -> dict | None:
         "state": to_text(f.get("state")),
         "zip": to_text(f.get("zip"))[:5],
         "community": to_text(f.get("community")),
-        "plan": to_text(f.get("plan")),
+        "plan": "" if to_text(f.get("plan")).startswith(("http", "/")) else to_text(f.get("plan")),
         "beds": beds, "baths": baths, "sqft": int(sqft) if sqft else None,
         "price": price,
         "builder_was_price": was if was and was > price else None,
@@ -542,6 +542,11 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     sqft = (re.search(r"(?<![\d,.$])(\d[\d,]{2,5})\s*(?:-\s*[\d,]+\s*)?(?:sq\.?\s*ft|sqft|square feet|sf)\b", text, re.I)
             or re.search(r"\b(?:sq\.?\s*ft\.?|sqft|square feet)\s*:?\s*(\d,?\d{3}|\d{3})\b(?![\d,])", text, re.I))
     status = STATUS_WORDS.search(text)
+    # Hidden form fields carrying the home's own specs (Meritage: <input id="bedrooms" type="hidden" value="5">)
+    # beat words scraped from the page, where "bed"/"bath" labels sit next to unrelated digits
+    hid = {i: (soup.find("input", attrs={"id": i, "type": "hidden"}) or {}).get("value")
+           for i in ("bedrooms", "full_bathrooms", "half_bathrooms", "sqft")}
+    hv = {k: to_number(v) for k, v in hid.items() if v not in (None, "")}
     full = (soup.body or soup).get_text(" ", strip=True)
     zipm = re.search(r",\s*(?:TX|Texas)\s+(\d{5})", text) or re.search(r",\s*(?:TX|Texas)\s+(\d{5})", full)
     city = None
@@ -554,14 +559,22 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
         if city:
             break
     sq = to_number(sqft.group(1)) if sqft else None
+    n_beds = to_number(beds.group(1)) if beds else None
+    n_baths = to_number(baths.group(1)) if baths else None
+    if hv.get("bedrooms"):
+        n_beds = hv["bedrooms"]
+    if hv.get("full_bathrooms"):
+        n_baths = hv["full_bathrooms"] + 0.5 * (hv.get("half_bathrooms") or 0)
+    if hv.get("sqft"):
+        sq = hv["sqft"]
     return {
         "address": address,
         "city": city.group(1) if city else "",
         "state": "TX" if zipm or city else "",
         "zip": zipm.group(1) if zipm else "",
         "community": "", "plan": "",
-        "beds": to_number(beds.group(1)) if beds else None,
-        "baths": to_number(baths.group(1)) if baths else None,
+        "beds": n_beds if n_beds and 1 <= n_beds <= 10 else None,
+        "baths": n_baths if n_baths and 1 <= n_baths <= 10 else None,
         "sqft": int(sq) if sq and 400 <= sq <= 15000 else None,
         "price": price,
         "builder_was_price": was if was and was > price else None,
