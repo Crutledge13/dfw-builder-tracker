@@ -44,7 +44,7 @@ async function loadData() {
 
 function shell(active) {
   const links = [["index.html", "Home", "home"], ["homes.html", "All Homes", "homes"], ["deals.html", "Deals of the Week", "deals"],
-                 ["homes.html#map", "Map", "map"], ["contact.html", "Contact", "contact"]];
+                 ["incentives.html", "Incentives", "incentives"], ["homes.html#map", "Map", "map"], ["contact.html", "Contact", "contact"]];
   const header = document.createElement("header");
   header.className = "top";
   header.innerHTML = `<div class="wrap">

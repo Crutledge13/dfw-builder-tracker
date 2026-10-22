@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Builder Incentives | DFW New Home Deals</title>
+<meta name="description" content="Current rate buydowns, flex cash, closing-cost help and savings offered by Dallas–Fort Worth home builders, checked every hour.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  .inc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 18px; }
+  @media (max-width: 400px) { .inc-grid { grid-template-columns: 1fr; } }
+  .inc { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .inc h3 { margin: 0; font-size: 19px; }
+  .inc .head { display: flex; justify-content: space-between; gap: 10px; align-items: start; }
+  .big { font-size: 22px; font-weight: 800; color: var(--good); line-height: 1.2; }
+  .offers { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .offers li { display: flex; gap: 10px; align-items: start; font-size: 14.5px; }
+  .offers li .k { flex-shrink: 0; font-size: 11.5px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; padding: 3px 7px; border-radius: 6px; background: var(--chip); color: var(--brand-2); margin-top: 1px; min-width: 74px; text-align: center; }
+  .offers li .k.cash { background: var(--good-bg); color: var(--good); }
+  .offers li .k.save { background: var(--warn-bg); color: var(--warn); }
+  .offers li small { display: block; color: var(--muted); font-size: 12.5px; }
+  .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .nums b { display: block; font-size: 18px; }
+  .nums span { font-size: 12px; color: var(--muted); }
+  .inc .actions { display: flex; gap: 8px; margin-top: auto; }
+  .inc .actions a { flex: 1; font-size: 14px; padding: 9px 10px; }
+  .none { display: flex; flex-wrap: wrap; gap: 8px; }
+  .none a { text-decoration: none; }
+</style>
+</head>
+<body>
+<main class="wrap" style="padding-top:26px">
+  <div class="sec-head"><div><h2>Builder incentives</h2>
+    <p>What each Dallas–Fort Worth builder is offering right now: rate buydowns, flex cash, closing-cost help and savings.</p></div></div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="bar" style="margin-top:20px">
+    <div class="filters" style="display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px">
+      <button type="button" class="pill on" data-t="">All incentives</button>
+      <button type="button" class="pill" data-t="rate">Low rates</button>
+      <button type="button" class="pill" data-t="cash">Flex cash &amp; closing costs</button>
+      <button type="button" class="pill" data-t="save">Price savings</button>
+    </div>
+    <label class="sub" style="display:flex;gap:8px;align-items:center">Sort
+      <select id="sort" style="font:inherit;padding:8px 10px;border-radius:9px;border:1px solid var(--line);background:var(--surface);color:var(--ink)">
+        <option value="best">Best offer first</option><option value="rate">Lowest rate</option>
+        <option value="cash">Most cash</option><option value="homes">Most homes</option><option value="name">Builder A–Z</option>
+      </select></label>
+  </div>
+
+  <div class="inc-grid" id="list"><div class="loading">Loading incentives…</div></div>
+
+  <section style="padding-bottom:10px"><div class="sec-head"><div><h2 style="font-size:20px">No advertised incentive right now</h2>
+    <p>These builders aren't advertising one today, but their homes may still have price cuts. Incentives change often, and we check every hour.</p></div></div>
+    <div class="none" id="none"></div></section>
+
+  <p class="sub" style="font-size:13.5px">Incentives are read from each builder's own website and usually apply to select homes, communities
+    or lenders, with conditions. Rates shown are the builder's advertised starting or first-year rate. Always confirm terms with the builder.</p>
+
+  <div class="cta" style="margin-top:20px"><div><h3>Not sure which incentive is worth more?</h3>
+    <p>A lower rate, cash at closing or a lower price can add up very differently. I can run the numbers with you.</p></div>
+    <a class="btn" href="contact.html">Contact Conner</a></div>
+</main>
+
+<script src="site.js"></script>
+<script>
+shell("incentives");
+let B = [], type = "";
+
+const kind = (t) => t === "rate" ? "rate" : (t === "price_reduction" ? "save" : "cash");
+const kindLabel = { rate: "Rate", cash: "Cash", save: "Savings" };
+const typeName = { rate: "Rate buydown", closing_costs: "Closing costs", cash_credit: "Flex cash", price_reduction: "Savings", other: "Offer" };
+
+function cleanText(t) {
+  return String(t || "").replace(/^\d{1,2}\/\d{1,2}\/\d{2,4}\s*/, "").replace(/\s+/g, " ").trim();
+}
+// fragments of fine print ("professionals can receive up to $1,000 toward") aren't offers
+const usable = (o) => {
+  const t = cleanText(o.text);
+  return t.length >= 8 && !/^[a-z]/.test(t) && !/toward$|^zero down available$/i.test(t);
+};
+
+function collect(b, homesByBuilder) {
+  const seen = new Set(), offers = [];
+  const add = (o, scope) => {
+    if (!usable(o)) return;
+    const t = cleanText(o.text);
+    const key = t.toLowerCase().replace(/[^a-z0-9%$]/g, "");
+    if (seen.has(key)) return;
+    seen.add(key);
+    offers.push({ text: t, type: o.type, k: kind(o.type), amount: o.amount, rate: o.rate, scope, since: o.first_seen, src: o.source_url });
+  };
+  (b.blanket_offers || []).forEach((o) => add(o, "Builder-wide promotion"));
+  (b.common_home_offers || []).forEach((o) => add(o, o.homes ? `On ${o.homes.toLocaleString()} of its listed homes` : ""));
+  const hs = homesByBuilder[b.builder] || [];
+  const rates = offers.filter((o) => o.rate).map((o) => o.rate);
+  const cash = offers.filter((o) => o.k !== "rate" || o.amount).map((o) => o.amount || 0);
+  return {
+    name: b.builder, website: b.website, offers,
+    bestRate: rates.length ? Math.min(...rates) : null,
+    bestCash: cash.length ? Math.max(...cash) : 0,
+    homes: hs.length,
+    withOffer: hs.filter((h) => h.offer || h.rate).length,
+    cuts: hs.filter((h) => h.drop).length,
+    marked: hs.filter((h) => h.discount).length,
+  };
+}
+
+function headline(b) {
+  const parts = [];
+  if (b.bestRate) parts.push(`Rates from ${b.bestRate}%`);
+  if (b.bestCash) parts.push(`Up to ${moneyK(b.bestCash)} ${b.offers.some((o) => o.k === "save" && o.amount === b.bestCash) ? "savings" : "in cash"}`);
+  return parts.join(" · ") || "Special offer";
+}
+
+function card(b) {
+  const q = `homes.html?builder=${encodeURIComponent(b.name)}&deal=any`;
+  return `<article class="inc">
+    <div class="head"><div><h3>${esc(b.name)}</h3><div class="big">${esc(headline(b))}</div></div></div>
+    <ul class="offers">${b.offers.map((o) => `<li><span class="k ${o.k}">${kindLabel[o.k]}</span>
+      <div>${esc(o.text)}<small>${esc([typeName[o.type] || "Offer", o.scope, o.since ? "seen since " + shortDate(o.since) : ""].filter(Boolean).join(" · "))}</small></div></li>`).join("")}</ul>
+    <div class="nums"><div><b>${b.homes.toLocaleString()}</b><span>Homes listed</span></div>
+      <div><b>${b.cuts.toLocaleString()}</b><span>With price cuts</span></div>
+      <div><b>${b.marked.toLocaleString()}</b><span>Marked down</span></div></div>
+    <div class="actions"><a class="btn small" href="${q}">See ${esc(b.name.replace(/ Homes?$| Homebuilders$| Home Builder$/, ""))} deals</a>
+      ${b.website ? `<a class="btn ghost small" href="${esc(b.website)}" target="_blank" rel="noopener">Builder site</a>` : ""}</div>
+  </article>`;
+}
+
+function render() {
+  let list = B.filter((b) => b.offers.length && (!type || b.offers.some((o) => o.k === type)));
+  const s = $("#sort").value;
+  const score = (b) => (b.bestCash || 0) / 1000 + (b.bestRate ? (7 - b.bestRate) * 10 : 0);
+  const by = { best: (a, z) => score(z) - score(a), rate: (a, z) => (a.bestRate || 99) - (z.bestRate || 99),
+               cash: (a, z) => (z.bestCash || 0) - (a.bestCash || 0), homes: (a, z) => z.homes - a.homes,
+               name: (a, z) => a.name.localeCompare(z.name) };
+  list.sort(by[s]);
+  $("#list").innerHTML = list.length ? list.map(card).join("") : `<div class="empty">No builder is advertising that kind of incentive right now.</div>`;
+}
+
+Promise.all([loadData(), fetch("../data/api/builders.json", { cache: "no-cache" }).then((r) => r.json())]).then(([d, builders]) => {
+  const byB = {};
+  d.homes.forEach((h) => (byB[h.builder] ||= []).push(h));
+  B = builders.filter((b) => (byB[b.builder] || []).length).map((b) => collect(b, byB));
+  const withInc = B.filter((b) => b.offers.length);
+  const rates = withInc.filter((b) => b.bestRate).sort((a, z) => a.bestRate - z.bestRate);
+  const cash = withInc.filter((b) => b.bestCash).sort((a, z) => z.bestCash - a.bestCash);
+  $("#kpis").innerHTML = `
+    <div><b>${withInc.length} of ${B.length}</b><span>Builders offering incentives</span></div>
+    <div><b>${rates.length ? rates[0].bestRate + "%" : "–"}</b><span>Lowest advertised rate${rates.length ? " · " + esc(rates[0].name) : ""}</span></div>
+    <div><b>${cash.length ? moneyK(cash[0].bestCash) : "–"}</b><span>Largest offer${cash.length ? " · " + esc(cash[0].name) : ""}</span></div>
+    <div><b>${d.stats.with_offer.toLocaleString()}</b><span>Homes with an incentive</span></div>`;
+  render();
+  const none = B.filter((b) => !b.offers.length).sort((a, z) => z.homes - a.homes);
+  $("#none").innerHTML = none.map((b) => `<a class="tag" href="homes.html?builder=${encodeURIComponent(b.name)}">${esc(b.name)} · ${b.homes} homes${b.cuts ? ` · ${b.cuts} price cuts` : ""}</a>`).join("")
+    || `<span class="sub">Every builder we track has an incentive right now.</span>`;
+}).catch((e) => fail($("#list"), e));
+
+document.querySelectorAll("[data-t]").forEach((b) => b.addEventListener("click", () => {
+  type = b.dataset.t;
+  document.querySelectorAll("[data-t]").forEach((x) => x.classList.toggle("on", x === b));
+  render();
+}));
+$("#sort").addEventListener("change", render);
+</script>
+</body>
+</html>
