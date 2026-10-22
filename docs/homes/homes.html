@@ -6,7 +6,7 @@
 <title>All Available Homes | DFW New Home Deals</title>
 <meta name="description" content="Every available new-construction home we track in Dallas–Fort Worth, sorted from the biggest deal down. Filter by city, builder, price and beds, or browse the map.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Libre+Caslon+Display&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css">
@@ -46,7 +46,7 @@
 
   <div id="listView"><div class="grid" id="list"></div><div class="more"><button class="btn ghost" id="moreBtn" hidden>Show more homes</button></div></div>
   <div id="mapView" hidden><div id="map"></div>
-    <div class="legend"><span><i style="background:#157a4a"></i>Save $25k+</span><span><i style="background:#3d9a5f"></i>Some savings</span><span><i style="background:#1f5c99"></i>Rate offer</span><span><i style="background:#7c8594"></i>Regular price</span><span>Pins in ZIP-code centers are approximate.</span></div></div>
+    <div class="legend"><span><i style="background:#13284a"></i>Save $25k+</span><span><i style="background:#a98a52"></i>Some savings</span><span><i style="background:#6f8fb8"></i>Rate offer</span><span><i style="background:#9aa3ae"></i>Regular price</span><span>Pins in ZIP-code centers are approximate.</span></div></div>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -111,15 +111,15 @@ function more() {
 }
 
 function color(h) {
-  if (h.deal >= 25000) return "#157a4a";
-  if (h.deal) return "#3d9a5f";
-  if (h.rate) return "#1f5c99";
-  return "#7c8594";
+  if (h.deal >= 25000) return "#13284a";
+  if (h.deal) return "#a98a52";
+  if (h.rate) return "#6f8fb8";
+  return "#9aa3ae";
 }
 
 function popup(h) {
   const specs = [h.beds && `${h.beds} bd`, h.baths && `${h.baths} ba`, h.sqft && `${h.sqft.toLocaleString()} sq ft`].filter(Boolean).join(" · ");
-  return `<div class="pop"><b>${money(h.price)}</b>${h.deal ? ` <span class="tag drop">Save ~${moneyK(h.deal)}</span>` : ""}<br>
+  return `<div class="pop"><b>${money(h.price)}</b>${h.deal ? ` <span class="tag mark">Save ~${moneyK(h.deal)}</span>` : ""}<br>
     ${esc(h.address || "")}<br><span class="sub">${esc([h.community, h.city].filter(Boolean).join(" · "))} · ${esc(h.builder)}</span><br>
     ${specs ? specs + "<br>" : ""}${dealBits(h)}${h.offer ? `<div class="offer" style="margin-top:6px">${esc(h.offer)}</div>` : ""}
     <div style="margin-top:8px">${h.url ? `<a href="${esc(h.url)}" target="_blank" rel="noopener">Builder's listing</a> · ` : ""}<a href="${askLink(h)}">Ask Conner</a></div>

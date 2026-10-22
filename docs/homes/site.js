@@ -4,6 +4,7 @@ const CONTACT = {
   phone: "(636) 698-8868",
   phoneHref: "tel:+16366988868",
   email: "conner@rutledgesellstexas.com",
+  brokerage: "Regal Realtors",
 };
 const DATA_URL = "../data/api/site.json";
 
@@ -48,11 +49,17 @@ function shell(active) {
   const header = document.createElement("header");
   header.className = "top";
   header.innerHTML = `<div class="wrap">
-      <a class="logo" href="index.html">DFW New Home <span>Deals</span><small>with ${esc(CONTACT.name)}</small></a>
+      <a class="logo" href="index.html" aria-label="${esc(CONTACT.name)}, ${esc(CONTACT.brokerage)}: DFW New Home Deals">
+        <span class="mono" aria-hidden="true">CR</span>
+        <span><b>${esc(CONTACT.name)}</b><small>${esc(CONTACT.brokerage)} · New Home Deals</small></span></a>
       <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="main" id="nav">${links.map(([href, label, key]) =>
         `<a href="${href}"${key === active ? ' class="on" aria-current="page"' : ""}>${label}</a>`).join("")}</nav></div>`;
   document.body.prepend(header);
+  const notice = document.createElement("div");
+  notice.className = "notice";
+  notice.innerHTML = 'DFW NEW HOME DEALS<span class="wide"> · Price cuts &amp; builder incentives, checked every hour</span>';
+  document.body.prepend(notice);
   const btn = $(".menu-btn", header), nav = $("nav", header);
   btn.addEventListener("click", () => { nav.classList.toggle("open"); btn.setAttribute("aria-expanded", nav.classList.contains("open")); });
   const foot = document.createElement("footer");
@@ -61,7 +68,7 @@ function shell(active) {
       Savings are estimates (the builder's own markdown or the drop we tracked, plus the advertised incentive's
       dollar value). Always confirm price, availability and incentive terms with the builder.</p>
       <p id="updated"></p></div>
-      <div><b>${esc(CONTACT.name)}</b><br><a href="${CONTACT.phoneHref}">${esc(CONTACT.phone)}</a><br>
+      <div><b>${esc(CONTACT.name.toUpperCase())}</b><br><span style="letter-spacing:.2em;font-size:12.5px">${esc(CONTACT.brokerage.toUpperCase())}</span><br><a href="${CONTACT.phoneHref}">${esc(CONTACT.phone)}</a><br>
       <a href="mailto:${esc(CONTACT.email)}">${esc(CONTACT.email)}</a></div></div>`;
   document.body.append(foot);
   loadData().then((d) => { $("#updated").textContent = `Updated ${ago(d.updated_at)} · ${d.stats.homes.toLocaleString()} homes from ${d.stats.builders} builders`; }).catch(() => {});
