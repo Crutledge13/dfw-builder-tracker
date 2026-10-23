@@ -451,6 +451,10 @@ SIMILAR_RE = re.compile(r"(also for sale|similar homes|similar quick|you may als
                         r"explore more homes|other available homes|available homes in|other plans)", re.I)
 
 
+# a home price as printed: $389,990 or $1,659,025 (not a $1,899 monthly payment)
+PRICE_TEXT_RE = re.compile(r"\$\s?(?:\d{1,3},\d{3},\d{3}|\d{2,3},\d{3})(?![\d,])")
+
+
 def _near(a, b, limit=200) -> bool:
     """True when two elements sit in the same small block (e.g. 'Priced at $702,050  Sale $609,900')."""
     pa = {id(x): x for x in a.parents}
@@ -471,7 +475,7 @@ def _pick_price(main):
         own = el.get_text(" ", strip=True)
         if len(own) <= 80 and SIMILAR_RE.search(own) and not re.search(r"\$\s?\d", own):
             break   # everything after a "similar homes / also for sale" heading belongs to other homes
-        if len(own) > 40 or not re.search(r"\$\s?\d{2,3}(?:,\d{3})+", own):
+        if len(own) > 40 or not PRICE_TEXT_RE.search(own):
             continue
         if any(re.search(r"\$\s?\d", c.get_text(" ", strip=True)) for c in el.find_all(True)):
             continue  # innermost element holding a price
@@ -647,6 +651,9 @@ def incentive_snippets(text: str, limit: int = 3) -> list[str]:
     return out
 
 
+CLUSTER_CLS = re.compile(r"(infowindow-?cluster|cluster-?infowindow|markercluster)", re.I)
+
+
 def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
     """Listing pages that render each home as a card: find links to home pages, climb to the
     smallest container holding just that home, and read price/beds/baths/sqft from it."""
@@ -685,9 +692,15 @@ def card_homes(html: str, page_url: str, detail_re: re.Pattern) -> list[dict]:
             if len(hrefs) > 1:
                 break
             box = parent
-            if re.search(r"\$\s?\d{2,3},\d{3}", box.get_text(" ", strip=True)):
+            if PRICE_TEXT_RE.search(box.get_text(" ", strip=True)):
                 break
-        h = _html_home(BeautifulSoup(str(box), "lxml"), url)
+        card = BeautifulSoup(str(box), "lxml")
+        for el in card.find_all(class_=CLUSTER_CLS):
+            # a map marker's "merged cluster" summary: Bloomfield keeps the last asking price there after the
+            # home goes under contract, while the marker's own window drops it. Not a price for sale.
+            if not el.find("a", href=True):
+                el.decompose()
+        h = _html_home(card, url)
         if not h:
             continue
         for el in [box, *box.find_all(True), *list(box.parents)[:5]]:

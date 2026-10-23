@@ -846,3 +846,55 @@ def test_consumer_site_feed():
         assert (r["offer_value"], r["discount"], r["deal"]) == (10000, 20000, 30000), r
     finally:
         shutil.rmtree(tmp)
+
+
+def test_million_dollar_prices_are_read_from_the_homes_own_page():
+    # First Texas / David Weekley 2026-10-23: "$1,659,025" was not recognized as a price, so the own page
+    # yielded nothing (a $511,275 listing price stuck) or another plan's "From: $766,990" was taken instead
+    ft = '''<html><body><main><h1>Churchill PC</h1><p>From the $790,000's</p>
+    <p>4109 Rolling Springs Way Celina, TX 75009</p>
+    <div class="pricing"><span>Was</span> <span>$1,861,225</span> <span>Now</span> <span>$1,659,025</span></div>
+    <p>Est. Payment</p><p>5 Beds 5.5 Baths 4,410 Sq Ft</p></main></body></html>'''
+    h = extract_homes(ft, "https://tb.example/4109-rolling-springs-way-celina-tx-75009/", single=True)[0]
+    assert (h["price"], h["builder_was_price"]) == (1659025, 1861225)
+    dw = '''<html><body><main><h1>The Ranchwood</h1><p>The Ranchwood</p><p>From</p><p>$1,002,305</p>
+    <p>Sq Ft 4310</p><p>2312 Northshore Trail, Lakewood Village, TX 75068 Ready Now</p>
+    <p>Welcome home to the spacious Ranchwood, made for weekend entertaining and quiet evenings by the lake.</p>
+    <h3>Recently Viewed</h3><div><p>Plan Removed</p><p>The Dabney</p><p>From:</p><p>$766,990</p></div>
+    </main></body></html>'''
+    assert extract_homes(dw, "https://tb.example/19880032", single=True)[0]["price"] == 1002305
+    # a monthly payment is still not a price
+    pay = '<html><body><main><h1>12 Oak Lane</h1><p>$1,899</p><p>$412,990</p></main></body></html>'
+    assert extract_homes(pay, "https://tb.example/12-oak-lane", single=True)[0]["price"] == 412990
+
+
+def test_map_cluster_price_of_an_under_contract_home_is_not_a_listing():
+    # Bloomfield 2026-10-23: under-contract homes keep a map marker whose own window has no price, but the
+    # hidden "merged cluster" summary still carries the old asking price; 82 such homes stayed "for sale"
+    from tracker.extract import card_homes
+    html = '''<html><body>
+    <div class="card"><a href="/new-homes/tx/aledo/lakes/cypress-ii/137-kingfisher-lane/">137 Kingfisher Lane</a>
+      <p>Priced At</p><p>$539,990</p></div>
+    <div class="oi-infowindow-content" style="display:none;">
+      <div class="oi-infowindow"><h1>131 Kingfisher Lane</h1><p>Aledo, TX 76008</p>
+        <a href="/new-homes/tx/aledo/lakes/cypress/131-kingfisher-lane/">View Home</a></div>
+      <div class="oi-infowindow-cluster"><p>131 Kingfisher Lane</p><p>$469,990</p></div></div>
+    </body></html>'''
+    cards = card_homes(html, "https://www.bloomfieldhomes.com/new-homes/available/", re.compile(r"/new-homes/tx/"))
+    assert [(c["address"], c["price"]) for c in cards] == [("137 Kingfisher Lane", 539990)]
+
+
+def test_given_up_home_page_gets_one_more_look_after_a_reader_upgrade():
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    rec = R.Recorder(st, t0)
+    rec.observe(B, {"address": "1404 Amber Way", "city": "Celina", "zip": "75009", "url": DETAIL,
+                    "price": 511275, "source": "card"})
+    hid = next(iter(st.homes))
+    st.homes[hid]["price_version"] = R.EXTRACT_VERSION - 1
+    st.frontier[DETAIL] = {"url": DETAIL, "builder": B["name"], "kind": "home", "discovered_at": R.ts(t0),
+                           "last_checked": R.ts(t0), "last_status": 200, "misses": 3}
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    R.crawl_builder(B, FakeClient({DETAIL: detail_page(489990)}), rec, budget=10)
+    assert st.homes[hid]["price"] == 489990 and st.frontier[DETAIL]["misses"] == 0
+    assert not [c for c in rec.changes if c["event"] in ("price_cut", "price_increase")]

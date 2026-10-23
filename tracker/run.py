@@ -32,7 +32,7 @@ log = logging.getLogger("tracker")
 TZ = ZoneInfo("America/Chicago")
 FMT = "%Y-%m-%d %H:%M"
 
-EXTRACT_VERSION = 3        # bump when price reading improves: homes re-read from their own page get corrected quietly
+EXTRACT_VERSION = 4        # bump when price reading improves: homes re-read from their own page get corrected quietly
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
 REMOVE_AFTER_H = 48         # active home unseen this long (while its builder is readable) -> removed
@@ -624,11 +624,15 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
 
     # 3) home pages: never-checked first, then stalest
     with rec.lock:
-        homes = [f for f in fr.values() if f.get("builder") == b["name"] and f.get("kind") == "home"
-                 and int(f.get("misses") or 0) < 3]
-    with rec.lock:
         by_url = {(h.get("url") or "").rstrip("/").lower(): h for h in rec.st.homes.values()
                   if h.get("builder") == b["name"]}
+    def retry(f):   # gave up on a still-listed home's page under an older reader: one more look with this one
+        h = by_url.get(f["url"].rstrip("/").lower())
+        return int(f.get("misses") or 0) == 3 and int(float(f.get("last_status") or 0)) == 200 and h is not None \
+            and h.get("active") and int(h.get("price_version") or 0) < EXTRACT_VERSION
+    with rec.lock:
+        homes = [f for f in fr.values() if f.get("builder") == b["name"] and f.get("kind") == "home"
+                 and (int(f.get("misses") or 0) < 3 or retry(f))]
     def unverified(f):
         h = by_url.get(f["url"].rstrip("/").lower())
         return h is not None and h.get("active") and int(h.get("price_version") or 0) < EXTRACT_VERSION
