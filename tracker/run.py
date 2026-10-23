@@ -33,6 +33,7 @@ TZ = ZoneInfo("America/Chicago")
 FMT = "%Y-%m-%d %H:%M"
 
 EXTRACT_VERSION = 4        # bump when price reading improves: homes re-read from their own page get corrected quietly
+MILLION_FIX_VERSION = 4     # reader that first read $1,000,000+ prices on pages and cards
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
 REMOVE_AFTER_H = 48         # active home unseen this long (while its builder is readable) -> removed
@@ -283,6 +284,13 @@ class Recorder:
             h["price"], h["price_source"] = price, rank  # first reading from a stronger source: adopt quietly
             if hid not in self.priced:
                 h["first_price"] = price   # the weaker first reading was wrong; don't show it as a drop
+        elif h is not None and rank == 2 and h.get("price") and price >= 1_000_000 > int(h["price"]) \
+                and int(h.get("price_version") or 0) < MILLION_FIX_VERSION:
+            # listing cards couldn't read "$1,045,950" before reader v4 and took a smaller number nearby
+            # (First Texas 2026-10-23): the first card reading of a $1M+ price is a correction, not an increase
+            h["price"], h["pending_price"] = price, None
+            if hid not in self.priced:
+                h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
         if h is not None:
             h["price_source"] = max(int(h.get("price_source") or 1), rank)
         if h is None:

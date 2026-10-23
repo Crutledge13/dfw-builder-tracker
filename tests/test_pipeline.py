@@ -898,3 +898,21 @@ def test_given_up_home_page_gets_one_more_look_after_a_reader_upgrade():
     R.crawl_builder(B, FakeClient({DETAIL: detail_page(489990)}), rec, budget=10)
     assert st.homes[hid]["price"] == 489990 and st.frontier[DETAIL]["misses"] == 0
     assert not [c for c in rec.changes if c["event"] in ("price_cut", "price_increase")]
+
+
+def test_first_card_reading_of_a_million_dollar_price_is_a_correction():
+    # First Texas 2026-10-23: cards had read $915,950 for a $1,045,950 home; once cards could read $1M+
+    # prices the fix showed up as a fake +$130,000 increase
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "15204 Chipping Trail", "city": "Frisco", "zip": "75035",
+         "url": "https://tb.example/15204-chipping-trail", "source": "card"}
+    R.Recorder(st, t0).observe(B, dict(h, price=915950))
+    hid = next(iter(st.homes))
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, price=1045950))
+    assert rec.changes == []
+    assert (st.homes[hid]["price"], st.homes[hid]["first_price"]) == (1045950, 1045950)
+    rec = R.Recorder(st, t0 + timedelta(hours=2))      # later real moves are still recorded
+    rec.observe(B, dict(h, price=1019950))
+    assert [c["event"] for c in rec.changes] == ["price_cut"]
