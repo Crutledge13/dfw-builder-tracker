@@ -520,7 +520,7 @@ Shaddock Homes,1020 Hackberry Drive,Park Place 80 Lots,Prosper,1196000,0,closing
 Shaddock Homes,4701 Sudbury Circle,Kings Crossing Phase 3,Parker,1299000,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/parker/kings-crossing-phase-3/4701-sudbury-circle
 Shaddock Homes,204 Hunters Glen Way,Custer Ridge Estates,Allen,1229000,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/allen/custer-ridge-estates/204-hunters-glen-way
 Shaddock Homes,2005 Diamond Cove,Solterra Texas,Mesquite,494900,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/mesquite/solterra-texas/2005-diamond-cove
-Shaddock Homes,1133 Tullow Drive,Hillside Village,Celina,699000,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/celina/hillside-village/1133-tullow-drive
+Shaddock Homes,1133 Tullow Drive,Hillside Village,Celina,674000,-25000,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/celina/hillside-village/1133-tullow-drive
 Shaddock Homes,616 Wexford Drive,Hillside Village,Celina,699000,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/celina/hillside-village/616-wexford-drive
 Shaddock Homes,800 Isabel Street,Light Farms Brenham 40 Lots,Celina,619000,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/celina/light-farms-brenham-40-lots/800-isabel-street
 Shaddock Homes,729 Kendall Lane,Light Farms Brenham 40 Lots,Celina,635000,0,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",2026-10-18 18:59,https://www.shaddockhomes.com/homes/dallas-fort-worth/celina/light-farms-brenham-40-lots/729-kendall-lane
@@ -1424,6 +1424,9 @@ D.R. Horton,115 Yucca Lane,Bluestem,Rhome,370990,0,closing_costs,1000,,"Program 
 D.R. Horton,125 Ringtrail Drive,Bluestem,Rhome,385990,0,closing_costs,1000,,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",2026-10-23 00:13,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/125-ringtrail-drive
 D.R. Horton,126 Blackbrush Court,Bluestem,Rhome,392940,0,closing_costs,1000,,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",2026-10-23 00:13,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/126-blackbrush-court
 D.R. Horton,9309 Subjeck Way,Highlands at Chapel Creek,Fort Worth,371685,0,closing_costs,1000,,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",2026-10-23 13:19,https://www.drhorton.com/texas/fort-worth/fort-worth/highlands-at-chapel-creek/qmis/9309-subjeck-way-wo
+D.R. Horton,3645 Ansley Lane,Peachtree Meadows,Rockwall,506504,0,closing_costs,1000,,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",2026-10-23 18:32,https://www.drhorton.com/texas/dallas/rockwall/peachtree-meadows/qmis/3645-ansley-lane
+D.R. Horton,107 Riveridge Road,Bluestem,Rhome,358490,0,closing_costs,1000,,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",2026-10-23 18:32,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/107-riveridge-road
+D.R. Horton,134 Ringtrail Drive,Bluestem,Rhome,384780,0,closing_costs,1000,,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",2026-10-23 18:32,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/134-ringtrail-drive
 Bloomfield Homes,913 Hickory Chase Drive,Star Ranch Classic 60,Godley,390000,0,closing_costs,,,4% Towards Closing Costs on All Specs!,2026-10-18 19:52,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-classic-60/hawthorne/913-hickory-chase-drive/
 Bloomfield Homes,916 Cedar River Drive,Star Ranch Classic 50,Godley,470000,0,closing_costs,,,4% Towards Closing Costs on All Specs!,2026-10-18 20:29,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-classic-50/bayberry-iii/916-cedar-river-drive/
 Bloomfield Homes,916 Creekhollow Drive,Star Ranch,Godley,317000,0,closing_costs,,,4% Towards Closing Costs on All Specs!,2026-10-18 19:12,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch/camellia/916-creekhollow-drive/
@@ -1896,7 +1899,7 @@ Highland Homes,3229 Best Bet Court,Mustang Lakes,Celina,1046355,0,rate,,4.99,Rat
 Highland Homes,4441 Silver Spur Court,Sandbrock Ranch,Aubrey,657972,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/866-389
 Highland Homes,1805 Beavers Bend Drive,The Parks at Wilson Creek,Celina,669960,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/celina/the-parks-at-wilson-creek/830-120
 Highland Homes,2680 Sassafrass Court,Star Trail,Prosper,939441,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/prosper/star-trail/128-206
-Highland Homes,2051 Benedetto Way,Sonoma Verde,McLendon-Chisholm,650000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-106
+Highland Homes,2051 Benedetto Way,Sonoma Verde,McLendon-Chisholm,599900,-50100,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-106
 Highland Homes,2631 Harvest Lane,Star Trail,Prosper,850000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/prosper/star-trail/128-223
 Highland Homes,1621 Terra Way,Ramble,Celina,950000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/celina/ramble/8020-051
 Highland Homes,8409 Donaho Trail,Trinity Falls,McKinney,499787,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/mckinney/trinity-falls/841-074
@@ -1922,7 +1925,7 @@ Highland Homes,2408 Drummond Street,Meraki,McLendon-Chisholm,499987,0,rate,,4.99
 Highland Homes,1812 Acoma Way,Furst Ranch,,949000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/bartonville/furst-ranch/1003-025
 Highland Homes,7828 Pondview Lane,Tavolo Park,,539000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/ft-worth/tavolo-park/8007-034
 Highland Homes,1617 Primms Place,Wellington,,475000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/ft-worth/wellington/844-033
-Highland Homes,2039 Benedetto Way,Sonoma Verde,McLendon-Chisholm,699900,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-107
+Highland Homes,2039 Benedetto Way,Sonoma Verde,McLendon-Chisholm,689900,-10000,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-107
 Highland Homes,1501 Hawn Drive,Mantua,Van Alstyne,536123,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/van-alstyne/mantua/897-185
 Highland Homes,830 Stone Grove Road,Hillstead,Lavon,550000,51000,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/lavon/hillstead/834-033
 Highland Homes,4413 Sandbrock Parkway,Sandbrock Ranch,Aubrey,849000,0,rate,,4.99,Rates as Low as 4.99%,2026-10-18 18:59,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-170
@@ -2447,92 +2450,42 @@ Meritage Homes,13101 Sugarberry Mews,,Rowlett,418770,0,rate,,2.5,Rates as low as
 Meritage Homes,13121 Sugarberry Mews,,Rowlett,398801,0,rate,,2.5,Rates as low as 2.50% (6.326% APR) at Trails at Cottonwood Creek.,2026-10-18 19:52,https://www.meritagehomes.com/state/tx/dallasft-worth/13121-sugarberry-mews
 Meritage Homes,13109 Sugarberry Mews,,Rowlett,361799,0,rate,,2.5,Rates as low as 2.50% (6.326% APR) at Trails at Cottonwood Creek.,2026-10-18 19:52,https://www.meritagehomes.com/state/tx/dallasft-worth/13109-sugarberry-mews
 Meritage Homes,13231 Piney Woods Drive,,Rowlett,360699,0,rate,,2.5,Rates as low as 2.50% (6.326% APR) at Trails at Cottonwood Creek.,2026-10-18 19:52,https://www.meritagehomes.com/state/tx/dallasft-worth/13231-piney-woods-drive
-Riverside Homebuilders,10000 Birchpoint Drive,,Fort Worth,439900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/10000-birchpoint-drive/
 Riverside Homebuilders,10004 Birchpoint Drive,,Fort Worth,379900,-3000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/10004-birchpoint-drive/
-Riverside Homebuilders,10008 Birchpoint Drive,,Fort Worth,384900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/10008-birchpoint-drive/
 Riverside Homebuilders,1002 Perrin Lane,,Van Alstyne,649900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1002-perrin-lane/
-Riverside Homebuilders,1004 Perrin Lane,,Van Alstyne,629900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1004-perrin-lane/
-Riverside Homebuilders,104 Snowy Owl Trail,,New Fairview,479900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/104-snowy-owl-trail/
-Riverside Homebuilders,105 Magnolia Lane,,,634900,-10000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/105-magnolia-lane/
-Riverside Homebuilders,113 Sunny Side Road,,,494900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/113-sunny-side-road/
-Riverside Homebuilders,1201 Colca Drive,,Springtown,344900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1201-colca-drive/
 Riverside Homebuilders,1205 Colca Drive,,Springtown,404900,-10000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1205-colca-drive/
-Riverside Homebuilders,12117 Clastic Court,,Krum,557900,-2000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/12117-clastic-court/
-Riverside Homebuilders,1213 Colca Drive,,Springtown,349900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1213-colca-drive/
 Riverside Homebuilders,1217 Colca Drive,,Springtown,350000,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1217-colca-drive/
-Riverside Homebuilders,1224 Colca Drive,,Springtown,359900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1224-colca-drive/
-Riverside Homebuilders,1228 Colca Drive,,Springtown,354900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1228-colca-drive/
-Riverside Homebuilders,1229 Colca Drive,,Springtown,349900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1229-colca-drive/
-Riverside Homebuilders,1229 Sabine River Lane,,Springtown,343900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1229-sabine-river-lane/
 Riverside Homebuilders,1237 Frio Drive,,Springtown,334900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1237-frio-drive/
-Riverside Homebuilders,12409 Hornfels Drive,,Krum,639900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/12409-hornfels-drive/
-Riverside Homebuilders,12413 Hornfels Drive,,Krum,544900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/12413-hornfels-drive/
-Riverside Homebuilders,12417 Hornfels Drive,,Krum,639900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/12417-hornfels-drive/
-Riverside Homebuilders,12421 Hornfels Drive,,Krum,544900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/12421-hornfels-drive/
-Riverside Homebuilders,1325 Frio Drive,,Springtown,346900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1325-frio-drive/
 Riverside Homebuilders,1329 Frio Drive,,Springtown,329900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1329-frio-drive/
 Riverside Homebuilders,1337 Frio Drive,,Springtown,419900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1337-frio-drive/
 Riverside Homebuilders,136 Hillview Trail,,Decatur,454900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/136-hillview-trail/
 Riverside Homebuilders,139 Big Sky Road,,Decatur,509900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/139-big-sky-road/
-Riverside Homebuilders,146 Aurora Avenue,,,439925,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/146-aurora-avenue/
-Riverside Homebuilders,150 Sunny Side Road,,,449900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/150-sunny-side-road/
 Riverside Homebuilders,153 Big Sky Road,,Decatur,484900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/153-big-sky-road/
-Riverside Homebuilders,157 Big Sky Road,,Decatur,492900,-2000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/157-big-sky-road/
-Riverside Homebuilders,180 Aurora Avenue,,,569920,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/180-aurora-avenue/
 Riverside Homebuilders,193 Oak Grove Way,,Springtown,594900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/193-oak-grove-way/
 Riverside Homebuilders,205 Cobb Road,,,609900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/205-cobb-road/
-Riverside Homebuilders,2101 Bluebird Lane,,Anna,419900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2101-bluebird-lane/
 Riverside Homebuilders,2105 Bluebird Lane,,Anna,430900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2105-bluebird-lane/
-Riverside Homebuilders,2109 Bluebird Lane,,Anna,429900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2109-bluebird-lane/
-Riverside Homebuilders,2208 Continent Court,,Krum,609900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2208-continent-court/
 Riverside Homebuilders,2305 Gypsum Street,,Krum,624900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2305-gypsum-street/
-Riverside Homebuilders,2305 Quartz Street,,Krum,604900,-10000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2305-quartz-street/
-Riverside Homebuilders,2309 Quartz Street,,Krum,664900,-10000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2309-quartz-street/
 Riverside Homebuilders,250 Brown Road,,,651850,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/250-brown-road/
 Riverside Homebuilders,2834 Geneva Way,,Princeton,679900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/2834-geneva-way/
 Riverside Homebuilders,295 Brown Road,,,609900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/295-brown-road/
 Riverside Homebuilders,3007 Leopard Lane,,Ennis,367900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3007-leopard-lane/
-Riverside Homebuilders,3401 Helena Street,,Gainesville,329900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3401-helena-street/
-Riverside Homebuilders,3411 Helena Street,,Gainesville,349900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3411-helena-street/
-Riverside Homebuilders,3500 Helena Street,,Gainesville,379900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3500-helena-street/
-Riverside Homebuilders,3510 Helena Street,,Gainesville,324900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3510-helena-street/
 Riverside Homebuilders,3512 Helena Street,,Gainesville,319900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3512-helena-street/
-Riverside Homebuilders,3516 Helena Street,,Gainesville,316900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3516-helena-street/
 Riverside Homebuilders,3518 Helena Street,,Gainesville,325900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3518-helena-street/
 Riverside Homebuilders,3520 Helena Street,,Gainesville,319900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3520-helena-street/
 Riverside Homebuilders,3524 Helena Street,,Gainesville,324900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3524-helena-street/
-Riverside Homebuilders,3526 Helena Street,,Gainesville,319900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/3526-helena-street/
-Riverside Homebuilders,390 Cobb Road,,,599900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/390-cobb-road/
 Riverside Homebuilders,405 Texas Sage Trail,,Weatherford,544900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/405-texas-sage-trail/
 Riverside Homebuilders,413 Texas Sage Trail,,Weatherford,549900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/413-texas-sage-trail/
-Riverside Homebuilders,421 Texas Sage Trail,,Weatherford,544900,-10000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/421-texas-sage-trail/
 Riverside Homebuilders,429 Texas Sage Trail,,Weatherford,539900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/429-texas-sage-trail/
-Riverside Homebuilders,433 Texas Sage Trail,,Weatherford,539900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/433-texas-sage-trail/
-Riverside Homebuilders,437 Texas Sage Trail,,Weatherford,564900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/437-texas-sage-trail/
-Riverside Homebuilders,441 Texas Sage Trail,,Weatherford,559900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/441-texas-sage-trail/
 Riverside Homebuilders,536 Lantana Drive,,Weatherford,609900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/536-lantana-drive/
 Riverside Homebuilders,585 Brown Road,,,589900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/585-brown-road/
 Riverside Homebuilders,601 Sand Piper Lane,,Anna,509900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/601-sand-piper-lane/
 Riverside Homebuilders,605 Brown Road,,,559000,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/605-brown-road/
 Riverside Homebuilders,608 Sand Piper Lane,,Anna,399900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/608-sand-piper-lane/
-Riverside Homebuilders,612 Sand Piper Lane,,Anna,470900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/612-sand-piper-lane/
 Riverside Homebuilders,6525 Huron Drive,,Princeton,609900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/6525-huron-drive/
-Riverside Homebuilders,701 Water Side Drive,,Van Alstyne,599900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/701-water-side-drive/
-Riverside Homebuilders,707 Water Side Drive,,Van Alstyne,629900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/707-water-side-drive/
-Riverside Homebuilders,709 Water Side Drive,,Van Alstyne,639900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/709-water-side-drive/
-Riverside Homebuilders,711 Water Side Drive,,Van Alstyne,569900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/711-water-side-drive/
-Riverside Homebuilders,715 Water Side Drive,,Van Alstyne,629900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/715-water-side-drive/
 Riverside Homebuilders,78 Aurora Avenue,,,489875,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/78-aurora-avenue/
 Riverside Homebuilders,802 Juneau Street,,Gainesville,339900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/802-juneau-street/
 Riverside Homebuilders,802 Westover Drive,,Van Alstyne,669900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/802-westover-drive/
-Riverside Homebuilders,804 Valley Ridge Road,,Van Alstyne,640125,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/804-valley-ridge-road/
-Riverside Homebuilders,808 Valley Ridge Road,,Van Alstyne,659900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/808-valley-ridge-road/
-Riverside Homebuilders,814 Valley Ridge Road,,Van Alstyne,569900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/814-valley-ridge-road/
 Riverside Homebuilders,816 Sand Piper Lane,,Anna,429900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/816-sand-piper-lane/
 Riverside Homebuilders,820 Elmstead Drive,,Fort Worth,374900,-2000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/820-elmstead-drive/
-Riverside Homebuilders,820 Sand Piper Lane,,Anna,439900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/820-sand-piper-lane/
-Riverside Homebuilders,86 Sunny Side Road,,,559900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/86-sunny-side-road/
-Riverside Homebuilders,906 Perrin Lane,,Van Alstyne,576900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/906-perrin-lane/
 Riverside Homebuilders,1030 CR 200,,,459900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1030-cr-200
 Riverside Homebuilders,930 CR 200,,,529900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/930-cr-200
 Riverside Homebuilders,8707 CR 623,,,499900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623
@@ -2540,35 +2493,7 @@ Riverside Homebuilders,1225 Colca Drive,,Springtown,349900,0,rate,,2.99,Interest
 Riverside Homebuilders,8813 CR 623,,,499900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/8813-cr-623
 Riverside Homebuilders,870 CR 200,,,469900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/870-cr-200
 Riverside Homebuilders,810 CR 200,,,531475,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200
-Riverside Homebuilders,631 Lakeshore Boulevard,,Oak Point,379000,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/available-homes/631-lakeshore-boulevard
-Riverside Homebuilders,6601 Huron Drive,,Princeton,731250,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/6601-huron-drive
-Riverside Homebuilders,1003 Lackland Court,,Van Alstyne,701300,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/1003-lackland-court
-Riverside Homebuilders,508 Mitchell Blvd,,Weatherford,494015,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/508-mitchell-blvd
-Riverside Homebuilders,12409 Crystal Drive,,Krum,639345,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 18:59,https://www.riversidehomebuilders.com/quick-move-in/12409-crystal-drive
-Riverside Homebuilders,537 Lantana Drive,,Weatherford,622250,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/537-lantana-drive
-Riverside Homebuilders,157 Rain Lily Way,,Weatherford,619428,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/157-rain-lily-way
-Riverside Homebuilders,1108 Perrin Lane,,Van Alstyne,670765,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1108-perrin-lane
-Riverside Homebuilders,10149 Birchpoint Drive,,Fort Worth,438400,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/10149-birchpoint-drive
-Riverside Homebuilders,3951 Southern Oaks Drive,,Royse City,566900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/3951-southern-oaks-drive
-Riverside Homebuilders,1007 Perrin Lane,,Van Alstyne,658285,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1007-perrin-lane
-Riverside Homebuilders,1012 Elmstead Drive,,Fort Worth,443625,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1012-elmstead-drive
-Riverside Homebuilders,120 Pheasant Run Drive,,Rhome,518900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/120-pheasant-run-drive
-Riverside Homebuilders,1006 Alconberry Drive,,Crowley,511749,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1006-alconberry-drive
-Riverside Homebuilders,901 Perrin Lane,,Van Alstyne,724330,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/901-perrin-lane
-Riverside Homebuilders,802 Star Hollow Drive,,Ennis,391825,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/802-star-hollow-drive
-Riverside Homebuilders,809 Zachary Michael Court,,Springtown,564900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/809-zachary-michael-court
-Riverside Homebuilders,2309 Gypsum Street,,Krum,659900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/2309-gypsum-street
-Riverside Homebuilders,6605 Huron Drive,,Princeton,698972,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/6605-huron-drive
-Riverside Homebuilders,3519 Columbus Street,,Gainesville,349900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/3519-columbus-street
-Riverside Homebuilders,12417 Delta Court,,Krum,614800,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/12417-delta-court
-Riverside Homebuilders,414 Boone Street,,,640400,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/414-boone-street
-Riverside Homebuilders,1224 Sabine River Lane,,Springtown,414900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1224-sabine-river-lane
-Riverside Homebuilders,1020 Elmstead Drive,,Fort Worth,396475,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1020-elmstead-drive
 Riverside Homebuilders,8525 CR 623,,,537850,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/8525-cr-623
-Riverside Homebuilders,2830 Geneva Way,,Princeton,629900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/2830-geneva-way
-Riverside Homebuilders,1120 Frio Drive,,Springtown,379800,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1120-frio-drive
-Riverside Homebuilders,12440 Jackson Road,,Krum,659900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/12440-jackson-road
-Riverside Homebuilders,1204 Frio Drive,,Springtown,429230,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/1204-frio-drive
 Riverside Homebuilders,605 Sand Piper Lane,,Anna,603850,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/605-sand-piper-lane
 Riverside Homebuilders,806 Star Hollow Drive,,Ennis,389250,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/806-star-hollow-drive
 Riverside Homebuilders,133 Rain Lily Way,,Weatherford,671335,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 19:12,https://www.riversidehomebuilders.com/quick-move-in/133-rain-lily-way
@@ -2687,41 +2612,10 @@ Riverside Homebuilders,116 Pheasant Run Drive,,Rhome,529900,0,rate,,2.99,Interes
 Riverside Homebuilders,164 Oak Grove Way,,Springtown,519900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/164-oak-grove-way
 Riverside Homebuilders,745 Stardust Drive,,Anna,496275,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/745-stardust-drive
 Riverside Homebuilders,501 Mitchell Blvd,,Weatherford,468260,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/501-mitchell-blvd
-Riverside Homebuilders,132 Pheasant Run Drive,,Rhome,519900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/132-pheasant-run-drive
-Riverside Homebuilders,517 Lantana Drive,,Weatherford,687080,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/517-lantana-drive
 Riverside Homebuilders,8755 CR 623,,,459900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/8755-cr-623
-Riverside Homebuilders,177 Big Sky Road,,Decatur,570800,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/177-big-sky-road
-Riverside Homebuilders,702 Deer Dale Court,,Van Alstyne,642806,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/702-deer-dale-court
-Riverside Homebuilders,1112 Perrin Lane,,Van Alstyne,669305,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/1112-perrin-lane
-Riverside Homebuilders,180 Hillview Trail,,Decatur,538900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/180-hillview-trail
-Riverside Homebuilders,210 Horizon Road,,,592050,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/210-horizon-road
-Riverside Homebuilders,329 Boone Street,,,711853,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/329-boone-street
-Riverside Homebuilders,2333 Gypsum Street,,Krum,602909,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/2333-gypsum-street
-Riverside Homebuilders,701 Deer Dale Court,,Van Alstyne,631900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/701-deer-dale-court
-Riverside Homebuilders,512 Mitchell Blvd,,Weatherford,514483,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/512-mitchell-blvd
-Riverside Homebuilders,625 Stardust Drive,,Anna,543149,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/625-stardust-drive
-Riverside Homebuilders,1114 Perrin Lane,,Van Alstyne,718810,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/1114-perrin-lane
 Riverside Homebuilders,1770 CR 200,,,497700,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/1770-cr-200
-Riverside Homebuilders,6516 Huron Drive,,Princeton,607900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/6516-huron-drive
-Riverside Homebuilders,1004 Elmstead Drive,,Fort Worth,394825,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/1004-elmstead-drive
-Riverside Homebuilders,3507 Olympia Street,,Gainesville,393600,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/3507-olympia-street
-Riverside Homebuilders,176 Hillview Trail,,Decatur,538650,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/176-hillview-trail
-Riverside Homebuilders,2317 Quartz Street,,Caddo Mills,625684,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/2317-quartz-street
-Riverside Homebuilders,34 Cold Springs Road,,Van Alstyne,726040,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/34-cold-springs-road
-Riverside Homebuilders,804 Star Hollow Drive,,Ennis,379075,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/804-star-hollow-drive
-Riverside Homebuilders,10128 Oakstone Drive,,Fort Worth,434500,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/10128-oakstone-drive
-Riverside Homebuilders,1037 Flagstone Drive,,Weatherford,429900,-15100,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/available-homes/1037-flagstone-drive
-Riverside Homebuilders,12405 Delta Court,,Krum,584900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/12405-delta-court
-Riverside Homebuilders,802 Monterrey Circle,,Caddo Mills,781465,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/802-monterrey-circle
 Riverside Homebuilders,8619 CR 623,,,516714,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/8619-cr-623
-Riverside Homebuilders,180 Horizon Road,,,493025,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/180-horizon-road
-Riverside Homebuilders,910 Creekview Whites Road,,Van Alstyne,679925,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/910-creekview-whites-road
-Riverside Homebuilders,10145 Birchpoint Drive,,Fort Worth,393525,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/10145-birchpoint-drive
 Riverside Homebuilders,8779 CR 623,,,489900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/8779-cr-623
-Riverside Homebuilders,3410 Helena Street,,Gainesville,388300,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/3410-helena-street
-Riverside Homebuilders,122 Lago Vista Drive,,Rhome,469641,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:14,https://www.riversidehomebuilders.com/quick-move-in/122-lago-vista-drive
-Riverside Homebuilders,3524 Columbus Street,,Gainesville,341150,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/3524-columbus-street
-Riverside Homebuilders,108 Pheasant Run Drive,,New Fairview,614900,-10000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/108-pheasant-run-drive
 Riverside Homebuilders,12404 Delta Court,,Krum,599900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/12404-delta-court
 Riverside Homebuilders,400 Boone Street,,,683875,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/400-boone-street
 Riverside Homebuilders,112 Pheasant Run Drive,,Rhome,499900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/112-pheasant-run-drive
@@ -2762,15 +2656,9 @@ Riverside Homebuilders,621 Stardust Drive,,Anna,491536,0,rate,,2.99,Interest Rat
 Riverside Homebuilders,810 Silverleaf Drive,,Ennis,431750,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/810-silverleaf-drive
 Riverside Homebuilders,532 Vista Ridge Drive,,Weatherford,409900,-5000,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/532-vista-ridge-drive
 Riverside Homebuilders,528 Mitchell Blvd,,Weatherford,416915,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-18 20:29,https://www.riversidehomebuilders.com/quick-move-in/528-mitchell-blvd
-Riverside Homebuilders,1030 CR 200,,,459900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 08:46,https://www.riversidehomebuilders.com/quick-move-in/1030-cr-200
 Riverside Homebuilders,2893 CR 658,,Farmersville,362500,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 08:46,https://www.riversidehomebuilders.com/quick-move-in/2893-county-road-658
-Riverside Homebuilders,810 CR 200,,,531475,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 12:40,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200/
-Riverside Homebuilders,870 CR 200,,,469900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 12:40,https://www.riversidehomebuilders.com/quick-move-in/870-cr-200/
-Riverside Homebuilders,8707 CR 623,,,499900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 12:40,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
-Riverside Homebuilders,8813 CR 623,,,499900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 12:40,https://www.riversidehomebuilders.com/quick-move-in/8813-cr-623/
 Riverside Homebuilders,900 CR 200,,,469900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 12:40,https://www.riversidehomebuilders.com/quick-move-in/900-cr-200/
 Riverside Homebuilders,930 CR 200,,,529900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 12:40,https://www.riversidehomebuilders.com/quick-move-in/930-cr-200/
-Riverside Homebuilders,8525 CR 623,,,537850,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 15:54,https://www.riversidehomebuilders.com/quick-move-in/8525-cr-623
 Riverside Homebuilders,8489 CR 623,,,555200,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 15:54,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
 Riverside Homebuilders,8341 CR 623,,,593339,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 15:54,https://www.riversidehomebuilders.com/quick-move-in/8341-cr-623
 Riverside Homebuilders,8629 CR 623,,,519152,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 15:54,https://www.riversidehomebuilders.com/quick-move-in/8629-cr-623
@@ -2779,10 +2667,6 @@ Riverside Homebuilders,8935 CR 623,,,581850,0,rate,,2.99,Interest Rate as low as
 Riverside Homebuilders,8473 CR 623,,,603591,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 17:19,https://www.riversidehomebuilders.com/quick-move-in/8473-cr-623
 Riverside Homebuilders,8519 CR 623,,,522494,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 17:19,https://www.riversidehomebuilders.com/quick-move-in/8519-cr-623
 Riverside Homebuilders,8361 CR 623,,,578231,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 17:19,https://www.riversidehomebuilders.com/quick-move-in/8361-cr-623
-Riverside Homebuilders,8755 CR 623,,,459900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 19:15,https://www.riversidehomebuilders.com/quick-move-in/8755-cr-623
-Riverside Homebuilders,1770 CR 200,,,497700,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 19:15,https://www.riversidehomebuilders.com/quick-move-in/1770-cr-200
-Riverside Homebuilders,8619 CR 623,,,516714,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 19:15,https://www.riversidehomebuilders.com/quick-move-in/8619-cr-623
-Riverside Homebuilders,8779 CR 623,,,489900,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-21 19:15,https://www.riversidehomebuilders.com/quick-move-in/8779-cr-623
 Riverside Homebuilders,1716 Escondido Drive,,Haslet,279000,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-22 00:23,https://www.riversidehomebuilders.com/available-homes/1716-escondido-drive
 Riverside Homebuilders,714 Cottonwood Bend,,Allen,410000,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-22 00:23,https://www.riversidehomebuilders.com/available-homes/714-cottonwood-bend
 Riverside Homebuilders,14629 Delphinus Drive,,Haslet,359000,0,rate,,2.99,Interest Rate as low as 2.99%,2026-10-22 00:23,https://www.riversidehomebuilders.com/available-homes/14629-delphinus-drive
