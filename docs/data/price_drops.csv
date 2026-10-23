@@ -1,4 +1,16 @@
 at,builder,address,community,city,old,new,delta,pct,offer,url
+2026-10-23 11:42,Riverside Homebuilders,820 Elmstead Drive,,Fort Worth,376900,374900,-2000,-0.53,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/820-elmstead-drive/
+2026-10-23 11:42,Riverside Homebuilders,1205 Colca Drive,,Springtown,414900,404900,-10000,-2.41,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1205-colca-drive/
+2026-10-23 11:42,Riverside Homebuilders,1228 Colca Drive,,Springtown,359900,354900,-5000,-1.39,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1228-colca-drive/
+2026-10-23 11:42,Riverside Homebuilders,157 Big Sky Road,,Decatur,494900,492900,-2000,-0.4,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/157-big-sky-road/
+2026-10-23 11:42,Riverside Homebuilders,437 Texas Sage Trail,,Weatherford,569900,564900,-5000,-0.88,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/437-texas-sage-trail/
+2026-10-23 11:42,Riverside Homebuilders,108 Pheasant Run Drive,,New Fairview,624900,614900,-10000,-1.6,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/108-pheasant-run-drive
+2026-10-23 11:42,Riverside Homebuilders,2305 Quartz Street,,Krum,614900,604900,-10000,-1.63,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/2305-quartz-street/
+2026-10-23 11:42,Riverside Homebuilders,1201 Colca Drive,,Springtown,349900,344900,-5000,-1.43,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1201-colca-drive/
+2026-10-23 11:42,Riverside Homebuilders,421 Texas Sage Trail,,Weatherford,554900,544900,-10000,-1.8,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/421-texas-sage-trail/
+2026-10-23 11:42,Riverside Homebuilders,12421 Hornfels Drive,,Krum,549900,544900,-5000,-0.91,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/12421-hornfels-drive/
+2026-10-23 11:42,Riverside Homebuilders,12117 Clastic Court,,Krum,559900,557900,-2000,-0.36,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/12117-clastic-court/
+2026-10-23 11:42,Trophy Signature Homes,348 Lacy Oak Lane,Dove Hollow,Waxahachie,415990,394990,-21000,-5.05,,https://trophysignaturehomes.com/homes/dallas-ft-worth/waxahachie/dove-hollow/348-lacy-oak-lane
 2026-10-23 10:23,Riverside Homebuilders,1237 Frio Drive,,Springtown,339900,334900,-5000,-1.47,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1237-frio-drive/
 2026-10-23 08:24,Century Communities,733 Vineyard Way,Prestige Series   60 ,Forney,404900,399900,-5000,-1.23,Make your best move happen with a 3.75% (6.057% APR)* in your first year with a 2/1 Buydown.,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/prestige-series---60-/lots/5bnn09-733-vineyard-way
 2026-10-23 06:13,Coventry Homes,918 Goldenwave Trail,Dominion of Pleasant Valley 60,Wylie,704990,699990,-5000,-0.71,$65K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-60/haskell-ii/918-goldenwave-trail/
@@ -108,7 +120,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-21 20:30,David Weekley Homes,12509 Crape Myrtle Court,Treeline,Justin,514233,499000,-15233,-2.96,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/justin/treeline/19460062
 2026-10-21 20:30,David Weekley Homes,8808 Cottonwood Drive,Treeline,Justin,595514,539000,-56514,-9.49,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/justin/treeline/19460041
 2026-10-21 19:15,Riverside Homebuilders,1037 Flagstone Drive,,Weatherford,445000,429900,-15100,-3.39,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/available-homes/1037-flagstone-drive
-2026-10-21 19:15,Coventry Homes,4817 Sandbrock Parkway,Sandbrock Ranch,Aubrey,599990,574990,-25000,-4.17,Interest Rates Starting at 3.99% (5.899% APR),https://www.coventryhomes.com/new-homes/tx/aubrey/sandbrock-ranch/easton/4817-sandbrock-parkway/
+2026-10-21 19:15,Coventry Homes,4817 Sandbrock Parkway,Sandbrock Ranch,Aubrey,599990,574990,-25000,-4.17,Interest Rates Starting at 2.99% (5.959% APR),https://www.coventryhomes.com/new-homes/tx/aubrey/sandbrock-ranch/easton/4817-sandbrock-parkway/
 2026-10-21 19:15,Coventry Homes,3621 Straw Lane,Heartland 40 Dream Series,Heartland,289990,279990,-10000,-3.45,$6K off,https://www.coventryhomes.com/new-homes/tx/heartland/heartland-40-dream-series/hill-ii/3621-straw-lane/
 2026-10-21 19:15,Beazer Homes,1712 Dove Drive,Whitewing Trails,Princeton,348093,344990,-3103,-0.89,,https://www.beazer.com/dallas-TX/princeton/whitewing-trails/magnolia2/1007
 2026-10-21 19:15,Beazer Homes,1709 Blackbird Lane,Whitewing Trails,Princeton,443105,439990,-3115,-0.7,,https://www.beazer.com/dallas-TX/princeton/whitewing-trails/parker2/0733
