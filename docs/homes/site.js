@@ -51,7 +51,7 @@ function shell(active) {
   header.innerHTML = `<div class="wrap">
       <a class="logo" href="index.html" aria-label="${esc(CONTACT.name)}, ${esc(CONTACT.brokerage)}: DFW New Home Deals">
         <span class="mono" aria-hidden="true">CR</span>
-        <span><b>${esc(CONTACT.name)}</b><small>${esc(CONTACT.brokerage)} · New Home Deals</small></span></a>
+        <span><b>${esc(CONTACT.name)}</b><small>${esc(CONTACT.brokerage)}<span class="wide"> · New Home Deals</span></small></span></a>
       <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="main" id="nav">${links.map(([href, label, key]) =>
         `<a href="${href}"${key === active ? ' class="on" aria-current="page"' : ""}>${label}</a>`).join("")}</nav></div>`;
