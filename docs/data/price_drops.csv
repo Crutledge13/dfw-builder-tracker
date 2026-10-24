@@ -1,4 +1,13 @@
 at,builder,address,community,city,old,new,delta,pct,offer,url
+2026-10-23 19:40,Highland Homes,2204 Livia Street,Mantua,Van Alstyne,825000,800000,-25000,-3.03,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/van-alstyne/mantua/8011-020
+2026-10-23 19:40,Bloomfield Homes,2906 Wild River Road,Liberty,Melissa,635827,627827,-8000,-1.26,Seller pays $15K towards closing costs and/or rate buy down.,https://www.bloomfieldhomes.com/new-homes/tx/melissa/liberty/seaberry-ii/2906-wild-river-road/
+2026-10-23 19:40,Highland Homes,1473 Shannon Avenue,Mantua,Van Alstyne,750000,725000,-25000,-3.33,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/van-alstyne/mantua/8011-010
+2026-10-23 19:40,Bloomfield Homes,2616 Acton Drive,Somerset Classic 70s 80s,Mansfield,739990,729990,-10000,-1.35,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset-classic-70s-80s/bellflower-ii/2616-acton-drive/
+2026-10-23 19:40,David Weekley Homes,3760 Jane Street,Goodland Manor Series,Grand Prairie,699990,657990,-42000,-6.0,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-manor-series/19950047
+2026-10-23 19:40,David Weekley Homes,1213 Roundup Way,Retreat at Harvest Gardens,Argyle,509000,479000,-30000,-5.89,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/argyle/retreat-at-harvest-gardens/19320086
+2026-10-23 19:40,David Weekley Homes,1493 Hawn Drive,Mantua Point,Anna,570640,549776,-20864,-3.66,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/van-alstyne/mantua-point/19470183
+2026-10-23 19:40,David Weekley Homes,1509 Hawn Drive,Mantua Point,Anna,574179,549294,-24885,-4.33,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/van-alstyne/mantua-point/19470181
+2026-10-23 19:40,David Weekley Homes,3771 Bermuda Grass Way,Goodland Classic Series,Prairie Ridge,509990,499990,-10000,-1.96,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-classic-series/19960019
 2026-10-23 18:32,Highland Homes,2051 Benedetto Way,Sonoma Verde,McLendon-Chisholm,650000,599900,-50100,-7.71,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-106
 2026-10-23 18:32,Highland Homes,2039 Benedetto Way,Sonoma Verde,McLendon-Chisholm,699900,689900,-10000,-1.43,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-107
 2026-10-23 18:32,Bloomfield Homes,2110 Ainsley Drive,Somerset Classic 70s 80s,Mansfield,735990,704990,-31000,-4.21,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset-classic-70s-80s/seaberry-ii/2110-ainsley-drive/
@@ -62,16 +71,16 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-23 13:19,Trophy Signature Homes,10640 Dillon Street,Cibolo Hills West,Fort Worth,383990,383490,-500,-0.13,,https://trophysignaturehomes.com/homes/dallas-ft-worth/fort-worth/cibolo-hills-west/10640-dillon-street
 2026-10-23 12:28,Riverside Homebuilders,105 Magnolia Lane,,,644900,634900,-10000,-1.55,,https://www.riversidehomebuilders.com/quick-move-in/105-magnolia-lane/
 2026-10-23 12:28,Riverside Homebuilders,2309 Quartz Street,,Krum,674900,664900,-10000,-1.48,,https://www.riversidehomebuilders.com/quick-move-in/2309-quartz-street/
-2026-10-23 12:28,Riverside Homebuilders,12450 Jackson Road,,Krum,689900,679900,-10000,-1.45,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/12450-jackson-road
-2026-10-23 12:28,Riverside Homebuilders,1001 Nogalito Avenue,,Crowley,519900,509900,-10000,-1.92,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1001-nogalito-avenue
-2026-10-23 12:28,Riverside Homebuilders,1312 Frio Drive,,Springtown,369900,367900,-2000,-0.54,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1312-frio-drive
-2026-10-23 12:28,Riverside Homebuilders,528 Vista Ridge Drive,,Weatherford,424900,419900,-5000,-1.18,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/528-vista-ridge-drive
-2026-10-23 12:28,Riverside Homebuilders,142 Pheasant Run Drive,,New Fairview,519900,514900,-5000,-0.96,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/142-pheasant-run-drive
+2026-10-23 12:28,Riverside Homebuilders,12450 Jackson Road,,Krum,689900,679900,-10000,-1.45,,https://www.riversidehomebuilders.com/quick-move-in/12450-jackson-road
+2026-10-23 12:28,Riverside Homebuilders,1001 Nogalito Avenue,,Crowley,519900,509900,-10000,-1.92,,https://www.riversidehomebuilders.com/quick-move-in/1001-nogalito-avenue
+2026-10-23 12:28,Riverside Homebuilders,1312 Frio Drive,,Springtown,369900,367900,-2000,-0.54,,https://www.riversidehomebuilders.com/quick-move-in/1312-frio-drive
+2026-10-23 12:28,Riverside Homebuilders,528 Vista Ridge Drive,,Weatherford,424900,419900,-5000,-1.18,,https://www.riversidehomebuilders.com/quick-move-in/528-vista-ridge-drive
+2026-10-23 12:28,Riverside Homebuilders,142 Pheasant Run Drive,,New Fairview,519900,514900,-5000,-0.96,,https://www.riversidehomebuilders.com/quick-move-in/142-pheasant-run-drive
 2026-10-23 12:28,Trophy Signature Homes,2128 Lone Star Lane,Stonehaven,Seagoville,311990,309990,-2000,-0.64,,https://trophysignaturehomes.com/homes/dallas-ft-worth/seagoville/stonehaven/2128-lone-star-lane
-2026-10-23 12:28,Riverside Homebuilders,193 Oak Grove Way,,Springtown,599900,594900,-5000,-0.83,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/193-oak-grove-way/
-2026-10-23 12:28,Riverside Homebuilders,10004 Birchpoint Drive,,Fort Worth,382900,379900,-3000,-0.78,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/10004-birchpoint-drive/
-2026-10-23 11:42,Riverside Homebuilders,820 Elmstead Drive,,Fort Worth,376900,374900,-2000,-0.53,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/820-elmstead-drive/
-2026-10-23 11:42,Riverside Homebuilders,1205 Colca Drive,,Springtown,414900,404900,-10000,-2.41,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1205-colca-drive/
+2026-10-23 12:28,Riverside Homebuilders,193 Oak Grove Way,,Springtown,599900,594900,-5000,-0.83,,https://www.riversidehomebuilders.com/quick-move-in/193-oak-grove-way/
+2026-10-23 12:28,Riverside Homebuilders,10004 Birchpoint Drive,,Fort Worth,382900,379900,-3000,-0.78,,https://www.riversidehomebuilders.com/quick-move-in/10004-birchpoint-drive/
+2026-10-23 11:42,Riverside Homebuilders,820 Elmstead Drive,,Fort Worth,376900,374900,-2000,-0.53,,https://www.riversidehomebuilders.com/quick-move-in/820-elmstead-drive/
+2026-10-23 11:42,Riverside Homebuilders,1205 Colca Drive,,Springtown,414900,404900,-10000,-2.41,,https://www.riversidehomebuilders.com/quick-move-in/1205-colca-drive/
 2026-10-23 11:42,Riverside Homebuilders,1228 Colca Drive,,Springtown,359900,354900,-5000,-1.39,,https://www.riversidehomebuilders.com/quick-move-in/1228-colca-drive/
 2026-10-23 11:42,Riverside Homebuilders,157 Big Sky Road,,Decatur,494900,492900,-2000,-0.4,,https://www.riversidehomebuilders.com/quick-move-in/157-big-sky-road/
 2026-10-23 11:42,Riverside Homebuilders,437 Texas Sage Trail,,Weatherford,569900,564900,-5000,-0.88,,https://www.riversidehomebuilders.com/quick-move-in/437-texas-sage-trail/
@@ -82,7 +91,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-23 11:42,Riverside Homebuilders,12421 Hornfels Drive,,Krum,549900,544900,-5000,-0.91,,https://www.riversidehomebuilders.com/quick-move-in/12421-hornfels-drive/
 2026-10-23 11:42,Riverside Homebuilders,12117 Clastic Court,,Krum,559900,557900,-2000,-0.36,,https://www.riversidehomebuilders.com/quick-move-in/12117-clastic-court/
 2026-10-23 11:42,Trophy Signature Homes,348 Lacy Oak Lane,Dove Hollow,Waxahachie,415990,394990,-21000,-5.05,,https://trophysignaturehomes.com/homes/dallas-ft-worth/waxahachie/dove-hollow/348-lacy-oak-lane
-2026-10-23 10:23,Riverside Homebuilders,1237 Frio Drive,,Springtown,339900,334900,-5000,-1.47,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/1237-frio-drive/
+2026-10-23 10:23,Riverside Homebuilders,1237 Frio Drive,,Springtown,339900,334900,-5000,-1.47,,https://www.riversidehomebuilders.com/quick-move-in/1237-frio-drive/
 2026-10-23 08:24,Century Communities,733 Vineyard Way,Prestige Series   60 ,Forney,404900,399900,-5000,-1.23,Make your best move happen with a 3.75% (6.057% APR)* in your first year with a 2/1 Buydown.,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/prestige-series---60-/lots/5bnn09-733-vineyard-way
 2026-10-23 06:13,Coventry Homes,918 Goldenwave Trail,Dominion of Pleasant Valley 60,Wylie,704990,699990,-5000,-0.71,$65K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-60/haskell-ii/918-goldenwave-trail/
 2026-10-23 06:13,Coventry Homes,607 Meadow Holly Drive,Dominion of Pleasant Valley 50,Wylie,527882,525882,-2000,-0.38,$25K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/lamar/607-meadow-holly-drive/
@@ -184,7 +193,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-22 00:23,David Weekley Homes,2049 Pedernales Lane,The Parks at Wilson Creek,Celina,594798,574982,-19816,-3.33,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/celina/the-parks-at-wilson-creek/19600070
 2026-10-22 00:23,David Weekley Homes,1908 Beavers Bend Drive,The Parks at Wilson Creek,Celina,599798,585899,-13899,-2.32,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/celina/the-parks-at-wilson-creek/19600087
 2026-10-21 20:30,Bloomfield Homes,11 Grouse Circle,Sable Creek,Sanger,498000,497000,-1000,-0.2,"+ Up to $15K towards Closing Costs/Rate Buydown | $25K towards Options, Upgrades, & Design Selections (or total price) | + Up to $10K towards Closing Costs/Rate Buydown",https://www.bloomfieldhomes.com/new-homes/tx/sanger/sable-creek/bayberry-iii/11-grouse-circle/
-2026-10-21 20:30,Riverside Homebuilders,2107 Victoria Lane,,Princeton,325000,319900,-5100,-1.57,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/available-homes/2107-victoria-lane
+2026-10-21 20:30,Riverside Homebuilders,2107 Victoria Lane,,Princeton,325000,319900,-5100,-1.57,,https://www.riversidehomebuilders.com/available-homes/2107-victoria-lane
 2026-10-21 20:30,Trophy Signature Homes,2800 Gecko Court,Whitewing Trails,Princeton,448990,438990,-10000,-2.23,,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/whitewing-trails/2800-gecko-court
 2026-10-21 20:30,Trophy Signature Homes,1020 Crane Street,Whitewing Trails,Princeton,418990,413990,-5000,-1.19,,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/whitewing-trails/1020-crane-street
 2026-10-21 20:30,David Weekley Homes,8717 Chestnut Lane,Treeline,Justin,525000,499000,-26000,-4.95,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/justin/treeline/19460023
