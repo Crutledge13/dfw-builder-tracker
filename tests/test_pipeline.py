@@ -781,6 +781,27 @@ def test_jump_back_to_was_price_needs_confirmation():
     assert [c["event"] for c in rec.changes] == ["price_increase"]
 
 
+def test_listing_card_does_not_reset_pending_confirmation():
+    # Bloomfield 2026-10-23: 1913 Wellspring Way's sale ended ($560,000 -> its 'was' $599,777). Each run read
+    # the listing card first (weaker, ignored) which cleared the pending reading, so the home's own page
+    # logged 'price_unconfirmed' again every run and the real increase was never recorded
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "1913 Wellspring Way", "city": "Waxahachie", "zip": "75165",
+         "url": "https://tb.example/1913-wellspring-way"}
+    rec = R.Recorder(st, t0)
+    rec.observe(B, dict(h, price=560000, builder_was_price=599777, from_detail=True))
+    hid = next(iter(st.homes))
+    events = []
+    for k in (1, 2):
+        rec = R.Recorder(st, t0 + timedelta(hours=k))
+        rec.observe(B, dict(h, price=599777, source="card"))
+        rec.observe(B, dict(h, price=599777, from_detail=True))
+        events += [c["event"] for c in rec.changes]
+    assert events == ["price_unconfirmed", "price_increase"]
+    assert st.homes[hid]["price"] == 599777
+
+
 def test_improved_reader_does_not_adopt_a_lost_sale_price():
     # Bloomfield 2026-10-20: after a reader upgrade, pages read while they showed only the struck 'was'
     # price were 'corrected' quietly (first price too); the sale price's return then looked like a $114k drop

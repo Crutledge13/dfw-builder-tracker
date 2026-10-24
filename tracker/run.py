@@ -269,6 +269,7 @@ class Recorder:
             h["price_version"] = EXTRACT_VERSION
         applied_earlier = self.run_applied.get(hid, False)
         self.run_applied[hid] = True
+        weaker_ignored = False
         if h is not None and seen_rank is not None and applied_earlier and h.get("price") != price:
             # a better source this run disagrees with an earlier reading this run: take it, no event
             if h.get("first_seen") == now:
@@ -280,6 +281,7 @@ class Recorder:
         elif h is not None and int(h.get("price_source") or 1) > rank and h.get("price") != price:
             price = h["price"]  # a weaker source disagrees with what a stronger one said: ignore it
             self.run_applied[hid] = False
+            weaker_ignored = True   # ...and don't let it wipe a pending confirmation either
         elif h is not None and int(h.get("price_source") or 1) < rank and h.get("price") != price and not lost_sale:
             h["price"], h["price_source"] = price, rank  # first reading from a stronger source: adopt quietly
             if hid not in self.priced:
@@ -336,7 +338,9 @@ class Recorder:
                              pending_price=None)
                     if price < old:
                         h["cuts"] = int(h.get("cuts") or 0) + 1
-            else:
+            elif not weaker_ignored:
+                # (Bloomfield 2026-10-23: a listing card read before the home's own page each run cleared the
+                # pending second reading, so a real end-of-sale increase stayed 'unconfirmed' run after run)
                 h["pending_price"] = None
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "url"):
                 if obs.get(k) not in (None, "") and not h.get(k):
