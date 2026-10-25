@@ -937,3 +937,30 @@ def test_first_card_reading_of_a_million_dollar_price_is_a_correction():
     rec = R.Recorder(st, t0 + timedelta(hours=2))      # later real moves are still recorded
     rec.observe(B, dict(h, price=1019950))
     assert [c["event"] for c in rec.changes] == ["price_cut"]
+
+
+def test_own_page_cut_after_stale_card_is_recorded():
+    # Riverside 2026-10-24: each run read the listing card (still showing the old $470,900) before the home's
+    # own page ($465,900). The page's reading was treated as 'a better source correcting this run's earlier
+    # reading' and taken with no event, so a real $5,000 cut showed on the site with no price history
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "612 Sand Piper Lane", "city": "Anna", "zip": "75409",
+         "url": "https://tb.example/612-sand-piper-lane"}
+    rec = R.Recorder(st, t0)
+    rec.observe(B, dict(h, price=470900, builder_was_price=550700, from_detail=True))
+    hid = next(iter(st.homes))
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, price=470900, source="card"))
+    rec.observe(B, dict(h, price=465900, builder_was_price=550700, from_detail=True))
+    assert [(c["event"], c["old"], c["new"]) for c in rec.changes] == [("price_cut", 470900, 465900)]
+    home = st.homes[hid]
+    assert (home["price"], home["prev_price"], home["last_change"]) == (465900, 470900, -5000)
+    # a new home whose card and own page disagree in its first run still just takes the page's price
+    rec = R.Recorder(st, t0 + timedelta(hours=2))
+    n = dict(h, address="616 Sand Piper Lane", url="https://tb.example/616-sand-piper-lane")
+    rec.observe(B, dict(n, price=480900, source="card"))
+    rec.observe(B, dict(n, price=475900, from_detail=True))
+    new = [x for x in st.homes.values() if x["address"] == "616 Sand Piper Lane"][0]
+    assert (new["price"], new["first_price"]) == (475900, 475900)
+    assert [c["event"] for c in rec.changes] == ["new_home"] and rec.changes[0]["new"] == 475900

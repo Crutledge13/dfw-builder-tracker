@@ -535,8 +535,8 @@ def consumer_site(st, homes: dict, run_at: str, weeks: int = 6) -> dict:
     for i in range(weeks):
         start = monday - timedelta(days=7 * i)
         end = start + timedelta(days=7)
-        if first_day and end <= min(first_day.values()) + timedelta(days=1):
-            break   # nothing tracked yet that week beyond the first-day baseline
+        if i and first_day and end <= min(first_day.values()) + timedelta(days=1):
+            break   # nothing tracked yet that week beyond the first-day baseline (the current week always shows)
         drops, new_homes = [], 0
         for c in st.changes:
             t = when(c.get("at"))

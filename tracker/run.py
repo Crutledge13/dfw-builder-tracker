@@ -155,6 +155,7 @@ class Recorder:
         self.lock = threading.RLock()
         self.run_rank: dict[str, int] = {}  # home_id -> best source rank read this run
         self.run_applied: dict[str, bool] = {}  # home_id -> did this run's best reading set the price
+        self.run_start: dict[str, int | None] = {}  # home_id -> its stored price before this run read it
         # homes with a real recorded price move; for the rest, a corrected first reading may replace first_price
         self.priced = {c.get("home_id") for c in st.changes if c.get("event") in ("price_cut", "price_increase")}
         self._url_ix: dict | None = None   # (builder, home page URL) -> home_id
@@ -241,6 +242,8 @@ class Recorder:
             return hid  # already have an equal or better reading of this home this run
         self.run_rank[hid] = rank
         h = self.st.homes.get(hid)
+        if seen_rank is None:
+            self.run_start[hid] = h.get("price") if h is not None else None
         if h is not None and not h.get("active") and h.get("gone_unverified"):
             # dropped quietly because its price was never trustworthy: it comes back quietly at today's price,
             # not as 'relisted' plus a change from the untrustworthy one
@@ -270,8 +273,11 @@ class Recorder:
         applied_earlier = self.run_applied.get(hid, False)
         self.run_applied[hid] = True
         weaker_ignored = False
-        if h is not None and seen_rank is not None and applied_earlier and h.get("price") != price:
-            # a better source this run disagrees with an earlier reading this run: take it, no event
+        if h is not None and seen_rank is not None and applied_earlier and h.get("price") != price \
+                and h.get("price") != self.run_start.get(hid):
+            # a better source this run disagrees with a price an earlier reading set this run: take it, no event
+            # (when the earlier reading just matched the stored price, this is a real change: logged below.
+            # Riverside 2026-10-24: a stale card read before the home's own page hid real cuts)
             if h.get("first_seen") == now:
                 h["first_price"] = price
                 for c in self.changes:
