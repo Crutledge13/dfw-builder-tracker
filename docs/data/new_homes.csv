@@ -1,24 +1,24 @@
 at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
-2026-10-25 17:44,Highland Homes,2532 Poppleton Lane,Pecan Square,Northlake,671750,4.0,,3039,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-151
-2026-10-25 17:44,Highland Homes,3016 Ryegrass Lane,Pecan Square,Northlake,640180,4.0,,2971,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-155
-2026-10-25 17:44,Highland Homes,2613 Starlight Trail,Pecan Square,Northlake,706180,4.0,,3232,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-159
+2026-10-25 17:44,Highland Homes,2532 Poppleton Lane,Pecan Square,Northlake,671750,4,,3039,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-151
+2026-10-25 17:44,Highland Homes,3016 Ryegrass Lane,Pecan Square,Northlake,640180,4,,2971,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-155
+2026-10-25 17:44,Highland Homes,2613 Starlight Trail,Pecan Square,Northlake,706180,4,,3232,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-159
 2026-10-25 05:10,Meritage Homes,2605 Hot Springs Drive,,Corinth,438080,4,3.0,2460,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2605-hot-springs-drive
 2026-10-25 05:10,Meritage Homes,2134 Santa Anita Street,,Seagoville,323949,3,2.0,1833,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2134-santa-anita-street
 2026-10-25 05:10,Meritage Homes,3514 Bastrop Drive,,Farmersville,270344,3,2.0,1659,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/3514-bastrop-drive
 2026-10-25 05:10,Meritage Homes,2609 Hot Springs Drive,,Corinth,407791,3,2.5,1882,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2609-hot-springs-drive
 2026-10-25 05:10,Meritage Homes,2601 Hot Springs Drive,,Corinth,421991,3,2.5,1894,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2601-hot-springs-drive
-2026-10-24 15:26,Riverside Homebuilders,4125 Old Springtown Road,,Weatherford,589900,4,2.0,2857,,https://www.riversidehomebuilders.com/quick-move-in/4125-old-springtown-road/
-2026-10-24 07:02,Perry Homes,3208 Chamomile Court,Canyon Falls 50,Northlake,643900,4.0,3.0,2595,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/3208-chamomile-court
-2026-10-24 07:02,Perry Homes,1522 Fescue Ridge,Canyon Falls 50,Northlake,714900,5.0,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1522-fescue-ridge
-2026-10-24 07:02,Perry Homes,4309 Texas Sage Street,Silo Mills 50,Cleburne,544900,4.0,3.0,2595,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4309-texas-sage-street
-2026-10-24 07:02,Perry Homes,1709 Trailhead Drive,Ramble 60,Celina,867900,5.0,4.5,3794,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/1709-trailhead-drive
-2026-10-24 07:02,Perry Homes,2536 Yellow Yucca Lane,Walsh 50,Dallas,727900,4.0,3.5,3190,,https://www.perryhomes.com/new-homes/texas/dallas/walsh/walsh-50/2536-yellow-yucca-lane
-2026-10-24 07:02,Perry Homes,1237 Cedarwood Court,Sweetgrass 50,Haslet,581900,4.0,3.0,2619,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1237-cedarwood-court
-2026-10-24 07:02,Perry Homes,10628 Starpoint Road,Ventana 50,Dallas,610900,4.0,3.5,2574,,https://www.perryhomes.com/new-homes/texas/dallas/ventana/ventana-50/10628-starpoint-road
-2026-10-24 07:02,Perry Homes,4304 Haystack Way,Silo Mills 50,Cleburne,531900,4.0,3.5,2574,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4304-haystack-way
-2026-10-24 07:02,Perry Homes,775 Red Willow Court,Sweetgrass 65,Haslet,753900,4.0,3.5,3295,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-65/775-red-willow-court
-2026-10-24 03:44,Coventry Homes,212 Pine Leaf Trail,Myrtle Creek,Waxahachie,742131,5,1.0,2944,$102K off,https://www.coventryhomes.com/new-homes/tx/waxahachie/myrtle-creek/ames/212-pine-leaf-trail/
-2026-10-24 03:44,Coventry Homes,216 Pine Leaf Trail,Myrtle Creek,Waxahachie,653579,4,4.0,3997,$102K off,https://www.coventryhomes.com/new-homes/tx/waxahachie/myrtle-creek/bremond/216-pine-leaf-trail/
+2026-10-24 15:26,Riverside Homebuilders,4125 Old Springtown Road,,Weatherford,589900,4.0,2.0,2857,,https://www.riversidehomebuilders.com/quick-move-in/4125-old-springtown-road/
+2026-10-24 07:02,Perry Homes,3208 Chamomile Court,Canyon Falls 50,Northlake,643900,4,3.0,2595,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/3208-chamomile-court
+2026-10-24 07:02,Perry Homes,1522 Fescue Ridge,Canyon Falls 50,Northlake,714900,5,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1522-fescue-ridge
+2026-10-24 07:02,Perry Homes,4309 Texas Sage Street,Silo Mills 50,Cleburne,544900,4,3.0,2595,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4309-texas-sage-street
+2026-10-24 07:02,Perry Homes,1709 Trailhead Drive,Ramble 60,Celina,867900,5,4.5,3794,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/1709-trailhead-drive
+2026-10-24 07:02,Perry Homes,2536 Yellow Yucca Lane,Walsh 50,Dallas,727900,4,3.5,3190,,https://www.perryhomes.com/new-homes/texas/dallas/walsh/walsh-50/2536-yellow-yucca-lane
+2026-10-24 07:02,Perry Homes,1237 Cedarwood Court,Sweetgrass 50,Haslet,581900,4,3.0,2619,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1237-cedarwood-court
+2026-10-24 07:02,Perry Homes,10628 Starpoint Road,Ventana 50,Dallas,610900,4,3.5,2574,,https://www.perryhomes.com/new-homes/texas/dallas/ventana/ventana-50/10628-starpoint-road
+2026-10-24 07:02,Perry Homes,4304 Haystack Way,Silo Mills 50,Cleburne,531900,4,3.5,2574,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4304-haystack-way
+2026-10-24 07:02,Perry Homes,775 Red Willow Court,Sweetgrass 65,Haslet,753900,4,3.5,3295,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-65/775-red-willow-court
+2026-10-24 03:44,Coventry Homes,212 Pine Leaf Trail,Myrtle Creek,Waxahachie,742131,5.0,1.0,2944,$102K off,https://www.coventryhomes.com/new-homes/tx/waxahachie/myrtle-creek/ames/212-pine-leaf-trail/
+2026-10-24 03:44,Coventry Homes,216 Pine Leaf Trail,Myrtle Creek,Waxahachie,653579,4.0,4.0,3997,$102K off,https://www.coventryhomes.com/new-homes/tx/waxahachie/myrtle-creek/bremond/216-pine-leaf-trail/
 2026-10-24 00:50,Meritage Homes,1632 Gardendale Hollow Lane,,Anna,372717,4,3.0,2363,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/1632-gardendale-hollow-lane
 2026-10-24 00:50,Meritage Homes,2205 Cottongrass Drive,,Sherman,309990,3,2.0,1833,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2205-cottongrass-drive
 2026-10-24 00:50,Meritage Homes,1620 Gardendale Hollow Lane,,Anna,375428,4,3.0,2059,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/1620-gardendale-hollow-lane
@@ -36,35 +36,35 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-24 00:50,Meritage Homes,3507 Bastrop Drive,,Farmersville,334556,4,2.5,2720,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/3507-bastrop-drive
 2026-10-24 00:50,Meritage Homes,110 Decoursey Drive,,Princeton,331855,4,2.5,2055,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/110-decoursey-drive
 2026-10-24 00:50,Meritage Homes,102 Decoursey Drive,,Princeton,292268,4,2.0,1605,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/102-decoursey-drive
-2026-10-23 18:32,D.R. Horton,3645 Ansley Lane,Peachtree Meadows,Rockwall,506504,4.0,2.5,2092,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/rockwall/peachtree-meadows/qmis/3645-ansley-lane
-2026-10-23 18:32,D.R. Horton,107 Riveridge Road,Bluestem,Rhome,358490,4.0,2.0,1662,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/107-riveridge-road
-2026-10-23 18:32,D.R. Horton,134 Ringtrail Drive,Bluestem,Rhome,384780,4.0,2.0,2014,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/134-ringtrail-drive
-2026-10-23 17:08,Highland Homes,4325 Sandbrock Parkway,Sandbrock Ranch,Aubrey,751130,4.0,,3403,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-165
-2026-10-23 17:08,Highland Homes,4208 Blackberry Lane,Wildridge,Oak Point,584240,4.0,,2565,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-243
-2026-10-23 17:08,Highland Homes,3918 Windy Point Road,Wildridge,Oak Point,647950,4.0,,3232,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-208
-2026-10-23 17:08,Highland Homes,1408 Hydrangea Court,Sandbrock Ranch,Aubrey,805630,4.0,,3700,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-137
+2026-10-23 18:32,D.R. Horton,3645 Ansley Lane,Peachtree Meadows,Rockwall,506504,4,2.5,2092,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/rockwall/peachtree-meadows/qmis/3645-ansley-lane
+2026-10-23 18:32,D.R. Horton,107 Riveridge Road,Bluestem,Rhome,358490,4,2.0,1662,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/107-riveridge-road
+2026-10-23 18:32,D.R. Horton,134 Ringtrail Drive,Bluestem,Rhome,384780,4,2.0,2014,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/134-ringtrail-drive
+2026-10-23 17:08,Highland Homes,4325 Sandbrock Parkway,Sandbrock Ranch,Aubrey,751130,4,,3403,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-165
+2026-10-23 17:08,Highland Homes,4208 Blackberry Lane,Wildridge,Oak Point,584240,4,,2565,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-243
+2026-10-23 17:08,Highland Homes,3918 Windy Point Road,Wildridge,Oak Point,647950,4,,3232,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-208
+2026-10-23 17:08,Highland Homes,1408 Hydrangea Court,Sandbrock Ranch,Aubrey,805630,4,,3700,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-137
 2026-10-23 17:08,K. Hovnanian Homes,11524 Vesper Row,,Haslet,689000,5,4.5,,,
 2026-10-23 17:08,K. Hovnanian Homes,1001 Butterfly Lane,,Justin,538000,4,2.5,,,
-2026-10-23 17:08,Perry Homes,1823 Costa Verde Drive,Sonoma Verde 70,McLendon-Chisholm,767900,4.0,4.5,3525,,https://www.perryhomes.com/new-homes/texas/dallas/sonoma-verde/sonoma-verde-70/1823-costa-verde-drive
-2026-10-23 17:08,Perry Homes,1277 Cedarwood Court,Sweetgrass 50,Haslet,581900,4.0,3.0,2545,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1277-cedarwood-court
-2026-10-23 17:08,Perry Homes,612 Nogalito Way,North Sky 65,Celina,711900,4.0,3.5,2994,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-65/612-nogalito-way
-2026-10-23 17:08,Perry Homes,768 Blackberry Road,Sweetgrass 65,Haslet,721900,4.0,3.5,3200,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-65/768-blackberry-road
-2026-10-23 17:08,Perry Homes,616 Nogalito Way,North Sky 65,Celina,780900,5.0,4.5,3797,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-65/616-nogalito-way
-2026-10-23 17:08,Perry Homes,8716 Texas Crescent Way,Eliana 50,McKinney,714900,4.0,3.0,2513,,https://www.perryhomes.com/new-homes/texas/dallas/eliana/eliana-50/8716-texas-crescent-way
-2026-10-23 17:08,Perry Homes,9617 Firebush Trail,Trinity Falls 50,McKinney,613900,4.0,3.0,2504,,https://www.perryhomes.com/new-homes/texas/dallas/trinity-falls/trinity-falls-50/9617-firebush-trail
-2026-10-23 17:08,Perry Homes,4324 Haystack Way,Silo Mills 50,Cleburne,597900,4.0,3.0,3241,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4324-haystack-way
-2026-10-23 17:08,Perry Homes,4357 Haystack Way,Silo Mills 50,Cleburne,547900,4.0,3.0,2663,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4357-haystack-way
-2026-10-23 17:08,Perry Homes,322 Bramley Lane,Bristol Valley Half Acre,Heath,1616900,5.0,6.5,5660,,https://www.perryhomes.com/new-homes/texas/dallas/bristol-valley/bristol-valley-half-acre/322-bramley-lane
-2026-10-23 17:08,Perry Homes,3232 Santolina Way,North Sky 55,Celina,721900,4.0,3.5,3395,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3232-santolina-way
-2026-10-23 17:08,Perry Homes,792 Blackberry Road,Sweetgrass 65,Haslet,784900,5.0,4.5,3791,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-65/792-blackberry-road
-2026-10-23 17:08,Perry Homes,2812 Madison Square Mews,The Parks at Wilson Creek 40,Celina,569900,4.0,3.5,2945,,https://www.perryhomes.com/new-homes/texas/dallas/the-parks-at-wilson-creek/the-parks-at-wilson-creek-40/2812-madison-square-mews
-2026-10-23 17:08,Perry Homes,420 Spruce Brook Drive,Trinity Falls at Province Woods 45,McKinney,619900,4.0,3.0,2444,,https://www.perryhomes.com/new-homes/texas/dallas/trinity-falls/trinity-falls-at-province-woods-45/420-spruce-brook-drive
-2026-10-23 17:08,Perry Homes,2470 Bathwick Lane,Devonshire Reserve 45,Forney,419900,4.0,3.0,1942,,https://www.perryhomes.com/new-homes/texas/dallas/devonshire/devonshire-reserve-45/2470-bathwick-lane
-2026-10-23 15:14,Bloomfield Homes,1138 Bailey Ranch Road,The Lakes at Parks of Aledo,Aledo,709990,5,4.0,3481,,https://www.bloomfieldhomes.com/new-homes/tx/aledo/the-lakes-at-parks-of-aledo/spring-cress-ii/1138-bailey-ranch-road/
+2026-10-23 17:08,Perry Homes,1823 Costa Verde Drive,Sonoma Verde 70,McLendon-Chisholm,767900,4,4.5,3525,,https://www.perryhomes.com/new-homes/texas/dallas/sonoma-verde/sonoma-verde-70/1823-costa-verde-drive
+2026-10-23 17:08,Perry Homes,1277 Cedarwood Court,Sweetgrass 50,Haslet,581900,4,3.0,2545,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1277-cedarwood-court
+2026-10-23 17:08,Perry Homes,612 Nogalito Way,North Sky 65,Celina,711900,4,3.5,2994,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-65/612-nogalito-way
+2026-10-23 17:08,Perry Homes,768 Blackberry Road,Sweetgrass 65,Haslet,721900,4,3.5,3200,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-65/768-blackberry-road
+2026-10-23 17:08,Perry Homes,616 Nogalito Way,North Sky 65,Celina,780900,5,4.5,3797,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-65/616-nogalito-way
+2026-10-23 17:08,Perry Homes,8716 Texas Crescent Way,Eliana 50,McKinney,714900,4,3.0,2513,,https://www.perryhomes.com/new-homes/texas/dallas/eliana/eliana-50/8716-texas-crescent-way
+2026-10-23 17:08,Perry Homes,9617 Firebush Trail,Trinity Falls 50,McKinney,613900,4,3.0,2504,,https://www.perryhomes.com/new-homes/texas/dallas/trinity-falls/trinity-falls-50/9617-firebush-trail
+2026-10-23 17:08,Perry Homes,4324 Haystack Way,Silo Mills 50,Cleburne,597900,4,3.0,3241,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4324-haystack-way
+2026-10-23 17:08,Perry Homes,4357 Haystack Way,Silo Mills 50,Cleburne,547900,4,3.0,2663,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4357-haystack-way
+2026-10-23 17:08,Perry Homes,322 Bramley Lane,Bristol Valley Half Acre,Heath,1616900,5,6.5,5660,,https://www.perryhomes.com/new-homes/texas/dallas/bristol-valley/bristol-valley-half-acre/322-bramley-lane
+2026-10-23 17:08,Perry Homes,3232 Santolina Way,North Sky 55,Celina,721900,4,3.5,3395,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3232-santolina-way
+2026-10-23 17:08,Perry Homes,792 Blackberry Road,Sweetgrass 65,Haslet,784900,5,4.5,3791,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-65/792-blackberry-road
+2026-10-23 17:08,Perry Homes,2812 Madison Square Mews,The Parks at Wilson Creek 40,Celina,569900,4,3.5,2945,,https://www.perryhomes.com/new-homes/texas/dallas/the-parks-at-wilson-creek/the-parks-at-wilson-creek-40/2812-madison-square-mews
+2026-10-23 17:08,Perry Homes,420 Spruce Brook Drive,Trinity Falls at Province Woods 45,McKinney,619900,4,3.0,2444,,https://www.perryhomes.com/new-homes/texas/dallas/trinity-falls/trinity-falls-at-province-woods-45/420-spruce-brook-drive
+2026-10-23 17:08,Perry Homes,2470 Bathwick Lane,Devonshire Reserve 45,Forney,419900,4,3.0,1942,,https://www.perryhomes.com/new-homes/texas/dallas/devonshire/devonshire-reserve-45/2470-bathwick-lane
+2026-10-23 15:14,Bloomfield Homes,1138 Bailey Ranch Road,The Lakes at Parks of Aledo,Aledo,709990,5.0,4.0,3481,,https://www.bloomfieldhomes.com/new-homes/tx/aledo/the-lakes-at-parks-of-aledo/spring-cress-ii/1138-bailey-ranch-road/
 2026-10-23 15:14,Beazer Homes,17001 Prieto Avenue,Wildflower Ranch,Justin,472802,4,3.5,1531,,https://www.beazer.com/dallas-TX/justin/wildflower-ranch/marathon/4101
-2026-10-23 14:29,Bloomfield Homes,12729 Whispering Wind Drive,Coyote Crossing,Godley,656022,5,4.0,3558,,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/rose-ii/12729-whispering-wind/
-2026-10-23 14:29,Bloomfield Homes,12733 Whispering Wind Drive,Coyote Crossing,Godley,738990,5.0,4.5,4070,,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/primrose-fe-vi/12733-whispering-wind/
-2026-10-23 14:29,Bloomfield Homes,833 Rain Lilly Street,Union Park Classic 60,Little Elm,699503,5.0,4.0,3695,,https://www.bloomfieldhomes.com/new-homes/tx/little-elm/union-park-classic-60/spring-cress-ii/833-rain-lilly/
+2026-10-23 14:29,Bloomfield Homes,12729 Whispering Wind Drive,Coyote Crossing,Godley,656022,5.0,4.0,3558,,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/rose-ii/12729-whispering-wind/
+2026-10-23 14:29,Bloomfield Homes,12733 Whispering Wind Drive,Coyote Crossing,Godley,738990,5,4.5,4070,,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/primrose-fe-vi/12733-whispering-wind/
+2026-10-23 14:29,Bloomfield Homes,833 Rain Lilly Street,Union Park Classic 60,Little Elm,699503,5,4.0,3695,,https://www.bloomfieldhomes.com/new-homes/tx/little-elm/union-park-classic-60/spring-cress-ii/833-rain-lilly/
 2026-10-23 14:29,Shaddock Homes,6341 Simone Avenue,,McKinney,889000,5.0,5.0,3718,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",
 2026-10-23 13:19,K. Hovnanian Homes,205 Newman Court,,Wylie,696000,5,3.5,,,
 2026-10-23 13:19,D.R. Horton,9309 Subjeck Way Wo,Highlands at Chapel Creek,Fort Worth,371685,4,,1839,,https://www.drhorton.com/texas/fort-worth/fort-worth/highlands-at-chapel-creek/qmis/9309-subjeck-way-wo
@@ -72,15 +72,15 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-23 12:28,K. Hovnanian Homes,2712 Ella Joy Court,,Heath,473000,3,2.5,,,
 2026-10-23 12:28,K. Hovnanian Homes,4309 Lilo Lane,,Celina,839000,4,3.5,,,
 2026-10-23 12:28,Coventry Homes,3227 Fisher Road,The Homestead,Rockwall,649990,4,1.0,3667,$58K off,https://www.coventryhomes.com/new-homes/tx/rockwall/the-homestead/falls/3227-fisher-road/
-2026-10-23 11:42,Trophy Signature Homes,504 Arcane Street,,Waxahachie,474990,5.0,4.0,3639,,
-2026-10-23 11:42,Trophy Signature Homes,10649 Dillon Street,,Fort Worth,315990,3.0,2.0,1638,,
-2026-10-23 11:42,Trophy Signature Homes,10656 Dillon Street,,Fort Worth,315990,3.0,2.0,1628,,
-2026-10-23 11:42,Trophy Signature Homes,10724 Dillon Street,,Fort Worth,343990,3.0,2.0,1975,,
-2026-10-23 11:42,Beazer Homes,113 Republic Lane,Brookville Estates,Forney,470374,4,3.0,2778,,https://www.beazer.com/dallas-TX/forney/brookville-estates/avalon/1047
-2026-10-23 10:23,Trophy Signature Homes,2118 Sunshining Road,,Princeton,419990,5.0,4.0,2950,,
-2026-10-23 10:23,Trophy Signature Homes,2707 Delevan Drive,,Princeton,342490,4.0,5.0,2536,,
-2026-10-23 10:23,Trophy Signature Homes,1109 Bridgewalk Drive,,McKinney,309990,4.0,3.0,1657,,
-2026-10-23 10:23,Trophy Signature Homes,6003 Broadacre Drive,Eastridge,McKinney,407990,4.0,3.0,2728,,https://trophysignaturehomes.com/homes/dallas-ft-worth/mckinney/eastridge/6003-broadacre-drive
+2026-10-23 11:42,Trophy Signature Homes,504 Arcane Street,,Waxahachie,474990,5,4.0,3639,,
+2026-10-23 11:42,Trophy Signature Homes,10649 Dillon Street,,Fort Worth,315990,3,2.0,1638,,
+2026-10-23 11:42,Trophy Signature Homes,10656 Dillon Street,,Fort Worth,315990,3,2.0,1628,,
+2026-10-23 11:42,Trophy Signature Homes,10724 Dillon Street,,Fort Worth,343990,3,2.0,1975,,
+2026-10-23 11:42,Beazer Homes,113 Republic Lane,Brookville Estates,Forney,470374,4.0,3.0,2778,,https://www.beazer.com/dallas-TX/forney/brookville-estates/avalon/1047
+2026-10-23 10:23,Trophy Signature Homes,2118 Sunshining Road,,Princeton,419990,5,4.0,2950,,
+2026-10-23 10:23,Trophy Signature Homes,2707 Delevan Drive,,Princeton,342490,4,5.0,2536,,
+2026-10-23 10:23,Trophy Signature Homes,1109 Bridgewalk Drive,,McKinney,309990,4,3.0,1657,,
+2026-10-23 10:23,Trophy Signature Homes,6003 Broadacre Drive,Eastridge,McKinney,407990,4,3.0,2728,,https://trophysignaturehomes.com/homes/dallas-ft-worth/mckinney/eastridge/6003-broadacre-drive
 2026-10-23 10:23,Ashlyn Homes,3021 Summit Drive,,Aledo,1789000,4.0,4.5,4708,,https://www.ashlynhomes.com/house/3021-summit-drive-aledo-tx-76088/
 2026-10-23 07:06,Graham Hart Home Builder,8421 Witt Street,,,1054900,5,4.5,3698,,https://www.grahamhart.com/communities/8421-witt-street/
 2026-10-23 07:06,Graham Hart Home Builder,1508 Four Seasons Drive,,,3499900,4,4.5,5501,,https://www.grahamhart.com/communities/1508-four-seasons-drive/
@@ -92,19 +92,19 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-23 07:06,Bloomfield Homes,3803 Grace Park Lane,Grace Park,Bedford,1115468,5,4.0,4070,,https://www.bloomfieldhomes.com/new-homes/tx/bedford/grace-park/primrose-fe-vi/3803-grace-park-lane/
 2026-10-23 07:06,Ashlyn Homes,724 Cooper Trail,,Weatherford,1399900,4.0,3.5,4203,,https://www.ashlynhomes.com/house/724-cooper-trail-weatherford-tx-76087/
 2026-10-23 07:06,Ashlyn Homes,5012 Stover Way,,Granbury,1040000,4.0,3.5,3526,,https://www.ashlynhomes.com/house/5012-stover-way-granbury-tx-76049/
-2026-10-23 02:30,M/I Homes,4010 Yellow Bells Way,Lilyana,Celina,649990,4.0,3.5,3230,"Lower Payments with a 2/1 Buydown | First Year: 3.25% Rate* / 6.036% APR | For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/prosper/lilyana/balcones-plan/4010-yellow-bells-way
-2026-10-23 02:30,M/I Homes,8015 Butterfield Drive,Lane Ranch,Sanger,279990,3.0,2.0,1571,"For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/sanger/lane-ranch/magnolia-plan/8015-butterfield-drive
+2026-10-23 02:30,M/I Homes,4010 Yellow Bells Way,Lilyana,Celina,649990,4,3.5,3230,"Lower Payments with a 2/1 Buydown | First Year: 3.25% Rate* / 6.036% APR | For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/prosper/lilyana/balcones-plan/4010-yellow-bells-way
+2026-10-23 02:30,M/I Homes,8015 Butterfield Drive,Lane Ranch,Sanger,279990,3,2.0,1571,"For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/sanger/lane-ranch/magnolia-plan/8015-butterfield-drive
 2026-10-23 00:13,D.R. Horton,115 Yucca Lane,Bluestem,Rhome,370990,4,2.0,1813,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/115-yucca-lane
 2026-10-23 00:13,D.R. Horton,125 Ringtrail Drive,Bluestem,Rhome,385990,5,3.0,2120,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/125-ringtrail-drive
 2026-10-23 00:13,D.R. Horton,126 Blackbrush Court,Bluestem,Rhome,392940,4,2.0,2110,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/126-blackbrush-court
-2026-10-22 20:00,Highland Homes,2034 Dripping Spring Avenue,Bridgewater,Midlothian,579990,4.0,,3002,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/midlothian/bridgewater/819-087
-2026-10-22 20:00,Highland Homes,8923 Muhly Drive,Wildridge,Oak Point,662490,5.0,,3461,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-237
-2026-10-22 20:00,First Texas Homes,3556 Milwaukee Ave,,Midlothian,446120,4.0,2.0,1762,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000209/3556-milwaukee-ave-midlothian-tx-76065
-2026-10-22 20:00,First Texas Homes,521 Boulder Ave,,Midlothian,706918,5.0,4.0,3992,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000211/521-boulder-ave-midlothian-tx-76065
-2026-10-22 20:00,First Texas Homes,3702 Milwaukee Ave,,Midlothian,559545,5.0,4.0,3172,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000210/3702-milwaukee-ave-midlothian-tx-76065
+2026-10-22 20:00,Highland Homes,2034 Dripping Spring Avenue,Bridgewater,Midlothian,579990,4,,3002,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/midlothian/bridgewater/819-087
+2026-10-22 20:00,Highland Homes,8923 Muhly Drive,Wildridge,Oak Point,662490,5,,3461,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-237
+2026-10-22 20:00,First Texas Homes,3556 Milwaukee Ave,,Midlothian,446120,4,2.0,1762,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000209/3556-milwaukee-ave-midlothian-tx-76065
+2026-10-22 20:00,First Texas Homes,521 Boulder Ave,,Midlothian,706918,5,4.0,3992,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000211/521-boulder-ave-midlothian-tx-76065
+2026-10-22 20:00,First Texas Homes,3702 Milwaukee Ave,,Midlothian,559545,5,4.0,3172,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000210/3702-milwaukee-ave-midlothian-tx-76065
 2026-10-22 19:05,D.R. Horton,235 Whispering Pine Drive,Wildwood,Royse City,245490,4,2.0,1615,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/235-whispering-pine-drive
 2026-10-22 17:19,Bloomfield Homes,833 Rain Lilly,Union Park Classic 60,Little Elm,630000,5,4.0,3695,,https://www.bloomfieldhomes.com/new-homes/tx/little-elm/union-park-classic-60/spring-cress-ii/833-rain-lilly/
-2026-10-22 17:19,Bloomfield Homes,2619 Acton Drive,Somerset,Mansfield,689990,4,3.0,3285,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset/carolina-iv/2619-acton-drive/
+2026-10-22 17:19,Bloomfield Homes,2619 Acton Drive,Somerset,Mansfield,689990,4.0,3.0,3285,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset/carolina-iv/2619-acton-drive/
 2026-10-22 17:19,D.R. Horton,11108 Quail Chase Lane,Longhorn Estates,Fort Worth,342990,4,2.0,1799,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/fort-worth/longhorn-estates/qmis/11108-quail-chase-lane
 2026-10-22 17:19,D.R. Horton,11104 Quail Chase Lane,Longhorn Estates,Fort Worth,369990,4,3.0,2213,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/fort-worth/longhorn-estates/qmis/11104-quail-chase-lane
 2026-10-22 15:45,D.R. Horton,2620 Ocean View Drive,Wildcat Ranch,Crandall,319740,4,2.5,2086,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/2620-ocean-view-drive
@@ -122,10 +122,10 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-22 05:39,Coventry Homes,3717 Mcgraw Drive,Painted Tree 50,McKinney,722099,4,2.0,3018,$53K off,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-50/mineola/3717-mcgraw-drive/
 2026-10-22 05:39,Coventry Homes,918 Germander Drive,Dominion of Pleasant Valley 50,Wylie,658860,4,2.0,3259,$25K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/mineola/918-germander-drive/
 2026-10-22 02:33,D.R. Horton,1413 Arthur Blvd,Royal Court,Little Elm,693990,4,3.5,3082,,https://www.drhorton.com/texas/dallas/frisco/royal-court/qmis/1413-arthur-blvd-model
-2026-10-22 00:23,Riverside Homebuilders,1716 Escondido Drive,,Haslet,279000,3.0,2.0,1633,,https://www.riversidehomebuilders.com/available-homes/1716-escondido-drive
-2026-10-22 00:23,Riverside Homebuilders,714 Cottonwood Bend,,Allen,410000,3.0,2.0,2297,,https://www.riversidehomebuilders.com/available-homes/714-cottonwood-bend
-2026-10-22 00:23,Riverside Homebuilders,14629 Delphinus Drive,,Haslet,359000,4.0,2.0,2189,,https://www.riversidehomebuilders.com/available-homes/14629-delphinus-drive
-2026-10-22 00:23,Riverside Homebuilders,7929 Sunrise Drive,,Watauga,279000,3.0,2.0,1194,,https://www.riversidehomebuilders.com/available-homes/7929-sunrise-drive
+2026-10-22 00:23,Riverside Homebuilders,1716 Escondido Drive,,Haslet,279000,3,2.0,1633,,https://www.riversidehomebuilders.com/available-homes/1716-escondido-drive
+2026-10-22 00:23,Riverside Homebuilders,714 Cottonwood Bend,,Allen,410000,3,2.0,2297,,https://www.riversidehomebuilders.com/available-homes/714-cottonwood-bend
+2026-10-22 00:23,Riverside Homebuilders,14629 Delphinus Drive,,Haslet,359000,4,2.0,2189,,https://www.riversidehomebuilders.com/available-homes/14629-delphinus-drive
+2026-10-22 00:23,Riverside Homebuilders,7929 Sunrise Drive,,Watauga,279000,3,2.0,1194,,https://www.riversidehomebuilders.com/available-homes/7929-sunrise-drive
 2026-10-22 00:23,First Texas Homes,2607 Middleton Rd,,Glenn Heights,322874,3,2.0,1570,20K Flex Cash,https://www.firsttexashomes.com/community/glenn-heights/16499/the-villages-at-charleston/5000208/2607-middleton-rd-glenn-heights-tx-75154
 2026-10-22 00:23,D.R. Horton,9509 Sage Wood Lane Oak Point,Prairie Oaks,Oak Point,399990,4,3.5,2732,,https://www.drhorton.com/texas/dallas/oak-point/prairie-oaks/qmis/9509-sage-wood-ln
 2026-10-22 00:23,D.R. Horton,9624 Prairie View Trail Oak Point,Prairie Oaks,Oak Point,532990,4,3.0,3325,,https://www.drhorton.com/texas/dallas/oak-point/prairie-oaks/qmis/9624-prairie-view-trl
@@ -133,21 +133,21 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-22 00:23,D.R. Horton,9508 Tamarack Drive Oak Point,Prairie Oaks,Oak Point,414990,4,3.0,2585,,https://www.drhorton.com/texas/dallas/oak-point/prairie-oaks/qmis/9508-tamarack-dr
 2026-10-22 00:23,D.R. Horton,9521 Sage Wood Lane Oak Point,Prairie Oaks,Oak Point,389990,4,3.0,2399,,https://www.drhorton.com/texas/dallas/oak-point/prairie-oaks/qmis/9521-sage-wood-ln
 2026-10-22 00:23,D.R. Horton,9620 Prairie View Trail Oak Point,Prairie Oaks,Oak Point,530990,4,3.5,2956,,https://www.drhorton.com/texas/dallas/oak-point/prairie-oaks/qmis/9620-prairie-view-trl
-2026-10-21 19:15,Riverside Homebuilders,8755 CR 623,,,459900,3,2.0,2020,,https://www.riversidehomebuilders.com/quick-move-in/8755-cr-623
-2026-10-21 19:15,Riverside Homebuilders,1770 CR 200,,,497700,4,2.0,2229,,https://www.riversidehomebuilders.com/quick-move-in/1770-cr-200
-2026-10-21 19:15,Riverside Homebuilders,8619 CR 623,,,516714,4,2.0,2107,,https://www.riversidehomebuilders.com/quick-move-in/8619-cr-623
-2026-10-21 19:15,Riverside Homebuilders,8779 CR 623,,,489900,4,2.0,2107,,https://www.riversidehomebuilders.com/quick-move-in/8779-cr-623
+2026-10-21 19:15,Riverside Homebuilders,8755 CR 623,,,459900,3.0,2.0,2020,,https://www.riversidehomebuilders.com/quick-move-in/8755-cr-623
+2026-10-21 19:15,Riverside Homebuilders,1770 CR 200,,,497700,4.0,2.0,2229,,https://www.riversidehomebuilders.com/quick-move-in/1770-cr-200
+2026-10-21 19:15,Riverside Homebuilders,8619 CR 623,,,516714,4.0,2.0,2107,,https://www.riversidehomebuilders.com/quick-move-in/8619-cr-623
+2026-10-21 19:15,Riverside Homebuilders,8779 CR 623,,,489900,4.0,2.0,2107,,https://www.riversidehomebuilders.com/quick-move-in/8779-cr-623
 2026-10-21 17:19,Bloomfield Homes,2620 Steve Street,Parks at Panchasarp Farms 55 60,Burleson,449900,4,3.0,2102,,https://www.bloomfieldhomes.com/new-homes/tx/burleson/parks-at-panchasarp-farms-55-60/jasmine/2620-steve-street/
 2026-10-21 17:19,Bloomfield Homes,8925 Cisco Drive,Country Lakes Classic 60,Denton,582990,4,2.0,2098,,https://www.bloomfieldhomes.com/new-homes/tx/denton/country-lakes-classic-60/jasmine/8925-cisco-drive/
 2026-10-21 17:19,Riverside Homebuilders,8565 CR 623,,,524425,3,2.0,2020,,https://www.riversidehomebuilders.com/quick-move-in/8565-cr-623
 2026-10-21 17:19,Riverside Homebuilders,8935 CR 623,,,581850,4,3.0,2686,,https://www.riversidehomebuilders.com/quick-move-in/8935-cr-623
-2026-10-21 17:19,Riverside Homebuilders,8473 CR 623,,,603591,4.0,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/8473-cr-623
-2026-10-21 17:19,Riverside Homebuilders,8519 CR 623,,,522494,4.0,2.0,2107,,https://www.riversidehomebuilders.com/quick-move-in/8519-cr-623
-2026-10-21 17:19,Riverside Homebuilders,8361 CR 623,,,578231,4.0,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/8361-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8473 CR 623,,,603591,4,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/8473-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8519 CR 623,,,522494,4,2.0,2107,,https://www.riversidehomebuilders.com/quick-move-in/8519-cr-623
+2026-10-21 17:19,Riverside Homebuilders,8361 CR 623,,,578231,4,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/8361-cr-623
 2026-10-21 15:54,Highland Homes,2921 Moab Drive,Ridgeline,McKinney,645000,4,,2485,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-054
 2026-10-21 15:54,Highland Homes,2916 Moab Drive,Ridgeline,McKinney,712610,5,,3481,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-029
 2026-10-21 15:54,Highland Homes,1605 Buttercup Avenue,Sandbrock Ranch,Aubrey,503475,3,,2340,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/866-370
-2026-10-21 15:54,Riverside Homebuilders,8525 CR 623,,,537850,4,2.0,2229,,https://www.riversidehomebuilders.com/quick-move-in/8525-cr-623
+2026-10-21 15:54,Riverside Homebuilders,8525 CR 623,,,537850,4.0,2.0,2229,,https://www.riversidehomebuilders.com/quick-move-in/8525-cr-623
 2026-10-21 15:54,Riverside Homebuilders,8489 CR 623,,,555200,4,3.0,2426,,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
 2026-10-21 15:54,Riverside Homebuilders,8341 CR 623,,,593339,4,3.0,2686,,https://www.riversidehomebuilders.com/quick-move-in/8341-cr-623
 2026-10-21 15:54,Riverside Homebuilders,8629 CR 623,,,519152,3,2.0,2033,,https://www.riversidehomebuilders.com/quick-move-in/8629-cr-623
@@ -172,15 +172,15 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-21 12:40,Trophy Signature Homes,1110 Sagebrush Lane,,Lavon,404990,5,3.0,3116,,
 2026-10-21 12:40,Trophy Signature Homes,4113 Joe Pool Drive,,Farmersville,399990,5,4.0,3594,,
 2026-10-21 12:40,Trophy Signature Homes,4208 Zoe Lane,,Farmersville,324990,4,5.0,2536,,
-2026-10-21 12:40,Riverside Homebuilders,810 CR 200,,,531475,4,3.0,2891,,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200/
-2026-10-21 12:40,Riverside Homebuilders,870 CR 200,,,469900,4,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/870-cr-200/
-2026-10-21 12:40,Riverside Homebuilders,8707 CR 623,,,499900,4,2.0,2229,,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
-2026-10-21 12:40,Riverside Homebuilders,8813 CR 623,,,499900,4,2.0,2426,,https://www.riversidehomebuilders.com/quick-move-in/8813-cr-623/
-2026-10-21 12:40,Riverside Homebuilders,900 CR 200,,,469900,4.0,2.0,2483,,https://www.riversidehomebuilders.com/quick-move-in/900-cr-200/
-2026-10-21 12:40,Riverside Homebuilders,930 CR 200,,,529900,4,3.0,2686,,https://www.riversidehomebuilders.com/quick-move-in/930-cr-200/
-2026-10-21 12:40,Bloomfield Homes,945 Ford Drive,Homestead at Daniel Farm Phase 2,DeSoto,517586,3,2.5,2500,,https://www.bloomfieldhomes.com/new-homes/tx/desoto/homestead-at-daniel-farm-phase-2/rockcress/945-ford-drive/
+2026-10-21 12:40,Riverside Homebuilders,810 CR 200,,,531475,4.0,3.0,2891,,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200/
+2026-10-21 12:40,Riverside Homebuilders,870 CR 200,,,469900,4.0,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/870-cr-200/
+2026-10-21 12:40,Riverside Homebuilders,8707 CR 623,,,499900,4.0,2.0,2229,,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
+2026-10-21 12:40,Riverside Homebuilders,8813 CR 623,,,499900,4.0,2.0,2426,,https://www.riversidehomebuilders.com/quick-move-in/8813-cr-623/
+2026-10-21 12:40,Riverside Homebuilders,900 CR 200,,,469900,4,2.0,2483,,https://www.riversidehomebuilders.com/quick-move-in/900-cr-200/
+2026-10-21 12:40,Riverside Homebuilders,930 CR 200,,,529900,4.0,3.0,2686,,https://www.riversidehomebuilders.com/quick-move-in/930-cr-200/
+2026-10-21 12:40,Bloomfield Homes,945 Ford Drive,Homestead at Daniel Farm Phase 2,DeSoto,517586,3.0,2.5,2500,,https://www.bloomfieldhomes.com/new-homes/tx/desoto/homestead-at-daniel-farm-phase-2/rockcress/945-ford-drive/
 2026-10-21 12:40,D.R. Horton,122 Pheasant Run Road,Northspur,Terrell,293990,3,2.5,1931,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/122-pheasant-run-road
-2026-10-21 08:46,Riverside Homebuilders,1030 CR 200,,,459900,4.0,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/1030-cr-200
+2026-10-21 08:46,Riverside Homebuilders,1030 CR 200,,,459900,4,3.0,2499,,https://www.riversidehomebuilders.com/quick-move-in/1030-cr-200
 2026-10-21 08:46,Riverside Homebuilders,2893 CR 658,,Farmersville,362500,4,2.0,2270,,https://www.riversidehomebuilders.com/quick-move-in/2893-county-road-658
 2026-10-21 08:46,Perry Homes,1713 Trailhead Drive,Ramble 60,Celina,761900,4,3.5,2944,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-60/1713-trailhead-drive
 2026-10-21 08:46,Perry Homes,1504 Fescue Ridge,Canyon Falls 50,Northlake,615900,4,3.0,2513,,https://www.perryhomes.com/new-homes/texas/dallas/canyon-falls/canyon-falls-50/1504-fescue-ridge
@@ -214,13 +214,13 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-20 20:34,D.R. Horton,2709 Flowers Drive,Eagle Creek,Denton,412990,4,3.0,2483,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/denton/eagle-creek/qmis/2709-flowers-drive
 2026-10-20 17:19,D.R. Horton,2413 Starlight Street,The Preserve at Forum,Grand Prairie,538990,5,3.0,2775,,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/2413-starlight-street
 2026-10-20 17:19,D.R. Horton,2185 Serenity Ln,California Meadows,Arlington,385855,3,2.5,1470,,https://www.drhorton.com/texas/fort-worth/arlington/california-meadows/qmis/2185-serenity-ln
-2026-10-20 17:19,Coventry Homes,711 Meadow Holly Drive,Dominion of Pleasant Valley 50,Wylie,599990,4,1.0,2799,$25K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/farnsworth/711-meadow-holly-drive/
-2026-10-20 14:15,Trophy Signature Homes,2021 Steeplechase Lane,,Seagoville,299990,4.0,2.0,1809,,
-2026-10-20 14:15,Highland Homes,2640 Paddington Drive,Cambridge Crossing,Celina,1250000,5,,4488,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/cambridge-crossing/147-124
+2026-10-20 17:19,Coventry Homes,711 Meadow Holly Drive,Dominion of Pleasant Valley 50,Wylie,599990,4.0,1.0,2799,$25K off,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/farnsworth/711-meadow-holly-drive/
+2026-10-20 14:15,Trophy Signature Homes,2021 Steeplechase Lane,,Seagoville,299990,4,2.0,1809,,
+2026-10-20 14:15,Highland Homes,2640 Paddington Drive,Cambridge Crossing,Celina,1250000,5.0,,4488,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/cambridge-crossing/147-124
 2026-10-20 14:15,Bloomfield Homes,216 Sweetwater Drive,East Oak Creek 60 65,Commerce,470015,4,2.5,3026,,https://www.bloomfieldhomes.com/new-homes/tx/commerce/east-oak-creek-60-65/bayberry-ii/216-sweetwater-drive/
-2026-10-20 14:15,Bloomfield Homes,105 Cedar Grove Court,Bear Creek Classic 60,Lavon,499322,4,3.5,2849,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/violet-iv/105-cedar-grove-court/
-2026-10-20 14:15,Bloomfield Homes,421 London Drive,Bear Creek Classic 60,Lavon,524777,4,2.5,3187,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/magnolia/421-london-drive/
-2026-10-20 14:15,Bloomfield Homes,1818 Firefly Drive,Rockwood,Mansfield,649975,3,3.0,2772,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/rockwood/carolina-ii/1818-firefly-drive/
+2026-10-20 14:15,Bloomfield Homes,105 Cedar Grove Court,Bear Creek Classic 60,Lavon,499322,4.0,3.5,2849,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/violet-iv/105-cedar-grove-court/
+2026-10-20 14:15,Bloomfield Homes,421 London Drive,Bear Creek Classic 60,Lavon,524777,4.0,2.5,3187,"$10,000 Toward Closing Costs on All Specs – Any Lender",https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-60/magnolia/421-london-drive/
+2026-10-20 14:15,Bloomfield Homes,1818 Firefly Drive,Rockwood,Mansfield,649975,3.0,3.0,2772,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/rockwood/carolina-ii/1818-firefly-drive/
 2026-10-20 14:15,D.R. Horton,7709 Royal Fern Drive,Monarch at the Meadows,Denton,298990,4,2.0,1657,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7709-royal-fern-drive
 2026-10-20 14:15,D.R. Horton,7741 Royal Fern Drive,Monarch at the Meadows,Denton,299990,4,2.0,1657,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7741-royal-fern-drive
 2026-10-20 14:15,D.R. Horton,7733 Royal Fern Drive,Monarch at the Meadows,Denton,301990,5,2.0,1818,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/7733-royal-fern-drive
@@ -228,19 +228,19 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-20 14:15,Shaddock Homes,7756 Switchwood Lane,,Fort Worth,699900,4.0,4.0,3397,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",
 2026-10-20 10:04,Beazer Homes,1504 Calanques Street,Verandah,Royse City,374990,4,2.0,2605,,https://www.beazer.com/dallas-TX/royse-city/verandah/cascade2/2801
 2026-10-20 10:04,D.R. Horton,184 Hibiscus Drive,Springhill South,Boyd,273735,5,2.0,1818,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/boyd/springhill-south/qmis/184-hibiscus-drive
-2026-10-20 07:05,Perry Homes,3229 Santolina Way,North Sky 55,Celina,625900,4.0,3.5,2493,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3229-santolina-way
-2026-10-20 07:05,Perry Homes,1282 Greenbriar Avenue,Sweetgrass 50,Haslet,632900,4.0,3.0,2561,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1282-greenbriar-avenue
-2026-10-20 07:05,Perry Homes,934 River Sky Road,Hillstead 60,Lavon,677900,4,3.5,2895,,https://www.perryhomes.com/new-homes/texas/dallas/hillstead/hillstead-60/934-river-sky-road
-2026-10-20 07:05,Perry Homes,2616 Brooklyn Street,Meraki 45,Forney,535900,4,3.0,2426,,https://www.perryhomes.com/new-homes/texas/dallas/meraki/meraki-45/2616-brooklyn-street
-2026-10-20 07:05,Perry Homes,4716 Zinnia Drive,Eliana 50,McKinney,831900,5,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/eliana/eliana-50/4716-zinnia-drive
-2026-10-20 07:05,Perry Homes,3228 Santolina Way,North Sky 55,Celina,612900,4,3.5,2737,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3228-santolina-way
-2026-10-20 07:05,Perry Homes,10620 Starpoint Road,Ventana 50,Dallas,617900,4,3.0,2548,,https://www.perryhomes.com/new-homes/texas/dallas/ventana/ventana-50/10620-starpoint-road
-2026-10-20 07:05,Perry Homes,4317 Haystack Way,Silo Mills 50,Cleburne,528900,4,3.0,2548,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4317-haystack-way
+2026-10-20 07:05,Perry Homes,3229 Santolina Way,North Sky 55,Celina,625900,4,3.5,2493,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3229-santolina-way
+2026-10-20 07:05,Perry Homes,1282 Greenbriar Avenue,Sweetgrass 50,Haslet,632900,4,3.0,2561,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1282-greenbriar-avenue
+2026-10-20 07:05,Perry Homes,934 River Sky Road,Hillstead 60,Lavon,677900,4.0,3.5,2895,,https://www.perryhomes.com/new-homes/texas/dallas/hillstead/hillstead-60/934-river-sky-road
+2026-10-20 07:05,Perry Homes,2616 Brooklyn Street,Meraki 45,Forney,535900,4.0,3.0,2426,,https://www.perryhomes.com/new-homes/texas/dallas/meraki/meraki-45/2616-brooklyn-street
+2026-10-20 07:05,Perry Homes,4716 Zinnia Drive,Eliana 50,McKinney,831900,5.0,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/eliana/eliana-50/4716-zinnia-drive
+2026-10-20 07:05,Perry Homes,3228 Santolina Way,North Sky 55,Celina,612900,4.0,3.5,2737,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-55/3228-santolina-way
+2026-10-20 07:05,Perry Homes,10620 Starpoint Road,Ventana 50,Dallas,617900,4.0,3.0,2548,,https://www.perryhomes.com/new-homes/texas/dallas/ventana/ventana-50/10620-starpoint-road
+2026-10-20 07:05,Perry Homes,4317 Haystack Way,Silo Mills 50,Cleburne,528900,4.0,3.0,2548,,https://www.perryhomes.com/new-homes/texas/dallas/silo-mills/silo-mills-50/4317-haystack-way
 2026-10-20 05:02,D.R. Horton,9712 Paden Place Dr,Silverado,Aubrey,361990,4,3.0,2222,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/9712-paden-place-dr
 2026-10-20 05:02,D.R. Horton,9809 Paden Place Dr,Silverado,Aubrey,386990,4,3.0,2937,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/9809-paden-place-dr
 2026-10-20 05:02,D.R. Horton,9816 Rocker Box St,Silverado,Aubrey,334990,4,2.0,2038,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/9816-rocker-box-st
 2026-10-20 05:02,D.R. Horton,9824 Paden Place Dr,Silverado,Aubrey,330990,4,2.0,2038,"11/01/26 Purchase a Home and We'll Include up to $10,000 in Flex Cash | Up to $10,000 in Flex Cash available on select inventory homes for eligible upgrades, options and closing costs | Plus Save up to $75,000 on Select Homes",https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/9824-paden-place-dr
-2026-10-20 05:02,Coventry Homes,1829 Salt Grass Drive,Furst Ranch,Flower Mound,784639,4.0,1.0,3273,$98K off,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/nixon/1829-salt-grass-drive/
-2026-10-20 05:02,Coventry Homes,1852 Autumn Sage Drive,Furst Ranch,Flower Mound,713171,4.0,3.0,2503,$98K off,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/carson/1852-autumn-sage-drive/
-2026-10-20 05:02,Coventry Homes,3605 Mcgraw Drive,Painted Tree 50,McKinney,743672,4.0,1.0,3259,$53K off,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-50/mineola/3605-mcgraw-drive/
-2026-10-20 05:02,Coventry Homes,3724 Mcgraw Drive,Painted Tree 50,McKinney,732079,4.0,1.0,3249,$53K off,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-50/easton/3724-mcgraw-drive/
+2026-10-20 05:02,Coventry Homes,1829 Salt Grass Drive,Furst Ranch,Flower Mound,784639,4,1.0,3273,$98K off,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/nixon/1829-salt-grass-drive/
+2026-10-20 05:02,Coventry Homes,1852 Autumn Sage Drive,Furst Ranch,Flower Mound,713171,4,3.0,2503,$98K off,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/carson/1852-autumn-sage-drive/
+2026-10-20 05:02,Coventry Homes,3605 Mcgraw Drive,Painted Tree 50,McKinney,743672,4,1.0,3259,$53K off,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-50/mineola/3605-mcgraw-drive/
+2026-10-20 05:02,Coventry Homes,3724 Mcgraw Drive,Painted Tree 50,McKinney,732079,4,1.0,3249,$53K off,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-50/easton/3724-mcgraw-drive/
