@@ -6954,6 +6954,8 @@ at,builder,event,home_id,address,community,city,old,new,delta,pct,url,detail
 2026-10-24 09:31,Beazer Homes,price_increase,beazer:2425-blackwell-st,2425 Blackwell Street,Enclave at Legacy Hills,Celina,549990,550160,170,0.03,https://www.beazer.com/dallas-TX/celina/enclave-at-legacy-hills/summerfield/0578,
 2026-10-24 09:31,Beazer Homes,price_increase,beazer:2608-queenwood-st,2608 Queenwood Street,Enclave at Legacy Hills,Celina,565990,566160,170,0.03,https://www.beazer.com/dallas-TX/celina/enclave-at-legacy-hills/summerfield2/0737,
 2026-10-24 09:31,Beazer Homes,price_increase,beazer:2508-broadstone-dr,2508 Broadstone Drive,Enclave at Legacy Hills,Celina,573354,573484,130,0.02,https://www.beazer.com/dallas-TX/celina/enclave-at-legacy-hills/madison/1209,
+2026-10-24 09:31,Riverside Homebuilders,price_cut,riverside:612-sand-piper-ln,612 Sand Piper Lane,,Anna,470900,465900,-5000,-1.06,https://www.riversidehomebuilders.com/quick-move-in/612-sand-piper-lane/,
+2026-10-24 09:31,Riverside Homebuilders,price_cut,riverside:820-sand-piper-ln,820 Sand Piper Lane,,Anna,439900,434900,-5000,-1.14,https://www.riversidehomebuilders.com/quick-move-in/820-sand-piper-lane/,
 2026-10-24 11:15,Riverside Homebuilders,price_cut,riverside:2105-bluebird-ln,2105 Bluebird Lane,,Anna,430900,425900,-5000,-1.16,https://www.riversidehomebuilders.com/quick-move-in/2105-bluebird-lane/,
 2026-10-24 11:15,Riverside Homebuilders,price_cut,riverside:605-brown-rd,605 Brown Road,,,559000,539000,-20000,-3.58,https://www.riversidehomebuilders.com/quick-move-in/605-brown-road/,
 2026-10-24 11:15,Riverside Homebuilders,price_cut,riverside:816-sand-piper-ln,816 Sand Piper Lane,,Anna,429900,424900,-5000,-1.16,https://www.riversidehomebuilders.com/quick-move-in/816-sand-piper-lane/,
