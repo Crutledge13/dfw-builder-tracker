@@ -126,6 +126,18 @@ def to_text(v: Any) -> str:
     return re.sub(r"\s+", " ", str(v)).strip()
 
 
+PLAN_ID_RE = re.compile(r"[0-9a-f]{16,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.I)
+
+
+def clean_plan(v: Any) -> str:
+    """A plan name, or '' when the field holds a link or a database id (Trophy/Shaddock homes carry their plan
+    as a reference like '647657ee4db048287e842df6', which is meaningless to a buyer)."""
+    t = to_text(v)
+    if t.startswith(("http", "/")) or PLAN_ID_RE.fullmatch(t):
+        return ""
+    return t
+
+
 def clean_address(s: str) -> str:
     s = re.sub(r"\s+", " ", s or "").strip(" ,|-")
     return s[:120]
@@ -414,7 +426,7 @@ def _home_from_dict(d: dict, base_url: str, source: str) -> dict | None:
         "state": to_text(f.get("state")),
         "zip": to_text(f.get("zip"))[:5],
         "community": to_text(f.get("community")),
-        "plan": "" if to_text(f.get("plan")).startswith(("http", "/")) else to_text(f.get("plan")),
+        "plan": clean_plan(f.get("plan")),
         "beds": beds, "baths": baths, "sqft": int(sqft) if sqft else None,
         "price": price,
         "builder_was_price": was if was and was > price else None,

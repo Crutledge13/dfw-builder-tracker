@@ -964,3 +964,21 @@ def test_own_page_cut_after_stale_card_is_recorded():
     new = [x for x in st.homes.values() if x["address"] == "616 Sand Piper Lane"][0]
     assert (new["price"], new["first_price"]) == (475900, 475900)
     assert [c["event"] for c in rec.changes] == ["new_home"] and rec.changes[0]["new"] == 475900
+
+
+def test_plan_database_id_is_not_shown_as_plan_name():
+    # Trophy Signature / Shaddock home records carry "plan": "<24-hex id>" (a reference into a plan list)
+    from tracker.extract import clean_plan
+    assert clean_plan("647657ee4db048287e842df6") == ""
+    assert clean_plan("3b241101-e2bb-4255-8caf-4136c566a962") == ""
+    assert clean_plan("https://x.example/plans/rose") == ""
+    assert clean_plan("Rose II") == "Rose II"
+    assert clean_plan("2450") == "2450"
+    blob = {"@type": "SingleFamilyResidence", "address": "348 Lacy Oak Lane", "price": 394990,
+            "plan": "647657ee4db048287e842df6", "sqft": 2444,
+            "url": "https://trophy.example/homes/waxahachie/dove-hollow/348-lacy-oak-lane"}
+    html = ('<html><head><script type="application/json">' + json.dumps({"homes": [blob]})
+            + '</script></head><body><h1>Homes</h1></body></html>')
+    homes = extract_homes(html, "https://trophy.example/homes/waxahachie/dove-hollow")
+    [h] = [h for h in homes if h.get("address") == "348 Lacy Oak Lane"]
+    assert h["plan"] == "" and h["price"] == 394990
