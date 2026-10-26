@@ -1,22 +1,22 @@
 offer_id,builder,kind,headline_amount,rate,text,source_url,first_seen,last_seen,active
-khov:6230629564b7,K. Hovnanian Homes,rate,,5.5,5.5% (5.584% APR),https://www.khov.com/find-new-homes/texas/dallas-fort-worth,2026-10-18 18:59,2026-10-25 20:31,TRUE
+khov:6230629564b7,K. Hovnanian Homes,rate,,5.5,5.5% (5.584% APR),https://www.khov.com/find-new-homes/texas/dallas-fort-worth,2026-10-18 18:59,2026-10-25 22:51,TRUE
 trophy-signature:2ba0a8bca2e4,Trophy Signature Homes,rate,,3.25,Rates Starting at 3.25%,https://trophysignaturehomes.com/promotions,2026-10-18 18:59,2026-10-22 10:40,FALSE
-first-texas:273f233b58be,First Texas Homes,rate,20000,2.99,As Low As 2.99% Rate Buydown or Up to $20K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 20:31,TRUE
-first-texas:219ae7af7d16,First Texas Homes,rate,,3.75,Zero Down & Rates as Low as 3.75%,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 20:31,TRUE
-first-texas:76b1068cef5f,First Texas Homes,cash_credit,30000,,$30K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 20:31,TRUE
-first-texas:f483a1fe896c,First Texas Homes,cash_credit,15000,,$15K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 20:31,TRUE
-first-texas:854fcd88f07f,First Texas Homes,cash_credit,10000,,$10K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 20:31,TRUE
+first-texas:273f233b58be,First Texas Homes,rate,20000,2.99,As Low As 2.99% Rate Buydown or Up to $20K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 22:51,TRUE
+first-texas:219ae7af7d16,First Texas Homes,rate,,3.75,Zero Down & Rates as Low as 3.75%,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 22:51,TRUE
+first-texas:76b1068cef5f,First Texas Homes,cash_credit,30000,,$30K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 22:51,TRUE
+first-texas:f483a1fe896c,First Texas Homes,cash_credit,15000,,$15K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 22:51,TRUE
+first-texas:854fcd88f07f,First Texas Homes,cash_credit,10000,,$10K Flex Cash,https://www.firsttexashomes.com/promos/index.php,2026-10-18 18:59,2026-10-25 22:51,TRUE
 riverside:5af6a7f25a6e,Riverside Homebuilders,rate,,2.99,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in-specials/,2026-10-18 18:59,2026-10-23 17:08,FALSE
 beazer:42615e4de256,Beazer Homes,rate,,4.99,"For a limited time, get 4.99% Limited Time [6.62% APR] with Choice Lender",https://www.beazer.com/dallas-tx,2026-10-18 18:59,2026-10-20 14:15,FALSE
-kb:143aed483282,KB Home,rate,,4.99,Rates as low as 4.99% (5.781% APR) 5/1 FHA ARM.,https://www.kbhome.com/new-homes-dallas-fort-worth,2026-10-18 18:59,2026-10-25 20:31,TRUE
-kb:9615d9e07499,KB Home,rate,,4.99,Rates at low as 4.99% (5.781% APR) 5/1 FHA ARM.,https://www.kbhome.com/new-homes-dallas-fort-worth,2026-10-18 18:59,2026-10-25 20:31,TRUE
-century:77bf49499c8d,Century Communities,rate,,3.75,Make your best move happen with a 3.75% (6.057% APR)* in your first year with a 2/1 Buydown.,https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro,2026-10-18 18:59,2026-10-25 20:31,TRUE
-historymaker:0a0006813efe,HistoryMaker Homes,price_reduction,100000,,FALL INTO UP TO $100K IN SAVINGS,https://www.historymaker.com/promotions/,2026-10-18 18:59,2026-10-25 20:31,TRUE
+kb:143aed483282,KB Home,rate,,4.99,Rates as low as 4.99% (5.781% APR) 5/1 FHA ARM.,https://www.kbhome.com/new-homes-dallas-fort-worth,2026-10-18 18:59,2026-10-25 22:51,TRUE
+kb:9615d9e07499,KB Home,rate,,4.99,Rates at low as 4.99% (5.781% APR) 5/1 FHA ARM.,https://www.kbhome.com/new-homes-dallas-fort-worth,2026-10-18 18:59,2026-10-25 22:51,TRUE
+century:77bf49499c8d,Century Communities,rate,,3.75,Make your best move happen with a 3.75% (6.057% APR)* in your first year with a 2/1 Buydown.,https://www.centurycommunities.com/find-your-home/texas/dallas-fort-worth-metro,2026-10-18 18:59,2026-10-25 22:51,TRUE
+historymaker:0a0006813efe,HistoryMaker Homes,price_reduction,100000,,FALL INTO UP TO $100K IN SAVINGS,https://www.historymaker.com/promotions/,2026-10-18 18:59,2026-10-25 22:51,TRUE
 coventry:ab9ecc67df0d,Coventry Homes,rate,,3.99,Interest Rates Starting at 3.99% (5.899% APR),https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/,2026-10-18 18:59,2026-10-23 08:24,FALSE
 coventry:ae71876567ec,Coventry Homes,price_reduction,62000,,$62K off,https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/,2026-10-18 18:59,2026-10-21 02:37,FALSE
-shaddock:4b75eabb4243,Shaddock Homes,closing_costs,25000,,$25K in Closing Costs* on Move-In Ready Homes!,https://www.shaddockhomes.com/,2026-10-18 18:59,2026-10-25 20:31,TRUE
-shaddock:0ce76bd9e9d5,Shaddock Homes,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",https://www.shaddockhomes.com/,2026-10-18 18:59,2026-10-25 20:31,TRUE
-coventry:e7145e6b63b1,Coventry Homes,price_reduction,25000,,$25K off,https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/,2026-10-21 07:05,2026-10-25 20:31,TRUE
-trophy-signature:40d5782ca4ec,Trophy Signature Homes,rate,,2.99,Rates Starting at 2.99%,https://trophysignaturehomes.com/promotions,2026-10-22 12:03,2026-10-25 20:31,TRUE
-coventry:1d778e6ac16f,Coventry Homes,rate,,2.99,Interest Rates Starting at 2.99% (5.959% APR),https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/,2026-10-23 10:23,2026-10-25 20:31,TRUE
+shaddock:4b75eabb4243,Shaddock Homes,closing_costs,25000,,$25K in Closing Costs* on Move-In Ready Homes!,https://www.shaddockhomes.com/,2026-10-18 18:59,2026-10-25 22:51,TRUE
+shaddock:0ce76bd9e9d5,Shaddock Homes,closing_costs,25000,,"Buy a beautiful move-in ready home in the DFW Metro and receive $25,000 in Closing Costs* for a limited time only",https://www.shaddockhomes.com/,2026-10-18 18:59,2026-10-25 22:51,TRUE
+coventry:e7145e6b63b1,Coventry Homes,price_reduction,25000,,$25K off,https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/,2026-10-21 07:05,2026-10-25 22:51,TRUE
+trophy-signature:40d5782ca4ec,Trophy Signature Homes,rate,,2.99,Rates Starting at 2.99%,https://trophysignaturehomes.com/promotions,2026-10-22 12:03,2026-10-25 22:51,TRUE
+coventry:1d778e6ac16f,Coventry Homes,rate,,2.99,Interest Rates Starting at 2.99% (5.959% APR),https://www.coventryhomes.com/new-homes/tx/dallas-ft-worth/available-homes/,2026-10-23 10:23,2026-10-25 22:51,TRUE
 beazer:129425a792eb,Beazer Homes,rate,,2.99,Enjoy rates starting as low as 2.99% (5.959% APR)* during our National Sales Event through November 30.,https://www.beazer.com/dallas-tx,2026-10-23 11:42,2026-10-25 20:31,TRUE
