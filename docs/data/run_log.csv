@@ -1971,3 +1971,25 @@ run_at,builder,pages,homes_seen,new_homes,price_cuts,price_increases,offers_seen
 2026-10-25 18:34,M/I Homes,122,119,0,0,0,0,0,ok,
 2026-10-25 18:34,Shaddock Homes,82,79,0,0,0,2,0,ok,
 2026-10-25 18:34,Ashlyn Homes,47,33,0,0,0,0,0,ok,
+2026-10-25 19:21,Bloomfield Homes,122,510,0,0,0,0,0,ok,
+2026-10-25 19:21,D.R. Horton,123,552,0,0,0,0,0,ok,
+2026-10-25 19:21,First Texas Homes,122,265,0,0,0,5,0,ok,
+2026-10-25 19:21,Riverside Homebuilders,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.riversidehomebuilders.com/quick-move-in/; seed 403: https://www.riversidehomebuilders.com/quick-move-in/
+2026-10-25 19:21,Trophy Signature Homes,123,310,0,0,0,1,0,ok,
+2026-10-25 19:21,Highland Homes,122,119,0,0,0,0,0,ok,
+2026-10-25 19:21,Graham Hart Home Builder,34,31,0,0,0,0,0,ok,
+2026-10-25 19:21,Pyvot Homes,4,0,0,0,0,0,0,blocked,HTTP 403 on https://www.pyvothomes.com/; seed 403: https://pyvothomes.com/available-homes/
+2026-10-25 19:21,Century Communities,89,84,0,0,0,1,0,ok,
+2026-10-25 19:21,HistoryMaker Homes,16,12,0,0,0,1,0,ok,
+2026-10-25 19:21,K. Hovnanian Homes,3,89,0,0,0,1,0,ok,
+2026-10-25 19:21,Pacesetter Homes Texas,122,119,0,0,0,0,0,ok,
+2026-10-25 19:21,Beazer Homes,122,155,0,0,0,1,0,ok,
+2026-10-25 19:21,Coventry Homes,122,305,0,0,0,2,0,ok,
+2026-10-25 19:21,DRB Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth; seed 403: https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth
+2026-10-25 19:21,Meritage Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.meritagehomes.com/state/tx/dallasft-worth/3042-o-pines-drive
+2026-10-25 19:21,Perry Homes,121,120,0,0,0,0,0,ok,
+2026-10-25 19:21,KB Home,12,25,0,0,0,2,0,ok,
+2026-10-25 19:21,David Weekley Homes,122,174,0,0,0,0,0,ok,
+2026-10-25 19:21,M/I Homes,122,119,0,0,0,0,0,ok,
+2026-10-25 19:21,Shaddock Homes,82,79,0,0,0,2,0,ok,
+2026-10-25 19:21,Ashlyn Homes,47,33,0,0,0,0,0,ok,
