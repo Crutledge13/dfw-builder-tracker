@@ -1,4 +1,11 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-10-26 14:17,First Texas Homes,1810 Marlow Dr,,Cedar Hill,564950,564950,0,7,0,https://www.firsttexashomes.com/community/cedar-hill/16503/bear-creek/5000101/1810-marlow-dr-cedar-hill-tx-75104/
+2026-10-26 14:17,First Texas Homes,1630 Briarwood West,,Midlothian,569950,569950,0,7,0,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/5000030/1630-briarwood-west-midlothian-tx-76065/
+2026-10-26 14:17,First Texas Homes,1813 Briarwood West Way,,Midlothian,599950,599950,0,7,0,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/1732090/1813-briarwood-west-way-midlothian-tx-76065/
+2026-10-26 14:17,First Texas Homes,1610 Whisperwood Way,,Midlothian,614950,614950,0,7,0,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/5000122/1610-whisperwood-way-midlothian-tx-76065/
+2026-10-26 14:17,D.R. Horton,9308 Charlie Lane,White Rock Trail Addition,Dallas,845215,845215,0,7,0,https://www.drhorton.com/texas/dallas/dallas/white-rock-trail-addition/qmis/9308-charlie-lane
+2026-10-26 14:17,D.R. Horton,17137 Manzanilla Drive,Wildflower Ranch,Justin,399990,399990,0,7,0,https://www.drhorton.com/texas/fort-worth/justin/wildflower-ranch/qmis/17137-manzanilla-drive
+2026-10-26 14:17,David Weekley Homes,7546 Epiphany Way,Goodland Garden Series,Prairie Ridge,449990,489512,-39522,6,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-garden-series/19970005
 2026-10-26 09:29,Coventry Homes,1716 Autumn Sage Drive,Furst Ranch,Flower Mound,672990,672990,0,7,0,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/easton/1716-autumn-sage-drive/
 2026-10-26 09:29,Coventry Homes,1733 Monarch Haven Way,Chaparral Park 60,Oak Point,589990,596840,-6850,6,1,https://www.coventryhomes.com/new-homes/tx/oak-point/chaparral-park-60/eagle-mountain/1733-monarch-haven-way/
 2026-10-26 09:29,D.R. Horton,1044 Foxburg Drive,Rosewood at Beltmill,Fort Worth,363685,363685,0,7,0,https://www.drhorton.com/texas/fort-worth/fort-worth/rosewood-at-beltmill/qmis/1044-foxburg-drive
@@ -142,7 +149,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-22 19:05,Meritage Homes,3057 O Pines Drive,,Farmersville,241690,241690,0,4,0,https://www.meritagehomes.com/state/tx/dallasft-worth/3057-o-pines-drive
 2026-10-22 19:05,Meritage Homes,6002 Timberhurst Drive,,McKinney,350688,350688,0,3,0,https://www.meritagehomes.com/state/tx/dallasft-worth/6002-timberhurst-drive
 2026-10-22 17:19,David Weekley Homes,7542 Epiphany Way,Goodland Garden Series,Prairie Ridge,399990,399990,0,2,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-garden-series/19970006
-2026-10-22 17:19,David Weekley Homes,9809 Flourishing Way,Talia,Mesquite,324990,324990,0,2,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mesquite/talia/19810012
 2026-10-22 15:45,Highland Homes,1951 Benedetto Way,Sonoma Verde,McLendon-Chisholm,575000,575000,0,3,0,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/807-112
 2026-10-22 15:45,D.R. Horton,2233 Johnny Cash Drive,Longhorn Estates,Fort Worth,325290,325290,0,3,0,https://www.drhorton.com/texas/fort-worth/fort-worth/longhorn-estates/qmis/2233-johnny-cash-drive
 2026-10-22 15:45,D.R. Horton,1312 Denim Street,Hickory Grove,Denton,269990,269990,0,3,0,https://www.drhorton.com/texas/fort-worth/denton/hickory-grove/qmis/1312-denim-street
