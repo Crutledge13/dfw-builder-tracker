@@ -1,4 +1,9 @@
 at,builder,address,community,city,old,new,delta,pct,offer,url
+2026-10-27 09:08,First Texas Homes,1834 Hidden Creek Dr,,Midlothian,828239,783753,-44486,-5.37,15K Flex Cash,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/5000214/1834-hidden-creek-dr-midlothian-tx-76065
+2026-10-27 09:08,Bloomfield Homes,1933 Mystic Way,Chaparral Park 50 55,Oak Point,492632,469000,-23632,-4.8,,https://www.bloomfieldhomes.com/new-homes/tx/oak-point/chaparral-park-50-55/cypress-ii/1933-mystic-way/
+2026-10-27 09:08,Bloomfield Homes,3204 Creekhollow Court,Glenwood Meadows,Denton,583840,509990,-73850,-12.65,,https://www.bloomfieldhomes.com/new-homes/tx/denton/glenwood-meadows/cypress/3204-creekhollow-court/
+2026-10-27 09:08,Bloomfield Homes,4200 Miscellany Lane,Mosaic,Celina,795424,699990,-95434,-12.0,,https://www.bloomfieldhomes.com/new-homes/tx/celina/mosaic/rose-ii/4200-miscellany-lane/
+2026-10-27 09:08,Coventry Homes,2625 Starlight Trail,Pecan Square 50,Northlake,589990,574990,-15000,-2.54,$66K off,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-50/mineola/2625-starlight-trail/
 2026-10-27 07:02,Coventry Homes,2222 Birch Street,South Pointe 65,Mansfield,699990,674990,-25000,-3.57,$52K off,https://www.coventryhomes.com/new-homes/tx/mansfield/south-pointe-65/lockhart-ii/2222-birch-street/
 2026-10-27 07:02,Coventry Homes,933 Mumms Field Drive,Wildflower Ranch,Fort Worth,599585,574585,-25000,-4.17,$33K off,https://www.coventryhomes.com/new-homes/tx/fort-worth/wildflower-ranch/claude/933-mumms-field-drive/
 2026-10-27 07:02,Coventry Homes,4212 Wildcat Court,Painted Tree 70,McKinney,874990,849990,-25000,-2.86,$83K off,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-70/hamlin/4212-wildcat-court/
@@ -83,7 +88,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-25 14:04,Beazer Homes,2712 Queenwood Street,Enclave at Legacy Hills,Celina,600110,599990,-120,-0.02,,https://www.beazer.com/dallas-TX/celina/enclave-at-legacy-hills/madison/0743
 2026-10-25 14:04,Beazer Homes,2612 Queenwood Street,Enclave at Legacy Hills,Celina,600130,599990,-140,-0.02,,https://www.beazer.com/dallas-TX/celina/enclave-at-legacy-hills/kerrville/0738
 2026-10-25 00:20,David Weekley Homes,3756 Bermuda Grass Way,Goodland Classic Series,Prairie Ridge,604990,584990,-20000,-3.31,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-classic-series/19960012
-2026-10-24 13:07,Riverside Homebuilders,8489 CR 623,,,555200,513550,-41650,-7.5,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
+2026-10-24 13:07,Riverside Homebuilders,8489 CR 623,,,555200,513550,-41650,-7.5,,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
 2026-10-24 13:07,Riverside Homebuilders,3006 Leopard Lane,,Ennis,388500,369900,-18600,-4.79,,https://www.riversidehomebuilders.com/quick-move-in/3006-leopard-lane
 2026-10-24 12:15,Riverside Homebuilders,2109 Bluebird Lane,,Anna,429900,424900,-5000,-1.16,,https://www.riversidehomebuilders.com/quick-move-in/2109-bluebird-lane/
 2026-10-24 12:15,Riverside Homebuilders,2101 Bluebird Lane,,Anna,419900,417900,-2000,-0.48,,https://www.riversidehomebuilders.com/quick-move-in/2101-bluebird-lane/
@@ -91,7 +96,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-24 12:15,Riverside Homebuilders,8755 CR 623,,,459900,449900,-10000,-2.17,,https://www.riversidehomebuilders.com/quick-move-in/8755-cr-623
 2026-10-24 12:15,Riverside Homebuilders,6516 Huron Drive,,Princeton,607900,589900,-18000,-2.96,,https://www.riversidehomebuilders.com/quick-move-in/6516-huron-drive
 2026-10-24 12:15,Riverside Homebuilders,8779 CR 623,,,489900,479900,-10000,-2.04,,https://www.riversidehomebuilders.com/quick-move-in/8779-cr-623
-2026-10-24 12:15,Riverside Homebuilders,8707 CR 623,,,499900,489900,-10000,-2.0,Interest Rate as low as 2.99%,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
+2026-10-24 12:15,Riverside Homebuilders,8707 CR 623,,,499900,489900,-10000,-2.0,,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
 2026-10-24 12:15,Riverside Homebuilders,390 Cobb Road,,,599900,569900,-30000,-5.0,,https://www.riversidehomebuilders.com/quick-move-in/390-cobb-road/
 2026-10-24 11:15,Riverside Homebuilders,2105 Bluebird Lane,,Anna,430900,425900,-5000,-1.16,,https://www.riversidehomebuilders.com/quick-move-in/2105-bluebird-lane/
 2026-10-24 11:15,Riverside Homebuilders,605 Brown Road,,,559000,539000,-20000,-3.58,,https://www.riversidehomebuilders.com/quick-move-in/605-brown-road/
@@ -442,7 +447,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-21 12:40,M/I Homes,14257 Zealand Drive,Mobberly Farms,Pilot Point,334990,329990,-5000,-1.49,"For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/pilot-point/mobberly-farms/sanpiper-plan/14257-zealand-drive
 2026-10-21 12:40,Coventry Homes,3033 Casa Blanca Street,Mustang Lakes 40,Celina,549990,529990,-20000,-3.64,$51K off,https://www.coventryhomes.com/new-homes/tx/celina/mustang-lakes-40/karnes/3033-casa-blanca-street/
 2026-10-21 12:40,Coventry Homes,8304 Waxwing Way,Landmark,Denton,527134,499990,-27144,-5.15,$28K off,https://www.coventryhomes.com/new-homes/tx/denton/landmark/williamson/8304-waxwing-way/
-2026-10-21 12:40,Coventry Homes,2625 Starlight Trail,Pecan Square 50,Northlake,624990,589990,-35000,-5.6,$25K off,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-50/mineola/2625-starlight-trail/
+2026-10-21 12:40,Coventry Homes,2625 Starlight Trail,Pecan Square 50,Northlake,624990,589990,-35000,-5.6,$66K off,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-50/mineola/2625-starlight-trail/
 2026-10-21 12:40,Coventry Homes,3051 Mary Grace,Heartland 50 Dream Series,Heartland,324990,309990,-15000,-4.62,$13K off,https://www.coventryhomes.com/new-homes/tx/heartland/heartland-50-dream-series/donley/3051-mary-grace/
 2026-10-21 12:40,M/I Homes,213 Glade Lane,Marilee,Celina,344990,339990,-5000,-1.45,"Lower Payments with a 2/1 Buydown | First Year: 3.25% Rate* / 6.036% APR | For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/celina/marilee/herrera-plan/213-glade-lane
 2026-10-21 12:40,M/I Homes,7312 Sumac Drive,Sagebrook,Argyle,389990,384990,-5000,-1.28,"Lower Payments with a 2/1 Buydown | First Year: 3.25% Rate* / 6.036% APR | For a limited time, secure a 2/1 buydown with first-year rates as low as 3.25% Rate* / 6.036% APR* on a 30-year fixed FHA loan through M/I Financial, LLC",https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/argyle/sagebrook/pizarro-plan/7312-sumac-drive

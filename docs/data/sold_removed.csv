@@ -1,4 +1,14 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-10-27 09:08,D.R. Horton,1627 Mantle Road,Crane Crossing,Crandall,329740,329740,0,8,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1627-mantle-road
+2026-10-27 09:08,D.R. Horton,1672 Mantle Road,Crane Crossing,Crandall,293740,293740,0,8,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1672-mantle-road
+2026-10-27 09:08,D.R. Horton,1675 Mantle Road,Crane Crossing,Crandall,271740,271740,0,8,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1675-mantle-road
+2026-10-27 09:08,D.R. Horton,1453 Canterbury Trail,Parkerville Meadows,DeSoto,375340,375340,0,8,0,https://www.drhorton.com/texas/dallas/desoto/parkerville-meadows/qmis/1453-canterbury-trail
+2026-10-27 09:08,D.R. Horton,428 Epiphany Lane,Elevon,Lavon,303990,303990,0,8,0,https://www.drhorton.com/texas/dallas/lavon/elevon/qmis/428-epiphany-lane
+2026-10-27 09:08,D.R. Horton,703 Twilight Terrace,The Hills of Sherman,Sherman,231990,231990,0,8,0,https://www.drhorton.com/texas/dallas/sherman/the-hills-of-sherman/qmis/703-twilight-terrace
+2026-10-27 09:08,D.R. Horton,187 Outfoxed Lane,Saddlebrook,Waxahachie,349990,359990,-10000,8,1,https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/187-outfoxed-lane
+2026-10-27 09:08,D.R. Horton,545 Sterling Thicket Lane,Monarch at the Meadows,Denton,284990,284990,0,8,0,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/545-sterling-thicket-lane
+2026-10-27 09:08,D.R. Horton,413 Red Admiral Lane,Monarch at the Meadows,Denton,334990,334990,0,8,0,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/413-red-admiral-lane
+2026-10-27 09:08,D.R. Horton,10021 Silver Nugget St,Silverado,Aubrey,379085,379085,0,8,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/10021-silver-nugget-st
 2026-10-27 07:02,Coventry Homes,229 Pine Leaf Trail,Myrtle Creek,Waxahachie,595990,595990,0,8,0,https://www.coventryhomes.com/new-homes/tx/waxahachie/myrtle-creek/falls/229-pine-leaf-trail/
 2026-10-27 07:02,D.R. Horton,2101 Chloe Ln,Woods at Lindsey Place,Anna,329990,329990,0,8,0,https://www.drhorton.com/texas/dallas/anna/woods-at-lindsey-place/qmis/2101-chloe-ln
 2026-10-27 07:02,D.R. Horton,3289 Grayton Street,Lakeview Pointe,Grand Prairie,492740,492740,0,8,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/lakeview-pointe/qmis/3289-grayton-street
@@ -104,7 +114,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,3229 Fraser Drive,Hampton Park,Glenn Heights,429990,429990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/hampton-park/jasmine/3229-fraser-drive/
 2026-10-25 07:04,Bloomfield Homes,929 Creekhollow Drive,Star Ranch Elements,Godley,383000,383000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-elements/gardenia/929-creekhollow-drive/
 2026-10-25 07:04,Bloomfield Homes,9349 Wildcat Ridge,Wildcat Ridge Phase 2 and 4,Godley,679990,679990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/wildcat-ridge-phase-2-and-4/primrose-vi/9349-wildcat-ridge/
-2026-10-25 07:04,Bloomfield Homes,12701 Caliber Drive,Coyote Crossing,Godley,539990,539990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/primrose-fe/12701-caliber-drive/
 2026-10-25 07:04,Bloomfield Homes,4312 Red Yucca Lane,Silo Mills Classic 50,Joshua,379990,379990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/jasmine/4312-red-yucca-lane/
 2026-10-25 07:04,Bloomfield Homes,4313 Red Yucca Lane,Silo Mills Classic 50,Joshua,399990,399990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/cypress-ii/4313-red-yucca-lane/
 2026-10-25 07:04,Bloomfield Homes,7604 Brindle Bend,Silo Mills Classic 60,Joshua,479990,479990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/magnolia/7604-brindle-bend/
