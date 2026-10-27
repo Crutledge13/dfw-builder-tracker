@@ -127,6 +127,7 @@ builders:
     site: https://www.historymaker.com/
     seeds: [https://www.historymaker.com/new-home-communities/quick-move-ins/dallas-fort-worth]   # old /quick-move-in-homes/ is 404
     promos: [https://www.historymaker.com/promotions/]
+    baseline_until: '2026-10-27 12:00'   # listing grew 12 -> 118 homes on 2026-10-27: those were already for sale
     verified: false
 
   - name: K. Hovnanian Homes

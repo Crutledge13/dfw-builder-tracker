@@ -186,8 +186,9 @@ class Recorder:
         # that has one must land on one record, whichever was seen first.
         if obs.get("url"):
             known = self._by_url(b, obs["url"])
-            if known in self.st.homes and (not obs.get("address") or not self.st.homes[known].get("address")):
-                return known
+            if known in self.st.homes and (not obs.get("address") or not self.st.homes[known].get("address")
+                                           or same_address(obs["address"], self.st.homes[known]["address"])):
+                return known   # (also "1605 Somerville Dr" vs "1605 Somerville Dr Blue Ridge": one home)
         if obs.get("address"):
             unit = re.search(r"-unit-([a-z0-9]+)/?$", (obs.get("url") or "").lower())
             return f'{b["slug"]}:{address_key(obs["address"])}' + (f"-unit-{unit.group(1)}" if unit else "")
@@ -442,6 +443,24 @@ class Recorder:
                        detail="builder's page for this home now shows its community page (sold or withdrawn)")
         return settled
 
+    def _live_twin(self, b, h) -> bool:
+        """An active record of the same builder for the same home: same street number and name, and the same
+        page or the same community with matching size or price (unit numbers must match too)."""
+        def unit(x):
+            m = re.search(r"-unit-[a-z0-9]+$", x.get("home_id") or "")
+            return m.group(0) if m else ""
+        url = (h.get("url") or "").rstrip("/").lower()
+        for o in self.st.homes.values():
+            if o is h or not o.get("active") or o.get("builder") != b["name"] or unit(o) != unit(h) \
+                    or not same_address(o.get("address") or "", h.get("address") or ""):
+                continue
+            if url and (o.get("url") or "").rstrip("/").lower() == url:
+                return True
+            if h.get("community") and o.get("community") == h.get("community") and (
+                    (h.get("sqft") and o.get("sqft") == h.get("sqft")) or o.get("price") == h.get("price")):
+                return True
+        return False
+
     @locked
     def retire_unseen(self, b):
         cutoff = self.now - timedelta(hours=REMOVE_AFTER_H)
@@ -461,6 +480,11 @@ class Recorder:
                     and seen >= self.now - timedelta(hours=STALE_REMOVE_H):
                 continue
             h["active"] = False
+            if self._live_twin(b, h):
+                # another live record is this same home (an older id for its page, or the builder renamed the
+                # street: Trophy 504 Arcane Drive -> Street): it was never off the market, no sold record
+                h["gone_unverified"] = True
+                continue
             if h.get("page_read") and int(h.get("price_version") or 0) < EXTRACT_VERSION \
                     and h.get("home_id") not in self.priced:
                 # its own page was only ever read by an older, faulty price reader (e.g. a neighbor's price from

@@ -982,3 +982,47 @@ def test_plan_database_id_is_not_shown_as_plan_name():
     homes = extract_homes(html, "https://trophy.example/homes/waxahachie/dove-hollow")
     [h] = [h for h in homes if h.get("address") == "348 Lacy Oak Lane"]
     assert h["plan"] == "" and h["price"] == 394990
+
+
+def test_town_after_street_on_home_page_is_not_a_second_home():
+    # D.R. Horton 2026-10-26: home pages read "1605 Somerville Dr Blue Ridge , TX 75424" while the listing card
+    # says "1605 Somerville Dr": two records for one home, each logging the same price cut
+    url = "https://www.drhorton.com/texas/dallas/blue-ridge/creekside-ranch/qmis/1605-somerville-dr"
+    html = '''<html><head><title>1605 Somerville Dr Blue Ridge , TX 75424 | D.R. Horton</title></head><body><main>
+    <h1>1605 Somerville Dr Blue Ridge , TX 75424</h1><p>Express Series</p><span>$232,990</span>
+    <ul><li>3 Bed</li><li>2 Bath</li><li>1,500 Sq. Ft.</li></ul></main></body></html>'''
+    [h] = extract_homes(html, url, single=True)
+    assert (h["address"], h["price"]) == ("1605 Somerville Dr", 232990)
+    # and a page reading whose address still differs in its tail lands on the card's record
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    rec = R.Recorder(st, t0)
+    rec.observe(B, {"address": "1605 Somerville Dr", "city": "Blue Ridge", "url": url, "price": 232990,
+                    "source": "card"})
+    rec.observe(B, {"address": "1605 Somerville Dr Blue Ridge", "city": "Blue Ridge", "url": url,
+                    "price": 232990, "from_detail": True})
+    assert len(st.homes) == 1 and [c["event"] for c in rec.changes] == ["new_home"]
+
+
+def test_stale_duplicate_record_of_a_live_home_leaves_quietly():
+    # David Weekley / Riverside: an older id for the same home page stayed "active" unseen; after 7 days it
+    # would have been logged as sold while the home is still for sale under its current id. Trophy 2026-10-25:
+    # 504 Arcane Drive became 504 Arcane Street (new page, same home) and the old record was logged as sold.
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    for hid, addr, url, seen in [
+            ("test:homes/19980012", "10016 Sagehawk Drive", "https://tb.example/landmark/19980012", t0),
+            ("test:10016-sagehawk-dr", "10016 Sagehawk Drive", "https://tb.example/landmark/19980012",
+             t0 + timedelta(days=8)),
+            ("test:504-arcane-dr", "504 Arcane Drive", "https://tb.example/dove-hollow/504-arcane-drive", t0),
+            ("test:504-arcane-st", "504 Arcane Street", "https://tb.example/dove-hollow/504-arcane-street",
+             t0 + timedelta(days=8)),
+            ("test:9-gone-ln", "9 Gone Lane", "https://tb.example/dove-hollow/9-gone-lane", t0)]:
+        st.homes[hid] = {"home_id": hid, "builder": B["name"], "address": addr, "url": url, "price": 474990,
+                         "first_price": 474990, "sqft": 3639, "community": "Dove Hollow", "active": True,
+                         "page_read": True, "price_version": R.EXTRACT_VERSION, "last_seen": R.ts(seen)}
+    rec = R.Recorder(st, t0 + timedelta(days=8))
+    rec.retire_unseen(B)
+    assert [c["home_id"] for c in rec.changes if c["event"] == "removed"] == ["test:9-gone-ln"]
+    assert not st.homes["test:homes/19980012"]["active"] and not st.homes["test:504-arcane-dr"]["active"]
+    assert st.homes["test:10016-sagehawk-dr"]["active"] and st.homes["test:504-arcane-st"]["active"]

@@ -830,6 +830,10 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
             h["url"] = page_url
             if not h.get("address") and url_addr:
                 h["address"] = url_addr
+            elif url_addr and address_key(h["address"]).startswith(address_key(url_addr) + "-"):
+                # "1605 Somerville Dr Blue Ridge , TX" (D.R. Horton): the heading's town ran into the street;
+                # the URL's street is the home's address, as its listing card has it
+                h["address"] = url_addr
             if h.get("lat") is None and len(maps) == 1:
                 h["lat"], h["lng"] = next(iter(maps))  # the page's own "view on map" link
             h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(page_text))
