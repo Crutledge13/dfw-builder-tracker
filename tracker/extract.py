@@ -140,6 +140,7 @@ def clean_plan(v: Any) -> str:
 
 def clean_address(s: str) -> str:
     s = re.sub(r"\s+", " ", s or "").strip(" ,|-")
+    s = re.sub(r"\s*\((?:model|dnu|spec)\)$", "", s, flags=re.I)   # D.R. Horton's internal tags on cards
     return s[:120]
 
 

@@ -175,11 +175,16 @@ class Recorder:
                              "old": old, "new": new, "delta": delta, "pct": pct,
                              "url": h.get("url", "") or h.get("source_url", ""), "detail": detail[:500]})
 
+    @staticmethod
+    def _url_key(url) -> str:
+        # http:// vs https://, with or without www.: one page (D.R. Horton 2026-10-27 kept both spellings)
+        return re.sub(r"^https?://(www\.)?", "", (url or "").strip().rstrip("/").lower())
+
     def _by_url(self, b, url) -> str | None:
         if self._url_ix is None:
-            self._url_ix = {(h.get("builder"), (h.get("url") or "").rstrip("/").lower()): hid
+            self._url_ix = {(h.get("builder"), self._url_key(h.get("url"))): hid
                             for hid, h in self.st.homes.items() if h.get("url")}
-        return self._url_ix.get((b["name"], (url or "").rstrip("/").lower()))
+        return self._url_ix.get((b["name"], self._url_key(url)))
 
     def home_id(self, b, obs) -> str | None:
         # Same page, same home: a home page without an address (David Weekley) and the listing card
@@ -308,7 +313,7 @@ class Recorder:
             self.st.homes[hid] = h
             if obs.get("url"):
                 self._by_url(b, "")
-                self._url_ix.setdefault((b["name"], obs["url"].rstrip("/").lower()), hid)
+                self._url_ix.setdefault((b["name"], self._url_key(obs["url"])), hid)
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "status", "move_in",
                       "url", "builder_was_price", "incentive_text"):
                 if obs.get(k) not in (None, ""):
@@ -449,12 +454,12 @@ class Recorder:
         def unit(x):
             m = re.search(r"-unit-[a-z0-9]+$", x.get("home_id") or "")
             return m.group(0) if m else ""
-        url = (h.get("url") or "").rstrip("/").lower()
+        url = self._url_key(h.get("url"))
         for o in self.st.homes.values():
             if o is h or not o.get("active") or o.get("builder") != b["name"] or unit(o) != unit(h) \
                     or not same_address(o.get("address") or "", h.get("address") or ""):
                 continue
-            if url and (o.get("url") or "").rstrip("/").lower() == url:
+            if url and self._url_key(o.get("url")) == url:
                 return True
             if h.get("community") and o.get("community") == h.get("community") and (
                     (h.get("sqft") and o.get("sqft") == h.get("sqft")) or o.get("price") == h.get("price")):

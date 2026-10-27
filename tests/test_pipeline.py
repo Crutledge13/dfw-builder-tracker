@@ -1026,3 +1026,20 @@ def test_stale_duplicate_record_of_a_live_home_leaves_quietly():
     assert [c["home_id"] for c in rec.changes if c["event"] == "removed"] == ["test:9-gone-ln"]
     assert not st.homes["test:homes/19980012"]["active"] and not st.homes["test:504-arcane-dr"]["active"]
     assert st.homes["test:10016-sagehawk-dr"]["active"] and st.homes["test:504-arcane-st"]["active"]
+
+
+def test_http_and_https_spelling_of_a_home_page_is_one_home():
+    # D.R. Horton 2026-10-27: a stored record had the http:// page URL; a card with https:// and the address
+    # "1540 Dulwich Dr (Dnu)" became a second, 'new' home
+    from tracker.extract import clean_address
+    assert clean_address("1540 Dulwich Dr (Dnu)") == "1540 Dulwich Dr"
+    assert clean_address("2207 Montgomery St (MODEL)") == "2207 Montgomery St"
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    path = "drhorton.com/texas/dallas/allen/the-avenue/qmis/1540-dulwich-dr"
+    R.Recorder(st, t0).observe(B, {"address": "1540 Dulwich Dr", "city": "Allen", "url": "http://www." + path,
+                                   "price": 500285, "source": "card"})
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, {"address": "1540 Dulwich Dr Allen", "city": "Allen", "url": "https://www." + path,
+                    "price": 500285, "source": "card"})
+    assert len(st.homes) == 1 and rec.changes == []
