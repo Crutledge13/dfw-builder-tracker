@@ -1,4 +1,15 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-10-27 14:54,First Texas Homes,9908 Wild Flower Way,,Ponder,391065,391065,0,8,0,https://www.firsttexashomes.com/community/ponder/18821/tabor-ranch/5000083/9908-wild-flower-way-ponder-tx-76259/
+2026-10-27 14:54,First Texas Homes,8506 Great Stone Tr,,Rowlett,454987,454987,0,8,0,https://www.firsttexashomes.com/community/rowlett/16550/trails-at-cottonwood-creek/5000005/8506-great-stone-tr-rowlett-tx-75089/
+2026-10-27 14:54,D.R. Horton,608 West Creek Fork Loop,Whitewing Trails,Princeton,327990,327990,0,8,0,https://www.drhorton.com/texas/dallas/princeton/whitewing-trails/qmis/608-west-creek-fork-loop
+2026-10-27 14:54,D.R. Horton,1214 Wolfcity Dr,Winchester Crossing,Princeton,324490,324490,0,8,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1214-wolfcity-dr
+2026-10-27 14:54,D.R. Horton,1218 Wolfcity Dr,Winchester Crossing,Princeton,318490,318490,0,8,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1218-wolfcity-dr
+2026-10-27 14:54,D.R. Horton,1301 Wolfcity Dr,Winchester Crossing,Princeton,315490,315490,0,8,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1301-wolfcity-dr
+2026-10-27 14:54,D.R. Horton,1904 Stormridge Way,Winchester Crossing,Princeton,267790,267790,0,8,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1904-stormridge-way
+2026-10-27 14:54,D.R. Horton,6236 Silver Maple Way,Arbor Trails,Princeton,224990,224990,0,8,0,https://www.drhorton.com/texas/dallas/princeton/arbor-trails/qmis/6236-silver-maple-way
+2026-10-27 14:54,D.R. Horton,5951 Bobbie Jo Lane,Wildcat Ranch,Crandall,246740,246740,0,8,0,https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/5951-bobbie-jo-lane
+2026-10-27 14:54,D.R. Horton,214 Arbor Dr,Arbor Trails South,Princeton,199990,202990,-3000,8,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/214-arbor-dr
+2026-10-27 14:54,D.R. Horton,216 Tall Cedar Way,Arbor Trails South,Princeton,211490,216490,-5000,8,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/216-tall-cedar-way
 2026-10-27 11:37,Highland Homes,14461 Game Creek Trail,Walsh,Aledo,849000,849000,0,8,0,https://www.highlandhomes.com/dfw/aledo/walsh/214-186
 2026-10-27 11:37,D.R. Horton,1900 Preakness Drive,Saratoga,Granbury,307990,307990,0,8,0,https://www.drhorton.com/texas/fort-worth/granbury/saratoga/qmis/1900-preakness-drive
 2026-10-27 11:37,D.R. Horton,2201 Bakersfield Drive,Longhorn Estates,Fort Worth,304990,304990,0,8,0,https://www.drhorton.com/texas/fort-worth/fort-worth/longhorn-estates/qmis/2201-bakersfield-drive
@@ -127,7 +138,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,9349 Wildcat Ridge,Wildcat Ridge Phase 2 and 4,Godley,679990,679990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/wildcat-ridge-phase-2-and-4/primrose-vi/9349-wildcat-ridge/
 2026-10-25 07:04,Bloomfield Homes,4312 Red Yucca Lane,Silo Mills Classic 50,Joshua,379990,379990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/jasmine/4312-red-yucca-lane/
 2026-10-25 07:04,Bloomfield Homes,4313 Red Yucca Lane,Silo Mills Classic 50,Joshua,399990,399990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/cypress-ii/4313-red-yucca-lane/
-2026-10-25 07:04,Bloomfield Homes,7604 Brindle Bend,Silo Mills Classic 60,Joshua,479990,479990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/magnolia/7604-brindle-bend/
 2026-10-25 07:04,Bloomfield Homes,7612 Brindle Bend,Silo Mills Classic 60,Joshua,419990,419990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/rockcress/7612-brindle-bend/
 2026-10-25 07:04,Bloomfield Homes,7628 Brindle Bend,Silo Mills Classic 60,Joshua,489990,489990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/magnolia-ii/7628-brindle-bend/
 2026-10-25 07:04,Bloomfield Homes,1004 Goldenrod Drive,Timberbrook 4a 5 4b 70s,Justin,499515,499515,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/justin/timberbrook-4a-5-4b-70s/caraway/1004-goldenrod-drive/
@@ -161,7 +171,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,1017 Bearing Street,Waterscape Classic 50s,Royse City,389900,389900,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/waterscape-classic-50s/dogwood-iii/1017-bearing-street/
 2026-10-25 07:04,Bloomfield Homes,1034 Watercourse Place,Waterscape Classic 60s,Royse City,549900,549900,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/waterscape-classic-60s/rose-ii/1034-watercourse-pl/
 2026-10-25 07:04,Bloomfield Homes,2120 Saint Annes Boulevard,Stone River Glen 50s,Royse City,379076,379076,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/stone-river-glen-50s/dogwood/2120-saint-annes-boulevard/
-2026-10-25 07:04,Bloomfield Homes,4015 Grotto Drive,Waterscape Classic 50s,Royse City,514700,514700,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/waterscape-classic-50s/rose-ii/4015-grotto-drive/
 2026-10-25 07:04,Bloomfield Homes,179 Creekside Drive,Sable Creek,Sanger,400000,400000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/sanger/sable-creek/hawthorne/179-creekside-drive/
 2026-10-25 07:04,Bloomfield Homes,151 Memory Lane,Sunrise at Garden Valley,Waxahachie,650254,650254,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/waxahachie/sunrise-at-garden-valley/lily-iv/151-memory-lane/
 2026-10-25 07:04,Bloomfield Homes,199 Memory Lane,Sunrise at Garden Valley,Waxahachie,529265,529265,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/waxahachie/sunrise-at-garden-valley/hawthorne-ii/199-memory-lane/
