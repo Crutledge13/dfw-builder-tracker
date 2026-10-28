@@ -774,6 +774,9 @@ def fill_coords(homes: list[dict], idx: dict):
 
 
 # --------------------------------------------------------------------------- entry points
+FAQ_RE = re.compile(r"(^|[-_\s])faqs?($|[-_\s])", re.I)
+
+
 def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
     """single=True: page is one home's page. Falls back to visible HTML and attaches the page URL."""
     soup = BeautifulSoup(html, "lxml")
@@ -822,6 +825,18 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
             for k, v in fb.items():
                 if not homes[0].get(k) and v and k not in ("price", "builder_was_price"):
                     homes[0][k] = v
+        # FAQ blocks ("Does <builder> offer financing incentives in <community>?") describe the community's
+        # offers in general and read as fragments ("(with $0 Down option ...); Up to"); the home's own offer
+        # is elsewhere on the page (First Texas 2026-10-28)
+        offer_text = page_text
+        faq = [el for el in soup.find_all(True) if el.name not in ("html", "body", "main") and FAQ_RE.search(
+            " ".join(el.get("class") or []) + " " + str(el.get("id") or ""))]
+        faq = [el for el in faq if not el.find("h1")]   # never a page-wide wrapper holding the home itself
+        if faq:
+            for el in faq:
+                if not el.decomposed:
+                    el.decompose()
+            offer_text = soup.get_text("  ", strip=True)
         main = soup.find("main") or soup.body or soup
         main_text = main.get_text("  ", strip=True)
         maps = {valid_coords(m.group(1), m.group(2)) for m in re.finditer(
@@ -837,7 +852,7 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
                 h["address"] = url_addr
             if h.get("lat") is None and len(maps) == 1:
                 h["lat"], h["lng"] = next(iter(maps))  # the page's own "view on map" link
-            h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(page_text))
+            h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(offer_text))
             h["from_detail"] = True
     return homes
 

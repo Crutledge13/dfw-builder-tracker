@@ -770,13 +770,18 @@ def test_jump_back_to_was_price_needs_confirmation():
     assert [c["event"] for c in rec.changes] == []   # sale price back: nothing to report
     hid = next(iter(st.homes))
     assert st.homes[hid]["price"] == 475000 and not st.homes[hid].get("pending_price")
-    # seen twice in a row: the sale really ended, record it
-    for k in (3, 4):
+    # seen again hours later: not yet (Bloomfield 2026-10-26 showed only 'was' prices for ~22 hours)
+    for k in (3, 4, 30):
         rec = R.Recorder(st, t0 + timedelta(hours=k))
         rec.observe(B, dict(h, price=515160))
+    assert st.homes[hid]["price"] == 475000
+    # still the 'was' price three days after it first showed: the sale really ended, record it
+    rec = R.Recorder(st, t0 + timedelta(hours=3 + R.WAS_HOLD_H))
+    rec.observe(B, dict(h, price=515160))
+    assert [c["event"] for c in rec.changes] == ["price_increase"]
     assert st.homes[hid]["price"] == 515160
     # an ordinary increase to some other price is recorded at once
-    rec = R.Recorder(st, t0 + timedelta(hours=5))
+    rec = R.Recorder(st, t0 + timedelta(hours=5 + R.WAS_HOLD_H))
     rec.observe(B, dict(h, price=519990))
     assert [c["event"] for c in rec.changes] == ["price_increase"]
 
@@ -793,7 +798,7 @@ def test_listing_card_does_not_reset_pending_confirmation():
     rec.observe(B, dict(h, price=560000, builder_was_price=599777, from_detail=True))
     hid = next(iter(st.homes))
     events = []
-    for k in (1, 2):
+    for k in (1, 2, 1 + R.WAS_HOLD_H):
         rec = R.Recorder(st, t0 + timedelta(hours=k))
         rec.observe(B, dict(h, price=599777, source="card"))
         rec.observe(B, dict(h, price=599777, from_detail=True))
@@ -1043,3 +1048,58 @@ def test_http_and_https_spelling_of_a_home_page_is_one_home():
     rec.observe(B, {"address": "1540 Dulwich Dr Allen", "city": "Allen", "url": "https://www." + path,
                     "price": 500285, "source": "card"})
     assert len(st.homes) == 1 and rec.changes == []
+
+
+def test_site_wide_lost_sale_prices_are_not_an_increase_and_a_cut():
+    # Bloomfield 2026-10-26/27: for ~22 hours the site showed the struck 'was' prices as the sale prices. Two readings of
+    # 1533 Laurel Ave hours apart "confirmed" $499,000 -> $574,285, and the sale price's return was logged
+    # as a -$79,285 price drop. A return to the 'was' price must hold for WAS_HOLD_H, across saved runs.
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp)
+        t0 = R.now_local()
+        h = {"address": "1533 Laurel Avenue", "city": "Aubrey", "zip": "76227",
+             "url": "https://tb.example/1533-laurel-avenue", "from_detail": True}
+        events = []
+        for k, obs in ((0, dict(h, price=499000, builder_was_price=574285)), (5, dict(h, price=574285)),
+                       (18, dict(h, price=574285)), (23, dict(h, price=499000, builder_was_price=574285))):
+            st = store.load()          # each run starts from the saved files, as the hourly job does
+            rec = R.Recorder(st, t0 + timedelta(hours=k))
+            rec.observe(B, obs)
+            events += [c["event"] for c in rec.changes]
+            store.save(st, rec.changes, [], {})
+            st_saved = store.load()
+        assert events == ["new_home", "price_unconfirmed"]
+        home = next(iter(st_saved.homes.values()))
+        assert home["price"] == 499000 and not home.get("pending_price") and not home.get("pending_since")
+    finally:
+        shutil.rmtree(tmp)
+
+
+def test_offer_written_differently_is_not_a_change():
+    # First Texas 2026-10-28: ~180 homes logged 'offer changed' for "15K Flex Cash" -> "$15,000 in Flex Cash"
+    # and for a "(with $0 Down option ...)" fragment; the offer's numbers were the same
+    from tracker.run import offer_terms
+    assert offer_terms("15K Flex Cash") == offer_terms("$15,000 in Flex Cash / Seller Credit | 15K Flex Cash")
+    assert offer_terms("Zero Down & Rates as Low as 3.99%") == offer_terms(
+        "Zero Down & Rates as Low as 3.99% | (with $0 Down option available on qualifying homes); Up to")
+    assert offer_terms("Up to $15-$25K towards Closing Costs") == offer_terms("$15K or $25K towards closing costs")
+    assert offer_terms("15K Flex Cash") != offer_terms("20K Flex Cash")
+    assert offer_terms("$14K off") != offer_terms("$28K off")
+
+
+def test_faq_section_is_not_the_homes_offer():
+    # First Texas 2026-10-28: a community FAQ ("Does First Texas Homes offer financing incentives ...?") was
+    # read as the home's offer, in fragments, pushing out the home's own "3.99% Rate Buydown" badge
+    html = """<html><head><title>9825 Aiken Court, Forney TX</title></head><body><main>
+      <h1>9825 Aiken Court</h1><div class="price">$689,950</div><div>4 Beds 3 Baths 2,900 Sq Ft</div>
+      <section id="community-faq-section"><div class="fth-minimal-faq-item">
+        <h4 class="fth-minimal-faq-q">Does First Texas Homes offer financing incentives in Polo Ridge?</h4>
+        <div class="fth-minimal-faq-a"> Yes! Qualifying homes currently feature: <strong>Promotional Interest
+        Rate</strong> as low as <strong>3.99%</strong> (with $0 Down option available on qualifying homes); Up to
+        <strong>$20,000 in Flex Cash / Seller Credit</strong> toward closing costs.</div></div></section>
+      <div class="badge">3.99% Rate Buydown CCM</div></main></body></html>"""
+    url = "https://www.firsttexashomes.com/community/forney/16548/polo-ridge/1731293/9825-aiken-court-forney-tx-75126/"
+    h = extract_homes(html, url, single=True)[0]
+    assert "$0 Down" not in h["incentive_text"] and "$20,000" not in h["incentive_text"]
+    assert "3.99% Rate Buydown" in h["incentive_text"]

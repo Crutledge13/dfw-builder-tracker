@@ -36,6 +36,7 @@ EXTRACT_VERSION = 4        # bump when price reading improves: homes re-read fro
 MILLION_FIX_VERSION = 4     # reader that first read $1,000,000+ prices on pages and cards
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
+WAS_HOLD_H = 72             # a jump back to the builder's struck 'was' price must hold this long to count
 REMOVE_AFTER_H = 48         # active home unseen this long (while its builder is readable) -> removed
 BASELINE_NOTE = "baseline: already for sale when tracking of this builder (re)started"
 STALE_REMOVE_H = 7 * 24     # ...even if its own page hasn't been re-checked yet
@@ -133,9 +134,21 @@ def load_config(path="builders.yaml") -> list[dict]:
 def offer_terms(text: str) -> frozenset:
     """The numbers that make an offer what it is: dollar amounts, percentages, buydown structure."""
     t = (text or "").lower().replace(",", "")
-    terms = set(re.findall(r"\$\s?\d+(?:\.\d+)?\s?k?", t)) | set(re.findall(r"\d+(?:\.\d+)?\s?%", t))
+    # Dollar amounts as whole dollars, however they are written: "$15,000", "$15K" and "15K Flex Cash"
+    # are one offer (First Texas 2026-10-28 logged ~180 fake changes for "15K" -> "$15,000"). A range
+    # "$15-$25K" is in thousands at both ends. Amounts under $500 are "$0 down" or a figure cut off
+    # mid-number ("$1,00"), not offer terms.
+    t = re.sub(r"\$?(\d+(?:\.\d+)?)\s?-\s?(\$?\d+(?:\.\d+)?\s?k\b)", r"\1k-\2", t)
+    amounts = set()
+    for m in re.finditer(r"(\$\s?)?(?<![\d.])(\d+(?:\.\d+)?)(\s?k\b)?", t):
+        if not (m.group(1) or m.group(3)):
+            continue
+        n = float(m.group(2)) * (1000 if m.group(3) else 1)
+        if n >= 500:
+            amounts.add(f"${int(round(n))}")
+    terms = amounts | {x.replace(" ", "") for x in re.findall(r"\d+(?:\.\d+)?\s?%", t)}
     terms |= set(re.findall(r"\b\d/\d(?:/\d)?\b", t))
-    return frozenset(x.replace(" ", "") for x in terms)
+    return frozenset(terms)
 
 
 
@@ -337,23 +350,33 @@ class Recorder:
                 # a jump back up to exactly the builder's own struck-through 'was' price is usually a page
                 # that briefly lost its sale price (Bloomfield, 2026-10-21): confirm it like a large move
                 back_to_was = _back_to_was(h, price, obs)
+                since = parse_ts(h.get("pending_since")) if h.get("pending_price") == price else None
+                if back_to_was and h.get("pending_price") == price and since is None:
+                    h["pending_since"] = now   # waiting from before pending_since was kept: start the clock now
+                    since = self.now
                 if (big or back_to_was) and h.get("pending_price") != price:
-                    h["pending_price"] = price  # confirm on the next look before recording
+                    h["pending_price"], h["pending_since"] = price, now  # confirm on a later look before recording
                     self.event(b, "price_unconfirmed", h, old, price,
-                               "back to the builder's 'was' price; waiting for a second reading" if back_to_was
+                               "back to the builder's 'was' price; waiting for it to hold" if back_to_was
                                else "large move; waiting for a second reading")
+                elif back_to_was and since and since > self.now - timedelta(hours=WAS_HOLD_H):
+                    # Bloomfield 2026-10-24 and 10-26/27: pages showed "Priced At $X $X" (sale price = the struck
+                    # 'was' price) for 10-55 hours, then the exact old sale prices came back. Two readings hours
+                    # apart "confirmed" fake increases of $17k-$95k, and the return was logged as cuts of the same
+                    # size. A return to the 'was' price must hold for WAS_HOLD_H before it counts.
+                    pass
                 else:
                     kind = "price_cut" if price < old else "price_increase"
                     self.event(b, kind, h, old, price)
                     self.stat(b["slug"], "price_cuts" if price < old else "price_increases")
                     h.update(prev_price=old, price=price, last_change=price - old, last_change_at=now,
-                             pending_price=None)
+                             pending_price=None, pending_since=None)
                     if price < old:
                         h["cuts"] = int(h.get("cuts") or 0) + 1
             elif not weaker_ignored:
                 # (Bloomfield 2026-10-23: a listing card read before the home's own page each run cleared the
                 # pending second reading, so a real end-of-sale increase stayed 'unconfirmed' run after run)
-                h["pending_price"] = None
+                h["pending_price"], h["pending_since"] = None, None
             for k in ("community", "city", "zip", "address", "plan", "beds", "baths", "sqft", "url"):
                 if obs.get(k) not in (None, "") and not h.get(k):
                     h[k] = obs[k]
