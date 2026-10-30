@@ -1,4 +1,6 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-10-30 13:36,D.R. Horton,5721 Dunraven Court,Valley Brook,Fort Worth,424990,419990,5000,11,0,https://www.drhorton.com/texas/fort-worth/fort-worth/valley-brook/qmis/5721-dunraven-court
+2026-10-30 13:36,Meritage Homes,3034 O Pines Drive,,Farmersville,239990,239990,0,11,0,https://www.meritagehomes.com/state/tx/dallasft-worth/3034-o-pines-drive
 2026-10-30 10:41,Graham Hart Home Builder,8405 Livi Street,,North Richland Hills,1289900,1289900,0,7,0,https://www.grahamhart.com/communities/8405-livi-street/
 2026-10-30 10:41,Riverside Homebuilders,1329 Frio Drive,,Springtown,329900,329900,0,11,0,https://www.riversidehomebuilders.com/quick-move-in/1329-frio-drive/
 2026-10-30 10:41,Riverside Homebuilders,313 Jonny Boy Way,,Springtown,584676,584676,0,11,0,https://www.riversidehomebuilders.com/quick-move-in/313-jonny-boy-way
@@ -170,7 +172,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-26 16:28,D.R. Horton,5731 Sunshine Lane,Wildcat Ranch,Crandall,282740,282740,0,4,0,https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/5731-sunshine-lane
 2026-10-26 15:05,D.R. Horton,6220 Silver Maple Way,Arbor Trails,Princeton,224990,224990,0,7,0,https://www.drhorton.com/texas/dallas/princeton/arbor-trails/qmis/6220-silver-maple-way
 2026-10-26 15:05,D.R. Horton,9712 Paden Place Dr,Silverado,Aubrey,361990,361990,0,6,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/9712-paden-place-dr
-2026-10-26 14:17,First Texas Homes,1810 Marlow Dr,,Cedar Hill,564950,564950,0,7,0,https://www.firsttexashomes.com/community/cedar-hill/16503/bear-creek/5000101/1810-marlow-dr-cedar-hill-tx-75104/
 2026-10-26 14:17,First Texas Homes,1630 Briarwood West,,Midlothian,569950,569950,0,7,0,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/5000030/1630-briarwood-west-midlothian-tx-76065/
 2026-10-26 14:17,First Texas Homes,1813 Briarwood West Way,,Midlothian,599950,599950,0,7,0,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/1732090/1813-briarwood-west-way-midlothian-tx-76065/
 2026-10-26 14:17,First Texas Homes,1610 Whisperwood Way,,Midlothian,614950,614950,0,7,0,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/5000122/1610-whisperwood-way-midlothian-tx-76065/
