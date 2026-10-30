@@ -8646,3 +8646,9 @@ at,builder,event,home_id,address,community,city,old,new,delta,pct,url,detail
 2026-10-30 07:13,Trophy Signature Homes,new_home,trophy-signature:1115-sundog-dr,1115 Sundog Drive,,Princeton,,343990,,,,
 2026-10-30 07:13,Trophy Signature Homes,new_home,trophy-signature:4713-carina-rd,4713 Carina Road,,McKinney,,609490,,,,
 2026-10-30 07:13,Trophy Signature Homes,new_home,trophy-signature:709-brightstar-dr,709 Brightstar Drive,,Haslet,,439990,,,,
+2026-10-30 08:23,Bloomfield Homes,home_offer_removed,bloomfield:2206-wexley-dr,2206 Wexley Drive,Somerset,Mansfield,,,,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset/violet-ii/2206-wexley-drive/,4% seller contribution to use towards closing Cost/Rate Buydown
+2026-10-30 08:23,Perry Homes,price_increase,perry:2041-presidential-pkwy,2041 Presidential Parkway,Bridgewater 70 80,Midlothian,756900,759900,3000,0.4,https://www.perryhomes.com/new-homes/texas/dallas/bridgewater/bridgewater-70-80/2041-presidential-parkway,
+2026-10-30 08:23,D.R. Horton,new_home,dr-horton:613-dunham-rd,613 Dunham Road,Riverfield,Josephine,,234015,,,http://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/613-dunham-road,
+2026-10-30 08:23,D.R. Horton,price_cut,dr-horton:446-scenic-spark-ln,446 Scenic Spark Lane,Elevon,Lavon,361990,351990,-10000,-2.76,https://www.drhorton.com/texas/dallas/lavon/elevon/qmis/446-scenic-spark-lane,
+2026-10-30 08:23,D.R. Horton,new_home,dr-horton:624-dunham-rd,624 Dunham Road,Riverfield,Josephine,,229990,,,http://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/624-dunham-road,
+2026-10-30 08:23,David Weekley Homes,price_cut,david-weekley:homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-garden-series/19970033,7547 Epiphany Way,Goodland Garden Series,Grand Prairie,430880,429990,-890,-0.21,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-garden-series/19970033,
