@@ -3,6 +3,7 @@ pages, and the sitemap roots. Output: diag/<slug>/*.html + index.tsv"""
 from __future__ import annotations
 
 import csv
+import gzip
 import os
 import re
 import sys
@@ -10,6 +11,14 @@ from pathlib import Path
 
 from .fetch import PoliteClient
 from .run import load_config
+
+
+def save(path: Path, text: str):
+    """First 3 MB as .html; a bigger page is also saved whole as .html.gz (embedded JSON needs all of it)."""
+    path.write_text(text[:3_000_000], encoding="utf-8")
+    if len(text) > 3_000_000:
+        with gzip.open(str(path) + ".gz", "wt", encoding="utf-8") as f:
+            f.write(text)
 
 
 def main():
@@ -29,8 +38,9 @@ def main():
             r = c.get(u)
             name = f"{i:02d}.html"
             if r:
-                (d / name).write_text(r.text[:3_000_000], encoding="utf-8")
-            index.write(f"urls\turl\t{r.status if r else 'skipped'}\t{len(r.text) if r else 0}\t{name}\t{u}\n")
+                save(d / name, r.text)
+            index.write(f"urls\turl\t{r.status if r else 'skipped'}\t{len(r.text) if r else 0}"
+                        f"{' CUT' if r and r.truncated else ''}\t{name}\t{u}\n")
             index.flush()
         return
     for b in load_config():
@@ -64,8 +74,9 @@ def main():
             status = r.status if r else "skipped"
             name = f"{i:02d}-{kind}.html"
             if r:
-                (d / name).write_text(r.text[:3_000_000], encoding="utf-8")
-            index.write(f"{b['slug']}\t{kind}\t{status}\t{len(r.text) if r else 0}\t{name}\t{url}\n")
+                save(d / name, r.text)
+            index.write(f"{b['slug']}\t{kind}\t{status}\t{len(r.text) if r else 0}"
+                        f"{' CUT' if r and r.truncated else ''}\t{name}\t{url}\n")
             index.flush()
             i += 1
         print(b["slug"], "done", c.blocked or "")

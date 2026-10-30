@@ -647,6 +647,8 @@ def crawl_builder(b, client, rec: Recorder, budget: int):
             notes.append(f"seed {r.status if r else 'skipped'}: {url}")
             continue
         seeds_ok += 1
+        if getattr(r, "truncated", False):
+            notes.append(f"seed cut off at size cap: {url}")
         more = process_listing(r)
         todo.extend(p for p in more if p not in done)
 

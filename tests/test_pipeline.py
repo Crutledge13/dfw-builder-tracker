@@ -1103,3 +1103,25 @@ def test_faq_section_is_not_the_homes_offer():
     h = extract_homes(html, url, single=True)[0]
     assert "$0 Down" not in h["incentive_text"] and "$20,000" not in h["incentive_text"]
     assert "3.99% Rate Buydown" in h["incentive_text"]
+
+
+def test_big_page_not_cut_off():
+    """Trophy's pages grew past 15 MB (10-29): the old size cap cut the listing's embedded JSON off and
+    ~220 homes stopped being seen. A ~16 MB page must come through whole; an over-cap one is flagged."""
+    import io
+    from types import SimpleNamespace
+    from tracker.fetch import PoliteClient
+
+    def client_for(body: bytes, **kw):
+        c = PoliteClient("test-agent", min_delay=0, **kw)
+        c.allowed = lambda url: True
+        c.session = SimpleNamespace(get=lambda url, **k: SimpleNamespace(
+            raw=SimpleNamespace(read=lambda n, **k: io.BytesIO(body).read(n)), status_code=200, url=url, encoding="utf-8", close=lambda: None))
+        return c
+
+    big = b"<script>window.__PRELOADED_STATE__ = {" + b'"x":"\xc3\xa9",' * 1_800_000 + b'"end":1}</script>'
+    assert len(big) > 15_000_000
+    r = client_for(big).get("https://example.com/communities/dallas-ft-worth")
+    assert not r.truncated and r.text.endswith('"end":1}</script>')
+    r = client_for(big, max_bytes=1_000_000).get("https://example.com/communities/dallas-ft-worth")
+    assert r.truncated and len(r.text) < 1_000_001

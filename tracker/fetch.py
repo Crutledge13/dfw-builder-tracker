@@ -22,11 +22,12 @@ class Response:
     url: str
     status: int
     text: str
+    truncated: bool = False   # body was longer than the client's size cap and was cut off
 
 
 class PoliteClient:
     def __init__(self, user_agent: str, min_delay: float = 2.0, timeout: float = 25.0,
-                 max_bytes: int = 15_000_000):
+                 max_bytes: int = 40_000_000):   # Trophy's pages carry ~15 MB of map data (10-29)
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": user_agent,
@@ -116,5 +117,9 @@ class PoliteClient:
                 body = gzip.decompress(body)
             except OSError:
                 pass
+        truncated = len(body) > self.max_bytes
+        if truncated:
+            # a cut-off page breaks embedded JSON (a whole listing can vanish): say so in the run log
+            log.warning("page over %d bytes, cut off: %s", self.max_bytes, url)
         text = body[: self.max_bytes].decode(r.encoding or "utf-8", errors="replace")
-        return Response(r.url, r.status_code, text)
+        return Response(r.url, r.status_code, text, truncated)
