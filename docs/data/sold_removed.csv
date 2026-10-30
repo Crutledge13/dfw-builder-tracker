@@ -1,4 +1,6 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-10-30 17:57,D.R. Horton,2413 Starlight Street,The Preserve at Forum,Grand Prairie,538990,538990,0,10,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/2413-starlight-street
+2026-10-30 17:57,David Weekley Homes,5040 Sandbrock Parkway,Sandbrock Ranch,Aubrey,501875,499878,1997,10,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/aubrey/sandbrock-ranch/19080320
 2026-10-30 15:32,HistoryMaker Homes,1202 Willet Sound Lane,Devonshire,Forney,360990,360990,0,3,0,https://www.historymaker.com/new-homes/dallas-fort-worth/forney/devonshire/1202-willet-sound-lane
 2026-10-30 15:32,D.R. Horton,2205 Chloe Ln,Woods at Lindsey Place,Anna,336990,406990,-70000,10,1,https://www.drhorton.com/texas/dallas/anna/woods-at-lindsey-place/qmis/2205-chloe-ln
 2026-10-30 13:36,D.R. Horton,5721 Dunraven Court,Valley Brook,Fort Worth,424990,419990,5000,11,0,https://www.drhorton.com/texas/fort-worth/fort-worth/valley-brook/qmis/5721-dunraven-court
@@ -207,7 +209,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 14:04,Bloomfield Homes,924 Lasalle Drive,The Oaks,Red Oak,569000,569000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/bellflower-ii/924-lasalle-drive/
 2026-10-25 14:04,Bloomfield Homes,3749 Mesa Verde Drive,Terracina,Rockwall,599990,599990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/rockwall/terracina/primrose-fe/3749-mesa-verde-drive/
 2026-10-25 13:14,Trophy Signature Homes,2112 Balsam Drive,Sunset Ranch,Gunter,425260,425260,0,6,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/gunter/sunset-ranch/2112-balsam-drive
-2026-10-25 13:14,Trophy Signature Homes,2806 Auburn Court,Lowry Trails,Princeton,339990,339990,0,6,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/lowry-trails/2806-auburn-court
 2026-10-25 13:14,Trophy Signature Homes,4105 Zoe Lane,Lakehaven,Farmersville,302490,302490,0,6,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/farmersville/lakehaven/4105-zoe-lane
 2026-10-25 13:14,Trophy Signature Homes,10649 Dillion Street,Cibolo Hills West,Fort Worth,315990,315990,0,6,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/fort-worth/cibolo-hills-west/10649-dillion-street
 2026-10-25 13:14,Trophy Signature Homes,4113 Joe Pool Drive,Lakehaven,Farmersville,399990,399990,0,4,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/farmersville/lakehaven/4113-joe-pool-drive
@@ -253,7 +254,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,3229 Fraser Drive,Hampton Park,Glenn Heights,429990,429990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/hampton-park/jasmine/3229-fraser-drive/
 2026-10-25 07:04,Bloomfield Homes,929 Creekhollow Drive,Star Ranch Elements,Godley,383000,383000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-elements/gardenia/929-creekhollow-drive/
 2026-10-25 07:04,Bloomfield Homes,9349 Wildcat Ridge,Wildcat Ridge Phase 2 and 4,Godley,679990,679990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/wildcat-ridge-phase-2-and-4/primrose-vi/9349-wildcat-ridge/
-2026-10-25 07:04,Bloomfield Homes,4312 Red Yucca Lane,Silo Mills Classic 50,Joshua,379990,379990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/jasmine/4312-red-yucca-lane/
 2026-10-25 07:04,Bloomfield Homes,4313 Red Yucca Lane,Silo Mills Classic 50,Joshua,399990,399990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/cypress-ii/4313-red-yucca-lane/
 2026-10-25 07:04,Bloomfield Homes,7612 Brindle Bend,Silo Mills Classic 60,Joshua,419990,419990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/rockcress/7612-brindle-bend/
 2026-10-25 07:04,Bloomfield Homes,7628 Brindle Bend,Silo Mills Classic 60,Joshua,489990,489990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/magnolia-ii/7628-brindle-bend/
