@@ -1,4 +1,10 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-10-31 10:43,D.R. Horton,10613 Diamond Mine Drive,Rock Creek West,Fort Worth,309990,309990,0,12,0,https://www.drhorton.com/texas/fort-worth/fort-worth/rock-creek-west/qmis/10613-diamond-mine-drive
+2026-10-31 10:43,D.R. Horton,10805 Bloodstone Drive,Rock Creek West,Fort Worth,319990,319990,0,12,0,https://www.drhorton.com/texas/fort-worth/fort-worth/rock-creek-west/qmis/10805-bloodstone-drive
+2026-10-31 10:43,Bloomfield Homes,3904 Menard Street,Painted Tree Woodland District 50,McKinney,645000,645000,0,12,0,https://www.bloomfieldhomes.com/new-homes/tx/mckinney/painted-tree-woodland-district-50/violet-iv/3904-menard-street-1/
+2026-10-31 10:43,Bloomfield Homes,561 Red Maple Road,The Retreat at North Grove 60,Waxahachie,435000,435000,0,12,0,https://www.bloomfieldhomes.com/new-homes/tx/waxahachie/the-retreat-at-north-grove-60/jasmine/561-red-maple-road/
+2026-10-31 10:43,Bloomfield Homes,12701 Caliber Drive,Coyote Crossing,Godley,539990,539990,0,12,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/primrose-fe/12701-caliber-drive/
+2026-10-31 10:43,M/I Homes,7504 Spicebush Drive,Meadow Park,Ponder,254990,260990,-6000,12,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/denton/meadow-park/primrose-plan/7504-spicebush-drive
 2026-10-31 08:26,Coventry Homes,2709 Cedar Valley Cove,Trinity Falls,McKinney,549990,549990,0,12,0,https://www.coventryhomes.com/new-homes/tx/mckinney/trinity-falls/farnsworth/2709-cedar-valley-cove/
 2026-10-31 08:26,Coventry Homes,4420 Blue Mist Drive,Hulen Trails 60,Fort Worth,469990,469990,0,12,0,https://www.coventryhomes.com/new-homes/tx/fort-worth/hulen-trails-60/kendall-1/4420-blue-mist-drive/
 2026-10-31 08:26,Coventry Homes,2821 Paddington Drive,Cambridge Crossing 60,Celina,699990,699990,0,12,0,https://www.coventryhomes.com/new-homes/tx/celina/cambridge-crossing-60/lockhart/2821-paddington-drive/
@@ -269,6 +275,7 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,3229 Fraser Drive,Hampton Park,Glenn Heights,429990,429990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/hampton-park/jasmine/3229-fraser-drive/
 2026-10-25 07:04,Bloomfield Homes,929 Creekhollow Drive,Star Ranch Elements,Godley,383000,383000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-elements/gardenia/929-creekhollow-drive/
 2026-10-25 07:04,Bloomfield Homes,9349 Wildcat Ridge,Wildcat Ridge Phase 2 and 4,Godley,679990,679990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/wildcat-ridge-phase-2-and-4/primrose-vi/9349-wildcat-ridge/
+2026-10-25 07:04,Bloomfield Homes,12701 Caliber Drive,Coyote Crossing,Godley,539990,539990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/primrose-fe/12701-caliber-drive/
 2026-10-25 07:04,Bloomfield Homes,4313 Red Yucca Lane,Silo Mills Classic 50,Joshua,399990,399990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/cypress-ii/4313-red-yucca-lane/
 2026-10-25 07:04,Bloomfield Homes,7612 Brindle Bend,Silo Mills Classic 60,Joshua,419990,419990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/rockcress/7612-brindle-bend/
 2026-10-25 07:04,Bloomfield Homes,7628 Brindle Bend,Silo Mills Classic 60,Joshua,489990,489990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-60/magnolia-ii/7628-brindle-bend/
