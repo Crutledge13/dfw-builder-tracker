@@ -36,6 +36,7 @@ EXTRACT_VERSION = 4        # bump when price reading improves: homes re-read fro
 MILLION_FIX_VERSION = 4     # reader that first read $1,000,000+ prices on pages and cards
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
+TYPO_RATIO = 3              # a confirmed move of 3x or more is a mistyped price being fixed, not a market move
 WAS_HOLD_H = 72             # a jump back to the builder's struck 'was' price must hold this long to count
 REMOVE_AFTER_H = 48         # active home unseen this long (while its builder is readable) -> removed
 BASELINE_NOTE = "baseline: already for sale when tracking of this builder (re)started"
@@ -365,6 +366,13 @@ class Recorder:
                     # apart "confirmed" fake increases of $17k-$95k, and the return was logged as cuts of the same
                     # size. A return to the 'was' price must hold for WAS_HOLD_H before it counts.
                     pass
+                elif big and max(price, old) >= TYPO_RATIO * min(price, old):
+                    # Trophy 2026-10-29: a home was first listed at $3,832,490 (a stray digit) and fixed to
+                    # $383,490 a day later; two readings 'confirmed' a $3.4M (-90%) price drop. A 3x+ move is
+                    # the builder correcting a typo: take the new price quietly
+                    h.update(price=price, pending_price=None, pending_since=None)
+                    if hid not in self.priced:
+                        h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
                 else:
                     kind = "price_cut" if price < old else "price_increase"
                     self.event(b, kind, h, old, price)

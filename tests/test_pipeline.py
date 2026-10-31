@@ -164,6 +164,26 @@ def test_large_jump_needs_confirmation():
         shutil.rmtree(tmp)
 
 
+def test_mistyped_price_fix_is_not_a_drop():
+    # Trophy 2026-10-29..31: $3,832,490 (stray digit) corrected to $383,490 was logged as a -90% cut
+    tmp = tempfile.mkdtemp()
+    try:
+        store = LocalStore(tmp)
+        t0 = R.now_local()
+        typo = {"https://tb.example/qmi": listing_page([("1500 Elm Street", 3832490, 2448, "A")])}
+        run_once(store, typo, t0)
+        fixed = {"https://tb.example/qmi": listing_page([("1500 Elm Street", 383490, 2448, "A")])}
+        _, ch = run_once(store, fixed, t0 + timedelta(hours=1))
+        assert [c["event"] for c in ch] == ["price_unconfirmed"]
+        _, ch = run_once(store, fixed, t0 + timedelta(hours=2))
+        assert [c["event"] for c in ch] == []
+        h = next(iter(store.load().homes.values()))
+        assert int(h["price"]) == 383490 and int(h["first_price"]) == 383490
+        assert not h.get("last_change") and int(h.get("cuts") or 0) == 0
+    finally:
+        shutil.rmtree(tmp)
+
+
 def test_parallel_builders_share_state_safely():
     from concurrent.futures import ThreadPoolExecutor
     st = LocalStore(tempfile.mkdtemp()).load()
