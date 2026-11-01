@@ -1,4 +1,9 @@
 at,builder,address,community,city,old,new,delta,pct,offer,url
+2026-11-01 02:10,Meritage Homes,3224 Scorpion Lane,,Fort Worth,360343,353343,-7000,-1.94,,https://www.meritagehomes.com/state/tx/dallasft-worth/3224-scorpion-lane
+2026-11-01 02:10,Meritage Homes,2103 Cottongrass Drive,,Sherman,334200,331200,-3000,-0.9,,https://www.meritagehomes.com/state/tx/dallasft-worth/2103-cottongrass-drive
+2026-11-01 02:10,Meritage Homes,2119 Cottongrass Drive,,Sherman,333200,330200,-3000,-0.9,,https://www.meritagehomes.com/state/tx/dallasft-worth/2119-cottongrass-drive
+2026-11-01 02:10,D.R. Horton,319 Whispering Pine Drive,Wildwood,Royse City,253490,243490,-10000,-3.94,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/319-whispering-pine-drive
+2026-11-01 02:10,David Weekley Homes,4725 Boyds Branch Drive,Elements at Viridian Garden Series,Arlington,483990,469990,-14000,-2.89,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/arlington/elements-at-viridian-garden-series/19420175
 2026-11-01 00:59,K. Hovnanian Homes,2101 Maple Ridge Drive,,Van Alstyne,350000,317000,-33000,-9.43,,
 2026-11-01 00:59,Meritage Homes,3045 Dry Brook Way,,Fort Worth,373008,366008,-7000,-1.88,,https://www.meritagehomes.com/state/tx/dallasft-worth/3045-dry-brook-way
 2026-11-01 00:59,Meritage Homes,2110 Cottongrass Drive,,Sherman,324200,321200,-3000,-0.93,,https://www.meritagehomes.com/state/tx/dallasft-worth/2110-cottongrass-drive
@@ -124,23 +129,23 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-10-31 02:30,Meritage Homes,1584 Coldwater Way,,Crandall,321687,319187,-2500,-0.78,,https://www.meritagehomes.com/state/tx/dallasft-worth/1584-coldwater-way
 2026-10-31 02:30,Meritage Homes,1613 Yosemite Drive,,Anna,402508,395008,-7500,-1.86,,https://www.meritagehomes.com/state/tx/dallasft-worth/1613-yosemite-drive
 2026-10-31 01:45,Bloomfield Homes,841 Rain Lilly Street,Union Park Classic 60,Little Elm,615000,575000,-40000,-6.5,,https://www.bloomfieldhomes.com/new-homes/tx/little-elm/union-park-classic-60/magnolia-ii/841-rain-lilly-street/
-2026-10-31 01:45,Meritage Homes,3028 Belton Drive,,Farmersville,272885,262885,-10000,-3.66,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/3028-belton-drive
-2026-10-31 01:45,Meritage Homes,2501 Nicole Drive,,Denton,409990,407490,-2500,-0.61,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2501-nicole-drive
+2026-10-31 01:45,Meritage Homes,3028 Belton Drive,,Farmersville,272885,262885,-10000,-3.66,,https://www.meritagehomes.com/state/tx/dallasft-worth/3028-belton-drive
+2026-10-31 01:45,Meritage Homes,2501 Nicole Drive,,Denton,409990,407490,-2500,-0.61,,https://www.meritagehomes.com/state/tx/dallasft-worth/2501-nicole-drive
 2026-10-31 01:45,Meritage Homes,3224 Scorpion Lane,,Fort Worth,362843,360343,-2500,-0.69,,https://www.meritagehomes.com/state/tx/dallasft-worth/3224-scorpion-lane
-2026-10-31 01:45,Meritage Homes,2218 Windy Trail,,Princeton,405139,402639,-2500,-0.62,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2218-windy-trail
-2026-10-31 01:45,Meritage Homes,1010 Angel Street,,Josephine,249974,242474,-7500,-3.0,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/1010-angel-street
+2026-10-31 01:45,Meritage Homes,2218 Windy Trail,,Princeton,405139,402639,-2500,-0.62,,https://www.meritagehomes.com/state/tx/dallasft-worth/2218-windy-trail
+2026-10-31 01:45,Meritage Homes,1010 Angel Street,,Josephine,249974,242474,-7500,-3.0,,https://www.meritagehomes.com/state/tx/dallasft-worth/1010-angel-street
 2026-10-31 01:45,Meritage Homes,3216 Dustbend Plaza,,Fort Worth,332362,329862,-2500,-0.75,,https://www.meritagehomes.com/state/tx/dallasft-worth/3216-dustbend-plaza
-2026-10-31 01:45,Meritage Homes,1001 Angel Street,,Josephine,254656,244656,-10000,-3.93,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/1001-angel-street
-2026-10-31 01:45,Meritage Homes,3505 Richmond Dr.,,Farmersville,309518,299518,-10000,-3.23,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/3505-richmond-dr
+2026-10-31 01:45,Meritage Homes,1001 Angel Street,,Josephine,254656,244656,-10000,-3.93,,https://www.meritagehomes.com/state/tx/dallasft-worth/1001-angel-street
+2026-10-31 01:45,Meritage Homes,3505 Richmond Dr.,,Farmersville,309518,299518,-10000,-3.23,,https://www.meritagehomes.com/state/tx/dallasft-worth/3505-richmond-dr
 2026-10-31 01:45,Meritage Homes,215 Teton Street,,Greenville,293582,285982,-7600,-2.59,,https://www.meritagehomes.com/state/tx/dallasft-worth/215-teton-street
-2026-10-31 01:45,Meritage Homes,2216 Currents Road,,Princeton,402990,392990,-10000,-2.48,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2216-currents-road
-2026-10-31 01:45,Meritage Homes,1008 Angel Street,,Josephine,237487,229987,-7500,-3.16,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/1008-angel-street
+2026-10-31 01:45,Meritage Homes,2216 Currents Road,,Princeton,402990,392990,-10000,-2.48,,https://www.meritagehomes.com/state/tx/dallasft-worth/2216-currents-road
+2026-10-31 01:45,Meritage Homes,1008 Angel Street,,Josephine,237487,229987,-7500,-3.16,,https://www.meritagehomes.com/state/tx/dallasft-worth/1008-angel-street
 2026-10-31 01:45,Meritage Homes,2764 Teton Street,,Corinth,351400,339900,-11500,-3.27,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2764-teton-street
-2026-10-31 01:45,Meritage Homes,909 Angel Street,,Josephine,337214,327214,-10000,-2.97,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/909-angel-street
-2026-10-31 01:45,Meritage Homes,4102 Benbrook Drive,,Farmersville,372487,369987,-2500,-0.67,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/4102-benbrook-drive
-2026-10-31 01:45,Meritage Homes,1605 Yosemite Drive,,Anna,421481,413981,-7500,-1.78,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/1605-yosemite-drive
-2026-10-31 01:45,Meritage Homes,2134 Santa Anita Street,,Seagoville,323949,318949,-5000,-1.54,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/2134-santa-anita-street
-2026-10-31 01:45,Meritage Homes,3514 Bastrop Drive,,Farmersville,270344,267844,-2500,-0.92,"Score a rate as low as 3.99% (6.788% APR) + up to $5,000 in closing costs on select homes and communities.* T&Cs apply.",https://www.meritagehomes.com/state/tx/dallasft-worth/3514-bastrop-drive
+2026-10-31 01:45,Meritage Homes,909 Angel Street,,Josephine,337214,327214,-10000,-2.97,,https://www.meritagehomes.com/state/tx/dallasft-worth/909-angel-street
+2026-10-31 01:45,Meritage Homes,4102 Benbrook Drive,,Farmersville,372487,369987,-2500,-0.67,,https://www.meritagehomes.com/state/tx/dallasft-worth/4102-benbrook-drive
+2026-10-31 01:45,Meritage Homes,1605 Yosemite Drive,,Anna,421481,413981,-7500,-1.78,,https://www.meritagehomes.com/state/tx/dallasft-worth/1605-yosemite-drive
+2026-10-31 01:45,Meritage Homes,2134 Santa Anita Street,,Seagoville,323949,318949,-5000,-1.54,,https://www.meritagehomes.com/state/tx/dallasft-worth/2134-santa-anita-street
+2026-10-31 01:45,Meritage Homes,3514 Bastrop Drive,,Farmersville,270344,267844,-2500,-0.92,,https://www.meritagehomes.com/state/tx/dallasft-worth/3514-bastrop-drive
 2026-10-31 01:45,Meritage Homes,3221 Scorpion Lane,,Fort Worth,408647,406147,-2500,-0.61,,https://www.meritagehomes.com/state/tx/dallasft-worth/3221-scorpion-lane
 2026-10-31 01:45,Meritage Homes,1533 Shenandoah Trail,,Anna,384487,374487,-10000,-2.6,,https://www.meritagehomes.com/state/tx/dallasft-worth/1533-shenandoah-trail
 2026-10-31 01:45,Meritage Homes,2212 Windy Trail,,Princeton,408831,406331,-2500,-0.61,,https://www.meritagehomes.com/state/tx/dallasft-worth/2212-windy-trail
