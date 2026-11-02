@@ -1,4 +1,7 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-02 11:27,Riverside Homebuilders,146 Aurora Avenue,,,439925,439925,0,14,0,https://www.riversidehomebuilders.com/quick-move-in/146-aurora-avenue/
+2026-11-02 11:27,D.R. Horton,10224 Cherrytree Lane,Townes Landing,Fort Worth,345510,345695,-185,14,1,https://www.drhorton.com/texas/fort-worth/fort-worth/townes-landing/qmis/10224-cherrytree-lane
+2026-11-02 11:27,M/I Homes,4312 Yellow Rose Road,Eliana,McKinney,639990,649990,-10000,14,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/mckinney/eliana/presidio-plan/4312-yellow-rose-road
 2026-11-02 07:03,Highland Homes,1609 Deer Park Way,The Parks at Wilson Creek,Celina,991000,991000,0,14,0,https://www.highlandhomes.com/dfw/celina/the-parks-at-wilson-creek/158-005
 2026-11-02 07:03,Coventry Homes,244 Mountain Laurel Drive,Myrtle Creek,Waxahachie,609990,609990,0,14,0,https://www.coventryhomes.com/new-homes/tx/waxahachie/myrtle-creek/bremond/244-mountain-laurel-drive/
 2026-11-02 07:03,Coventry Homes,1905 Campfire Trail,Pecan Square 40,Northlake,499990,499990,0,14,0,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-40/roberts/1905-campfire-trail/
@@ -172,7 +175,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-28 10:59,Century Communities,729 Vineyard Way,Prestige Series   60 ,Forney,374888,389888,-15000,9,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/prestige-series---60-/lots/5bnn08-729-vineyard-way
 2026-10-28 10:59,Century Communities,705 Vineyard Way,Prestige Series   60 ,Forney,379900,399900,-20000,9,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/prestige-series---60-/lots/5bnn02-705-vineyard-way
 2026-10-28 10:59,Riverside Homebuilders,12117 Clastic Court,,Krum,557900,559900,-2000,9,1,https://www.riversidehomebuilders.com/quick-move-in/12117-clastic-court/
-2026-10-28 10:59,Riverside Homebuilders,405 Texas Sage Trail,,Weatherford,544900,544900,0,9,0,https://www.riversidehomebuilders.com/quick-move-in/405-texas-sage-trail/
 2026-10-28 10:59,Riverside Homebuilders,6525 Huron Drive,,Princeton,599900,609900,-10000,9,1,https://www.riversidehomebuilders.com/quick-move-in/6525-huron-drive/
 2026-10-28 10:59,Riverside Homebuilders,8813 CR 623,,,499900,499900,0,9,0,https://www.riversidehomebuilders.com/quick-move-in/8813-cr-623/
 2026-10-28 10:59,Beazer Homes,3920 Amethyst Drive,Chalk Hill,Celina,409116,409116,0,9,0,https://www.beazer.com/dallas-TX/celina/chalk-hill/rainier/3016
@@ -209,7 +211,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-27 18:37,Century Communities,474 W 10th Street,Sperling Farms,Ferris,342900,342900,0,8,0,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/ferris/sperling-farms/lots/0e09-474-w-10th-street
 2026-10-27 18:37,First Texas Homes,513 South Hidden Lakes Drive,,DeSoto,659950,659950,0,8,0,https://www.firsttexashomes.com/community/desoto/16537/hidden-lakes-estates/1729525/513-south-hidden-lakes-drive-desoto-tx-75115/
 2026-10-27 18:37,Beazer Homes,3029 Flintrock Lane,The Villages of Hurricane Creek,Anna,338990,338990,0,8,0,https://www.beazer.com/dallas-TX/anna/the-villages-of-hurricane-creek/teton/0808
-2026-10-27 14:54,First Texas Homes,9908 Wild Flower Way,,Ponder,391065,391065,0,8,0,https://www.firsttexashomes.com/community/ponder/18821/tabor-ranch/5000083/9908-wild-flower-way-ponder-tx-76259/
 2026-10-27 14:54,First Texas Homes,8506 Great Stone Tr,,Rowlett,454987,454987,0,8,0,https://www.firsttexashomes.com/community/rowlett/16550/trails-at-cottonwood-creek/5000005/8506-great-stone-tr-rowlett-tx-75089/
 2026-10-27 14:54,D.R. Horton,608 West Creek Fork Loop,Whitewing Trails,Princeton,327990,327990,0,8,0,https://www.drhorton.com/texas/dallas/princeton/whitewing-trails/qmis/608-west-creek-fork-loop
 2026-10-27 14:54,D.R. Horton,1214 Wolfcity Dr,Winchester Crossing,Princeton,324490,324490,0,8,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1214-wolfcity-dr
@@ -351,7 +352,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,1004 Goldenrod Drive,Timberbrook 4a 5 4b 70s,Justin,499515,499515,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/justin/timberbrook-4a-5-4b-70s/caraway/1004-goldenrod-drive/
 2026-10-25 07:04,Bloomfield Homes,1033 Emerald Trace Drive,Timberbrook 4b,Justin,550000,550000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/justin/timberbrook-4b/primrose-fe/1033-emerald-trace-drive/
 2026-10-25 07:04,Bloomfield Homes,1244 Dove Haven Drive,Timberbrook 4b,Justin,625000,625000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/justin/timberbrook-4b/spring-cress-ii/1244-dove-haven-drive/
-2026-10-25 07:04,Bloomfield Homes,3664 Jordan Way,Georgetown at Kings Fort 50s,Kaufman,349000,349000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/kaufman/georgetown-at-kings-fort-50s/willow-ii/3664-jordan-way/
 2026-10-25 07:04,Bloomfield Homes,115 Winterwood Drive,Bear Creek Elements,Lavon,421117,421117,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-elements/redbud-ii/115-winterwood-drive/
 2026-10-25 07:04,Bloomfield Homes,806 Alder Drive,Bear Creek Classic 50,Lavon,424331,424331,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-50/cypress-ii/806-alder-drive/
 2026-10-25 07:04,Bloomfield Homes,7253 Cherry Blossom Lane,Union Park Classic 55,Little Elm,575000,575000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/little-elm/union-park-classic-55/rose-ii/7253-cherry-blossom-lane/
@@ -374,7 +374,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,13113 Limestone Street,Woodstone,Providence Village,550000,550000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/providence-village/woodstone/rose-ii/13113-limestone-street-1/
 2026-10-25 07:04,Bloomfield Homes,925 Cannes Drive,The Oaks,Red Oak,530000,530000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/magnolia-ii/925-cannes-drive/
 2026-10-25 07:04,Bloomfield Homes,933 Denham Drive,The Oaks,Red Oak,559000,559000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/seaberry-ii/933-denham-drive/
-2026-10-25 07:04,Bloomfield Homes,1236 Wrenwood Lane,The Oaks,Red Oak,484000,484000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/caraway/1236-wrenwood-lane/
 2026-10-25 07:04,Bloomfield Homes,1251 Wrenwood Lane,The Oaks,Red Oak,559000,559000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/seaberry-ii/1251-wrenwood-lane/
 2026-10-25 07:04,Bloomfield Homes,1017 Bearing Street,Waterscape Classic 50s,Royse City,389900,389900,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/waterscape-classic-50s/dogwood-iii/1017-bearing-street/
 2026-10-25 07:04,Bloomfield Homes,1034 Watercourse Place,Waterscape Classic 60s,Royse City,549900,549900,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/waterscape-classic-60s/rose-ii/1034-watercourse-pl/
