@@ -1,4 +1,6 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-02 14:45,Meritage Homes,2764 Teton Street,,Corinth,339900,351400,-11500,14,1,https://www.meritagehomes.com/state/tx/dallasft-worth/2764-teton-street
+2026-11-02 14:45,Meritage Homes,2110 Santa Anita Street,,Seagoville,308449,308449,0,2,0,https://www.meritagehomes.com/state/tx/dallasft-worth/2110-santa-anita-street
 2026-11-02 11:27,Riverside Homebuilders,146 Aurora Avenue,,,439925,439925,0,14,0,https://www.riversidehomebuilders.com/quick-move-in/146-aurora-avenue/
 2026-11-02 11:27,D.R. Horton,10224 Cherrytree Lane,Townes Landing,Fort Worth,345510,345695,-185,14,1,https://www.drhorton.com/texas/fort-worth/fort-worth/townes-landing/qmis/10224-cherrytree-lane
 2026-11-02 11:27,M/I Homes,4312 Yellow Rose Road,Eliana,McKinney,639990,649990,-10000,14,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/mckinney/eliana/presidio-plan/4312-yellow-rose-road
@@ -121,7 +123,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-29 16:38,David Weekley Homes,9504 Dahlia Boulevard,Talia,Mesquite,359990,359990,0,9,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mesquite/talia/19810031
 2026-10-29 14:40,Bloomfield Homes,2813 Spring Valley Way,Villages of Hurricane Creek,Anna,575990,575990,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/anna/villages-of-hurricane-creek/magnolia-ii/2813-spring-valley-way
 2026-10-29 14:40,D.R. Horton,928 Jefferson Way,Hanolley Hills,Sherman,274990,274990,0,10,0,https://www.drhorton.com/texas/dallas/sherman/hanolley-hills/qmis/928-jefferson-way
-2026-10-29 14:40,D.R. Horton,205 Tall Cedar Way,Arbor Trails South,Princeton,205975,212975,-7000,10,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/205-tall-cedar-way
 2026-10-29 08:32,Coventry Homes,211 Harmony Way,Pecan Square 60,Northlake,815436,815436,0,10,0,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-60/lockhart/211-harmony-way/
 2026-10-29 08:32,Bloomfield Homes,1320 Clear Fork Street,Arrowbrooke,Aubrey,669000,669000,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/aubrey/arrowbrooke/bellflower-iv/1320-clear-fork-street/
 2026-10-29 08:32,Bloomfield Homes,837 Turnbull Avenue,Wildflower Ranch 60 65,Justin,569782,569782,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/fort-worth/wildflower-ranch-60-65/spring-cress-ii/837-turnbull-avenue/
@@ -153,7 +154,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-28 17:58,M/I Homes,7035 Butterfield Drive,Lane Ranch,Sanger,299990,301990,-2000,9,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/sanger/lane-ranch/aster-plan/7035-butterfield-drive
 2026-10-28 16:01,Highland Homes,2224 Grillo Lane,Sonoma Verde,McLendon-Chisholm,399900,399900,0,9,0,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/875-179
 2026-10-28 16:01,First Texas Homes,12737 Rutland Dr,,Farmers Branch,605990,605990,0,9,0,https://www.firsttexashomes.com/community/farmers-branch/16511/the-abbey-at-mercer-crossing/1751598/12737-rutland-dr-farmers-branch-tx-75234/
-2026-10-28 16:01,KB Home,124 Hudson Ln.,The Preserve Estates,Justin,368900,368900,0,9,0,
 2026-10-28 16:01,KB Home,104 Cayenne Rd.,Sierra Vista at Kelly Ranch,Aledo,389834,389834,0,9,0,
 2026-10-28 16:01,KB Home,229 Jewel Dr.,Sierra Vista at Kelly Ranch,Aledo,413912,413912,0,9,0,
 2026-10-28 16:01,Meritage Homes,2111 Longchamp Lane,,Seagoville,319107,319107,0,9,0,https://www.meritagehomes.com/state/tx/dallasft-worth/2111-longchamp-lane
@@ -319,7 +319,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,925 Kingbird Lane,Eagle Glen Elements,Alvarado,299900,299900,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/alvarado/eagle-glen-elements/laurel/925-kingbird-lane/
 2026-10-25 07:04,Bloomfield Homes,901 Twin Pine Court,West Crossing,Anna,599615,599615,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/anna/west-crossing/bellflower-ii/901-twin-pine-court/
 2026-10-25 07:04,Bloomfield Homes,917 Greenleaf Court,West Crossing,Anna,519434,519434,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/anna/west-crossing/bayberry-ii/917-greenleaf-court/
-2026-10-25 07:04,Bloomfield Homes,3309 Lakeland Lane,Villages of Hurricane Creek,Anna,659990,659990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/anna/villages-of-hurricane-creek/spring-cress-ii/3309-lakeland-lane/
 2026-10-25 07:04,Bloomfield Homes,1525 Soapberry Drive,Arrowbrooke 50,Aubrey,499000,499000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/aubrey/arrowbrooke-50/bayberry-ii/1525-soapberry-drive/
 2026-10-25 07:04,Bloomfield Homes,116 Creekstone Court,Arcadia Trails Classic 50,Balch Springs,375990,375990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/balch-springs/arcadia-trails-classic-50/cypress/116-creekstone-court/
 2026-10-25 07:04,Bloomfield Homes,131 Red Cedar Court,Arcadia Trails Classic 60,Balch Springs,415990,415990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/balch-springs/arcadia-trails-classic-60/rockcress/131-red-cedar-court/
