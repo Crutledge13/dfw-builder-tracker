@@ -1,4 +1,9 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-02 18:02,D.R. Horton,125 Tall Cedar Way,Arbor Trails South,Princeton,204990,214780,-9790,14,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/125-tall-cedar-way
+2026-11-02 18:02,D.R. Horton,6105 Silver Maple Way,Arbor Trails,Princeton,224990,224990,0,14,0,https://www.drhorton.com/texas/dallas/princeton/arbor-trails/qmis/6105-silver-maple-way
+2026-11-02 18:02,D.R. Horton,1915 Glory Dr,Asher Oaks,Dallas,250490,279325,-28835,14,1,https://www.drhorton.com/texas/dallas/bonham/asher-oaks/qmis/1915-glory-dr
+2026-11-02 18:02,Meritage Homes,201 Decoursey Drive,,Princeton,322660,322660,0,14,0,https://www.meritagehomes.com/state/tx/dallasft-worth/201-decoursey-drive
+2026-11-02 18:02,Meritage Homes,3502 Bridgeport Drive,,Farmersville,232389,242389,-10000,14,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3502-bridgeport-drive
 2026-11-02 15:52,K. Hovnanian Homes,208 Newman Court,,Wylie,649000,649000,0,14,0,
 2026-11-02 15:52,Meritage Homes,3045 O Pines Drive,,Farmersville,245435,245435,0,14,0,https://www.meritagehomes.com/state/tx/dallasft-worth/3045-o-pines-drive
 2026-11-02 15:52,D.R. Horton,2023 Ketchum Lane,Liberty Crossing,Royse City,371490,371490,0,1,0,http://www.drhorton.com/texas/dallas/royse-city/liberty-crossing/qmis/2023-ketchum-lane
@@ -128,7 +133,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-29 16:38,First Texas Homes,305 Sequoia Lane,,Denton,499950,499950,0,2,0,https://www.firsttexashomes.com/community/denton/18639/parkside/1735370/305-sequoia-lane-denton-tx-76210/
 2026-10-29 16:38,D.R. Horton,910 Milkweed Dr,Waterbend,Euless,429990,429990,0,10,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/910-milkweed-dr
 2026-10-29 16:38,David Weekley Homes,9504 Dahlia Boulevard,Talia,Mesquite,359990,359990,0,9,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mesquite/talia/19810031
-2026-10-29 14:40,Bloomfield Homes,2813 Spring Valley Way,Villages of Hurricane Creek,Anna,575990,575990,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/anna/villages-of-hurricane-creek/magnolia-ii/2813-spring-valley-way
 2026-10-29 14:40,D.R. Horton,928 Jefferson Way,Hanolley Hills,Sherman,274990,274990,0,10,0,https://www.drhorton.com/texas/dallas/sherman/hanolley-hills/qmis/928-jefferson-way
 2026-10-29 08:32,Coventry Homes,211 Harmony Way,Pecan Square 60,Northlake,815436,815436,0,10,0,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-60/lockhart/211-harmony-way/
 2026-10-29 08:32,Bloomfield Homes,1320 Clear Fork Street,Arrowbrooke,Aubrey,669000,669000,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/aubrey/arrowbrooke/bellflower-iv/1320-clear-fork-street/
