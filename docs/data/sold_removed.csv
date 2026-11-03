@@ -1,4 +1,18 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-03 12:26,Century Communities,1541 Sugarberry Lane,Lone Oak 50s,Alvarado,264888,274888,-10000,15,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/alvarado/lone-oak/lone-oak-50s/lots/1a21--
+2026-11-03 12:26,D.R. Horton,2040 Hearn Drive,Liberty Crossing,Royse City,358750,368750,-10000,15,1,https://www.drhorton.com/texas/dallas/royse-city/liberty-crossing/qmis/2040-hearn-drive
+2026-11-03 12:26,D.R. Horton,1806 Nestling Street,Crane Crossing,Crandall,271740,271740,0,15,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1806-nestling-street
+2026-11-03 12:26,D.R. Horton,212 Pheasant Run Road,Northspur,Terrell,267490,293990,-26500,15,1,https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/212-pheasant-run-road
+2026-11-03 12:26,D.R. Horton,2010 Reveille Way,Northspur,Terrell,307490,312490,-5000,15,1,https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/2010-reveille-way
+2026-11-03 12:26,D.R. Horton,1215 Silent Peak Dr,Winchester Crossing,Princeton,312490,312490,0,15,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1215-silent-peak-dr
+2026-11-03 12:26,D.R. Horton,1217 Dry Brook Way,Winchester Crossing,Princeton,269490,269490,0,15,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1217-dry-brook-way
+2026-11-03 12:26,D.R. Horton,1221 Dry Brook Way,Winchester Crossing,Princeton,271490,271490,0,15,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1221-dry-brook-way
+2026-11-03 12:26,D.R. Horton,1303 Dry Brook Way,Winchester Crossing,Princeton,257490,257490,0,15,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1303-dry-brook-way
+2026-11-03 12:26,D.R. Horton,217 Mlm Parkway,Dry Creek,Bridgeport,289990,289990,0,15,0,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/217-mlm-parkway
+2026-11-03 12:26,D.R. Horton,528 Red Admiral Lane,Monarch at the Meadows,Denton,284720,284990,-270,15,1,https://www.drhorton.com/texas/fort-worth/denton/monarch-at-the-meadows/qmis/528-red-admiral-lane
+2026-11-03 12:26,D.R. Horton,200 Tall Cedar Way,Arbor Trails South,Princeton,204990,204990,0,15,0,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/200-tall-cedar-way
+2026-11-03 12:26,D.R. Horton,708 Rock Point Road,Riverfield,Josephine,253990,313990,-60000,7,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/708-rock-point-road
+2026-11-03 12:26,D.R. Horton,612 Broad River Lane,Riverfield,Josephine,253990,253990,0,4,0,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/612-broad-river-lane
 2026-11-03 09:28,Coventry Homes,1628 Peridot Parkway,Solterra 40,Mesquite,390990,409990,-19000,15,1,https://www.coventryhomes.com/new-homes/tx/mesquite/solterra-40/roberts/1628-peridot-parkway/
 2026-11-03 09:28,D.R. Horton,609 Riverbrook Lane,Riverfield,Josephine,248990,253990,-5000,15,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/609-riverbrook-lane
 2026-11-03 09:28,D.R. Horton,604 Dresden Drive,Riverfield,Josephine,248990,253990,-5000,15,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/604-dresden-drive
@@ -484,7 +498,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-21 15:54,HistoryMaker Homes,2929 Kimberwick Drive,Churchill,Anna,299990,299990,0,2,0,https://www.historymaker.com/new-homes/dallas-fort-worth/anna/churchill/2929-kimberwick-drive
 2026-10-21 15:54,K. Hovnanian Homes,5632 Taylor Trail,,Arlington,609000,609000,0,2,0,
 2026-10-21 15:54,David Weekley Homes,4721 Maxwell Drive,Painted Tree West Cottages,McKinney,439892,439892,0,1,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mckinney/painted-tree-west-cottages/19850015
-2026-10-21 12:40,Bloomfield Homes,4370 Michigan Avenue,Westside Preserve 70,Midlothian,715000,715000,0,2,0,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/westside-preserve-70/lilly-iv/4370-michigan-avenue/
 2026-10-21 08:46,Bloomfield Homes,2617 Acton Drive,Somerset Classic 70s 80s,Mansfield,654990,654990,0,2,0,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset-classic-70s-80s/daffodil/2617-acton-drive/
 2026-10-21 07:05,M/I Homes,1736 Shad Bush Drive,Sanderos,Fort Worth,399990,399990,0,2,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/fort-worth/sanderos/pizarro-plan/1736-shad-bush-drive
 2026-10-21 07:05,M/I Homes,1008 Norcross Court,Hunters Ridge,Crowley,399990,399990,0,2,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/crowley/hunters-ridge/livingston-plan/1008-norcross-court
