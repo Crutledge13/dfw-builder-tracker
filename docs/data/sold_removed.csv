@@ -1,4 +1,17 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-04 08:39,Riverside Homebuilders,1002 Perrin Lane,,Van Alstyne,649900,649900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/1002-perrin-lane/
+2026-11-04 08:39,Riverside Homebuilders,1325 Frio Drive,,Springtown,344900,346900,-2000,16,1,https://www.riversidehomebuilders.com/quick-move-in/1325-frio-drive/
+2026-11-04 08:39,Riverside Homebuilders,153 Big Sky Road,,Decatur,484900,484900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/153-big-sky-road/
+2026-11-04 08:39,Riverside Homebuilders,2208 Continent Court,,Krum,604900,609900,-5000,16,1,https://www.riversidehomebuilders.com/quick-move-in/2208-continent-court/
+2026-11-04 08:39,Riverside Homebuilders,2305 Gypsum Street,,Krum,619900,624900,-5000,16,1,https://www.riversidehomebuilders.com/quick-move-in/2305-gypsum-street/
+2026-11-04 08:39,Riverside Homebuilders,585 Brown Road,,,569900,589900,-20000,16,1,https://www.riversidehomebuilders.com/quick-move-in/585-brown-road/
+2026-11-04 08:39,Riverside Homebuilders,814 Valley Ridge Road,,Van Alstyne,569900,569900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/814-valley-ridge-road/
+2026-11-04 08:39,Riverside Homebuilders,532 Waterford Park Boulevard,,Weatherford,415350,415350,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/532-waterford-park-boulevard
+2026-11-04 08:39,Riverside Homebuilders,810 CR 200,,,531475,531475,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200/
+2026-11-04 08:39,Riverside Homebuilders,8755 CR 623,,,449900,459900,-10000,16,1,https://www.riversidehomebuilders.com/quick-move-in/8755-cr-623
+2026-11-04 08:39,Century Communities,380 Declan Street,Pennsylvania Avenue,Springtown,324900,329900,-5000,16,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/springtown/pennsylvania-avenue/lots/1245-380-declan-street
+2026-11-04 08:39,Trophy Signature Homes,6657 Valley Lake Lane,Tesoro at Chisholm Trail Ranch,Crowley,342990,347990,-5000,16,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/crowley/tesoro-at-chisholm-trail-ranch/6657-valley-lake-lane
+2026-11-04 08:39,Bloomfield Homes,137 Kingfisher Lane,The Lakes at Parks of Aledo,Aledo,539990,539990,0,16,0,https://www.bloomfieldhomes.com/new-homes/tx/aledo/the-lakes-at-parks-of-aledo/cypress-ii/137-kingfisher-lane/
 2026-11-04 01:52,Riverside Homebuilders,1001 Nogalito Avenue,,Crowley,509900,519900,-10000,16,1,https://www.riversidehomebuilders.com/quick-move-in/1001-nogalito-avenue
 2026-11-04 01:52,Perry Homes,2512 Swansong Lane,Devonshire 55,Forney,540900,540900,0,16,0,https://www.perryhomes.com/new-homes/texas/dallas/devonshire/devonshire-55/2512-swansong-lane
 2026-11-04 01:52,Perry Homes,2652 Buckingham Lane,Cambridge Crossing 50,Celina,660900,660900,0,16,0,https://www.perryhomes.com/new-homes/texas/dallas/cambridge-crossing/cambridge-crossing-50/2652-buckingham-lane
@@ -283,7 +296,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-28 08:33,Meritage Homes,121 Winchester Hill Lane,,Princeton,274990,274990,0,9,0,https://www.meritagehomes.com/state/tx/dallasft-worth/121-winchester-hill-lane
 2026-10-28 08:33,D.R. Horton,162 Davis Lane,The Hills at Reunion,Newark,289990,289990,0,9,0,https://www.drhorton.com/texas/fort-worth/newark/the-hills-at-reunion/qmis/162-davis-lane
 2026-10-28 08:33,M/I Homes,1716 Gulin Street,Verandah,Royse City,318990,319990,-1000,9,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/royse-city/verandah/barbosa-plan/1716-gulin-street
-2026-10-28 07:08,KB Home,3706 Blooming Prairie Dr.,Heartland Signature,Crandall,287978,287978,0,9,0,
 2026-10-28 07:08,KB Home,704 Saint Lawrence Dr.,Cottonwood Creek,Seagoville,277471,277471,0,9,0,
 2026-10-28 06:06,Coventry Homes,1041 Pelotazo Avenue,Wildflower Ranch,Fort Worth,574990,574990,0,9,0,https://www.coventryhomes.com/new-homes/tx/fort-worth/wildflower-ranch/shepherd/1041-pelotazo-avenue/
 2026-10-28 06:06,D.R. Horton,2836 Tranquil Ln,California Meadows,Arlington,365990,365990,0,9,0,https://www.drhorton.com/texas/fort-worth/arlington/california-meadows/qmis/2836-tranquil-ln
