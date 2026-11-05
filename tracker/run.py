@@ -32,7 +32,7 @@ log = logging.getLogger("tracker")
 TZ = ZoneInfo("America/Chicago")
 FMT = "%Y-%m-%d %H:%M"
 
-EXTRACT_VERSION = 4        # bump when price reading improves: homes re-read from their own page get corrected quietly
+EXTRACT_VERSION = 5        # bump when price reading improves: homes re-read from their own page get corrected quietly
 MILLION_FIX_VERSION = 4     # reader that first read $1,000,000+ prices on pages and cards
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
@@ -285,6 +285,10 @@ class Recorder:
                             c["new"] = price
             if not lost_sale:
                 h["builder_was_price"] = obs.get("builder_was_price")
+            if not obs.get("status") and int(h.get("status_rank") or 0) == rank:
+                # the old reader took the status from a neighbouring home's card (D.R. Horton 2026-11-05):
+                # forget it, so the listing's own status for this home can fill in again
+                h["status"], h["status_rank"] = "", 0
             h["price_source"] = rank
             if not h.get("active") and h.get("gone_unverified"):
                 h["gone_unverified"] = None

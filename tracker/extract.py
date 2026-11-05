@@ -234,9 +234,27 @@ def city_from_url(url: str, skip=()) -> str:
     return ""
 
 
+_DIRECTIONS = {"n", "s", "e", "w", "north", "south", "east", "west"}
+
+
+def _street_words(key: list[str]) -> list[str]:
+    words = key[1:]
+    while words and words[0] in _DIRECTIONS and len(words) > 1:
+        words = words[1:]
+    if len(words) > 1 and words[-1] in SUFFIXES:
+        words = words[:-1]
+    return words
+
+
 def same_address(a: str, b: str) -> bool:
+    """Same house number AND same street name. Street types may differ or be missing ('Saddle Blanket Dr' =
+    'Saddle Blanket Drive' = 'Saddleblanket'), but '4820 Silver Chute Ave' is not '4820 Silver Vein Ave'
+    (D.R. Horton pages list nearby homes with the same house number on another street, 2026-11-05)."""
     ka, kb = address_key(a).split("-"), address_key(b).split("-")
-    return len(ka) > 1 and len(kb) > 1 and ka[:2] == kb[:2]
+    if len(ka) < 2 or len(kb) < 2 or ka[0] != kb[0]:
+        return False
+    sa, sb = "".join(_street_words(ka)), "".join(_street_words(kb))
+    return bool(sa and sb) and (sa.startswith(sb) or sb.startswith(sa))
 
 
 def address_key(addr: str) -> str:
@@ -530,6 +548,24 @@ def _pick_price(main):
     return first, was
 
 
+def _own_status(text: str, own_address: str):
+    """First status word that belongs to this page's home: not under a 'similar homes' heading and not
+    next to another home's address (D.R. Horton home pages list nearby homes as cards '<h2>Under Contract</h2>
+    <h3>1715 Patricia Dr</h3>'; reading that as the page's status marked ~600 for-sale homes Pending, 2026-11-05)."""
+    sim = SIMILAR_RE.search(text)
+    end = sim.start() if sim else len(text)
+    if not own_address:  # no address in the URL or title: the first one in the page body is the home's own
+        first = STREET_RE.search(text, 0, end)
+        own_address = clean_address(first.group(0)) if first else ""
+    for st in STATUS_WORDS.finditer(text, 0, end):
+        near = text[max(0, st.start() - 120):st.start()] + " | " + text[st.end():st.end() + 120]
+        others = [a.group(0) for a in STREET_RE.finditer(near)
+                  if not (own_address and same_address(clean_address(a.group(0)), own_address))]
+        if not others:
+            return st
+    return None
+
+
 def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     for t in soup(["script", "style", "noscript", "footer", "nav"]):
         t.decompose()
@@ -558,7 +594,7 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
     # whole numbers only: "From $509,762 Sq Ft 2074" must not read as 9,762 sq ft
     sqft = (re.search(r"(?<![\d,.$])(\d[\d,]{2,5})\s*(?:-\s*[\d,]+\s*)?(?:sq\.?\s*ft|sqft|square feet|sf)\b", text, re.I)
             or re.search(r"\b(?:sq\.?\s*ft\.?|sqft|square feet)\s*:?\s*(\d,?\d{3}|\d{3})\b(?![\d,])", text, re.I))
-    status = STATUS_WORDS.search(text)
+    status = _own_status(text, address or address_from_url(url))
     # Hidden form fields carrying the home's own specs (Meritage: <input id="bedrooms" type="hidden" value="5">)
     # beat words scraped from the page, where "bed"/"bath" labels sit next to unrelated digits
     hid = {i: (soup.find("input", attrs={"id": i, "type": "hidden"}) or {}).get("value")

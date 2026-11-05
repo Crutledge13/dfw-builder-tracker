@@ -1145,3 +1145,36 @@ def test_big_page_not_cut_off():
     assert not r.truncated and r.text.endswith('"end":1}</script>')
     r = client_for(big, max_bytes=1_000_000).get("https://example.com/communities/dallas-ft-worth")
     assert r.truncated and len(r.text) < 1_000_001
+
+
+def test_neighbour_with_same_house_number_is_not_this_home():
+    """D.R. Horton 2026-11-05: the page for 4820 Silver Chute Ave ($319,990, 1,656 sq ft) lists nearby homes,
+    among them 4820 Silver Vein Ave ($393,990, 2,981 sq ft). Matching addresses on house number + first street
+    word took the neighbour's record: a fake +$74,000 'increase' (and the reverse on the other home's page).
+    Its own page also showed a neighbour card's 'Under Contract', which made for-sale homes read as Pending."""
+    from tracker.extract import same_address
+    assert not same_address("4820 Silver Chute Ave", "4820 Silver Vein Ave")
+    assert same_address("204 Saddle Blanket Dr", "204 Saddleblanket Drive")
+    assert same_address("3526 Thach Ln.", "3526 Thach Lane")
+    assert same_address("123 N Main St", "123 Main Street")
+    assert not same_address("4827 Fuller Court Unit 502", "4827 Fuller Court Unit 504")
+
+    def card(addr, price, beds, sqft, plan, status):
+        return {"PlanName": plan, "Address": addr, "CityStateZip": "Aubrey TX, 76227", "SquareFootage": sqft,
+                "NumberOfBedrooms": beds, "NumberOfBathrooms": 2, "Price": price, "Status": status}
+    data = [card("4820 Silver Vein Ave", 393990, 4, 2981, "Bastrop", "Available"),
+            card("1715 Silver Chute Ave", 299990, 3, 1500, "Cedarwood", "Under Contract")]
+    html = f"""<html><head><title>Home For Sale in Silverado | Aubrey, TX | D.R. Horton</title>
+      <script type="application/json">{json.dumps({"homes": data})}</script></head><body><main>
+      <h1 class="qmiAddressOne"><span>Home for sale at</span> 4820 Silver Chute Ave Aubrey, TX 76227</h1>
+      <div class="home-price"><div>$319,990</div></div>
+      <div class="property-details">3 Bed | 2 Bath | 2 Garage</div><div>1,656 Sq. Ft.</div>
+      <div class="cards">
+        <div class="card-content"><h2>Under Contract</h2><h3>1715 Silver Chute Ave</h3><p>3 Bed | 2 Bath</p></div>
+        <div class="card-content"><h2>$393,990</h2><h3>4820 Silver Vein Ave</h3><p>4 Bed | 3 Bath</p></div>
+      </div></main></body></html>"""
+    url = "https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4820-silver-chute-ave"
+    h = extract_homes(html, url, single=True)[0]
+    assert h["address"] == "4820 Silver Chute Ave"
+    assert h["price"] == 319990 and h["sqft"] == 1656
+    assert "contract" not in (h["status"] or "").lower()
