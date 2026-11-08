@@ -226,6 +226,8 @@ class Recorder:
             if obs.get(field) or not isinstance(pos, int) or len(segs) < abs(pos) + 2:
                 continue
             seg = segs[pos]
+            if field == "community" and re.fullmatch(r"[a-z]+-series-{2,}\d+-?", seg, re.I) and len(segs) >= abs(pos) + 3:
+                seg = segs[pos - 1]   # Century: .../overland-grove/classic-series---50-/lots/...: the community is the parent
             if re.fullmatch(r"[\d-]+|lots?|series|quick-move-in-home|homes?", seg, re.I):
                 continue
             small = {"at", "of", "on", "the", "and", "in"}

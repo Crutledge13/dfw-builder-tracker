@@ -1178,3 +1178,22 @@ def test_neighbour_with_same_house_number_is_not_this_home():
     assert h["address"] == "4820 Silver Chute Ave"
     assert h["price"] == 319990 and h["sqft"] == 1656
     assert "contract" not in (h["status"] or "").lower()
+
+
+def test_century_series_url_community_and_garden_street():
+    """Century 2026-11-08: '1117 Garden Grove Ln' lost its address ('garden' looked like a product word) and
+    Overland Grove homes were filed under the 'Classic Series 50' product line instead of the community."""
+    from tracker.extract import address_from_url
+    u = ("https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/"
+         "classic-series---50-/lots/020s01-1117-garden-grove-ln")
+    assert address_from_url(u) == "1117 Garden Grove Ln"
+    assert address_from_url("https://x.example/lots/12-garden-series") == ""
+    assert address_from_url("https://x.example/plans/1500-classic-series-plan") == ""
+    obs = {"url": u}
+    R.Recorder.url_parts({"url_parts": {"community": -3}}, obs)
+    assert obs["community"] == "Overland Grove"
+    # David Weekley community names really end in 'series': keep them
+    obs = {"url": "https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/"
+                  "trails-at-waterside-villas-series/19490002"}
+    R.Recorder.url_parts({"url_parts": {"community": -2}}, obs)
+    assert obs["community"] == "Trails at Waterside Villas Series"

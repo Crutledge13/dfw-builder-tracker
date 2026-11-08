@@ -154,6 +154,9 @@ SUFFIXES = {"street", "st", "drive", "dr", "lane", "ln", "road", "rd", "court", 
 
 NOT_STREET = {"plan", "plans", "series", "collection", "homes", "home", "phase", "lot", "lots", "model", "floor",
               "floorplan", "elevation", "smart", "estates", "village", "classic", "classics", "garden"}
+STRONG_NOT_STREET = {"plan", "plans", "series", "collection", "lot", "lots", "model", "floor", "floorplan", "elevation"}
+STREET_TYPES = {"street", "st", "drive", "dr", "lane", "ln", "road", "rd", "court", "ct", "way", "avenue", "ave",
+                "boulevard", "blvd", "circle", "cir", "place", "pl", "parkway", "pkwy", "trail", "trl"}
 NON_HOME_RE = re.compile(r"/(floor-?plans?|plans?|series|collections?|models?|amenities|gallery|blog|news)(/|$)"
                          r"|-(plan|series|collection)/?$", re.I)
 
@@ -186,7 +189,10 @@ def address_from_url(url: str) -> str:
     if not m:
         return ""
     words = m.group(2).strip("-").split("-")
-    if words[-1] in NOT_STREET or any(w in NOT_STREET for w in words) or len(words[-1]) < 2:
+    # 'garden', 'village', 'estates'... are also ordinary street names ('1117 Garden Grove Ln', Century):
+    # allow them when the slug clearly ends in a street type
+    weak_ok = len(words) >= 2 and words[-1] in STREET_TYPES and not any(w in STRONG_NOT_STREET for w in words)
+    if words[-1] in NOT_STREET or (any(w in NOT_STREET for w in words) and not weak_ok) or len(words[-1]) < 2:
         return ""
     if words[-1] not in SUFFIXES and len(words) < 2:
         return ""
