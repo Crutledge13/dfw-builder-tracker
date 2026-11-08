@@ -1,26 +1,4 @@
 run_at,builder,pages,homes_seen,new_homes,price_cuts,price_increases,offers_seen,offer_changes,status,note
-2026-10-19 01:14,DRB Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth; seed 403: https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth
-2026-10-19 01:14,Meritage Homes,121,114,0,0,0,0,0,ok,
-2026-10-19 01:14,Perry Homes,120,82,0,0,0,0,0,ok,
-2026-10-19 01:14,KB Home,13,26,0,0,0,2,0,ok,
-2026-10-19 01:14,David Weekley Homes,106,102,0,0,0,0,0,ok,
-2026-10-19 01:14,M/I Homes,122,118,0,0,0,0,0,ok,
-2026-10-19 01:14,Shaddock Homes,83,79,0,0,0,2,0,ok,
-2026-10-19 07:03,Bloomfield Homes,122,596,0,0,0,0,0,ok,
-2026-10-19 07:03,D.R. Horton,123,585,20,0,0,0,0,ok,
-2026-10-19 07:03,First Texas Homes,122,262,0,0,0,5,0,ok,
-2026-10-19 07:03,Riverside Homebuilders,123,151,0,0,0,2,0,ok,
-2026-10-19 07:03,Trophy Signature Homes,122,324,0,0,0,1,0,ok,
-2026-10-19 07:03,Highland Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.highlandhomes.com/dfw/homes-for-sale; seed 403: https://www.highlandhomes.com/dfw/homes-for-sale
-2026-10-19 07:03,Graham Hart Home Builder,28,25,0,0,0,0,0,ok,seed 404: https://www.grahamhart.com/quick-move-in-homes/
-2026-10-19 07:03,Pyvot Homes,7,3,0,0,0,0,0,ok,
-2026-10-19 07:03,Century Communities,91,88,0,0,0,1,0,ok,
-2026-10-19 07:03,HistoryMaker Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.historymaker.com/quick-move-in-homes/; seed 403: https://www.historymaker.com/quick-move-in-homes/
-2026-10-19 07:03,K. Hovnanian Homes,3,88,0,0,0,1,0,ok,
-2026-10-19 07:03,Pacesetter Homes Texas,122,119,0,0,0,0,0,ok,seed 404: https://pacesetterhomestexas.com/new-homes-for-sale-dallas/
-2026-10-19 07:03,Beazer Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.beazer.com/dallas-tx; seed 403: https://www.beazer.com/dallas-tx
-2026-10-19 07:03,Coventry Homes,122,291,0,1,0,2,0,ok,
-2026-10-19 07:03,DRB Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth; seed 403: https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth
 2026-10-19 07:03,Meritage Homes,122,119,0,0,0,0,0,ok,
 2026-10-19 07:03,Perry Homes,121,94,0,0,0,0,0,ok,
 2026-10-19 07:03,KB Home,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.kbhome.com/new-homes-dallas-fort-worth; seed 403: https://www.kbhome.com/new-homes-dallas-fort-worth
@@ -4999,3 +4977,25 @@ run_at,builder,pages,homes_seen,new_homes,price_cuts,price_increases,offers_seen
 2026-11-08 10:21,M/I Homes,122,119,0,0,0,0,0,ok,
 2026-11-08 10:21,Shaddock Homes,86,83,0,0,0,3,0,ok,
 2026-11-08 10:21,Ashlyn Homes,49,35,0,0,0,0,0,ok,
+2026-11-08 12:15,Bloomfield Homes,122,515,0,0,0,0,0,ok,
+2026-11-08 12:15,D.R. Horton,123,519,0,0,0,0,0,ok,
+2026-11-08 12:15,First Texas Homes,122,278,0,0,0,5,0,ok,
+2026-11-08 12:15,Riverside Homebuilders,123,165,0,0,0,0,0,ok,
+2026-11-08 12:15,Trophy Signature Homes,122,473,0,0,0,1,0,ok,
+2026-11-08 12:15,Highland Homes,122,118,0,0,0,0,0,ok,
+2026-11-08 12:15,Graham Hart Home Builder,34,31,0,0,0,0,0,ok,
+2026-11-08 12:15,Pyvot Homes,7,3,0,0,0,0,0,ok,
+2026-11-08 12:15,Century Communities,78,75,0,0,0,2,0,ok,
+2026-11-08 12:15,HistoryMaker Homes,122,118,0,0,0,1,0,ok,
+2026-11-08 12:15,K. Hovnanian Homes,3,95,0,0,0,1,0,ok,
+2026-11-08 12:15,Pacesetter Homes Texas,122,119,0,0,0,0,0,ok,
+2026-11-08 12:15,Beazer Homes,122,156,0,0,0,1,0,ok,
+2026-11-08 12:15,Coventry Homes,122,288,0,0,0,2,0,ok,
+2026-11-08 12:15,DRB Homes,2,0,0,0,0,0,0,blocked,HTTP 403 on https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth; seed 403: https://www.drbhomes.com/drbhomes/find-your-home/texas/dallas-fort-worth
+2026-11-08 12:15,Meritage Homes,122,120,0,0,0,0,0,ok,
+2026-11-08 12:15,Perry Homes,121,120,0,0,0,0,0,ok,
+2026-11-08 12:15,KB Home,11,22,0,0,0,2,0,ok,
+2026-11-08 12:15,David Weekley Homes,122,161,0,0,0,0,0,ok,
+2026-11-08 12:15,M/I Homes,122,119,0,0,0,0,0,ok,
+2026-11-08 12:15,Shaddock Homes,86,83,0,0,0,3,0,ok,
+2026-11-08 12:15,Ashlyn Homes,49,35,0,0,0,0,0,ok,
