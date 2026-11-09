@@ -1,4 +1,7 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-09 11:50,Riverside Homebuilders,136 Hillview Trail,,Decatur,449900,454900,-5000,21,1,https://www.riversidehomebuilders.com/quick-move-in/136-hillview-trail/
+2026-11-09 11:50,Meritage Homes,7413 Kathy Court,,Denton,447094,447094,0,10,0,https://www.meritagehomes.com/state/tx/dallasft-worth/7413-kathy-court
+2026-11-09 11:50,M/I Homes,2033 Paradise Valley Drive,Valleybrooke,Mesquite,301990,304990,-3000,21,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/mesquite/valleybrooke/magnolia-plan/2033-paradise-valley-drive
 2026-11-09 05:58,Highland Homes,4032 Infinity Lane,Mosaic,Celina,699420,699420,0,21,0,https://www.highlandhomes.com/dfw/celina/mosaic/8009-020
 2026-11-09 05:04,Highland Homes,3713 Barrel Lane,Sandbrock Ranch,Aubrey,480000,509990,-29990,21,1,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/865-624
 2026-11-09 05:04,Highland Homes,2640 Paddington Drive,Cambridge Crossing,Celina,1150000,1250000,-100000,19,1,https://www.highlandhomes.com/dfw/celina/cambridge-crossing/147-124
@@ -31,14 +34,12 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-07 23:07,Highland Homes,307 Taylor Way,Pecan Square,Northlake,849990,849990,0,20,0,https://www.highlandhomes.com/dfw/northlake/pecan-square/117-074
 2026-11-07 17:34,Highland Homes,9204 Persimmon Lane,Talia,Mesquite,369900,394790,-24890,19,1,https://www.highlandhomes.com/dfw/mesquite/talia/869-056
 2026-11-07 17:34,HistoryMaker Homes,1420 Elle Lane,Keeneland,Aubrey,339990,339990,0,11,0,https://www.historymaker.com/new-homes/dallas-fort-worth/aubrey/keeneland/1420-elle-lane
-2026-11-07 17:34,D.R. Horton,177 Tumbleweed Drive,The Hills at Reunion,Newark,348990,348990,0,19,0,https://www.drhorton.com/texas/fort-worth/newark/the-hills-at-reunion/qmis/177-tumbleweed-drive
 2026-11-07 16:43,M/I Homes,100 Biscayne Lane,Verandah,Royse City,322990,324990,-2000,19,2,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/royse-city/verandah/barbosa-plan/100-biscayne-lane
 2026-11-07 09:01,Beazer Homes,2715 Triumph Court,Heath Golf and Yacht Club,Heath,559990,529990,30000,19,1,https://www.beazer.com/dallas-TX/heath/heath-golf-and-yacht-club/stockdale/0104
 2026-11-07 09:01,Beazer Homes,2506 Hawkins Street,Churchill,Anna,299990,299990,0,19,0,https://www.beazer.com/dallas-TX/anna/churchill/daisy/2032
 2026-11-07 07:59,Coventry Homes,2824 Paddington Drive,Cambridge Crossing 60,Celina,669990,679990,-10000,19,1,https://www.coventryhomes.com/new-homes/tx/celina/cambridge-crossing-60/claude/2824-paddington-drive/
 2026-11-07 07:59,Meritage Homes,3212 Hopewell Lane,,Fort Worth,297166,299666,-2500,19,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3212-hopewell-lane
 2026-11-07 07:59,Meritage Homes,125 Teton Street,,Greenville,294537,294537,0,19,0,https://www.meritagehomes.com/state/tx/dallasft-worth/125-teton-street
-2026-11-07 06:51,Bloomfield Homes,1445 Vista Run Lane,Chaparral Park 60 65,Oak Point,669000,689000,-20000,19,1,https://www.bloomfieldhomes.com/new-homes/tx/oak-point/chaparral-park-60-65/primrose-fe-vi/1445-vista-run-lane/
 2026-11-07 06:51,Riverside Homebuilders,8489 CR 623,,,513550,555200,-41650,19,1,https://www.riversidehomebuilders.com/quick-move-in/8489-cr-623
 2026-11-07 06:51,Meritage Homes,913 Angel Street,,Josephine,277490,287490,-10000,19,1,https://www.meritagehomes.com/state/tx/dallasft-worth/913-angel-street
 2026-11-07 06:51,D.R. Horton,806 King's Way,,Fort Worth,259990,259990,0,8,0,
@@ -98,7 +99,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-04 08:39,Riverside Homebuilders,153 Big Sky Road,,Decatur,484900,484900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/153-big-sky-road/
 2026-11-04 08:39,Riverside Homebuilders,2208 Continent Court,,Krum,604900,609900,-5000,16,1,https://www.riversidehomebuilders.com/quick-move-in/2208-continent-court/
 2026-11-04 08:39,Riverside Homebuilders,2305 Gypsum Street,,Krum,619900,624900,-5000,16,1,https://www.riversidehomebuilders.com/quick-move-in/2305-gypsum-street/
-2026-11-04 08:39,Riverside Homebuilders,585 Brown Road,,,569900,589900,-20000,16,1,https://www.riversidehomebuilders.com/quick-move-in/585-brown-road/
 2026-11-04 08:39,Riverside Homebuilders,814 Valley Ridge Road,,Van Alstyne,569900,569900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/814-valley-ridge-road/
 2026-11-04 08:39,Riverside Homebuilders,532 Waterford Park Boulevard,,Weatherford,415350,415350,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/532-waterford-park-boulevard
 2026-11-04 08:39,Riverside Homebuilders,810 CR 200,,,531475,531475,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/810-cr-200/
@@ -315,7 +315,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-29 18:56,D.R. Horton,906 Milkweed Dr,Waterbend,Euless,484240,504240,-20000,10,1,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/906-milkweed-dr
 2026-10-29 18:56,Beazer Homes,3930 Condor Drive,Wildcat Ranch,Crandall,259990,274990,-15000,10,1,https://www.beazer.com/dallas-TX/crandall/wildcat-ranch/allegheny2/4037
 2026-10-29 18:56,Meritage Homes,2210 Windy Trail,,Princeton,438885,438885,0,10,0,https://www.meritagehomes.com/state/tx/dallasft-worth/2210-windy-trail
-2026-10-29 16:38,First Texas Homes,305 Sequoia Lane,,Denton,499950,499950,0,2,0,https://www.firsttexashomes.com/community/denton/18639/parkside/1735370/305-sequoia-lane-denton-tx-76210/
 2026-10-29 16:38,D.R. Horton,910 Milkweed Dr,Waterbend,Euless,429990,429990,0,10,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/910-milkweed-dr
 2026-10-29 16:38,David Weekley Homes,9504 Dahlia Boulevard,Talia,Mesquite,359990,359990,0,9,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mesquite/talia/19810031
 2026-10-29 14:40,D.R. Horton,928 Jefferson Way,Hanolley Hills,Sherman,274990,274990,0,10,0,https://www.drhorton.com/texas/dallas/sherman/hanolley-hills/qmis/928-jefferson-way
@@ -608,7 +607,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-22 14:31,Trophy Signature Homes,1257 Wolfsbane Drive,Trails of Lavon,Lavon,282990,282990,0,3,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/lavon/trails-of-lavon/1257-wolfsbane-drive
 2026-10-22 14:31,Trophy Signature Homes,146 Sunset Canyon Drive,Elevon,Lavon,384990,384990,0,3,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/lavon/elevon/146-sunset-canyon-drive
 2026-10-22 14:31,M/I Homes,5105 Woodway Drive,Vintage Village,Argyle,439990,439990,0,3,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/argyle/vintage-village/pizarro-plan/5105-woodway-drive
-2026-10-22 12:03,Coventry Homes,1973 Starwood Lane,Townhomes at Ballpark,Arlington,417990,417990,0,3,0,https://www.coventryhomes.com/new-homes/tx/arlington/townhomes-at-ballpark/shortstop/1973-starwood-lane/
 2026-10-22 12:03,Beazer Homes,1636 Basalt Lane,Chalk Hill,Celina,359990,380155,-20165,3,1,https://www.beazer.com/dallas-TX/celina/chalk-hill/teton/3536
 2026-10-22 12:03,Beazer Homes,3921 Jasper Lane,Chalk Hill,Celina,399990,399990,0,3,0,https://www.beazer.com/dallas-TX/celina/chalk-hill/rainier/2903
 2026-10-22 12:03,Beazer Homes,1429 Topaz Trail,Chalk Hill,Celina,389990,399990,-10000,3,1,https://www.beazer.com/dallas-TX/celina/chalk-hill/cascade/4008
