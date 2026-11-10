@@ -12073,3 +12073,21 @@ at,builder,event,home_id,address,community,city,old,new,delta,pct,url,detail
 2026-11-10 07:11,D.R. Horton,removed,dr-horton:6929-jessamine-dr,6929 Jessamine Dr,Arbor Trails South,Princeton,235990,,,,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/6929-jessamine-dr,builder's page for this home now shows its community page (sold or withdrawn)
 2026-11-10 07:11,D.R. Horton,removed,dr-horton:122-pheasant-run-rd,122 Pheasant Run Road,Northspur,Terrell,267490,,,,https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/122-pheasant-run-road,builder's page for this home now shows its community page (sold or withdrawn)
 2026-11-10 07:11,D.R. Horton,removed,dr-horton:6111-silver-maple-way,6111 Silver Maple Way,Arbor Trails,Princeton,229990,,,,https://www.drhorton.com/texas/dallas/princeton/arbor-trails/qmis/6111-silver-maple-way,builder's page for this home now shows its community page (sold or withdrawn)
+2026-11-10 11:18,Trophy Signature Homes,new_home,trophy-signature:2113-santa-anita-st,2113 Santa Anita Street,,Seagoville,,299990,,,,
+2026-11-10 11:18,Trophy Signature Homes,new_home,trophy-signature:2115-santa-anita-st,2115 Santa Anita Street,,Seagoville,,289990,,,,
+2026-11-10 11:18,Bloomfield Homes,price_increase,bloomfield:3309-lakeland-ln,3309 Lakeland Lane,Villages of Hurricane Creek,Anna,652990,697118,44128,6.76,https://www.bloomfieldhomes.com/new-homes/tx/anna/villages-of-hurricane-creek/spring-cress-ii/3309-lakeland-lane/,
+2026-11-10 11:18,Century Communities,home_offer_removed,century:1017-park-oak-ln,1017 Park Oak Lane,Miraverde South,Crowley,,,,,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/crowley/miraverde-south/lots/20214-1017-park-oak-lane,Reduced $17K!
+2026-11-10 11:18,K. Hovnanian Homes,new_home,khov:1013-norwich-dr,1013 Norwich Drive,,Justin,,514000,,,,
+2026-11-10 11:18,K. Hovnanian Homes,new_home,khov:1011-norwich-dr,1011 Norwich Drive,,Justin,,449000,,,,
+2026-11-10 11:18,K. Hovnanian Homes,new_home,khov:1012-cumberland-dr,1012 Cumberland Drive,,Justin,,437000,,,,
+2026-11-10 11:18,K. Hovnanian Homes,price_cut,khov:1330-beauty-bloom-dr,1330 Beauty Bloom Drive,,Lavon,661000,641090,-19910,-3.01,,
+2026-11-10 11:18,K. Hovnanian Homes,price_cut,khov:1340-beauty-bloom-dr,1340 Beauty Bloom Drive,,Lavon,644000,622090,-21910,-3.4,,
+2026-11-10 11:18,K. Hovnanian Homes,new_home,khov:2602-ackley-ln,2602 Ackley Lane,,Wylie,,662000,,,,
+2026-11-10 11:18,Perry Homes,new_home,perry:516-walker-pkwy,516 Walker Parkway,The Heights at Uptown Celina 40 45,Celina,,496900,,,https://www.perryhomes.com/new-homes/texas/dallas/the-heights-at-uptown-celina/the-heights-at-uptown-celina-40-45/516-walker-parkway,
+2026-11-10 11:18,Perry Homes,new_home,perry:8720-texas-crescent-way,8720 Texas Crescent Way,Eliana 50,McKinney,,849900,,,https://www.perryhomes.com/new-homes/texas/dallas/eliana/eliana-50/8720-texas-crescent-way,
+2026-11-10 11:18,Perry Homes,new_home,perry:1344-periwinkle-dr,1344 Periwinkle Drive,Ramble 50,Celina,,821900,,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-50/1344-periwinkle-drive,
+2026-11-10 11:18,D.R. Horton,new_home,dr-horton:503-american-elm-dr,503 American Elm Drive,Waverly Estates,Josephine,,255015,,,https://www.drhorton.com/texas/dallas/josephine/waverly-estates/qmis/503-american-elm-drive,
+2026-11-10 11:18,Beazer Homes,new_home,beazer:914-allegro-ave,914 Allegro Avenue,Lovers Landing,Forney,,549990,,,https://www.beazer.com/dallas-TX/forney/lovers-landing/kerrville/0310,
+2026-11-10 11:18,Shaddock Homes,price_cut,shaddock:1825-acoma-way,1825 Acoma Way,Furst Ranch,Argyle,975000,950000,-25000,-2.56,https://www.shaddockhomes.com/homes/dallas-fort-worth/argyle/furst-ranch/1825-acoma-way,
+2026-11-10 11:18,Shaddock Homes,price_cut,shaddock:1920-acoma-way,1920 Acoma Way,Furst Ranch,Argyle,879000,860000,-19000,-2.16,https://www.shaddockhomes.com/homes/dallas-fort-worth/argyle/furst-ranch/1920-acoma-way,
+2026-11-10 11:18,David Weekley Homes,new_home,david-weekley:7804-switchwood-ln,7804 Switchwood Lane,Tavolo Park 50,Fort Worth,,659281,,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/tavolo-park-50/19000243,
