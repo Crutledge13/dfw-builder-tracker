@@ -32,7 +32,7 @@ log = logging.getLogger("tracker")
 TZ = ZoneInfo("America/Chicago")
 FMT = "%Y-%m-%d %H:%M"
 
-EXTRACT_VERSION = 5        # bump when price reading improves: homes re-read from their own page get corrected quietly
+EXTRACT_VERSION = 6        # bump when price reading improves: homes re-read from their own page get corrected quietly
 MILLION_FIX_VERSION = 4     # reader that first read $1,000,000+ prices on pages and cards
 MIN_CHANGE = 100            # ignore price wiggles smaller than this
 SUSPECT_PCT = 0.30          # a move bigger than 30% must be seen twice before it's recorded
@@ -273,7 +273,8 @@ class Recorder:
             if hid not in self.priced:
                 h.update(first_price=price, prev_price=None, last_change=None, last_change_at=None)
         lost_sale = h is not None and _back_to_was(h, price, obs)
-        if h is not None and obs.get("from_detail") and int(h.get("price_version") or 0) < EXTRACT_VERSION:
+        reader_upgrade = h is not None and obs.get("from_detail") and int(h.get("price_version") or 0) < EXTRACT_VERSION
+        if reader_upgrade:
             # first reading of this home's own page with the improved price reader: a correction, not a change
             # (unless the page just shows the builder's struck 'was' price without the sale price: Bloomfield
             # 2026-10-20, where such 'corrections' became fake $40k-$114k drops when the sale price came back)
@@ -415,7 +416,8 @@ class Recorder:
                     h["status_rank"] = rank
             new_inc = obs.get("incentive_text") or ""
             old_inc = h.get("incentive_text") or ""
-            first_page_read = obs.get("from_detail") and not h.get("page_read")
+            # first reading of the home's page, or first with an improved reader: its offer is a correction
+            first_page_read = obs.get("from_detail") and (not h.get("page_read") or reader_upgrade)
             if obs.get("from_detail"):
                 h["page_read"] = True
             if obs.get("from_detail"):  # the home's own page is the authority on its offer
@@ -430,11 +432,15 @@ class Recorder:
                         else:
                             self.event(b, "home_offer_new", h, detail=new_inc)
                         h["incentive_text"], h["offer_since"] = new_inc, now
-                elif not new_inc and old_inc and not first_page_read:
-                    self.event(b, "home_offer_removed", h, detail=old_inc)
+                elif not new_inc and old_inc and (not first_page_read or reader_upgrade):
+                    if not first_page_read:
+                        self.event(b, "home_offer_removed", h, detail=old_inc)
+                    # (an improved reader finding no offer of the home's own: dropped quietly, a correction)
                     for k in ("incentive_text", "offer_type", "offer_amount", "offer_rate", "offer_since"):
                         h[k] = None
-            elif new_inc and not old_inc:  # listing cards only fill a gap
+            elif new_inc and not old_inc and not h.get("page_read"):
+                # listing cards only fill a gap, and never on a home whose own page has been read: the page
+                # said it has no offer of its own (else card 'offer new' / page 'offer removed' every run)
                 if h.get("first_seen") != now:
                     self.event(b, "home_offer_new", h, detail=new_inc)
                 h["incentive_text"], h["offer_since"] = new_inc, now

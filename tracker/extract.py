@@ -485,7 +485,7 @@ SALE_CTX = re.compile(r"(sale|now|reduced|special|new price|your price|current p
 
 SIMILAR_RE = re.compile(r"(also for sale|similar homes|similar quick|you may also like|other homes|nearby homes|"
                         r"more homes|related homes|homes like this|other quick move|more quick move|recently viewed|"
-                        r"explore more homes|other available homes|available homes in|other plans)", re.I)
+                        r"explore more homes|other available homes|available homes in|other plans|additional homes)", re.I)
 
 
 # a home price as printed: $389,990 or $1,659,025 (not a $1,899 monthly payment)
@@ -648,7 +648,10 @@ def _html_home(soup: BeautifulSoup, url: str) -> dict | None:
 DISCLAIMER = re.compile(r"(\bapr\b.*based on|fico|not all (borrowers|buyers)|subject to (credit|change)|"
                         r"sales price of|loan amount|per \$1,?000|nmls|cannot be combined|terms and conditions|"
                         r"based on a|example|payments? (exclude|of \$)|restrictions apply|without (prior )?notice|"
-                        r"may be (changed|modified|discontinued|withdrawn)|forward commitments)", re.I)
+                        r"may be (changed|modified|discontinued|withdrawn)|forward commitments|"
+                        # adjustable-rate disclosures: "The fully indexed rate of 6.490% combines the index and
+                        # margin ..." (D.R. Horton 2026-11-09) states loan terms, not an offer
+                        r"fully indexed|index and margin|adjustment period|lifetime cap)", re.I)
 
 
 OFFER_RE = re.compile(
@@ -867,6 +870,11 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
             for k, v in fb.items():
                 if not homes[0].get(k) and v and k not in ("price", "builder_was_price"):
                     homes[0][k] = v
+            if not homes[0].get("builder_was_price") and fb.get("builder_was_price") \
+                    and fb.get("price") == homes[0].get("price"):
+                # the page prints the struck 'was' price next to the very price the JSON record has
+                # (Coventry: "$524,398 $464,990"); the record itself carries no was price
+                homes[0]["builder_was_price"] = fb["builder_was_price"]
         # FAQ blocks ("Does <builder> offer financing incentives in <community>?") describe the community's
         # offers in general and read as fragments ("(with $0 Down option ...); Up to"); the home's own offer
         # is elsewhere on the page (First Texas 2026-10-28)
@@ -894,9 +902,25 @@ def extract_homes(html: str, page_url: str, single: bool = False) -> list[dict]:
                 h["address"] = url_addr
             if h.get("lat") is None and len(maps) == 1:
                 h["lat"], h["lng"] = next(iter(maps))  # the page's own "view on map" link
-            h["incentive_text"] = " | ".join(incentive_snippets(main_text) or incentive_snippets(offer_text))
+            h["incentive_text"] = " | ".join(_own_offers(main_text) or _own_offers(offer_text))
             h["from_detail"] = True
     return homes
+
+
+PER_HOME_OFF = re.compile(r"\$[\d,.]+\s?k?\s*off", re.I)
+
+
+def _own_offers(text: str) -> list[str]:
+    """Offers on a home's own page. A per-home discount ("$59K off") printed only under an 'additional /
+    similar homes' heading belongs to one of those other homes: Coventry home pages (until 2026-11-10) gave
+    every home in a community the first carousel card's "$100K off", and logged a change whenever that
+    card changed. General promotions anywhere on the page still count."""
+    out = incentive_snippets(text)
+    sim = SIMILAR_RE.search(text)
+    if sim:
+        own = text[:sim.start()]
+        out = [o for o in out if not (PER_HOME_OFF.fullmatch(o) and o not in own)]
+    return out
 
 
 def _path(u: str) -> str:

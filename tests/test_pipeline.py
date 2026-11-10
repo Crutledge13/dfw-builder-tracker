@@ -1197,3 +1197,62 @@ def test_century_series_url_community_and_garden_street():
                   "trails-at-waterside-villas-series/19490002"}
     R.Recorder.url_parts({"url_parts": {"community": -2}}, obs)
     assert obs["community"] == "Trails at Waterside Villas Series"
+
+
+def test_additional_homes_discount_is_not_this_homes_offer():
+    """Coventry 2026-11-10: a home's page shows its own price and struck 'was' price, then an 'Additional Homes
+    Available in Landmark' carousel of other homes' cards with '$NK off' badges. Every home in the community
+    took the first card's '$100K off' as its offer (and a change was logged whenever that card changed)."""
+    def card(addr, plan, price, was, off):
+        return (f'<div class="card"><a href="/new-homes/tx/denton/landmark/{plan}/{addr.lower().replace(" ", "-")}/">'
+                f'Quick Move-In Under Construction Landmark {plan.title()} <span>${price:,}</span> '
+                f'<s>${was:,}</s> <span>${off}K off</span> 4 bed 2,433 sqft {addr}, Denton</a></div>')
+    data = {"homes": [{"address": "8516 Coralberry Lane", "city": "Denton", "zip": "76226", "price": 464990,
+                       "squareFeet": 2684, "bedrooms": 4,
+                       "url": "/new-homes/tx/denton/landmark/roberts/8516-coralberry-lane/"}]}
+    html = f"""<html><head><title>8516 Coralberry Lane | Coventry Homes</title>
+      <script type="application/json">{json.dumps(data)}</script></head><body><main>
+      <h1>8516 Coralberry Lane</h1><p>8516 Coralberry Lane Denton, TX 76226</p>
+      <div class="price"><s>$524,398</s> <span>$464,990</span></div>
+      <p>Interest Rates Starting at 2.99% (5.959% APR)</p>
+      <h2>Additional Homes Available in Landmark</h2>
+      {card("8304 Coralberry Lane", "zapata", 454990, 555781, 100)}
+      {card("8304 Waxwing Way", "williamson", 473990, 527134, 53)}
+      </main></body></html>"""
+    url = "https://www.coventryhomes.com/new-homes/tx/denton/landmark/roberts/8516-coralberry-lane/"
+    h = extract_homes(html, url, single=True)[0]
+    assert h["price"] == 464990 and h["builder_was_price"] == 524398
+    assert "off" not in h["incentive_text"] and "2.99%" in h["incentive_text"]
+    assert "construction" not in (h["status"] or "").lower()   # the carousel card's status, not this home's
+
+
+def test_adjustable_rate_disclosure_is_not_an_offer():
+    # D.R. Horton 2026-11-09: "The fully indexed rate of 6.490% combines the index and margin ..." was kept
+    # as part of 52 homes' offers
+    from tracker.extract import incentive_snippets
+    t = ("5/1 FHA ARM 4.750% (6.602% APR)  Interest rate is fixed for the first 5 years. The fully indexed rate "
+         "of 6.490% combines the index and margin, and it determines the monthly payment amounts after the "
+         "fixed-interest period during each adjustment period.")
+    out = incentive_snippets(t)
+    assert out and not any("indexed" in o for o in out)
+
+
+def test_reader_upgrade_corrects_a_homes_offer_quietly():
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "8508 Waxwing Way", "city": "Denton", "zip": "76226",
+         "url": "https://tb.example/8508-waxwing-way", "price": 498994}
+    R.Recorder(st, t0).observe(B, dict(h, from_detail=True, incentive_text="$100K off"))
+    hid = next(iter(st.homes))
+    st.homes[hid]["price_version"] = R.EXTRACT_VERSION - 1
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, from_detail=True, incentive_text=""))
+    assert rec.changes == [] and not st.homes[hid].get("incentive_text")
+    # its listing card's badge doesn't refill what the home's own page says it doesn't have
+    rec = R.Recorder(st, t0 + timedelta(hours=2))
+    rec.observe(B, dict(h, source="card", incentive_text="$54K off"))
+    assert rec.changes == [] and not st.homes[hid].get("incentive_text")
+    # a real offer change on the page is still logged
+    rec = R.Recorder(st, t0 + timedelta(hours=3))
+    rec.observe(B, dict(h, from_detail=True, incentive_text="Interest Rates Starting at 2.99%"))
+    assert [c["event"] for c in rec.changes] == ["home_offer_new"]
