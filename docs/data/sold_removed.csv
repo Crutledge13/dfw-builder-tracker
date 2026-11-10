@@ -1,4 +1,21 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-10 07:11,D.R. Horton,624 Edge Hill Lane,Riverfield,Josephine,274490,279490,-5000,22,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/624-edge-hill-lane
+2026-11-10 07:11,D.R. Horton,406 American Elm Drive,Waverly Estates,Josephine,270490,275490,-5000,22,1,https://www.drhorton.com/texas/dallas/josephine/waverly-estates/qmis/406-american-elm-drive
+2026-11-10 07:11,D.R. Horton,4836 Silver Strike Rd,Silverado,Aubrey,330990,325990,5000,22,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4836-silver-strike-rd
+2026-11-10 07:11,D.R. Horton,10769 Black Onyx Drive,Rock Creek West,Fort Worth,330765,329990,775,22,0,https://www.drhorton.com/texas/fort-worth/fort-worth/rock-creek-west/qmis/10769-black-onyx-drive
+2026-11-10 07:11,D.R. Horton,208 Rita Dr,Morning Ridge,Princeton,408490,403490,5000,22,0,https://www.drhorton.com/texas/dallas/princeton/morning-ridge/qmis/208-rita-dr
+2026-11-10 07:11,D.R. Horton,1224 Wolfcity Dr,Winchester Crossing,Princeton,320490,315490,5000,22,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1224-wolfcity-dr
+2026-11-10 07:11,D.R. Horton,1615 Somerville Dr,Creekside Ranch,Rowlett,242990,237990,5000,22,0,https://www.drhorton.com/texas/dallas/blue-ridge/creekside-ranch/qmis/1615-somerville-dr
+2026-11-10 07:11,D.R. Horton,940 Jefferson Way,Hanolley Hills,Sherman,287990,282990,5000,22,0,https://www.drhorton.com/texas/dallas/sherman/hanolley-hills/qmis/940-jefferson-way
+2026-11-10 07:11,D.R. Horton,408 Epiphany Lane,Elevon,Lavon,318990,328990,-10000,22,1,https://www.drhorton.com/texas/dallas/lavon/elevon/qmis/408-epiphany-lane
+2026-11-10 07:11,Beazer Homes,3032 Hollybrook Lane,The Villages of Hurricane Creek,Anna,409990,434990,-25000,21,1,https://www.beazer.com/dallas-TX/anna/the-villages-of-hurricane-creek/rainier/0814
+2026-11-10 07:11,D.R. Horton,239 Whispering Pine Drive,Wildwood,Royse City,256490,266490,-10000,22,1,https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/239-whispering-pine-drive
+2026-11-10 07:11,D.R. Horton,304 Buttonwood Drive,Wildwood,Royse City,256490,266490,-10000,22,1,https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/304-buttonwood-drive
+2026-11-10 07:11,D.R. Horton,205 Tall Cedar Way,Arbor Trails South,Princeton,255130,212975,42155,22,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/205-tall-cedar-way
+2026-11-10 07:11,D.R. Horton,221 Tall Cedar Way,Arbor Trails South,Princeton,214990,213990,1000,22,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/221-tall-cedar-way
+2026-11-10 07:11,D.R. Horton,6929 Jessamine Dr,Arbor Trails South,Princeton,235990,240990,-5000,22,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/6929-jessamine-dr
+2026-11-10 07:11,D.R. Horton,122 Pheasant Run Road,Northspur,Terrell,267490,293990,-26500,19,1,https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/122-pheasant-run-road
+2026-11-10 07:11,D.R. Horton,6111 Silver Maple Way,Arbor Trails,Princeton,229990,224990,5000,14,0,https://www.drhorton.com/texas/dallas/princeton/arbor-trails/qmis/6111-silver-maple-way
 2026-11-10 03:47,First Texas Homes,9812 Aiken Court,,Forney,698950,698950,0,22,0,https://www.firsttexashomes.com/community/forney/16548/polo-ridge/1736765/9812-aiken-court-forney-tx-75126/
 2026-11-10 03:47,D.R. Horton,2612 Goldfinch Drive,Eagle Creek,Denton,368900,369025,-125,22,1,https://www.drhorton.com/texas/fort-worth/denton/eagle-creek/qmis/2612-goldfinch-drive
 2026-11-10 03:47,D.R. Horton,2620 Mccormick Street,Eagle Creek,Denton,389550,389675,-125,22,1,https://www.drhorton.com/texas/fort-worth/denton/eagle-creek/qmis/2620-mccormick-street
@@ -351,6 +368,7 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-29 16:38,D.R. Horton,910 Milkweed Dr,Waterbend,Euless,429990,429990,0,10,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/910-milkweed-dr
 2026-10-29 16:38,David Weekley Homes,9504 Dahlia Boulevard,Talia,Mesquite,359990,359990,0,9,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mesquite/talia/19810031
 2026-10-29 14:40,D.R. Horton,928 Jefferson Way,Hanolley Hills,Sherman,274990,274990,0,10,0,https://www.drhorton.com/texas/dallas/sherman/hanolley-hills/qmis/928-jefferson-way
+2026-10-29 14:40,D.R. Horton,205 Tall Cedar Way,Arbor Trails South,Princeton,205975,212975,-7000,10,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/205-tall-cedar-way
 2026-10-29 08:32,Coventry Homes,211 Harmony Way,Pecan Square 60,Northlake,815436,815436,0,10,0,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-60/lockhart/211-harmony-way/
 2026-10-29 08:32,Bloomfield Homes,1320 Clear Fork Street,Arrowbrooke,Aubrey,669000,669000,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/aubrey/arrowbrooke/bellflower-iv/1320-clear-fork-street/
 2026-10-29 08:32,Bloomfield Homes,837 Turnbull Avenue,Wildflower Ranch 60 65,Justin,569782,569782,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/fort-worth/wildflower-ranch-60-65/spring-cress-ii/837-turnbull-avenue/
