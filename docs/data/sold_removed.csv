@@ -1,4 +1,9 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-10 16:32,Century Communities,715 Carson Drive,Overland Grove,Forney,349900,339900,10000,22,0,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/classic-series---50-/lots/2kk23-715-carson-drive
+2026-11-10 16:32,Meritage Homes,1563 Coldwater Way,,Crandall,334990,349990,-15000,22,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1563-coldwater-way
+2026-11-10 16:32,Meritage Homes,1013 Angel Street,,Josephine,248241,263241,-15000,22,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1013-angel-street
+2026-11-10 16:32,M/I Homes,3304 Majesty Lane,Kings Way,Denton,384990,384990,0,22,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/denton/kings-way/barbosa-plan/3304-majesty-lane
+2026-11-10 16:32,M/I Homes,201 Ogden Drive,Laprelle,Haslet,509990,519990,-10000,22,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/fort-worth/laprelle/addison-plan/201-ogden-drive
 2026-11-10 07:11,D.R. Horton,624 Edge Hill Lane,Riverfield,Josephine,274490,279490,-5000,22,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/624-edge-hill-lane
 2026-11-10 07:11,D.R. Horton,406 American Elm Drive,Waverly Estates,Josephine,270490,275490,-5000,22,1,https://www.drhorton.com/texas/dallas/josephine/waverly-estates/qmis/406-american-elm-drive
 2026-11-10 07:11,D.R. Horton,4836 Silver Strike Rd,Silverado,Aubrey,330990,325990,5000,22,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4836-silver-strike-rd
@@ -353,7 +358,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-30 06:55,Coventry Homes,2207 Birch Street,South Pointe 65,Mansfield,599990,599990,0,11,0,https://www.coventryhomes.com/new-homes/tx/mansfield/south-pointe-65/double-oak-ii/2207-birch-street/
 2026-10-30 04:01,Coventry Homes,3803 Summerfield Drive,Heartland 50 Dream Series,Heartland,339990,339990,0,1,0,https://www.coventryhomes.com/new-homes/tx/heartland/heartland-50-dream-series/wilson-1/3803-summerfield-drive/
 2026-10-30 03:16,Highland Homes,910 Pine Valley Drive,Quail Hollow,Rockwall,895000,895000,0,11,0,https://www.highlandhomes.com/dfw/rockwall/quail-hollow/146-024
-2026-10-30 03:16,D.R. Horton,2418 Starlight Street,The Preserve at Forum,Grand Prairie,495010,495010,0,11,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/2418-starlight-st
 2026-10-30 03:16,Perry Homes,2127 Terraces Boulevard,Terraces 62,Rockwall,806900,806900,0,11,0,https://www.perryhomes.com/new-homes/texas/dallas/terraces/terraces-62/2127-terraces-boulevard
 2026-10-29 20:42,Highland Homes,2921 Moab Drive,Ridgeline,McKinney,653650,645000,8650,8,1,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-054
 2026-10-29 20:42,HistoryMaker Homes,10937 Cacao Drive,Palmilla Springs,Fort Worth,389900,389900,0,2,0,https://www.historymaker.com/new-homes/dallas-fort-worth/fort-worth/palmilla-springs/10937-cacao-drive-30
@@ -587,7 +591,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,409 Chestnut Lane,Maplewood,Glenn Heights,429990,429990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/maplewood/hawthorne/409-chestnut-lane-1/
 2026-10-25 07:04,Bloomfield Homes,1957 Evergreen Lane,Maplewood,Glenn Heights,499990,499990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/maplewood/violet-iv/1957-evergreen-lane/
 2026-10-25 07:04,Bloomfield Homes,3229 Fraser Drive,Hampton Park,Glenn Heights,429990,429990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/hampton-park/jasmine/3229-fraser-drive/
-2026-10-25 07:04,Bloomfield Homes,929 Creekhollow Drive,Star Ranch Elements,Godley,383000,383000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/star-ranch-elements/gardenia/929-creekhollow-drive/
 2026-10-25 07:04,Bloomfield Homes,9349 Wildcat Ridge,Wildcat Ridge Phase 2 and 4,Godley,679990,679990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/wildcat-ridge-phase-2-and-4/primrose-vi/9349-wildcat-ridge/
 2026-10-25 07:04,Bloomfield Homes,12701 Caliber Drive,Coyote Crossing,Godley,539990,539990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/godley/coyote-crossing/primrose-fe/12701-caliber-drive/
 2026-10-25 07:04,Bloomfield Homes,4313 Red Yucca Lane,Silo Mills Classic 50,Joshua,399990,399990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/cypress-ii/4313-red-yucca-lane/
@@ -599,7 +602,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,115 Winterwood Drive,Bear Creek Elements,Lavon,421117,421117,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-elements/redbud-ii/115-winterwood-drive/
 2026-10-25 07:04,Bloomfield Homes,806 Alder Drive,Bear Creek Classic 50,Lavon,424331,424331,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/lavon/bear-creek-classic-50/cypress-ii/806-alder-drive/
 2026-10-25 07:04,Bloomfield Homes,7253 Cherry Blossom Lane,Union Park Classic 55,Little Elm,575000,575000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/little-elm/union-park-classic-55/rose-ii/7253-cherry-blossom-lane/
-2026-10-25 07:04,Bloomfield Homes,2101 Pennywell Drive,Somerset,Mansfield,489990,489990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset/jasmine/2101-pennywell-drive/
 2026-10-25 07:04,Bloomfield Homes,2400 Christopher Road,Rockwood,Mansfield,699660,699660,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/rockwood/daffodil/2400-christopher-road/
 2026-10-25 07:04,Bloomfield Homes,2501 Brixton Lane,Somerset Classic 70s 80s,Mansfield,861536,861536,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset-classic-70s-80s/lily-iv/2501-brixton-lane/
 2026-10-25 07:04,Bloomfield Homes,2502 Lakeway Lane,Somerset Classic 70s 80s,Mansfield,639990,639990,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset-classic-70s-80s/daffodil/2502-lakeway-lane/
