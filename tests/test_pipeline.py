@@ -1280,3 +1280,8 @@ def test_khov_home_page_status_offer_and_link():
     b = next(x for x in R.load_config() if x["slug"] == "khov")
     assert b["detail_re"].search("/new-construction-homes/texas/lavon/elevon/helena-esp-1330-beauty-bloom-drive-0018/")
     assert not b["detail_re"].search("/new-construction-homes/texas/heath/heath-golf-yacht/frankfurt/")
+    # DFW towns only: Houston-area homes (Waller) got in through a plain '/texas/' filter (2026-11-11)
+    assert not b["filter_re"].search(
+        "https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/omaha-29307-hillberry-oaks-ct-0023")
+    assert b["filter_re"].search(
+        "https://www.khov.com/new-construction-homes/texas/newark/aspire-at-reunion/x-1213-a-st-0001")
