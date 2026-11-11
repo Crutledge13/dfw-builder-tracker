@@ -1,20 +1,4 @@
 at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
-2026-11-11 07:30,K. Hovnanian Homes,29502 Pondview Dr,Oakberry Trails,,315000,5.0,3.0,2386,"Save $37,370",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/silver-maple-ii-29502-pondview-dr-0011
-2026-11-11 07:30,K. Hovnanian Homes,29423 Hillberry Oaks Ct,Oakberry Trails,,368042,4.0,3.0,2198,,https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/pasadena-esp-29423-hillberry-oaks-ct-0035
-2026-11-11 07:30,K. Hovnanian Homes,29503 Barnview Dr,Oakberry Trails,,324257,3.0,2.0,1641,,https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/spring-lake-29503-barnview-dr-0027
-2026-11-11 07:30,K. Hovnanian Homes,29310 Suncreek Ranch Ct,Oakberry Trails,,365000,4.0,3.5,3171,"Save $69,300",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/el-paso-29310-suncreek-ranch-ct-0011
-2026-11-11 07:30,K. Hovnanian Homes,29451 Oaklawn View Dr,Oakberry Trails,,439981,5.0,4.5,3227,"Save $41,000",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/tuscaloosa-29451-oaklawn-view-dr-0025
-2026-11-11 07:30,K. Hovnanian Homes,29406 Hillberry Oaks Ct,Oakberry Trails,,472453,5.0,4.5,3191,"Save $5,000",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/tuscaloosa-29406-hillberry-oaks-ct-0032
-2026-11-11 07:30,K. Hovnanian Homes,29535 Barnview Dr,Oakberry Trails,,367306,5.0,3.0,2386,"Save $5,000",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/silver-maple-ii-29535-barnview-dr-0025
-2026-11-11 07:30,K. Hovnanian Homes,29419 Hillberry Oaks Ct,Oakberry Trails,,376486,3.0,2.5,2111,,https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/tacoma-29419-hillberry-oaks-ct-0036
-2026-11-11 07:30,K. Hovnanian Homes,29447 Oaklawn View Dr,Oakberry Trails,,390000,4.0,3.5,2906,"Save $26,895",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/omaha-29447-oaklawn-view-dr-0026
-2026-11-11 07:30,K. Hovnanian Homes,21515 Barnridge Ct,Oakberry Trails,,299990,3.0,3.0,2026,"Save $56,881",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/silver-maple-21515-barnridge-ct-0024
-2026-11-11 07:30,K. Hovnanian Homes,29519 Barnview Dr,Oakberry Trails,,340385,3.0,2.5,2048,"Save $10,000 | Promo Rate 4.99% (7.316% APR)",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/scotch-pine-29519-barnview-dr-0026
-2026-11-11 07:30,K. Hovnanian Homes,29311 Hillberry Oaks Ct,Oakberry Trails,,389000,4.0,3.5,3119,"Save $63,560",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/el-paso-29311-hillberry-oaks-ct-0024
-2026-11-11 07:30,K. Hovnanian Homes,29503 Saddleview Dr,Oakberry Trails,,314527,3.0,2.0,1641,,https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/spring-lake-29503-saddleview-dr-0046
-2026-11-11 07:30,K. Hovnanian Homes,29530 Barnview Dr,Oakberry Trails,,319951,4.0,2.5,2253,"Save $51,000",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/spanish-cedar-29530-barnview-dr-0019
-2026-11-11 07:30,K. Hovnanian Homes,29402 Hillberry Oaks Ct,Oakberry Trails,,420711,4.0,3.5,2906,,https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/omaha-29402-hillberry-oaks-ct-0031
-2026-11-11 07:30,K. Hovnanian Homes,29307 Hillberry Oaks Ct,Oakberry Trails,,385000,4.0,3.5,2906,"Save $44,641",https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/omaha-29307-hillberry-oaks-ct-0023
 2026-11-11 02:08,David Weekley Homes,,Sandbrock Ranch,Aubrey,496938,4,3.0,2237,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/aubrey/sandbrock-ranch/19080325
 2026-11-10 17:18,Highland Homes,1748 Riverstone Drive,Ramble,Celina,625585,4,,2485,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/ramble/849-025
 2026-11-10 17:18,Highland Homes,1304 Whitetail Road,Ramble,Celina,555885,3,,2283,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/ramble/849-010
@@ -35,17 +19,17 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-10 14:43,Bloomfield Homes,14434 McClint Street,Creekview Meadows,Pilot Point,662024,5,4.0,3620,,https://www.bloomfieldhomes.com/new-homes/tx/pilot-point/creekview-meadows/rose-ii/14434-mcclint-street/
 2026-11-10 14:43,Bloomfield Homes,9029 Palafox Street,Waterscape Classic 50s,Royse City,541984,5,4.0,3557,,https://www.bloomfieldhomes.com/new-homes/tx/royse-city/waterscape-classic-50s/rose-ii/9029-palafox-street/
 2026-11-10 14:43,First Texas Homes,1805 Briarwood West,,Midlothian,760328,6,4.0,4315,Zero Down & Rates as Low as 3.99% | Zero Down Available | 3.99% Rate Buydown CCM,https://www.firsttexashomes.com/community/midlothian/16553/shady-valley-estates/5000233/1805-briarwood-west-midlothian-tx-76065/
-2026-11-10 14:43,K. Hovnanian Homes,1346 Beauty Bloom Drive,,Lavon,664000,5.0,3.5,3435,"Save $31,210",
+2026-11-10 14:43,K. Hovnanian Homes,1346 Beauty Bloom Drive,,Lavon,664000,5,3.5,3435,"Save $31,210",
 2026-11-10 14:43,D.R. Horton,1038 Thornberry Drive,Wildcat Ranch,Crandall,261740,3,2.0,1582,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/1038-thornberry-drive
 2026-11-10 14:43,D.R. Horton,5348 Cormorant Grove,Wildcat Ranch,Crandall,253740,3,2.0,1460,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/5348-cormorant-grove
 2026-11-10 14:43,D.R. Horton,5751 Sunshine Lane,Wildcat Ranch,Crandall,287740,4,2.5,2086,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/5751-sunshine-lane
 2026-11-10 14:43,D.R. Horton,2857 Whispering Pines Way,California Meadows,Arlington,372010,4,2.5,1606,,https://www.drhorton.com/texas/fort-worth/arlington/california-meadows/qmis/2857-whispering-pines
 2026-11-10 11:18,Trophy Signature Homes,2113 Santa Anita Street,,Seagoville,299990,4,2.0,1809,,
 2026-11-10 11:18,Trophy Signature Homes,2115 Santa Anita Street,,Seagoville,289990,3,2.0,1646,,
-2026-11-10 11:18,K. Hovnanian Homes,1013 Norwich Drive,,Justin,514000,4.0,3.5,2881,"Save $10,370",
-2026-11-10 11:18,K. Hovnanian Homes,1011 Norwich Drive,,Justin,449000,3.0,2.0,2000,"Save $5,620",
-2026-11-10 11:18,K. Hovnanian Homes,1012 Cumberland Drive,,Justin,437000,3.0,2.0,2000,,
-2026-11-10 11:18,K. Hovnanian Homes,2602 Ackley Lane,,Wylie,662000,5.0,4.0,3217,,
+2026-11-10 11:18,K. Hovnanian Homes,1013 Norwich Drive,,Justin,514000,4,3.5,2881,"Save $10,370",
+2026-11-10 11:18,K. Hovnanian Homes,1011 Norwich Drive,,Justin,449000,3,2.0,2000,"Save $5,620",
+2026-11-10 11:18,K. Hovnanian Homes,1012 Cumberland Drive,,Justin,437000,3,2.0,2000,,
+2026-11-10 11:18,K. Hovnanian Homes,2602 Ackley Lane,,Wylie,662000,5,4.0,3217,,
 2026-11-10 11:18,Perry Homes,516 Walker Parkway,The Heights at Uptown Celina 40 45,Celina,496900,3,2.0,1737,,https://www.perryhomes.com/new-homes/texas/dallas/the-heights-at-uptown-celina/the-heights-at-uptown-celina-40-45/516-walker-parkway
 2026-11-10 11:18,Perry Homes,8720 Texas Crescent Way,Eliana 50,McKinney,849900,5,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/eliana/eliana-50/8720-texas-crescent-way
 2026-11-10 11:18,Perry Homes,1344 Periwinkle Drive,Ramble 50,Celina,821900,5,4.5,3553,,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-50/1344-periwinkle-drive
@@ -60,7 +44,7 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-09 19:47,D.R. Horton,1020 Bijan Lane,Wildflower Ranch,Justin,527535,5,3.5,3164,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/justin/wildflower-ranch/qmis/1020-bijan-lane
 2026-11-09 16:03,D.R. Horton,1421 Arthur Blvd,Royal Court,Frisco,637190,4,2.5,2618,,https://www.drhorton.com/texas/dallas/frisco/royal-court/qmis/1421-arthur-blvd
 2026-11-09 16:03,D.R. Horton,1501 Oak Valley,Audra Oaks,Denton,334990,3,2.0,1452,,https://www.drhorton.com/texas/dallas/denton/audra-oaks/qmis/1501-oak-valley
-2026-11-09 16:03,K. Hovnanian Homes,125 Summer Rain Way,,Newark,383000,4.0,3.0,2102,,
+2026-11-09 16:03,K. Hovnanian Homes,125 Summer Rain Way,,Newark,383000,4,3.0,2102,,
 2026-11-09 12:46,Bloomfield Homes,1206 Summer Grove Drive,Villages of Walnut Grove,Midlothian,610144,5,4.0,3435,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/magnolia-ii/1206-summer-grove-drive/
 2026-11-09 12:46,Bloomfield Homes,3813 Amber Road,Villages of Walnut Grove,Midlothian,616478,5,4.0,3485,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/seaberry/3813-amber-road/
 2026-11-09 12:46,D.R. Horton,209 Sophie Dr,Morning Ridge,Princeton,406965,4,2.5,3059,"Up to $8k in Flex Cash | home in a Dallas North community between 11/2/26 - 11/22/26 we’ll include up to $8k in Flex Cash available on all homes for eligible options and closing costs plus save up to $75k on select homes | Fall Savings Promotion includes up to $8,000 for all homes to be used for eligible upgrades, options and closing costs with any lender",https://www.drhorton.com/texas/dallas/princeton/morning-ridge/qmis/209-sophie-dr
@@ -79,7 +63,7 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-09 11:50,Bloomfield Homes,537 Red Maple Road,The Retreat at North Grove 60,Waxahachie,415000,4,2.0,2034,,https://www.bloomfieldhomes.com/new-homes/tx/waxahachie/the-retreat-at-north-grove-60/cypress/537-red-maple-road/
 2026-11-09 11:50,Bloomfield Homes,1897 Wellspring Way,The Oasis at North Grove 60,Waxahachie,430000,4,3.0,2253,,https://www.bloomfieldhomes.com/new-homes/tx/waxahachie/the-oasis-at-north-grove-60/rockcress/1897-wellspring-way/
 2026-11-09 11:50,Bloomfield Homes,1909 Wellspring Way,The Oasis at North Grove 60,Waxahachie,520000,5,4.0,2845,,https://www.bloomfieldhomes.com/new-homes/tx/waxahachie/the-oasis-at-north-grove-60/violet-iv/1909-wellspring-way/
-2026-11-09 11:50,K. Hovnanian Homes,5640 Taylor Trail,,Arlington,715000,5.0,4.5,3795,"Save $21,010",
+2026-11-09 11:50,K. Hovnanian Homes,5640 Taylor Trail,,Arlington,715000,5,4.5,3795,"Save $21,010",
 2026-11-07 07:59,Perry Homes,2006 Forest Park Way,The Parks at Wilson Creek 60,Celina,855900,4,3.5,3396,,https://www.perryhomes.com/new-homes/texas/dallas/the-parks-at-wilson-creek/the-parks-at-wilson-creek-60/2006-forest-park-way
 2026-11-07 07:59,Perry Homes,2809 Kenilworth Way,The Parks at Wilson Creek 40,Celina,496900,3,2.0,2024,,https://www.perryhomes.com/new-homes/texas/dallas/the-parks-at-wilson-creek/the-parks-at-wilson-creek-40/2809-kenilworth-way
 2026-11-07 07:59,Perry Homes,9705 Dianthus Road,Trinity Falls 50,McKinney,649900,4,3.5,2574,,https://www.perryhomes.com/new-homes/texas/dallas/trinity-falls/trinity-falls-50/9705-dianthus-road
@@ -87,9 +71,9 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-07 06:51,Beazer Homes,2508 Freeman Street,Churchill,Anna,409990,5,3.0,2845,,https://www.beazer.com/dallas-TX/anna/churchill/rainier/1808
 2026-11-07 06:51,David Weekley Homes,1620 Cedarberry Drive,The Ridge at Northlake,Northlake,687249,4,3.5,3034,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/northlake/the-ridge-at-northlake/19620065
 2026-11-06 18:55,Trophy Signature Homes,4210 Fork Drive,,Farmersville,344990,4,5.0,2536,,
-2026-11-06 18:55,K. Hovnanian Homes,524 Forest Haven Drive,,Van Alstyne,346000,4.0,2.0,1826,,
-2026-11-06 18:55,K. Hovnanian Homes,2042 Sycamore Ridge Trail,,Van Alstyne,377000,4.0,3.0,2102,,
-2026-11-06 18:55,K. Hovnanian Homes,5628 Taylor Trail,,Arlington,658000,4.0,3.5,2768,"Save $5,630",
+2026-11-06 18:55,K. Hovnanian Homes,524 Forest Haven Drive,,Van Alstyne,346000,4,2.0,1826,,
+2026-11-06 18:55,K. Hovnanian Homes,2042 Sycamore Ridge Trail,,Van Alstyne,377000,4,3.0,2102,,
+2026-11-06 18:55,K. Hovnanian Homes,5628 Taylor Trail,,Arlington,658000,4,3.5,2768,"Save $5,630",
 2026-11-06 18:55,D.R. Horton,909 Crossvine Dr,Waterbend,Euless,454240,3,2.5,1821,,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/909-crossvine-dr
 2026-11-06 18:55,Beazer Homes,450 Plains Place,Woodcreek,Fate,559990,5,4.5,3840,,https://www.beazer.com/dallas-TX/fate/woodcreek/telluride/2222
 2026-11-06 14:53,Bloomfield Homes,100 Creekstone Drive,Arcadia Trails Classic 60,Balch Springs,379990,4,2.0,2034,,https://www.bloomfieldhomes.com/new-homes/tx/balch-springs/arcadia-trails-classic-60/cypress/100-creekstone-drive/
@@ -100,8 +84,8 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-06 14:53,Bloomfield Homes,526 Tree Lane,Maplewood,Glenn Heights,399990,3,2.0,1840,,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/maplewood/dogwood/526-tree-lane/
 2026-11-06 14:53,Bloomfield Homes,1222 Summer Grove Drive,Villages of Walnut Grove,Midlothian,516904,4,3.0,2521,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/caraway/1222-summer-grove-drive/
 2026-11-06 14:53,Bloomfield Homes,925 Alderwood Drive,The Oaks,Red Oak,465374,4,2.5,2103,,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/jasmine/925-alderwood-drive/
-2026-11-06 14:53,K. Hovnanian Homes,1163 Barbazzano Drive,,Fate,654000,5.0,4.5,3795,"Save $5,700",
-2026-11-06 14:53,K. Hovnanian Homes,1340 Beauty Bloom Drive,,Lavon,644000,4.0,3.5,3026,"Save $26,200",
+2026-11-06 14:53,K. Hovnanian Homes,1163 Barbazzano Drive,,Fate,654000,5,4.5,3795,"Save $5,700",
+2026-11-06 14:53,K. Hovnanian Homes,1340 Beauty Bloom Drive,,Lavon,644000,4,3.5,3026,"Save $26,200",
 2026-11-06 14:53,D.R. Horton,100 Oscar Bish Well Drive,The Wells,Mineral Wells,244990,4,2.0,1477,"5.99% (6.862% APR) | 4.750% (6.602% APR) | Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/mineral-wells/the-wells/qmis/100-oscar-bish-well-drive
 2026-11-06 14:53,D.R. Horton,102 Oscar Bish Well Drive,The Wells,Mineral Wells,247990,4,2.0,1657,"5.99% (6.862% APR) | 4.750% (6.602% APR) | Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/mineral-wells/the-wells/qmis/102-oscar-bish-well-drive
 2026-11-06 14:53,D.R. Horton,105 Cicero Smith Court,The Wells,Mineral Wells,219990,3,2.0,1280,"5.99% (6.862% APR) | 4.750% (6.602% APR) | Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/mineral-wells/the-wells/qmis/105-cicero-smith-court
@@ -110,7 +94,7 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-06 14:53,D.R. Horton,413 Campfield Drive,Trailstone,Caddo Mills,321490,3,2.0,1617,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/caddo-mills/trailstone/qmis/413-campfield-drive
 2026-11-06 09:46,D.R. Horton,4168 Sunny Branch Lane,Sunnycreek,Crowley,301990,3,2.0,1332,"5.99% (6.862% APR) | 4.750% (6.602% APR) | Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/crowley/sunnycreek/qmis/4168-sunny-branch-lane
 2026-11-06 09:46,D.R. Horton,4172 Sunny Branch Lane,Sunnycreek,Crowley,324990,5,2.0,1883,"5.99% (6.862% APR) | 4.750% (6.602% APR) | Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/crowley/sunnycreek/qmis/4172-sunny-branch-lane
-2026-11-06 09:46,K. Hovnanian Homes,1330 Beauty Bloom Drive,,Lavon,661000,4.0,3.5,3454,"Save $24,900",
+2026-11-06 09:46,K. Hovnanian Homes,1330 Beauty Bloom Drive,,Lavon,661000,4,3.5,3454,"Save $24,900",
 2026-11-06 09:01,Trophy Signature Homes,6933 Deadwood Trail,,Crowley,364990,4,,2131,,
 2026-11-06 09:01,Trophy Signature Homes,6925 Deadwood Trail,,Crowley,349990,3,,1975,,
 2026-11-06 09:01,Trophy Signature Homes,6929 Deadwood Trail,,Crowley,389990,4,,2426,,
@@ -143,7 +127,7 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-05 18:14,D.R. Horton,5747 Sunshine Lane,Wildcat Ranch,Crandall,317740,4,3.0,2514,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/5747-sunshine-lane
 2026-11-05 18:14,D.R. Horton,5755 Sunshine Lane,Wildcat Ranch,Crandall,280740,4,2.5,1994,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/crandall/wildcat-ranch/qmis/5755-sunshine-lane
 2026-11-05 18:14,D.R. Horton,415 Campfield Drive,Trailstone,Caddo Mills,302490,3,2.0,1450,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/caddo-mills/trailstone/qmis/415-campfield-drive
-2026-11-05 18:14,K. Hovnanian Homes,4309 Dylan Road,,Celina,769000,5.0,4.5,3305,"Save $52,950",
+2026-11-05 18:14,K. Hovnanian Homes,4309 Dylan Road,,Celina,769000,5,4.5,3305,"Save $52,950",
 2026-11-05 18:14,D.R. Horton,216 Jockey Drive,Saddlebrook,Waxahachie,425990,4,3.0,2508,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/216-jockey-drive
 2026-11-05 18:14,D.R. Horton,329 Ridan Drive,Saddlebrook,Waxahachie,421990,4,2.0,2329,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/329-ridan-drive
 2026-11-05 18:14,D.R. Horton,317 Ridan Drive,Saddlebrook,Waxahachie,366990,3,2.0,1718,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/317-ridan-drive
@@ -154,7 +138,7 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-05 18:14,Beazer Homes,3773 Jimson Avenue,Goodland,Midlothian,458700,4,2.5,2097,,https://www.beazer.com/dallas-TX/midlothian/goodland/magnolia2/1009
 2026-11-05 18:14,Beazer Homes,3911 Jimson Avenue,Goodland,Midlothian,585936,4,3.0,3025,,https://www.beazer.com/dallas-TX/midlothian/goodland/summerfield3/1005
 2026-11-05 18:14,Beazer Homes,1468 Lady Bird Road,Wildflower Ranch,Justin,362258,3,2.0,1531,,https://www.beazer.com/dallas-TX/justin/wildflower-ranch/salado/4014
-2026-11-05 12:44,K. Hovnanian Homes,1222 Umber Willow Drive,,Lavon,561000,5.0,4.5,3711,"Save $10,642 | Promo Rate 4.99% (7.39% APR)",
+2026-11-05 12:44,K. Hovnanian Homes,1222 Umber Willow Drive,,Lavon,561000,5,4.5,3711,"Save $10,642 | Promo Rate 4.99% (7.39% APR)",
 2026-11-05 12:44,Shaddock Homes,621 Dublin Drive,,Celina,599900,3,2.5,2308,"Make Your Move with Lower Starting Payments, 3.99% Rate Year One! | Move-In Ready Conventional 3/2/1 Buydown.",
 2026-11-05 04:51,Coventry Homes,204 Barnwood Way,Pecan Square 60,Northlake,814146,5,1.0,4033,Interest Rates Starting at 2.99% (5.959% APR),https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-60/humble/204-barnwood-way/
 2026-11-05 04:51,D.R. Horton,807 Somerset Way,Somerset,Fort Worth,271990,4,2.0,1648,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/hillsboro/somerset/qmis/807-somerset-way
@@ -197,7 +181,7 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-11-04 16:06,D.R. Horton,2900 Maple Orchard Lane,Orchard Village,Fort Worth,272990,3,2.5,1493,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/fort-worth/orchard-village/qmis/2900-maple-orchard-lane
 2026-11-04 16:06,D.R. Horton,2924 Maple Orchard Lane,Orchard Village,Fort Worth,293990,4,2.5,2054,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/fort-worth/orchard-village/qmis/2924-maple-orchard-lane
 2026-11-04 16:06,D.R. Horton,2816 Maple Orchard Lane,Orchard Village,Fort Worth,294990,4,2.5,2028,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/fort-worth/orchard-village/qmis/2816-maple-orchard-lane
-2026-11-04 16:06,K. Hovnanian Homes,11461 Wulstone Road,,Haslet,570000,4.0,3.5,2855,,
+2026-11-04 16:06,K. Hovnanian Homes,11461 Wulstone Road,,Haslet,570000,4,3.5,2855,,
 2026-11-04 16:06,D.R. Horton,1109 Brook Lane,Riverfield,Josephine,232490,3,2.0,1486,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/1109-brook-lane
 2026-11-04 16:06,D.R. Horton,1101 Brook Lane,Riverfield,Josephine,250490,4,2.0,1627,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/1101-brook-lane
 2026-11-04 16:06,D.R. Horton,1105 Brook Lane,Riverfield,Josephine,257490,5,2.5,2003,"We're including up to $1,000 toward your closing costs or design options with a new home purchase. | professionals can receive up to $1,000 toward | closing costs or up to $1,000 toward design",https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/1105-brook-lane
@@ -837,8 +821,8 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-23 17:08,Highland Homes,4208 Blackberry Lane,Wildridge,Oak Point,584240,4,,2565,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-243
 2026-10-23 17:08,Highland Homes,3918 Windy Point Road,Wildridge,Oak Point,647950,4,,3232,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-208
 2026-10-23 17:08,Highland Homes,1408 Hydrangea Court,Sandbrock Ranch,Aubrey,805630,4,,3700,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-137
-2026-10-23 17:08,K. Hovnanian Homes,11524 Vesper Row,,Haslet,689000,5.0,4.5,3757,"Save $8,818",
-2026-10-23 17:08,K. Hovnanian Homes,1001 Butterfly Lane,,Justin,538000,4.0,2.5,2823,"Save $16,460",
+2026-10-23 17:08,K. Hovnanian Homes,11524 Vesper Row,,Haslet,689000,5,4.5,3757,"Save $8,818",
+2026-10-23 17:08,K. Hovnanian Homes,1001 Butterfly Lane,,Justin,538000,4,2.5,2823,"Save $16,460",
 2026-10-23 17:08,Perry Homes,1823 Costa Verde Drive,Sonoma Verde 70,McLendon-Chisholm,767900,4,4.5,3525,,https://www.perryhomes.com/new-homes/texas/dallas/sonoma-verde/sonoma-verde-70/1823-costa-verde-drive
 2026-10-23 17:08,Perry Homes,1277 Cedarwood Court,Sweetgrass 50,Haslet,581900,4,3.0,2545,,https://www.perryhomes.com/new-homes/texas/dallas/sweetgrass/sweetgrass-50/1277-cedarwood-court
 2026-10-23 17:08,Perry Homes,612 Nogalito Way,North Sky 65,Celina,711900,4,3.5,2994,,https://www.perryhomes.com/new-homes/texas/dallas/north-sky/north-sky-65/612-nogalito-way
@@ -857,10 +841,10 @@ at,builder,address,community,city,price,beds,baths,sqft,incentive_text,url
 2026-10-23 15:14,Bloomfield Homes,1138 Bailey Ranch Road,The Lakes at Parks of Aledo,Aledo,709990,5,4.0,3481,,https://www.bloomfieldhomes.com/new-homes/tx/aledo/the-lakes-at-parks-of-aledo/spring-cress-ii/1138-bailey-ranch-road/
 2026-10-23 15:14,Beazer Homes,17001 Prieto Avenue,Wildflower Ranch,Justin,472802,4,3.5,1531,,https://www.beazer.com/dallas-TX/justin/wildflower-ranch/marathon/4101
 2026-10-23 14:29,Shaddock Homes,6341 Simone Avenue,,McKinney,889000,5,5.0,3718,"Make Your Move with Lower Starting Payments, 3.99% Rate Year One! | Move-In Ready Conventional 3/2/1 Buydown.",
-2026-10-23 13:19,K. Hovnanian Homes,205 Newman Court,,Wylie,696000,5.0,3.5,3691,,
+2026-10-23 13:19,K. Hovnanian Homes,205 Newman Court,,Wylie,696000,5,3.5,3691,,
 2026-10-23 13:19,D.R. Horton,9309 Subjeck Way,Highlands at Chapel Creek,Fort Worth,371685,4,2.0,1839,"Program offers up to $1,000 in closing costs (available with the use of any lender) or up to $1,000 in design center upgrades",https://www.drhorton.com/texas/fort-worth/fort-worth/highlands-at-chapel-creek/qmis/9309-subjeck-way-wo
-2026-10-23 12:28,K. Hovnanian Homes,2712 Ella Joy Court,,Heath,473000,3.0,2.5,2029,,
-2026-10-23 12:28,K. Hovnanian Homes,4309 Lilo Lane,,Celina,839000,4.0,3.5,2852,"Save $56,740",
+2026-10-23 12:28,K. Hovnanian Homes,2712 Ella Joy Court,,Heath,473000,3,2.5,2029,,
+2026-10-23 12:28,K. Hovnanian Homes,4309 Lilo Lane,,Celina,839000,4,3.5,2852,"Save $56,740",
 2026-10-23 12:28,Coventry Homes,3227 Fisher Road,The Homestead,Rockwall,649990,4,1.0,3667,,https://www.coventryhomes.com/new-homes/tx/rockwall/the-homestead/falls/3227-fisher-road/
 2026-10-23 11:42,Trophy Signature Homes,10649 Dillon Street,,Fort Worth,315990,3,2.0,1638,,
 2026-10-23 11:42,Trophy Signature Homes,10656 Dillon Street,,Fort Worth,315990,3,2.0,1628,,

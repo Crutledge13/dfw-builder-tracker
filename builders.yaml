@@ -136,7 +136,8 @@ builders:
     site: https://www.khov.com/
     seeds: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
     promos: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
-    sitemap_filter: '/texas/'
+    # DFW towns only: '/texas/' alone let Houston-area homes in (Waller, 2026-11-11) once home links counted
+    sitemap_filter: 'dallas-fort-worth|/new-construction-homes/texas/(aledo|allen|alvarado|anna|argyle|arlington|aubrey|azle|balch-springs|bedford|benbrook|boyd|bridgeport|brock|burleson|caddo-mills|carrollton|cedar-hill|celina|cleburne|colleyville|commerce|coppell|corinth|crandall|cresson|crowley|dallas|decatur|denison|denton|desoto|duncanville|ennis|euless|farmers-branch|farmersville|fate|ferris|flower-mound|forney|fort-worth|frisco|gainesville|garland|glenn-heights|godley|granbury|grand-prairie|grapevine|greenville|gunter|haltom-city|haslet|heartland|heath|howe|hurst|irving|josephine|joshua|justin|kaufman|keller|kennedale|krum|lancaster|lantana|lavon|lewisville|little-elm|lucas|mansfield|mckinney|mclendon-chisholm|melissa|mesquite|midlothian|millsap|mineral-wells|murphy|nevada|new-fairview|newark|northlake|oak-point|north-richland-hills|ovilla|paradise|parker|peaster|pilot-point|plano|ponder|poolville|princeton|prosper|providence-village|red-oak|rhome|richardson|roanoke|rockwall|rowlett|royse-city|sachse|saginaw|sanger|seagoville|sherman|southlake|springtown|sunnyvale|terrell|tioga|tolar|trenton|van-alstyne|venus|watauga|waxahachie|weatherford|westlake|wylie)/'
     # home pages end '<plan>-<street address>-<homesite no.>': '.../elevon/helena-esp-1330-beauty-bloom-drive-0018/'
     # (the default pattern wants the slug to start with digits, so every K. Hovnanian home lost its link)
     detail_pattern: '/new-construction-homes/texas/[^/]+/[^/]+/[a-z0-9-]*?\d{2,6}-[a-z0-9-]+-\d{2,5}/?$'
