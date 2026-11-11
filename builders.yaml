@@ -137,6 +137,9 @@ builders:
     seeds: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
     promos: [https://www.khov.com/find-new-homes/texas/dallas-fort-worth]
     sitemap_filter: '/texas/'
+    # home pages end '<plan>-<street address>-<homesite no.>': '.../elevon/helena-esp-1330-beauty-bloom-drive-0018/'
+    # (the default pattern wants the slug to start with digits, so every K. Hovnanian home lost its link)
+    detail_pattern: '/new-construction-homes/texas/[^/]+/[^/]+/[a-z0-9-]*?\d{2,6}-[a-z0-9-]+-\d{2,5}/?$'
     verified: false
 
   - name: Pacesetter Homes Texas

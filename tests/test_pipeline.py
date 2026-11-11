@@ -1256,3 +1256,27 @@ def test_reader_upgrade_corrects_a_homes_offer_quietly():
     rec = R.Recorder(st, t0 + timedelta(hours=3))
     rec.observe(B, dict(h, from_detail=True, incentive_text="Interest Rates Starting at 2.99%"))
     assert [c["event"] for c in rec.changes] == ["home_offer_new"]
+
+
+def test_khov_home_page_status_offer_and_link():
+    """K. Hovnanian (2026-11-11): 'Ready in March' sits right before the address '1330 Beauty Bloom Drive'
+    (not a year), the FHA mortgage-insurance fine print is not an offer, and its home links
+    ('<plan>-<address>-<homesite>') must count as home pages."""
+    html = '''<html><head><title>Quick Move-In Home – 1330 Beauty Bloom Drive – Elevon</title></head><body><main>
+    <h1>1330 Beauty Bloom Drive</h1><p>Ready in March</p><p>1330 Beauty Bloom Drive</p>
+    <p>The Helena ESP · Homesite 0018 · Lavon, TX</p>
+    <div><span>Your price now</span> <span>$641,090</span> <span>Was</span> <del>$665,990</del>
+    <span>Save $24,900</span></div><p>3,454 Sqft</p><p>4 bd. 3.5 ba.</p>
+    <p>For FHA mortgages, with a minimum down payment of 3.5%, Mortgage Insurance Premium (MIP) is required at an
+    upfront rate of 1.75% and is financed, in addition to monthly MIP at the required annual rate.</p>
+    </main></body></html>'''
+    url = "https://www.khov.com/new-construction-homes/texas/lavon/elevon/helena-esp-1330-beauty-bloom-drive-0018/"
+    h = extract_homes(html, url, single=True)[0]
+    assert h["price"] == 641090 and h["builder_was_price"] == 665990
+    assert h["status"] == "Ready in March"
+    assert "MIP" not in (h.get("incentive_text") or "") and "rate of" not in (h.get("incentive_text") or "")
+    assert extract_homes(html.replace("Ready in March", "Ready in March 2027"), url, single=True)[0]["status"] \
+        == "Ready in March 2027"
+    b = next(x for x in R.load_config() if x["slug"] == "khov")
+    assert b["detail_re"].search("/new-construction-homes/texas/lavon/elevon/helena-esp-1330-beauty-bloom-drive-0018/")
+    assert not b["detail_re"].search("/new-construction-homes/texas/heath/heath-golf-yacht/frankfurt/")

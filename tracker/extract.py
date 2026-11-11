@@ -67,7 +67,8 @@ INCENTIVE_WORDS = re.compile(
     re.I)
 STATUS_WORDS = re.compile(
     r"(move-?in ready|ready now|available now|under construction|coming soon|under contract|sold|pending|"
-    r"ready (?:in )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.? ?\d{0,4})", re.I)
+    # a year only when it is one: "Ready in March 1330 Beauty Bloom Drive" (K. Hovnanian) is a month + address
+    r"ready (?:in )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?(?:,? ?20[2-3]\d(?![\d,]))?)", re.I)
 DFW_CITY_RE = re.compile(r"\b(" + "|".join(sorted((re.escape(c) for c in "Allen|Anna|Argyle|Arlington|Aubrey|Azle|Balch Springs|Bedford|Benbrook|Burleson|Caddo Mills|Carrollton|Cedar Hill|Celina|Cleburne|Colleyville|Commerce|Coppell|Corinth|Crandall|Crowley|Dallas|Decatur|Denton|DeSoto|Duncanville|Ennis|Euless|Farmers Branch|Farmersville|Fate|Ferris|Flower Mound|Forney|Fort Worth|Frisco|Gainesville|Garland|Glenn Heights|Godley|Granbury|Grand Prairie|Grapevine|Greenville|Gunter|Haltom City|Haslet|Heath|Howe|Hurst|Irving|Josephine|Joshua|Justin|Kaufman|Keller|Kennedale|Krum|Lancaster|Lavon|Lewisville|Little Elm|Lucas|Mansfield|McKinney|McLendon-Chisholm|Melissa|Mesquite|Midlothian|Murphy|Nevada|New Fairview|Northlake|North Richland Hills|Oak Point|Ovilla|Parker|Pilot Point|Plano|Ponder|Princeton|Prosper|Providence Village|Red Oak|Rhome|Richardson|Roanoke|Rockwall|Rowlett|Royse City|Sachse|Saginaw|Sanger|Seagoville|Sherman|Southlake|Springtown|Sunnyvale|Terrell|Trenton|Van Alstyne|Venus|Watauga|Waxahachie|Weatherford|Westlake|Wylie|Aledo|Alvarado|Denison|Lantana|Tioga|Heartland|Poolville|Boyd|Paradise|Bridgeport|Peaster|Millsap|Brock|Tolar|Cresson|Newark|Azle|Springtown|Mineral Wells|Haslet|Godley|Rhome|Burleson|Joshua".split("|")), key=len, reverse=True)) + r")\b", re.I)
 STREET_RE = re.compile(
     r"\b\d{1,6}\s+(?:(?:[NSEW]|NE|NW|SE|SW)\.?\s+)?(?:[A-Z][A-Za-z0-9'.]*|\d{1,3}(?:st|nd|rd|th))"
@@ -651,7 +652,10 @@ DISCLAIMER = re.compile(r"(\bapr\b.*based on|fico|not all (borrowers|buyers)|sub
                         r"may be (changed|modified|discontinued|withdrawn)|forward commitments|"
                         # adjustable-rate disclosures: "The fully indexed rate of 6.490% combines the index and
                         # margin ..." (D.R. Horton 2026-11-09) states loan terms, not an offer
-                        r"fully indexed|index and margin|adjustment period|lifetime cap)", re.I)
+                        r"fully indexed|index and margin|adjustment period|lifetime cap|"
+                        # FHA mortgage-insurance fine print: "with a minimum down payment of 3.5%, Mortgage Insurance
+                        # Premium (MIP) is required at an upfront rate of 1.75%" (K. Hovnanian 2026-11-11)
+                        r"mortgage insurance|\bmip\b|\bpmi\b|minimum down payment)", re.I)
 
 
 OFFER_RE = re.compile(
