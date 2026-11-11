@@ -1,4 +1,8 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-11 02:08,Perry Homes,269 Woodoat Road,Myrtle Creek 60,Waxahachie,648900,623900,25000,23,0,https://www.perryhomes.com/new-homes/texas/dallas/myrtle-creek/myrtle-creek-60/269-woodoat-road
+2026-11-11 02:08,Perry Homes,2525 Domingo Drive,Walsh 50,Dallas,679900,648900,31000,23,0,https://www.perryhomes.com/new-homes/texas/dallas/walsh/walsh-50/2525-domingo-drive
+2026-11-11 02:08,D.R. Horton,3419 Basalt Drive,Ponder Farms,Ponder,245990,241990,4000,23,0,https://www.drhorton.com/texas/fort-worth/ponder/ponder-farms/qmis/3419-basalt-drive
+2026-11-11 02:08,David Weekley Homes,4280 Fox Trotter Drive,Sandbrock Ranch,Aubrey,516038,516038,0,21,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/aubrey/sandbrock-ranch/19080362
 2026-11-11 00:13,Perry Homes,2705 Kirkhill Lane,Devonshire 55,Forney,534900,521900,13000,23,0,https://www.perryhomes.com/new-homes/texas/dallas/devonshire/devonshire-55/2705-kirkhill-lane
 2026-11-10 20:16,Highland Homes,4018 Windy Point Road,Wildridge,Oak Point,528000,528000,0,23,0,https://www.highlandhomes.com/dfw/oak-point/wildridge/873-159
 2026-11-10 19:06,Meritage Homes,1009 Angel Street,,Josephine,237656,252656,-15000,22,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1009-angel-street
@@ -111,6 +115,7 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-07 06:51,D.R. Horton,816 King's Way,,Fort Worth,249990,249990,0,8,0,
 2026-11-07 06:51,D.R. Horton,818 King's Way,,Fort Worth,274990,274990,0,8,0,
 2026-11-07 06:51,D.R. Horton,820 King's Way,,Fort Worth,261990,261990,0,8,0,
+2026-11-07 06:51,David Weekley Homes,4280 Fox Trotter Drive,Sandbrock Ranch,Aubrey,449990,516038,-66048,17,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/aubrey/sandbrock-ranch/19080362
 2026-11-07 02:29,Highland Homes,832 Stone Grove Road,Hillstead,Lavon,425000,425000,0,19,0,https://www.highlandhomes.com/dfw/lavon/hillstead/834-032
 2026-11-07 01:08,Beazer Homes,1809 Dove Drive,Whitewing Trails,Princeton,460330,479990,-19660,18,1,https://www.beazer.com/dallas-TX/princeton/whitewing-trails/summerfield2/0804
 2026-11-07 01:08,Perry Homes,816 River Sky Road,Hillstead 50,Lavon,575900,574900,1000,19,0,https://www.perryhomes.com/new-homes/texas/dallas/hillstead/hillstead-50/816-river-sky-road
