@@ -1,4 +1,10 @@
 at,builder,address,community,city,old,new,delta,pct,offer,url
+2026-11-12 07:06,K. Hovnanian Homes,129 Summer Rain Way,Aspire at Reunion,Newark,394000,379000,-15000,-3.81,"Save $17,800 | Promo Rate 5.5% (5.826% APR)",https://www.khov.com/new-construction-homes/texas/newark/aspire-at-reunion/sweet-pea-129-summer-rain-way-0029/
+2026-11-12 07:06,K. Hovnanian Homes,1346 Beauty Bloom Drive,Elevon,Lavon,639090,619000,-20090,-3.14,"Save $51,300",https://www.khov.com/new-construction-homes/texas/lavon/elevon/denver-1346-beauty-bloom-drive-0020/
+2026-11-12 07:06,K. Hovnanian Homes,1330 Beauty Bloom Drive,Elevon,Lavon,641090,625000,-16090,-2.51,"Save $40,990",https://www.khov.com/new-construction-homes/texas/lavon/elevon/helena-esp-1330-beauty-bloom-drive-0018/
+2026-11-12 07:06,K. Hovnanian Homes,1340 Beauty Bloom Drive,Elevon,Lavon,622090,599000,-23090,-3.71,"Save $49,290",https://www.khov.com/new-construction-homes/texas/lavon/elevon/austin-1340-beauty-bloom-drive-0019/
+2026-11-12 07:06,K. Hovnanian Homes,1259 Umber Willow Drive,Elevon,Lavon,449000,447000,-2000,-0.45,"Save $139,355 | Promo Rate 4.99% (7.391% APR)",https://www.khov.com/new-construction-homes/texas/lavon/elevon/frankfurt-1259-umber-willow-drive-0099/
+2026-11-12 07:06,K. Hovnanian Homes,1309 Noe Blvd.,Heath Golf Yacht,Heath,630580,629000,-1580,-0.25,"Save $40,219 | Promo Rate 4.99% (7.408% APR)",https://www.khov.com/new-construction-homes/texas/heath/heath-golf-yacht/frankfurt-1309-noe-blvd-0017/
 2026-11-12 05:02,K. Hovnanian Homes,1356 Beauty Bloom Drive,Elevon,Lavon,686090,650000,-36090,-5.26,"Save $69,660",https://www.khov.com/new-construction-homes/texas/lavon/elevon/little-rock-1356-beauty-bloom-drive-0021/
 2026-11-12 00:22,Bloomfield Homes,1229 Summer Grove Drive,Villages of Walnut Grove,Midlothian,539000,529000,-10000,-1.86,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/daffodil/1229-summer-grove-drive/
 2026-11-12 00:22,Bloomfield Homes,4001 Clingsman Way,Painted Tree Woodland District 50,McKinney,699000,696000,-3000,-0.43,,https://www.bloomfieldhomes.com/new-homes/tx/mckinney/painted-tree-woodland-district-50/rose-ii/4001-clingsman-way/
@@ -99,7 +105,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-11-11 10:29,Bloomfield Homes,5924 Merian Drive,Creekview Meadows,Pilot Point,628642,529000,-99642,-15.85,,https://www.bloomfieldhomes.com/new-homes/tx/pilot-point/creekview-meadows/bayberry-ii/5924-merian-drive/
 2026-11-11 10:29,Bloomfield Homes,14413 Mietner Street,Creekview Meadows,Pilot Point,676430,549000,-127430,-18.84,,https://www.bloomfieldhomes.com/new-homes/tx/pilot-point/creekview-meadows/rose-ii/14413-mietner-street/
 2026-11-11 10:29,Bloomfield Homes,14434 McClint Street,Creekview Meadows,Pilot Point,662024,549000,-113024,-17.07,,https://www.bloomfieldhomes.com/new-homes/tx/pilot-point/creekview-meadows/rose-ii/14434-mcclint-street/
-2026-11-11 06:53,K. Hovnanian Homes,1346 Beauty Bloom Drive,,Lavon,664000,639090,-24910,-3.75,"Save $31,210",
+2026-11-11 06:53,K. Hovnanian Homes,1346 Beauty Bloom Drive,,Lavon,664000,639090,-24910,-3.75,"Save $51,300",
 2026-11-11 06:53,Perry Homes,2470 Bathwick Lane,Devonshire Reserve 45,Forney,426900,425900,-1000,-0.23,,https://www.perryhomes.com/new-homes/texas/dallas/devonshire/devonshire-reserve-45/2470-bathwick-lane
 2026-11-11 02:08,David Weekley Homes,7804 Switchwood Lane,Tavolo Park 50,Fort Worth,659281,626281,-33000,-5.01,,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/tavolo-park-50/19000243
 2026-11-11 00:13,Century Communities,1620 Esra Lane,Amc   Anna Town Square,Anna,399900,394900,-5000,-1.25,Enjoy up to $50k in Flex Cash!,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/anna/amc---anna-town-square/lots/9u05-1620-esra-lane
@@ -136,8 +142,8 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-11-10 14:43,Century Communities,117 Annabelle Street,Courtland Place,Cleburne,279900,249888,-30012,-10.72,Enjoy up to $50k in Flex Cash!,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/cleburne/courtland-place/lots/020506-117-annabelle-street
 2026-11-10 14:43,Highland Homes,301 Short Cut Street,Pecan Square,Northlake,739990,724990,-15000,-2.03,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/northlake/pecan-square/117-065
 2026-11-10 14:43,Highland Homes,1012 Everglade Way,The Parks at Wilson Creek,Celina,975000,950000,-25000,-2.56,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/celina/the-parks-at-wilson-creek/158-041
-2026-11-10 11:18,K. Hovnanian Homes,1330 Beauty Bloom Drive,,Lavon,661000,641090,-19910,-3.01,"Save $24,900",
-2026-11-10 11:18,K. Hovnanian Homes,1340 Beauty Bloom Drive,,Lavon,644000,622090,-21910,-3.4,"Save $26,200",
+2026-11-10 11:18,K. Hovnanian Homes,1330 Beauty Bloom Drive,,Lavon,661000,641090,-19910,-3.01,"Save $40,990",
+2026-11-10 11:18,K. Hovnanian Homes,1340 Beauty Bloom Drive,,Lavon,644000,622090,-21910,-3.4,"Save $49,290",
 2026-11-10 11:18,Shaddock Homes,1825 Acoma Way,Furst Ranch,Argyle,975000,950000,-25000,-2.56,"Make Your Move with Lower Starting Payments, 3.99% Rate Year One! | Move-In Ready Conventional 3/2/1 Buydown.",https://www.shaddockhomes.com/homes/dallas-fort-worth/argyle/furst-ranch/1825-acoma-way
 2026-11-10 11:18,Shaddock Homes,1920 Acoma Way,Furst Ranch,Argyle,879000,860000,-19000,-2.16,"Make Your Move with Lower Starting Payments, 3.99% Rate Year One! | Move-In Ready Conventional 3/2/1 Buydown.",https://www.shaddockhomes.com/homes/dallas-fort-worth/argyle/furst-ranch/1920-acoma-way
 2026-11-10 06:52,Trophy Signature Homes,2014 Homestretch Drive,Stonehaven,Seagoville,372490,369990,-2500,-0.67,,https://trophysignaturehomes.com/homes/dallas-ft-worth/seagoville/stonehaven/2014-homestretch-drive
@@ -325,7 +331,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-11-06 18:55,Highland Homes,4441 Silver Spur Court,Sandbrock Ranch,Aubrey,599949,575000,-24949,-4.16,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/866-389
 2026-11-06 18:55,Bloomfield Homes,2200 Redding Drive,Somerset Classic 70s 80s,Mansfield,634990,629990,-5000,-0.79,,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset-classic-70s-80s/spring-cress/2200-redding-drive/
 2026-11-06 18:55,K. Hovnanian Homes,1283 Butterfly Dale Drive,,Lavon,519000,499000,-20000,-3.85,"Save $161,108 | Promo Rate 4.99% (7.424% APR)",
-2026-11-06 18:55,K. Hovnanian Homes,1259 Umber Willow Drive,,Lavon,479000,449000,-30000,-6.26,"Save $137,355 | Promo Rate 4.99% (7.391% APR)",
+2026-11-06 18:55,K. Hovnanian Homes,1259 Umber Willow Drive,,Lavon,479000,449000,-30000,-6.26,"Save $139,355 | Promo Rate 4.99% (7.391% APR)",
 2026-11-06 18:55,K. Hovnanian Homes,1246 Umber Willow Drive,,Lavon,506000,499000,-7000,-1.38,"Save $47,689",
 2026-11-06 18:55,K. Hovnanian Homes,11461 Wulstone Road,,Haslet,570000,567000,-3000,-0.53,,
 2026-11-06 18:55,K. Hovnanian Homes,152 Summer Rain Way,,Newark,379000,349000,-30000,-7.92,"Save $60,810 | Promo Rate 5.5% (5.826% APR)",
@@ -933,7 +939,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-11-02 18:02,Bloomfield Homes,1032 Nighthawk Trail,Eagle Glen Elements,Alvarado,389900,384990,-4910,-1.26,,https://www.bloomfieldhomes.com/new-homes/tx/alvarado/eagle-glen-elements/willow-ii/1032-nighthawk-trail/
 2026-11-02 18:02,Highland Homes,1557 Thicket Hill Drive,Thompson Farms,Van Alstyne,495000,449990,-45010,-9.09,Rates as Low as 4.99%,https://www.highlandhomes.com/dfw/van-alstyne/thompson-farms/895-076
 2026-11-02 18:02,K. Hovnanian Homes,1201 Noe Blvd.,,Heath,674000,644000,-30000,-4.45,"Save $40,184",
-2026-11-02 18:02,K. Hovnanian Homes,1309 Noe Blvd.,,Heath,629000,599000,-30000,-4.77,"Save $38,639 | Promo Rate 4.99% (7.408% APR)",
+2026-11-02 18:02,K. Hovnanian Homes,1309 Noe Blvd.,,Heath,629000,599000,-30000,-4.77,"Save $40,219 | Promo Rate 4.99% (7.408% APR)",
 2026-11-02 18:02,Bloomfield Homes,217 Rock Sparrow Lane,Eagle Glen 50,Alvarado,387900,384990,-2910,-0.75,,https://www.bloomfieldhomes.com/new-homes/tx/alvarado/eagle-glen-50/jasmine/217-rock-sparrow-lane/
 2026-11-02 18:02,Bloomfield Homes,4321 Red Yucca Lane,Silo Mills Classic 50,Joshua,368990,364990,-4000,-1.08,4% seller contribution to use towards closing Cost/Rate Buydown,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/jasmine/4321-red-yucca-lane/
 2026-11-02 18:02,Bloomfield Homes,984 Imperial Eagle Road,Eagle Glen 50,Alvarado,469900,464990,-4910,-1.04,,https://www.bloomfieldhomes.com/new-homes/tx/alvarado/eagle-glen-50/bayberry-ii/984-imperial-eagle-road/
