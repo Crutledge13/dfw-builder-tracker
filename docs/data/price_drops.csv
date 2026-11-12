@@ -1,4 +1,16 @@
 at,builder,address,community,city,old,new,delta,pct,offer,url
+2026-11-11 19:00,Bloomfield Homes,4016 Clingsman Way,Painted Tree Woodland District 50,McKinney,599000,596000,-3000,-0.5,,https://www.bloomfieldhomes.com/new-homes/tx/mckinney/painted-tree-woodland-district-50/violet-ii/4016-clingsman-way/
+2026-11-11 19:00,Bloomfield Homes,3809 Amber Road,Villages of Walnut Grove,Midlothian,456000,451000,-5000,-1.1,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/rockcress/3809-amber-road/
+2026-11-11 19:00,Bloomfield Homes,4205 Attwater Street,Painted Tree Woodland District 60,McKinney,745000,742000,-3000,-0.4,,https://www.bloomfieldhomes.com/new-homes/tx/mckinney/painted-tree-woodland-district-60/magnolia-ii/4205-attwater-street/
+2026-11-11 19:00,Bloomfield Homes,2906 Wild River Road,Liberty,Melissa,622827,614827,-8000,-1.28,Seller pays $15K towards closing costs and/or rate buy down.,https://www.bloomfieldhomes.com/new-homes/tx/melissa/liberty/seaberry-ii/2906-wild-river-road/
+2026-11-11 19:00,Bloomfield Homes,3408 Running Stream Way,Liberty,Melissa,618481,607481,-11000,-1.78,Seller pays $15K towards closing costs and/or rate buy down.,https://www.bloomfieldhomes.com/new-homes/tx/melissa/liberty/magnolia-ii/3408-running-stream-way/
+2026-11-11 19:00,Bloomfield Homes,4212 Pallid Street,Painted Tree Woodland District 70,McKinney,875000,872000,-3000,-0.34,,https://www.bloomfieldhomes.com/new-homes/tx/mckinney/painted-tree-woodland-district-70/lily-iv/4212-pallid-street/
+2026-11-11 19:00,Bloomfield Homes,3920 Attwater Street,Painted Tree Woodland District 50,McKinney,635719,632719,-3000,-0.47,,https://www.bloomfieldhomes.com/new-homes/tx/mckinney/painted-tree-woodland-district-50/violet-iv/3920-attwater-street/
+2026-11-11 19:00,K. Hovnanian Homes,151 Sunny Ray Lane,Aspire at Reunion,Newark,362000,349000,-13000,-3.59,"Save $17,280",https://www.khov.com/new-construction-homes/texas/newark/aspire-at-reunion/daffodil-iv-151-sunny-ray-lane-0059/
+2026-11-11 19:00,K. Hovnanian Homes,125 Summer Rain Way,Aspire at Reunion,Newark,383000,365000,-18000,-4.7,"Save $18,770",https://www.khov.com/new-construction-homes/texas/newark/aspire-at-reunion/passionflower-ii-125-summer-rain-way-0030/
+2026-11-11 19:00,Bloomfield Homes,5814 Hadrian Drive,Sutton Fields,Celina,664990,599990,-65000,-9.77,,https://www.bloomfieldhomes.com/new-homes/tx/celina/sutton-fields/rose-ii/5814-hadrian-drive/
+2026-11-11 19:00,Beazer Homes,1468 Lady Bird Road,Wildflower Ranch,Justin,362258,349990,-12268,-3.39,,https://www.beazer.com/dallas-TX/justin/wildflower-ranch/salado/4014
+2026-11-11 19:00,Beazer Homes,17021 Prieto Avenue,Wildflower Ranch,Justin,378877,359990,-18887,-4.98,,https://www.beazer.com/dallas-TX/justin/wildflower-ranch/meridian/4105
 2026-11-11 16:57,Bloomfield Homes,9113 Wood Duck Drive,Paloma Ranch,New Fairview,615000,599000,-16000,-2.6,,https://www.bloomfieldhomes.com/new-homes/tx/new-fairview/paloma-ranch/caraway/9113-wood-duck-drive/
 2026-11-11 16:57,Bloomfield Homes,4033 Foot Hills Drive,Villages of Walnut Grove,Midlothian,472990,465000,-7990,-1.69,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/caraway/4033-foot-hills-drive/
 2026-11-11 16:57,Bloomfield Homes,4029 Eagles Bluff Road,Villages of Walnut Grove,Midlothian,463000,456000,-7000,-1.51,,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/rockcress/4029-eagles-bluff-road/
@@ -298,7 +310,7 @@ at,builder,address,community,city,old,new,delta,pct,offer,url
 2026-11-06 18:55,K. Hovnanian Homes,1259 Umber Willow Drive,,Lavon,479000,449000,-30000,-6.26,"Save $137,355 | Promo Rate 4.99% (7.391% APR)",
 2026-11-06 18:55,K. Hovnanian Homes,1246 Umber Willow Drive,,Lavon,506000,499000,-7000,-1.38,"Save $47,689",
 2026-11-06 18:55,K. Hovnanian Homes,11461 Wulstone Road,,Haslet,570000,567000,-3000,-0.53,,
-2026-11-06 18:55,K. Hovnanian Homes,152 Summer Rain Way,,Newark,379000,349000,-30000,-7.92,"Save $60,810 | Promo Rate 5.5% (5.494% APR)",
+2026-11-06 18:55,K. Hovnanian Homes,152 Summer Rain Way,,Newark,379000,349000,-30000,-7.92,"Save $60,810 | Promo Rate 5.5% (5.826% APR)",
 2026-11-06 18:55,K. Hovnanian Homes,1009 Ashcroft Lane,,Justin,515000,479000,-36000,-6.99,,
 2026-11-06 18:55,K. Hovnanian Homes,1001 Butterfly Lane,,Justin,538000,528000,-10000,-1.86,"Save $16,460",
 2026-11-06 18:55,K. Hovnanian Homes,1004 Larkspur Drive,,Justin,529000,524000,-5000,-0.95,,
