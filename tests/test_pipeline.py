@@ -1285,3 +1285,29 @@ def test_khov_home_page_status_offer_and_link():
         "https://www.khov.com/new-construction-homes/texas/waller/oakberry-trails/omaha-29307-hillberry-oaks-ct-0023")
     assert b["filter_re"].search(
         "https://www.khov.com/new-construction-homes/texas/newark/aspire-at-reunion/x-1213-a-st-0001")
+
+
+def test_save_amount_and_apr_moving_with_the_price_is_not_an_offer_change():
+    """K. Hovnanian (2026-11-11): 'Save $X' is the gap to the builder's list price, so each price cut also
+    logged a 'home offer changed' ($37,974 -> $40,184 with a $2,210 cut), and the APR in
+    'Promo Rate 4.99% (7.593% APR)' moves with the price while the promo rate stays the same."""
+    from tracker.run import offer_terms
+    assert offer_terms("Save $68,340 | Promo Rate 4.99% (7.593% APR)") == \
+        offer_terms("Save $68,340 | Promo Rate 4.99% (7.601% APR)")
+    assert offer_terms("Promo Rate 4.99% (7.593% APR)") != offer_terms("Promo Rate 5.5% (7.593% APR)")
+    st = LocalStore(tempfile.mkdtemp()).load()
+    t0 = R.now_local()
+    h = {"address": "1201 Noe Blvd.", "city": "Heath", "zip": "75032", "url": "https://tb.example/1201-noe-blvd"}
+    R.Recorder(st, t0).observe(B, dict(h, price=676210, from_detail=True, incentive_text="Save $37,974"))
+    hid = next(iter(st.homes))
+    rec = R.Recorder(st, t0 + timedelta(hours=1))
+    rec.observe(B, dict(h, price=674000, from_detail=True, incentive_text="Save $40,184"))
+    assert [c["event"] for c in rec.changes] == ["price_cut"]
+    assert st.homes[hid]["incentive_text"] == "Save $40,184"
+    # a bigger saving with no price change, or one that doesn't match the price move, is a real offer change
+    rec = R.Recorder(st, t0 + timedelta(hours=2))
+    rec.observe(B, dict(h, price=674000, from_detail=True, incentive_text="Save $45,000"))
+    assert [c["event"] for c in rec.changes] == ["home_offer_changed"]
+    rec = R.Recorder(st, t0 + timedelta(hours=3))
+    rec.observe(B, dict(h, price=670000, from_detail=True, incentive_text="Save $60,000"))
+    assert sorted(c["event"] for c in rec.changes) == ["home_offer_changed", "price_cut"]

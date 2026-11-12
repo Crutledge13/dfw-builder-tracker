@@ -135,6 +135,9 @@ def load_config(path="builders.yaml") -> list[dict]:
 def offer_terms(text: str) -> frozenset:
     """The numbers that make an offer what it is: dollar amounts, percentages, buydown structure."""
     t = (text or "").lower().replace(",", "")
+    # An APR figure is worked out from the price and fees, not an offer term: it moves with every price change
+    # while the promo rate stays put (K. Hovnanian 2026-11-11: "4.99% (7.593% APR)" -> "(7.601% APR)")
+    t = re.sub(r"\d+(?:\.\d+)?\s?%\s*apr\b", " ", t)
     # Dollar amounts as whole dollars, however they are written: "$15,000", "$15K" and "15K Flex Cash"
     # are one offer (First Texas 2026-10-28 logged ~180 fake changes for "15K" -> "$15,000"). A range
     # "$15-$25K" is in thousands at both ends. Amounts under $500 are "$0 down" or a figure cut off
@@ -151,6 +154,22 @@ def offer_terms(text: str) -> frozenset:
     terms |= set(re.findall(r"\b\d/\d(?:/\d)?\b", t))
     return frozenset(terms)
 
+
+
+def offer_moved_with_price(old_text: str, new_text: str, price_change) -> bool:
+    """The offer is a 'Save $X' off the builder's list price, and X moved by exactly this run's price change
+    (K. Hovnanian 2026-11-11: price $676,210 -> $674,000 and 'Save $37,974' -> 'Save $40,184'). That's the
+    price cut, already logged as one, not a new offer."""
+    if not price_change:
+        return False
+    a, b = offer_terms(old_text), offer_terms(new_text)
+    only_a, only_b = a - b, b - a
+    if len(only_a) != 1 or len(only_b) != 1:
+        return False
+    x, y = next(iter(only_a)), next(iter(only_b))
+    if not (x.startswith("$") and y.startswith("$")):
+        return False
+    return abs(int(x[1:]) - int(y[1:])) == abs(int(price_change))
 
 
 def locked(fn):
@@ -422,7 +441,10 @@ class Recorder:
                 h["page_read"] = True
             if obs.get("from_detail"):  # the home's own page is the authority on its offer
                 if new_inc and new_inc != old_inc:
-                    if old_inc and offer_terms(old_inc) == offer_terms(new_inc):
+                    start = self.run_start.get(hid)
+                    moved = (start - h["price"]) if start and h.get("price") else 0
+                    if old_inc and (offer_terms(old_inc) == offer_terms(new_inc)
+                                    or offer_moved_with_price(old_inc, new_inc, moved)):
                         h["incentive_text"] = new_inc   # same offer, reworded or cut differently: keep its date
                     else:
                         if h.get("first_seen") == now or first_page_read:
