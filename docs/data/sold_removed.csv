@@ -1,4 +1,7 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-13 10:20,Coventry Homes,1816 Salt Grass Drive,Furst Ranch,Flower Mound,774990,821368,-46378,25,1,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/goodlow/1816-salt-grass-drive/
+2026-11-13 10:20,Coventry Homes,2206 Burgess Street,South Pointe 55,Mansfield,579990,579990,0,25,0,https://www.coventryhomes.com/new-homes/tx/mansfield/south-pointe-55/marlin/2206-burgess-street/
+2026-11-13 10:20,Bloomfield Homes,16421 Thistle Bend Drive,Wildflower Ranch 60 65,Justin,474807,474807,0,25,0,https://www.bloomfieldhomes.com/new-homes/tx/fort-worth/wildflower-ranch-60-65/violet-ii/16421-thistle-bend-drive/
 2026-11-13 05:36,Coventry Homes,1817 Willowhurst Lane,Meadow Vista,Anna,439990,449990,-10000,25,1,https://www.coventryhomes.com/new-homes/tx/anna/meadow-vista/delta/1817-willowhurst-lane/
 2026-11-13 03:52,K. Hovnanian Homes,1128 Vletti Drive,Monterra2,Fate,514000,514000,0,25,0,https://www.khov.com/new-construction-homes/texas/fate/monterra2/frankfurt-1128-vletti-drive-0050
 2026-11-13 03:52,Perry Homes,209 Parkwood Drive,Lakewood Village 70 90,Dallas,883900,874900,9000,25,0,https://www.perryhomes.com/new-homes/texas/dallas/lakewood-village/lakewood-village-70-90/209-parkwood-drive
@@ -293,7 +296,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-03 01:16,D.R. Horton,197 Mlm Parkway,Dry Creek,Bridgeport,284990,284990,0,15,0,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/197-mlm-parkway
 2026-11-03 01:16,D.R. Horton,4162 Waldron Trl,Lakewood Trails,Forney,330490,330490,0,15,0,https://www.drhorton.com/texas/dallas/forney/lakewood-trails/qmis/4162-waldron-trl
 2026-11-03 01:16,D.R. Horton,4171 Waldron Trl,Lakewood Trails,Forney,347490,347490,0,15,0,https://www.drhorton.com/texas/dallas/forney/lakewood-trails/qmis/4171-waldron-trl
-2026-11-03 01:16,D.R. Horton,4180 Waldron Trl,Lakewood Trails,Forney,376490,376490,0,15,0,https://www.drhorton.com/texas/dallas/forney/lakewood-trails/qmis/4180-waldron-trl
 2026-11-03 01:16,Perry Homes,1309 Periwinkle Drive,Ramble 50,Celina,666900,659900,7000,15,0,https://www.perryhomes.com/new-homes/texas/dallas/ramble/ramble-50/1309-periwinkle-drive
 2026-11-02 20:54,D.R. Horton,500 Campfield Drive,Trailstone,Caddo Mills,347990,347990,0,5,0,https://www.drhorton.com/texas/dallas/caddo-mills/trailstone/qmis/500-campfield-drive
 2026-11-02 20:54,Meritage Homes,3268 Hopewell Lane,,Fort Worth,308166,308166,0,15,0,https://www.meritagehomes.com/state/tx/dallasft-worth/3268-hopewell-lane
@@ -681,7 +683,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-25 07:04,Bloomfield Homes,4017 Foot Hills Drive,Villages of Walnut Grove,Midlothian,554000,554000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/midlothian/villages-of-walnut-grove/seaberry/4017-foot-hills-drive/
 2026-10-25 07:04,Bloomfield Homes,209 Saddletree Drive,Waverly Estates,Nevada,399000,399000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/nevada/waverly-estates/hawthorne-ii/209-saddletree-drive/
 2026-10-25 07:04,Bloomfield Homes,1785 Monarch Haven Way,Chaparral Park 50 55,Oak Point,534000,534000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/oak-point/chaparral-park-50-55/magnolia-ii/1785-monarch-haven-way/
-2026-10-25 07:04,Bloomfield Homes,14506 Lovelace Street,Creekview Meadows,Pilot Point,398000,398000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/pilot-point/creekview-meadows/cypress/14506-lovelace-street/
 2026-10-25 07:04,Bloomfield Homes,13105 Limestone Street,Woodstone,Providence Village,538366,538366,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/providence-village/woodstone/bayberry-ii/13105-limestone-street/
 2026-10-25 07:04,Bloomfield Homes,13113 Limestone Street,Woodstone,Providence Village,550000,550000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/providence-village/woodstone/rose-ii/13113-limestone-street-1/
 2026-10-25 07:04,Bloomfield Homes,925 Cannes Drive,The Oaks,Red Oak,530000,530000,0,6,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/the-oaks/magnolia-ii/925-cannes-drive/
