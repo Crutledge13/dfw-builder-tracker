@@ -1,4 +1,8 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-16 16:26,Century Communities,1025 Verde Creek Court,Miraverde South,Crowley,329900,349900,-20000,28,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/crowley/miraverde-south/lots/20117-1025-verde-creek-court
+2026-11-16 16:26,D.R. Horton,1324 Tin Roof Road,Hickory Grove,Denton,312685,312685,0,28,0,https://www.drhorton.com/texas/fort-worth/denton/hickory-grove/qmis/1324-tin-roof-road
+2026-11-16 16:26,D.R. Horton,1324 Denim Street,Hickory Grove,Denton,306990,306990,0,28,0,https://www.drhorton.com/texas/fort-worth/denton/hickory-grove/qmis/1324-denim-street
+2026-11-16 16:26,D.R. Horton,4232 Woodhill Bend Drive,Sunnycreek,Crowley,253990,268990,-15000,28,1,https://www.drhorton.com/texas/fort-worth/crowley/sunnycreek/qmis/4232-woodhill-bend-drive
 2026-11-16 14:27,Highland Homes,7841 Whisterwheel Way,Tavolo Park,,549000,554000,-5000,28,1,https://www.highlandhomes.com/dfw/ft-worth/tavolo-park/8007-024
 2026-11-16 14:27,Century Communities,1721 David Drive,Amc   Anna Town Square,Anna,405900,419900,-14000,28,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/anna/amc---anna-town-square/lots/9d27-1721-david-drive
 2026-11-16 14:27,D.R. Horton,900 Milkweed Dr,Waterbend,Euless,440240,440240,0,28,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/900-milkweed-dr
@@ -169,7 +173,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-10 07:11,Beazer Homes,3032 Hollybrook Lane,The Villages of Hurricane Creek,Anna,409990,434990,-25000,21,1,https://www.beazer.com/dallas-TX/anna/the-villages-of-hurricane-creek/rainier/0814
 2026-11-10 07:11,D.R. Horton,239 Whispering Pine Drive,Wildwood,Royse City,256490,266490,-10000,22,1,https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/239-whispering-pine-drive
 2026-11-10 07:11,D.R. Horton,304 Buttonwood Drive,Wildwood,Royse City,256490,266490,-10000,22,1,https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/304-buttonwood-drive
-2026-11-10 07:11,D.R. Horton,205 Tall Cedar Way,Arbor Trails South,Princeton,255130,212975,42155,22,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/205-tall-cedar-way
 2026-11-10 07:11,D.R. Horton,221 Tall Cedar Way,Arbor Trails South,Princeton,214990,213990,1000,22,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/221-tall-cedar-way
 2026-11-10 07:11,D.R. Horton,6929 Jessamine Dr,Arbor Trails South,Princeton,235990,240990,-5000,22,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/6929-jessamine-dr
 2026-11-10 07:11,D.R. Horton,122 Pheasant Run Road,Northspur,Terrell,267490,293990,-26500,19,1,https://www.drhorton.com/texas/dallas/terrell/northspur/qmis/122-pheasant-run-road
@@ -518,7 +521,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-29 16:38,D.R. Horton,910 Milkweed Dr,Waterbend,Euless,429990,429990,0,10,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/910-milkweed-dr
 2026-10-29 16:38,David Weekley Homes,9504 Dahlia Boulevard,Talia,Mesquite,359990,359990,0,9,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mesquite/talia/19810031
 2026-10-29 14:40,D.R. Horton,928 Jefferson Way,Hanolley Hills,Sherman,274990,274990,0,10,0,https://www.drhorton.com/texas/dallas/sherman/hanolley-hills/qmis/928-jefferson-way
-2026-10-29 14:40,D.R. Horton,205 Tall Cedar Way,Arbor Trails South,Princeton,205975,212975,-7000,10,1,https://www.drhorton.com/texas/dallas/princeton/arbor-trails-south/qmis/205-tall-cedar-way
 2026-10-29 08:32,Coventry Homes,211 Harmony Way,Pecan Square 60,Northlake,815436,815436,0,10,0,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-60/lockhart/211-harmony-way/
 2026-10-29 08:32,Bloomfield Homes,1320 Clear Fork Street,Arrowbrooke,Aubrey,669000,669000,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/aubrey/arrowbrooke/bellflower-iv/1320-clear-fork-street/
 2026-10-29 08:32,Bloomfield Homes,837 Turnbull Avenue,Wildflower Ranch 60 65,Justin,569782,569782,0,10,0,https://www.bloomfieldhomes.com/new-homes/tx/fort-worth/wildflower-ranch-60-65/spring-cress-ii/837-turnbull-avenue/
