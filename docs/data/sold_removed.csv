@@ -1,4 +1,11 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-16 14:27,Highland Homes,7841 Whisterwheel Way,Tavolo Park,,549000,554000,-5000,28,1,https://www.highlandhomes.com/dfw/ft-worth/tavolo-park/8007-024
+2026-11-16 14:27,Century Communities,1721 David Drive,Amc   Anna Town Square,Anna,405900,419900,-14000,28,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/anna/amc---anna-town-square/lots/9d27-1721-david-drive
+2026-11-16 14:27,D.R. Horton,900 Milkweed Dr,Waterbend,Euless,440240,440240,0,28,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/900-milkweed-dr
+2026-11-16 14:27,Meritage Homes,1740 Gardendale Hollow Lane,,Anna,399216,406716,-7500,28,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1740-gardendale-hollow-lane
+2026-11-16 14:27,Meritage Homes,2124 Longchamp Lane,,Seagoville,322908,325408,-2500,28,1,https://www.meritagehomes.com/state/tx/dallasft-worth/2124-longchamp-lane
+2026-11-16 14:27,M/I Homes,7617 Spicebush Drive,Meadow Park,Ponder,277990,277990,0,28,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/denton/meadow-park/boxwood-plan/7617-spicebush-drive
+2026-11-16 14:27,M/I Homes,121 Anson Drive,Verandah,Royse City,297990,299990,-2000,28,2,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/royse-city/verandah/pizarro-plan/121-anson-drive
 2026-11-16 09:11,Meritage Homes,1800 Gardendale Hollow Lane,,Anna,399747,407747,-8000,28,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1800-gardendale-hollow-lane
 2026-11-16 09:11,Trophy Signature Homes,4401 Rustic Ridge Drive,Painted Tree,McKinney,609490,609490,0,19,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/mckinney/painted-tree/4401-rustic-ridge-drive
 2026-11-16 09:11,David Weekley Homes,14453 Walsh Avenue,Walsh Cottage,Fort Worth,504087,529070,-24983,26,2,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/walsh-cottage/18960140
@@ -223,12 +230,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-08 14:46,Coventry Homes,933 Mumms Field Drive,Wildflower Ranch,Fort Worth,569990,599585,-29595,20,2,https://www.coventryhomes.com/new-homes/tx/fort-worth/wildflower-ranch/claude/933-mumms-field-drive/
 2026-11-08 12:15,Highland Homes,3032 Craftsman Way,Pecan Square,Northlake,649990,674990,-25000,20,1,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-143
 2026-11-08 12:15,Coventry Homes,1021 Pelotazo Avenue,Wildflower Ranch,Fort Worth,619990,624990,-5000,20,1,https://www.coventryhomes.com/new-homes/tx/fort-worth/wildflower-ranch/claude/1021-pelotazo-avenue/
-2026-11-08 10:21,Trophy Signature Homes,6933 Deadwood Trail,,Crowley,364990,364990,0,2,0,
-2026-11-08 10:21,Trophy Signature Homes,6925 Deadwood Trail,,Crowley,349990,349990,0,2,0,
-2026-11-08 10:21,Trophy Signature Homes,6929 Deadwood Trail,,Crowley,389990,389990,0,2,0,
-2026-11-08 10:21,Trophy Signature Homes,6921 Deadwood Trail,,Crowley,434990,434990,0,2,0,
-2026-11-08 10:21,Trophy Signature Homes,6917 Deadwood Trail,,Crowley,464990,464990,0,2,0,
-2026-11-08 10:21,Trophy Signature Homes,6909 Deadwood Trail,,Crowley,424990,424990,0,2,0,
 2026-11-08 10:21,Ashlyn Homes,2033 Preserve Trail,,Weatherford,814900,814900,0,20,0,https://www.ashlynhomes.com/house/2033-preserve-trail-weatherford-tx-76087/
 2026-11-08 03:30,Highland Homes,767 Stoney Bridge Way,Hillstead,Lavon,450000,465000,-15000,20,1,https://www.highlandhomes.com/dfw/lavon/hillstead/834-074
 2026-11-08 03:30,Perry Homes,2529 Green Plateau Drive,Walsh 50,Dallas,664900,652900,12000,20,0,https://www.perryhomes.com/new-homes/texas/dallas/walsh/walsh-50/2529-green-plateau-drive
@@ -296,7 +297,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-04 15:19,D.R. Horton,1100 Overlook Avenue,Riverfield,Josephine,299990,304990,-5000,16,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/1100-overlook-avenue
 2026-11-04 15:19,Bloomfield Homes,3312 Creek Meadow Drive,Villages of Hurricane Creek,Anna,679990,679990,0,16,0,https://www.bloomfieldhomes.com/new-homes/tx/anna/villages-of-hurricane-creek/bellflower-ii/3312-creek-meadows-drive/
 2026-11-04 15:19,M/I Homes,7421 Sunset Valley Lane,Meadow Park,Ponder,354990,354990,0,16,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/denton/meadow-park/pizarro-plan/7421-sunset-valley-lane
-2026-11-04 08:39,Riverside Homebuilders,1002 Perrin Lane,,Van Alstyne,649900,649900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/1002-perrin-lane/
 2026-11-04 08:39,Riverside Homebuilders,1325 Frio Drive,,Springtown,344900,346900,-2000,16,1,https://www.riversidehomebuilders.com/quick-move-in/1325-frio-drive/
 2026-11-04 08:39,Riverside Homebuilders,153 Big Sky Road,,Decatur,484900,484900,0,16,0,https://www.riversidehomebuilders.com/quick-move-in/153-big-sky-road/
 2026-11-04 08:39,Riverside Homebuilders,2208 Continent Court,,Krum,604900,609900,-5000,16,1,https://www.riversidehomebuilders.com/quick-move-in/2208-continent-court/
