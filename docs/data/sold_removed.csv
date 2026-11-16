@@ -1,4 +1,7 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-16 09:11,Meritage Homes,1800 Gardendale Hollow Lane,,Anna,399747,407747,-8000,28,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1800-gardendale-hollow-lane
+2026-11-16 09:11,Trophy Signature Homes,4401 Rustic Ridge Drive,Painted Tree,McKinney,609490,609490,0,19,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/mckinney/painted-tree/4401-rustic-ridge-drive
+2026-11-16 09:11,David Weekley Homes,14453 Walsh Avenue,Walsh Cottage,Fort Worth,504087,529070,-24983,26,2,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/walsh-cottage/18960140
 2026-11-16 05:56,Meritage Homes,2701 Grand Teton Drive,,Anna,355385,365385,-10000,28,1,https://www.meritagehomes.com/state/tx/dallasft-worth/2701-grand-teton-drive
 2026-11-16 05:56,Perry Homes,3334 Big Buffalo Street,Meraki 50,Forney,592900,559900,33000,28,0,https://www.perryhomes.com/new-homes/texas/dallas/meraki/meraki-50/3334-big-buffalo-street
 2026-11-16 03:38,Highland Homes,1617 Sandbrock Drive,Sandbrock Ranch,Aubrey,749000,775000,-26000,28,1,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/172-178
@@ -666,7 +669,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-26 14:17,D.R. Horton,17137 Manzanilla Drive,Wildflower Ranch,Justin,399990,399990,0,7,0,https://www.drhorton.com/texas/fort-worth/justin/wildflower-ranch/qmis/17137-manzanilla-drive
 2026-10-26 14:17,David Weekley Homes,7546 Epiphany Way,Goodland Garden Series,Prairie Ridge,449990,489512,-39522,6,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/grand-prairie/goodland-garden-series/19970005
 2026-10-26 09:29,Coventry Homes,1716 Autumn Sage Drive,Furst Ranch,Flower Mound,672990,672990,0,7,0,https://www.coventryhomes.com/new-homes/tx/flower-mound/furst-ranch/easton/1716-autumn-sage-drive/
-2026-10-26 09:29,Coventry Homes,1733 Monarch Haven Way,Chaparral Park 60,Oak Point,589990,596840,-6850,6,1,https://www.coventryhomes.com/new-homes/tx/oak-point/chaparral-park-60/eagle-mountain/1733-monarch-haven-way/
 2026-10-26 09:29,D.R. Horton,1044 Foxburg Drive,Rosewood at Beltmill,Fort Worth,363685,363685,0,7,0,https://www.drhorton.com/texas/fort-worth/fort-worth/rosewood-at-beltmill/qmis/1044-foxburg-drive
 2026-10-26 04:54,Meritage Homes,3602 Deer Drive,,Princeton,333490,333490,0,7,0,https://www.meritagehomes.com/state/tx/dallasft-worth/3602-deer-drive
 2026-10-26 04:54,Perry Homes,2636 Brooklyn Street,Meraki 45,Forney,519900,514900,5000,7,0,https://www.perryhomes.com/new-homes/texas/dallas/meraki/meraki-45/2636-brooklyn-street
