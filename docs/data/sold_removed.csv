@@ -1,4 +1,19 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-17 08:47,Highland Homes,9809 Oak Glade Drive,Landmark,Denton,599000,624000,-25000,29,1,https://www.highlandhomes.com/dfw/denton/landmark/8005-014
+2026-11-17 08:47,D.R. Horton,4158 Waldron Trl,Lakewood Trails,Forney,376590,376590,0,29,0,https://www.drhorton.com/texas/dallas/forney/lakewood-trails/qmis/4158-waldron-trl
+2026-11-17 08:47,D.R. Horton,600 Dresden Drive,Riverfield,Josephine,285990,290990,-5000,29,1,https://www.drhorton.com/texas/dallas/josephine/riverfield/qmis/600-dresden-drive
+2026-11-17 08:47,D.R. Horton,1528 Lemon Tree Lane,Townes Landing,Fort Worth,329990,336685,-6695,29,1,https://www.drhorton.com/texas/fort-worth/fort-worth/townes-landing/qmis/1528-lemon-tree-lane
+2026-11-17 08:47,D.R. Horton,1643 Mantle Road,Crane Crossing,Crandall,304740,304740,0,29,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1643-mantle-road
+2026-11-17 08:47,D.R. Horton,2900 Serenity Ln,The Hills of Sherman,Sherman,239490,239490,0,29,0,https://www.drhorton.com/texas/dallas/sherman/the-hills-of-sherman/qmis/2900-serenity-ln
+2026-11-17 08:47,D.R. Horton,3102 Carrington Hill Dr,The Hills of Sherman,Sherman,230990,230990,0,29,0,https://www.drhorton.com/texas/dallas/sherman/the-hills-of-sherman/qmis/3102-carrington-hill-dr
+2026-11-17 08:47,D.R. Horton,3300 Hilltop Dr,Sweetwater Springs,Sherman,256490,261510,-5020,29,1,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3300-hilltop-dr
+2026-11-17 08:47,D.R. Horton,1305 Dry Brook Way,Winchester Crossing,Princeton,329490,324490,5000,21,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1305-dry-brook-way
+2026-11-17 08:47,D.R. Horton,4152 Waldron Trl,Lakewood Trails,Forney,385940,385940,0,20,0,https://www.drhorton.com/texas/dallas/forney/lakewood-trails/qmis/4152-waldron-trl
+2026-11-17 08:47,D.R. Horton,340 Wayland Street,The Canyons,Fort Worth,279990,279990,0,20,0,https://www.drhorton.com/texas/fort-worth/keene/the-canyons/qmis/340-wayland-street
+2026-11-17 08:47,D.R. Horton,119 Mach Way,Blackbird Estates,Mineral Wells,207615,207615,0,17,0,https://www.drhorton.com/texas/fort-worth/mineral-wells/blackbird-estates/qmis/119-mach-way
+2026-11-17 08:47,D.R. Horton,1304 Wolfcity Dr,Winchester Crossing,Princeton,339490,339490,0,13,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1304-wolfcity-dr
+2026-11-17 08:47,D.R. Horton,321 Ridan Drive,Saddlebrook,Waxahachie,436990,436990,0,11,0,https://www.drhorton.com/texas/dallas/waxahachie/saddlebrook/qmis/321-ridan-drive
+2026-11-17 08:47,D.R. Horton,102 Oscar Bish Well Drive,The Wells,Mineral Wells,247990,247990,0,10,0,https://www.drhorton.com/texas/fort-worth/mineral-wells/the-wells/qmis/102-oscar-bish-well-drive
 2026-11-17 02:53,D.R. Horton,10009 Silver Nugget St,Silverado,Aubrey,366990,366990,0,29,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/10009-silver-nugget-st
 2026-11-17 02:53,Meritage Homes,3005 New Chapel Street,,Fort Worth,371918,381418,-9500,29,2,https://www.meritagehomes.com/state/tx/dallasft-worth/3005-new-chapel-street
 2026-11-16 22:43,D.R. Horton,2708 Flowers Drive,Eagle Creek,Denton,359990,369990,-10000,29,1,https://www.drhorton.com/texas/fort-worth/denton/eagle-creek/qmis/2708-flowers-drive
