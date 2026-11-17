@@ -1,4 +1,11 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-16 18:02,Highland Homes,9933 Myrtle Road,Trinity Falls,McKinney,485185,485185,0,10,0,https://www.highlandhomes.com/dfw/mckinney/trinity-falls/839-056
+2026-11-16 18:02,D.R. Horton,9404 Gossamer St,Hidden Lakes,McKinney,579990,579990,0,28,0,https://www.drhorton.com/texas/dallas/mckinney/hidden-lakes/qmis/9404-gossamer-st
+2026-11-16 18:02,Meritage Homes,2114 Longchamp Lane,,Seagoville,364592,382092,-17500,28,3,https://www.meritagehomes.com/state/tx/dallasft-worth/2114-longchamp-lane
+2026-11-16 18:02,Meritage Homes,2104 Longchamp Lane,,Seagoville,353583,353583,0,28,0,https://www.meritagehomes.com/state/tx/dallasft-worth/2104-longchamp-lane
+2026-11-16 18:02,Meritage Homes,3220 Dustbend Plaza,,Fort Worth,369418,378918,-9500,28,2,https://www.meritagehomes.com/state/tx/dallasft-worth/3220-dustbend-plaza
+2026-11-16 18:02,David Weekley Homes,8708 Chestnut Lane,Treeline,Justin,469000,499000,-30000,27,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/justin/treeline/19460014
+2026-11-16 18:02,David Weekley Homes,4817 Maxwell Drive,Painted Tree West Cottages,McKinney,389764,389764,0,27,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mckinney/painted-tree-west-cottages/19850006
 2026-11-16 16:26,Century Communities,1025 Verde Creek Court,Miraverde South,Crowley,329900,349900,-20000,28,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/crowley/miraverde-south/lots/20117-1025-verde-creek-court
 2026-11-16 16:26,D.R. Horton,1324 Tin Roof Road,Hickory Grove,Denton,312685,312685,0,28,0,https://www.drhorton.com/texas/fort-worth/denton/hickory-grove/qmis/1324-tin-roof-road
 2026-11-16 16:26,D.R. Horton,1324 Denim Street,Hickory Grove,Denton,306990,306990,0,28,0,https://www.drhorton.com/texas/fort-worth/denton/hickory-grove/qmis/1324-denim-street
@@ -411,7 +418,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-02 07:03,Coventry Homes,1905 Campfire Trail,Pecan Square 40,Northlake,499990,499990,0,14,0,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-40/roberts/1905-campfire-trail/
 2026-11-02 07:03,David Weekley Homes,1426 Roundup Way,Retreat at Harvest Gardens,Argyle,459000,499000,-40000,12,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/argyle/retreat-at-harvest-gardens/19320057
 2026-11-02 05:00,Perry Homes,7312 Pinales Way,Trinity Falls at Province Woods 45,McKinney,553900,553900,0,14,0,https://www.perryhomes.com/new-homes/texas/dallas/trinity-falls/trinity-falls-at-province-woods-45/7312-pinales-way
-2026-11-02 05:00,D.R. Horton,130 Davis Lane,The Hills at Reunion,Newark,336205,336205,0,14,0,https://www.drhorton.com/texas/fort-worth/newark/the-hills-at-reunion/qmis/130-davis-lane
 2026-11-02 05:00,David Weekley Homes,1321 Roundup Way,Retreat at Harvest Gardens,Argyle,397000,397000,0,12,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/argyle/retreat-at-harvest-gardens/19320078
 2026-11-02 05:00,David Weekley Homes,11724 Wildwood Street,Treeline,Justin,459000,499000,-40000,12,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/justin/treeline/19460039
 2026-11-02 00:52,Highland Homes,1634 Secco Way,Sonoma Verde,McLendon-Chisholm,525000,549900,-24900,14,1,https://www.highlandhomes.com/dfw/mclendon-chisholm/sonoma-verde/875-107
