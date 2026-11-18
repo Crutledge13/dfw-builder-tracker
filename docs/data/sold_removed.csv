@@ -1,4 +1,10 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-17 19:31,Coventry Homes,2625 Starlight Trail,Pecan Square 50,Northlake,574990,624990,-50000,30,2,https://www.coventryhomes.com/new-homes/tx/northlake/pecan-square-50/mineola/2625-starlight-trail/
+2026-11-17 19:31,Beazer Homes,2224 Corbera Drive,Valencia on the Lake,Little Elm,569990,599990,-30000,29,1,https://www.beazer.com/dallas-TX/little-elm/valencia-on-the-lake/summerfield/1329
+2026-11-17 19:31,Beazer Homes,7123 Mallow Lane,Goodland,Midlothian,485990,489990,-4000,29,1,https://www.beazer.com/dallas-TX/midlothian/goodland/avalon3/1504
+2026-11-17 19:31,Meritage Homes,2724 Teton Street,,Corinth,338242,347742,-9500,30,2,https://www.meritagehomes.com/state/tx/dallasft-worth/2724-teton-street
+2026-11-17 19:31,Meritage Homes,116 Winchester Hill Lane,,Princeton,285925,285925,0,30,0,https://www.meritagehomes.com/state/tx/dallasft-worth/116-winchester-hill-lane
+2026-11-17 19:31,David Weekley Homes,7812 Pondview Lane,Tavolo Park 50,Fort Worth,482000,520476,-38476,28,2,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/tavolo-park-50/19000185
 2026-11-17 17:10,HistoryMaker Homes,1894 Indigo Lane,Heartland Townhomes,Heartland,223900,224990,-1090,21,1,https://www.historymaker.com/new-homes/dallas-fort-worth/heartland/heartland-townhomes/1894-indigo-lane-bldg15
 2026-11-17 17:10,HistoryMaker Homes,2369 Rams Horn Drive,Sheppards Place,Waxahachie,364900,364900,0,21,0,https://www.historymaker.com/new-homes/dallas-fort-worth/waxahachie/sheppards-place/2369-rams-horn-drive
 2026-11-17 17:10,HistoryMaker Homes,2633 Rainier Drive,Oak Ridge Park,Corinth,569900,574990,-5090,21,1,https://www.historymaker.com/new-homes/dallas-fort-worth/corinth/oak-ridge-park/2633-rainier-drive-36
@@ -212,7 +218,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-11 12:04,Highland Homes,1557 Thicket Hill Drive,Thompson Farms,Van Alstyne,449990,500000,-50010,23,2,https://www.highlandhomes.com/dfw/van-alstyne/thompson-farms/895-076
 2026-11-11 06:53,Riverside Homebuilders,2105 Bluebird Lane,,Anna,425900,430900,-5000,23,1,https://www.riversidehomebuilders.com/quick-move-in/2105-bluebird-lane/
 2026-11-11 06:53,Riverside Homebuilders,3007 Leopard Lane,,Ennis,359900,367900,-8000,23,1,https://www.riversidehomebuilders.com/quick-move-in/3007-leopard-lane/
-2026-11-11 06:53,Riverside Homebuilders,8707 CR 623,,,489900,499900,-10000,23,1,https://www.riversidehomebuilders.com/quick-move-in/8707-cr-623/
 2026-11-11 06:53,Trophy Signature Homes,1886 Balfour Bend,Devonshire,Forney,324990,329990,-5000,23,2,https://trophysignaturehomes.com/homes/dallas-ft-worth/forney/devonshire/1886-balfour-bend
 2026-11-11 06:53,Coventry Homes,1023 Coralberry Way,Dominion of Pleasant Valley 50,Wylie,519990,549990,-30000,23,2,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/carson/1023-coralberry-way/
 2026-11-11 03:51,Coventry Homes,4208 Wildcat Court,Painted Tree 70,McKinney,788888,788888,0,23,0,https://www.coventryhomes.com/new-homes/tx/mckinney/painted-tree-70/crockett/4208-wildcat-court/
