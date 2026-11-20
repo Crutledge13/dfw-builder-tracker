@@ -1,4 +1,7 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-19 21:39,Highland Homes,7526 Epiphany Way,Goodland,Venus,450000,475000,-25000,32,1,https://www.highlandhomes.com/dfw/venus/goodland/8001-030
+2026-11-19 21:39,HistoryMaker Homes,10908 Cacao Drive,Palmilla Springs,Fort Worth,329900,334900,-5000,23,1,https://www.historymaker.com/new-homes/dallas-fort-worth/fort-worth/palmilla-springs/10908-cacao-drive-63
+2026-11-19 21:39,David Weekley Homes,4805 Vizsla Lane,Painted Tree West Cottages,McKinney,424889,424889,0,30,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/mckinney/painted-tree-west-cottages/19850023
 2026-11-19 20:37,Highland Homes,5362 East Runnel Road,Creekshaw,Royse City,335000,322660,12340,3,0,https://www.highlandhomes.com/dfw/royse-city/creekshaw/880-127
 2026-11-19 20:37,Highland Homes,5358 East Runnel Road,Creekshaw,Royse City,435000,398830,36170,3,0,https://www.highlandhomes.com/dfw/royse-city/creekshaw/880-128
 2026-11-19 20:37,Highland Homes,2450 Jackson Burn Drive,Creekshaw,Royse City,415000,399690,15310,3,0,https://www.highlandhomes.com/dfw/royse-city/creekshaw/880-087
@@ -7,7 +10,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-19 20:37,First Texas Homes,533 Durango St,,Midlothian,444950,444950,0,32,0,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000095/533-durango-st-midlothian-tx-76065/
 2026-11-19 20:37,K. Hovnanian Homes,1159 Barbazzano Drive,Monterra2,Fate,529000,529000,0,32,0,https://www.khov.com/new-construction-homes/texas/fate/monterra2/geneva-1159-barbazzano-drive-0029/
 2026-11-19 20:37,K. Hovnanian Homes,2604 Ackley Lane,Kreymer at the Park,Wylie,680000,680000,0,32,0,https://www.khov.com/new-construction-homes/texas/wylie/kreymer-at-the-park/rotterdam-2604-ackley-lane-0009/
-2026-11-19 19:05,Bloomfield Homes,208 Fireberry Drive,Hampton Park,Glenn Heights,589990,589990,0,32,0,https://www.bloomfieldhomes.com/new-homes/tx/glenn-heights/hampton-park/rose-iii/208-fireberry-drive/
 2026-11-19 19:05,Century Communities,490 W 10th Street,Sperling Farms,Ferris,315900,317900,-2000,31,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/ferris/sperling-farms/lots/0e06-490-w-10th-street
 2026-11-19 19:05,D.R. Horton,1413 Arthur Blvd,,Dallas,693990,693990,0,2,0,
 2026-11-19 19:05,Meritage Homes,3216 Dustbend Plaza,,Fort Worth,329862,332362,-2500,31,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3216-dustbend-plaza
