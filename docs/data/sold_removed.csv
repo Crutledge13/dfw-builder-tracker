@@ -1,4 +1,9 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-20 14:13,D.R. Horton,11213 Treehouse Trail,Treeline,Justin,444990,449325,-4335,32,1,https://www.drhorton.com/texas/fort-worth/justin/treeline/qmis/11213-treehouse-trail
+2026-11-20 14:13,D.R. Horton,2801 Hawk Drive,Eagle Creek,Denton,384685,384685,0,30,0,https://www.drhorton.com/texas/fort-worth/denton/eagle-creek/qmis/2801-hawk-drive
+2026-11-20 14:13,D.R. Horton,148 Tributary Lane,Dry Creek,Bridgeport,284990,284990,0,29,0,https://www.drhorton.com/texas/fort-worth/bridgeport/dry-creek/qmis/148-tributary-lane
+2026-11-20 14:13,David Weekley Homes,305 Short Cut Street,Pecan Square Classics,Northlake,679000,699885,-20885,31,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/northlake/pecan-square-classics/19520063
+2026-11-20 14:13,M/I Homes,1716 Deciduous Drive,Sanderos,Fort Worth,412990,414990,-2000,32,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/fort-worth/sanderos/pizarro-plan/1716-deciduous-drive
 2026-11-20 12:24,Bloomfield Homes,4520 Blue Mist Drive,Hulen Trails Classic 50,Fort Worth,394990,418022,-23032,32,1,https://www.bloomfieldhomes.com/new-homes/tx/fort-worth/hulen-trails-classic-50/jasmine/4520-blue-mist-drive/
 2026-11-20 12:24,Bloomfield Homes,14449 Mietner Street,Creekview Meadows,Pilot Point,484000,489000,-5000,32,1,https://www.bloomfieldhomes.com/new-homes/tx/pilot-point/creekview-meadows/violet-iv/14449-mietner-street/
 2026-11-20 12:24,Bloomfield Homes,4312 Red Yucca Lane,Silo Mills Classic 50,Joshua,364990,379990,-15000,32,2,https://www.bloomfieldhomes.com/new-homes/tx/joshua/silo-mills-classic-50/jasmine/4312-red-yucca-lane/
@@ -662,7 +667,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-31 08:26,Coventry Homes,2821 Paddington Drive,Cambridge Crossing 60,Celina,699990,699990,0,12,0,https://www.coventryhomes.com/new-homes/tx/celina/cambridge-crossing-60/lockhart/2821-paddington-drive/
 2026-10-31 08:26,Coventry Homes,606 Jack Oak Trail,Dominion of Pleasant Valley 50,Wylie,474990,474990,0,12,0,https://www.coventryhomes.com/new-homes/tx/wylie/dominion-of-pleasant-valley-50/lamar/606-jack-oak-trail/
 2026-10-31 06:51,Coventry Homes,1620 Peridot Parkway,Solterra 40,Mesquite,359990,359990,0,12,0,https://www.coventryhomes.com/new-homes/tx/mesquite/solterra-40/stephens/1620-peridot-parkway/
-2026-10-31 04:36,David Weekley Homes,2021 Clearwater Drive,Northshore at Lakewood Village Estate Series,Lakewood Village,1044990,1044990,0,10,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/lakewood-village/northshore-at-lakewood-village-estate-series/19870007
 2026-10-31 02:30,Perry Homes,540 Stark Mews,The Heights at Uptown Celina 40 45,Celina,484900,477900,7000,12,0,https://www.perryhomes.com/new-homes/texas/dallas/the-heights-at-uptown-celina/the-heights-at-uptown-celina-40-45/540-stark-mews
 2026-10-31 01:45,Highland Homes,1820 Drover Street,Pecan Square,Northlake,598990,630000,-31010,12,2,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-089
 2026-10-31 01:45,Beazer Homes,3426 Hillingdon Road,Churchill,Anna,369990,369990,0,11,0,https://www.beazer.com/dallas-TX/anna/churchill/bluebell/2227
