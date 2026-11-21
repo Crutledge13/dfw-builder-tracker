@@ -1,4 +1,23 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-20 18:40,Highland Homes,2016 Tallulah Gorge Court,The Parks at Wilson Creek,Celina,599000,699000,-100000,32,1,https://www.highlandhomes.com/dfw/celina/the-parks-at-wilson-creek/830-105
+2026-11-20 18:40,Coventry Homes,3222 Bexar Street,The Homestead,Rockwall,674990,674990,0,32,0,https://www.coventryhomes.com/new-homes/tx/rockwall/the-homestead/falls/3222-bexar-street/
+2026-11-20 18:40,Trophy Signature Homes,3914 Somerville Drive,Lakehaven,Farmersville,374990,387990,-13000,32,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/farmersville/lakehaven/3914-somerville-drive
+2026-11-20 18:40,Trophy Signature Homes,506 Green Gables Drive,Southridge,McKinney,249990,259990,-10000,32,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/mckinney/southridge/506-green-gables-drive
+2026-11-20 18:40,Trophy Signature Homes,2125 Sunshining Road,Windmore,Princeton,444990,449990,-5000,32,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/windmore/2125-sunshining-road
+2026-11-20 18:40,Trophy Signature Homes,2120 Sunshining Road,Windmore,Princeton,419990,429490,-9500,32,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/windmore/2120-sunshining-road
+2026-11-20 18:40,Trophy Signature Homes,721 Pescado Way,Terra Vella,Fort Worth,321990,321990,0,32,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/dallas-ft-worth/terra-vella/721-pescado-way
+2026-11-20 18:40,Trophy Signature Homes,3907 Somerville Drive,Lakehaven,Farmersville,304990,324990,-20000,25,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/farmersville/lakehaven/3907-somerville-drive
+2026-11-20 18:40,Trophy Signature Homes,3008 Dry Brook Way,Cibolo Hills West,Fort Worth,340990,340990,0,22,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/fort-worth/cibolo-hills-west/3008-dry-brook-way
+2026-11-20 18:40,Trophy Signature Homes,8012 Kingfisher Road,Belmont,Aubrey,329990,329990,0,22,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/aubrey/belmont/8012-kingfisher-road
+2026-11-20 18:40,Trophy Signature Homes,3509 Eagle Mount Drive,Lakehaven,Princeton,372990,372990,0,21,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/farmersville/lakehaven/3509-eagle-mount-drive
+2026-11-20 18:40,Trophy Signature Homes,2128 Sunshining Road,Windmore,Princeton,424990,424990,0,21,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/windmore/2128-sunshining-road
+2026-11-20 18:40,Trophy Signature Homes,1270 Wolfsbane Drive,Trails of Lavon,Lavon,399990,399990,0,21,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/lavon/trails-of-lavon/1270-wolfsbane-drive
+2026-11-20 18:40,Trophy Signature Homes,1222 Wolfsbane Drive,Trails of Lavon,Lavon,389990,389990,0,21,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/lavon/trails-of-lavon/1222-wolfsbane-drive
+2026-11-20 18:40,Beazer Homes,2624 Freeman Street,Churchill,Anna,374990,379990,-5000,32,1,https://www.beazer.com/dallas-TX/anna/churchill/cascade/1821
+2026-11-20 18:40,Beazer Homes,450 Plains Place,Woodcreek,Fate,529990,559990,-30000,13,1,https://www.beazer.com/dallas-TX/fate/woodcreek/telluride/2222
+2026-11-20 18:40,Beazer Homes,3425 Longfellow Avenue,Churchill,Anna,389990,389990,0,8,0,https://www.beazer.com/dallas-TX/anna/churchill/cascade/2507
+2026-11-20 18:40,M/I Homes,1717 Deciduous Drive,Sanderos,Fort Worth,369990,372990,-3000,32,2,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/fort-worth/sanderos/polo-ii-plan/1717-deciduous-drive
+2026-11-20 18:40,M/I Homes,2121 Osage Trail,Valleybrooke,Mesquite,299990,300990,-1000,32,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/mesquite/valleybrooke/azalea-plan/2121-osage-trail
 2026-11-20 15:27,Highland Homes,817 Bridle Path Parkway,Sandbrock Ranch,Aubrey,590000,640000,-50000,32,1,https://www.highlandhomes.com/dfw/aubrey/sandbrock-ranch/123-237
 2026-11-20 14:13,D.R. Horton,11213 Treehouse Trail,Treeline,Justin,444990,449325,-4335,32,1,https://www.drhorton.com/texas/fort-worth/justin/treeline/qmis/11213-treehouse-trail
 2026-11-20 14:13,D.R. Horton,2801 Hawk Drive,Eagle Creek,Denton,384685,384685,0,30,0,https://www.drhorton.com/texas/fort-worth/denton/eagle-creek/qmis/2801-hawk-drive
@@ -464,7 +483,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-06 00:48,HistoryMaker Homes,767 Gentle Bird Drive,Elevon,Lavon,307900,307900,0,10,0,https://www.historymaker.com/new-homes/dallas-fort-worth/lavon/elevon/767-gentle-bird-drive-13
 2026-11-06 00:48,Beazer Homes,3422 Hillingdon Road,Churchill,Anna,274563,274563,0,17,0,https://www.beazer.com/dallas-TX/anna/churchill/daisy/2228
 2026-11-05 18:14,Trophy Signature Homes,6660 Valley Lake Lane,Tesoro at Chisholm Trail Ranch,Crowley,424990,427990,-3000,17,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/crowley/tesoro-at-chisholm-trail-ranch/6660-valley-lake-lane
-2026-11-05 18:14,Trophy Signature Homes,4000 Somerville Drive,Lakehaven,Farmersville,299990,306990,-7000,17,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/farmersville/lakehaven/4000-somerville-drive
 2026-11-05 12:44,Bloomfield Homes,1529 Soapberry Drive,Arrowbrooke 50,Aubrey,469000,478000,-9000,17,1,https://www.bloomfieldhomes.com/new-homes/tx/aubrey/arrowbrooke-50/cypress-ii/1529-soapberry-drive/
 2026-11-05 12:44,Bloomfield Homes,2111 Ash Court,Somerset,Mansfield,539990,544990,-5000,17,1,https://www.bloomfieldhomes.com/new-homes/tx/mansfield/somerset/violet-iv/2111-ash-court/
 2026-11-05 12:44,Trophy Signature Homes,348 Lacy Oak Lane,Dove Hollow,Waxahachie,415990,415990,0,17,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/waxahachie/dove-hollow/348-lacy-oak-lane
