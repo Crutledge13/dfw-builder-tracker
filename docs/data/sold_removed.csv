@@ -1,4 +1,6 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-22 02:37,HistoryMaker Homes,4744 Farmers Drive,Century Farms,Celina,405888,424990,-19102,26,1,https://www.historymaker.com/new-homes/dallas-fort-worth/celina/century-farms/4744-farmers-drive-22
+2026-11-22 02:37,First Texas Homes,1850 Silver Birch Road,,Waxahachie,483154,483154,0,34,0,https://www.firsttexashomes.com/community/waxahachie/16529/oaks-of-north-grove/1703603/1850-silver-birch-road-waxahachie-tx-75165/
 2026-11-21 20:40,M/I Homes,232 West Haymaker Road,Marilee,Celina,325990,334990,-9000,34,3,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/celina/marilee/herrera-plan/232-west-haymaker-road
 2026-11-21 17:13,HistoryMaker Homes,3101 Dixondale Drive,Palmilla Springs,Fort Worth,379900,394900,-15000,25,1,https://www.historymaker.com/new-homes/dallas-fort-worth/fort-worth/palmilla-springs/3101-dixondale-drive
 2026-11-21 17:13,First Texas Homes,425 Willie Way,,Burleson,489103,489103,0,33,0,https://www.firsttexashomes.com/community/burleson/16515/high-country/5000132/425-willie-way-burleson-tx-76028/
@@ -130,7 +132,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-18 15:37,Riverside Homebuilders,820 Elmstead Drive,,Fort Worth,359900,376900,-17000,30,3,https://www.riversidehomebuilders.com/quick-move-in/820-elmstead-drive/
 2026-11-18 15:37,D.R. Horton,901 Crossvine Dr,Waterbend,Euless,450240,470240,-20000,30,1,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/901-crossvine-dr
 2026-11-18 15:37,D.R. Horton,1620 Denim Street,Hickory Grove,Denton,286990,286990,0,30,0,https://www.drhorton.com/texas/fort-worth/denton/hickory-grove/qmis/1620-denim-street
-2026-11-18 15:37,D.R. Horton,2418 Starlight Street,The Preserve at Forum,Grand Prairie,469000,469000,0,30,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/2418-starlight-st
 2026-11-18 15:37,D.R. Horton,3670 Saguaro Dr,The Preserve at Forum,Grand Prairie,531990,531990,0,30,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/3670-saguaro-dr
 2026-11-18 15:37,D.R. Horton,2135 Serenity Ln,California Meadows,Arlington,348510,348510,0,30,0,https://www.drhorton.com/texas/fort-worth/arlington/california-meadows/qmis/2135-serenity-ln
 2026-11-18 15:37,Trophy Signature Homes,460 Hocking Hills Drive,Dove Hollow,Waxahachie,384990,394990,-10000,30,1,https://trophysignaturehomes.com/homes/dallas-ft-worth/waxahachie/dove-hollow/460-hocking-hills-drive
@@ -739,7 +740,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-30 06:55,Coventry Homes,2207 Birch Street,South Pointe 65,Mansfield,599990,599990,0,11,0,https://www.coventryhomes.com/new-homes/tx/mansfield/south-pointe-65/double-oak-ii/2207-birch-street/
 2026-10-30 04:01,Coventry Homes,3803 Summerfield Drive,Heartland 50 Dream Series,Heartland,339990,339990,0,1,0,https://www.coventryhomes.com/new-homes/tx/heartland/heartland-50-dream-series/wilson-1/3803-summerfield-drive/
 2026-10-30 03:16,Highland Homes,910 Pine Valley Drive,Quail Hollow,Rockwall,895000,895000,0,11,0,https://www.highlandhomes.com/dfw/rockwall/quail-hollow/146-024
-2026-10-30 03:16,D.R. Horton,2418 Starlight Street,The Preserve at Forum,Grand Prairie,495010,469000,26010,11,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/the-preserve-at-forum/qmis/2418-starlight-st
 2026-10-30 03:16,Perry Homes,2127 Terraces Boulevard,Terraces 62,Rockwall,806900,806900,0,11,0,https://www.perryhomes.com/new-homes/texas/dallas/terraces/terraces-62/2127-terraces-boulevard
 2026-10-29 20:42,Highland Homes,2921 Moab Drive,Ridgeline,McKinney,653650,645000,8650,8,1,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-054
 2026-10-29 20:42,HistoryMaker Homes,10937 Cacao Drive,Palmilla Springs,Fort Worth,389900,389900,0,2,0,https://www.historymaker.com/new-homes/dallas-fort-worth/fort-worth/palmilla-springs/10937-cacao-drive-30
