@@ -1,4 +1,7 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-23 14:35,Meritage Homes,2608 Delilah Drive,,Denton,386743,386743,0,24,0,https://www.meritagehomes.com/state/tx/dallasft-worth/2608-delilah-drive
+2026-11-23 14:35,Meritage Homes,3025 Dry Brook Way,,Fort Worth,366897,373897,-7000,24,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3025-dry-brook-way
+2026-11-23 14:35,M/I Homes,1621 Etosha Drive,Verandah,Royse City,300990,304990,-4000,35,3,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/royse-city/verandah/pizarro-plan/1621-etosha-drive
 2026-11-23 09:11,Highland Homes,920 Shooting Star Drive,Star Trail,Prosper,940714,1049714,-109000,35,2,https://www.highlandhomes.com/dfw/prosper/star-trail/137-035
 2026-11-23 09:11,Riverside Homebuilders,205 Cobb Road,,,589900,609900,-20000,35,1,https://www.riversidehomebuilders.com/quick-move-in/205-cobb-road/
 2026-11-23 02:16,HistoryMaker Homes,253 Territory Trail,Mockingbird Estates Townhomes,Fort Worth,299990,299990,0,27,0,https://www.historymaker.com/new-homes/dallas-fort-worth/fort-worth/mockingbird-estates-townhomes/253-territory-trail-bldg20
@@ -105,7 +108,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-19 20:37,Highland Homes,5330 East Runnel Road,Creekshaw,Royse City,325000,317130,7870,3,0,https://www.highlandhomes.com/dfw/royse-city/creekshaw/880-131
 2026-11-19 20:37,HistoryMaker Homes,609 Wicklow Court,Hillside Village,Celina,408900,409990,-1090,23,1,https://www.historymaker.com/new-homes/dallas-fort-worth/celina/hillside-village/609-wicklow-court
 2026-11-19 20:37,First Texas Homes,533 Durango St,,Midlothian,444950,444950,0,32,0,https://www.firsttexashomes.com/community/midlothian/16554/westside-preserve/5000095/533-durango-st-midlothian-tx-76065/
-2026-11-19 20:37,K. Hovnanian Homes,1159 Barbazzano Drive,Monterra2,Fate,529000,529000,0,32,0,https://www.khov.com/new-construction-homes/texas/fate/monterra2/geneva-1159-barbazzano-drive-0029/
 2026-11-19 20:37,K. Hovnanian Homes,2604 Ackley Lane,Kreymer at the Park,Wylie,680000,680000,0,32,0,https://www.khov.com/new-construction-homes/texas/wylie/kreymer-at-the-park/rotterdam-2604-ackley-lane-0009/
 2026-11-19 19:05,Century Communities,490 W 10th Street,Sperling Farms,Ferris,315900,317900,-2000,31,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/ferris/sperling-farms/lots/0e06-490-w-10th-street
 2026-11-19 19:05,D.R. Horton,1413 Arthur Blvd,,Dallas,693990,693990,0,2,0,
@@ -882,7 +884,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-27 11:37,D.R. Horton,133 Hawksbill Lane,Bluestem,Rhome,358990,358990,0,8,0,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/133-hawksbill-lane
 2026-10-27 11:37,D.R. Horton,100 Silvergrass Road,Verandah,Royse City,289990,289990,0,8,0,https://www.drhorton.com/texas/dallas/royse-city/verandah/qmis/100-silvergrass-road
 2026-10-27 11:37,D.R. Horton,3120 Catamount Dr,Sweetwater Springs,Sherman,287990,287990,0,8,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3120-catamount-dr
-2026-10-27 11:37,D.R. Horton,3128 Catamount Dr,Sweetwater Springs,Sherman,254990,254990,0,8,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3128-catamount-dr
 2026-10-27 11:37,D.R. Horton,3238 Hilltop Dr,Sweetwater Springs,Sherman,285490,285490,0,8,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3238-hilltop-dr
 2026-10-27 11:37,D.R. Horton,4829 Silver Touch Rd,Silverado,Aubrey,369990,369990,0,8,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4829-silver-touch-rd
 2026-10-27 11:37,David Weekley Homes,2122 Grand Ave,The Terraces Estates,Rockwall,690012,690012,0,7,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/rockwall/the-terraces-estates/19780024
