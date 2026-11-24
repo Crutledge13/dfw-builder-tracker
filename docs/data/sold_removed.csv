@@ -1,4 +1,15 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-23 23:59,Highland Homes,3333 Pink Petal Drive,Goodland,Venus,645000,660000,-15000,36,1,https://www.highlandhomes.com/dfw/venus/goodland/8003-018
+2026-11-23 23:59,Highland Homes,4444 Lamplights Drive,Mosaic,Celina,669998,669998,0,36,0,https://www.highlandhomes.com/dfw/celina/mosaic/8009-013
+2026-11-23 23:59,D.R. Horton,1640 Mantle Road,Crane Crossing,Crandall,313740,313740,0,36,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1640-mantle-road
+2026-11-23 23:59,D.R. Horton,1644 Mantle Road,Crane Crossing,Crandall,279740,279740,0,36,0,https://www.drhorton.com/texas/dallas/crandall/crane-crossing/qmis/1644-mantle-road
+2026-11-23 23:59,D.R. Horton,3310 Twilight Trail,Maplewood Meadows,Rowlett,238490,238490,0,36,0,https://www.drhorton.com/texas/dallas/talty/maplewood-meadows/qmis/3310-twilight-trail
+2026-11-23 23:59,D.R. Horton,3344 Pier View Street,Lakeview Pointe,Grand Prairie,454340,454340,0,36,0,https://www.drhorton.com/texas/fort-worth/grand-prairie/lakeview-pointe/qmis/3344-pier-view-street
+2026-11-23 23:59,D.R. Horton,125 Lantern Road,Trailstone,Caddo Mills,339590,339590,0,36,0,https://www.drhorton.com/texas/dallas/caddo-mills/trailstone/qmis/125-lantern-road
+2026-11-23 23:59,D.R. Horton,1413 Arthur Blvd,Royal Court,Frisco,693990,693990,0,36,0,https://www.drhorton.com/texas/dallas/frisco/royal-court/qmis/1413-arthur-blvd-model
+2026-11-23 23:59,D.R. Horton,3095 Misty Morning Lane,Maplewood Meadows,Rowlett,256990,247500,9490,27,0,https://www.drhorton.com/texas/dallas/talty/maplewood-meadows/qmis/3095-misty-morning-lane
+2026-11-23 23:59,D.R. Horton,336 Wayland Street,The Canyons,Fort Worth,294990,294990,0,27,0,https://www.drhorton.com/texas/fort-worth/keene/the-canyons/qmis/336-wayland-street
+2026-11-23 23:59,David Weekley Homes,5624 Legacy Park,Whyburn 100,Flower Mound,1468761,1468761,0,7,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/flower-mound/whyburn-100/19740016
 2026-11-23 22:59,HistoryMaker Homes,613 Wicklow Court,Hillside Village,Celina,388900,389990,-1090,36,1,https://www.historymaker.com/new-homes/dallas-fort-worth/celina/hillside-village/613-wicklow-court
 2026-11-23 22:59,D.R. Horton,4931 Simmental Drive,Eden Ranch,Arlington,479990,487990,-8000,36,1,https://www.drhorton.com/texas/fort-worth/arlington/eden-ranch/qmis/4931-simmental-drive
 2026-11-23 22:59,D.R. Horton,902 Milkweed Dr,Waterbend,Euless,434240,454240,-20000,36,1,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/902-milkweed-dr
