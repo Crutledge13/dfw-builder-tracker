@@ -1,4 +1,10 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-24 17:13,Century Communities,352 Sun Harvest Dr.,Ambergrove,Royse City,324900,339900,-15000,36,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/royse-city/ambergrove/lots/340b01-352-sun-harvest-dr
+2026-11-24 17:13,Century Communities,738 Carson Drive,Overland Grove,Forney,299888,335900,-36012,36,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/classic-series---50-/lots/2jj21-738-carson-drive
+2026-11-24 17:13,Meritage Homes,2102 Santa Anita Street,,Seagoville,375490,392990,-17500,36,3,https://www.meritagehomes.com/state/tx/dallasft-worth/2102-santa-anita-street
+2026-11-24 17:13,Meritage Homes,1212 Winters Way,,McKinney,420490,439990,-19500,36,2,https://www.meritagehomes.com/state/tx/dallasft-worth/1212-winters-way
+2026-11-24 17:13,M/I Homes,3604 Water Lily Way,Lilyana,Celina,512990,519990,-7000,36,2,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/prosper/lilyana/addison-plan/3604-water-lily-way
+2026-11-24 17:13,M/I Homes,7910 Marion Downs Trail,Mobberly Farms,Pilot Point,329990,329990,0,14,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/pilot-point/mobberly-farms/shipton-plan/7910-marion-downs-trail
 2026-11-24 11:39,D.R. Horton,4002 Thistle Dr,Sanger Circle Phase 7,Sanger,286990,281990,5000,36,0,http://www.drhorton.com/texas/dallas/sanger/sanger-circle-phase-7/qmis/4002-thistle-dr
 2026-11-24 11:39,D.R. Horton,1206 Breezy Oak Drive,Waverly Estates,Josephine,288990,293990,-5000,36,1,https://www.drhorton.com/texas/dallas/josephine/waverly-estates/qmis/1206-breezy-oak-drive
 2026-11-24 11:39,D.R. Horton,4812 Silver Chute Ave,Silverado,Aubrey,290990,285990,5000,36,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4812-silver-chute-ave
@@ -418,7 +424,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-12 21:15,Century Communities,605 Teardrop Ct.,Ambergrove,Royse City,299900,305900,-6000,25,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/royse-city/ambergrove/lots/460b01-605-teardrop-ct
 2026-11-12 21:15,Beazer Homes,1700 Calanques Street,Verandah,Royse City,349990,339990,10000,24,0,https://www.beazer.com/dallas-TX/royse-city/verandah/cascade2/2809
 2026-11-12 21:15,Beazer Homes,3603 Tapestry Sky Court,Heath Golf and Yacht Club,Heath,689990,699990,-10000,24,1,https://www.beazer.com/dallas-TX/heath/heath-golf-and-yacht-club/lockhart/0213
-2026-11-12 21:15,Beazer Homes,106 National Court,Brookville Estates,Forney,349990,369990,-20000,24,2,https://www.beazer.com/dallas-TX/forney/brookville-estates/carson/0343
 2026-11-12 21:15,Meritage Homes,4036 Palestine Drive,,Farmersville,301937,311937,-10000,25,1,https://www.meritagehomes.com/state/tx/dallasft-worth/4036-palestine-drive
 2026-11-12 21:15,Meritage Homes,211 Decoursey Drive,,Princeton,333157,333157,0,14,0,https://www.meritagehomes.com/state/tx/dallasft-worth/211-decoursey-drive
 2026-11-12 21:15,Meritage Homes,1586 Coldwater Way,,Crandall,305130,307630,-2500,8,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1586-coldwater-way
@@ -1131,7 +1136,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-22 08:46,Trophy Signature Homes,2011 Chariot Court,Stonehaven,Seagoville,280990,280990,0,3,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/seagoville/stonehaven/2011-chariot-court
 2026-10-22 07:00,Highland Homes,2709 Shady Branch Lane,Trinity Falls,McKinney,604360,604360,0,3,0,https://www.highlandhomes.com/dfw/mckinney/trinity-falls/841-085
 2026-10-22 02:33,David Weekley Homes,1320 Castello Drive,Monterra Classics,Fate,569990,569990,0,1,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fate/monterra-classics/19560074
-2026-10-22 00:23,Beazer Homes,821 Cayden Drive,Lake Pointe at Paloma Creek,Little Elm,418990,418990,0,2,0,https://www.beazer.com/dallas-TX/little-elm/lake-pointe-at-paloma-creek/cascade/0233
 2026-10-22 00:23,David Weekley Homes,1905 Foothill Road,The Terraces Classics,Rockwall,699990,699990,0,1,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/rockwall/the-terraces-classics/19770014
 2026-10-21 20:30,David Weekley Homes,2508 Yellow Yucca Lane,Walsh Gardens,Fort Worth,444767,444767,0,1,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/walsh-gardens/19220055
 2026-10-21 20:30,David Weekley Homes,2441 Jackson Burn Drive,Creekshaw Gardens,Royse City,304990,304990,0,1,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/royse-city/creekshaw-gardens/19370085
