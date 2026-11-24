@@ -1,4 +1,11 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-24 10:27,D.R. Horton,4589 Bonney Avenue,Cartwright Mays,Crandall,194490,199490,-5000,36,1,https://www.drhorton.com/texas/dallas/crandall/cartwright-mays/qmis/4589-bonney-avenue
+2026-11-24 10:27,D.R. Horton,4597 Bonney Avenue,Cartwright Mays,Crandall,214990,219990,-5000,36,1,https://www.drhorton.com/texas/dallas/crandall/cartwright-mays/qmis/4597-bonney-avenue
+2026-11-24 10:27,D.R. Horton,9524 Bently Blvd,Silverado,Aubrey,402990,427990,-25000,36,1,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/9524-bently-blvd
+2026-11-24 10:27,D.R. Horton,10625 Diamond Mine Drive,Rock Creek West,Fort Worth,292990,307990,-15000,36,1,https://www.drhorton.com/texas/fort-worth/fort-worth/rock-creek-west/qmis/10625-diamond-mine-drive
+2026-11-24 10:27,D.R. Horton,729 Hart Leaf Lane,Elevon,Lavon,320990,320990,0,20,0,https://www.drhorton.com/texas/dallas/lavon/elevon/qmis/729-hart-leaf-lane
+2026-11-24 10:27,D.R. Horton,4832 Silver Vein Ave,Silverado,Aubrey,325990,325990,0,20,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4832-silver-vein-ave
+2026-11-24 10:27,D.R. Horton,4149 Woodhill Bend Drive,Sunnycreek,Crowley,303990,303990,0,19,0,https://www.drhorton.com/texas/fort-worth/crowley/sunnycreek/qmis/4149-woodhill-bend-drive
 2026-11-24 06:52,D.R. Horton,2943 Stiles Pond Street,Walden Pond West,Forney,259990,259990,0,5,0,https://www.drhorton.com/texas/dallas/dallas/walden-pond-west/qmis/2943-stiles-pond-street
 2026-11-24 06:52,D.R. Horton,2947 Stiles Pond Street,Walden Pond West,Forney,239990,239990,0,5,0,https://www.drhorton.com/texas/dallas/dallas/walden-pond-west/qmis/2947-stiles-pond-street
 2026-11-24 06:52,David Weekley Homes,9901 Oak Glade Drive,Landmark,Denton,582751,582751,0,34,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/denton/landmark/19980013
@@ -148,7 +155,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-19 19:05,D.R. Horton,1413 Arthur Blvd,,Dallas,693990,693990,0,2,0,
 2026-11-19 19:05,Meritage Homes,3216 Dustbend Plaza,,Fort Worth,329862,332362,-2500,31,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3216-dustbend-plaza
 2026-11-19 19:05,Trophy Signature Homes,1109 Sundog Drive,Windmore,Princeton,363990,363990,0,20,0,https://trophysignaturehomes.com/homes/dallas-ft-worth/princeton/windmore/1109-sundog-drive
-2026-11-19 16:22,Bloomfield Homes,403 Birkdale Lane,Glenbrook,Red Oak,619000,619000,0,31,0,https://www.bloomfieldhomes.com/new-homes/tx/red-oak/glenbrook/seaberry/403-birkdale-lane/
 2026-11-19 16:22,Beazer Homes,3407 Glorious Court,Heath Golf and Yacht Club,Heath,574990,599990,-25000,31,2,https://www.beazer.com/dallas-TX/heath/heath-golf-and-yacht-club/driftwood/0207
 2026-11-19 16:22,Beazer Homes,411 Aqua Court,Heath Golf and Yacht Club,Heath,719990,769990,-50000,31,2,https://www.beazer.com/dallas-TX/heath/heath-golf-and-yacht-club/lockhart/2713
 2026-11-19 16:22,Beazer Homes,16929 Prieto Avenue,Wildflower Ranch,Justin,405990,409990,-4000,31,1,https://www.beazer.com/dallas-TX/justin/wildflower-ranch/alpine/4143
