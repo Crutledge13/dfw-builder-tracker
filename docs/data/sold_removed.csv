@@ -1,4 +1,11 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-25 14:12,Highland Homes,3036 Craftsman Way,Pecan Square,Northlake,549990,599990,-50000,37,1,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-144
+2026-11-25 14:12,D.R. Horton,3621 Bedrock Way,Silverado,Aubrey,343990,338990,5000,37,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/3621-bedrock-way
+2026-11-25 14:12,D.R. Horton,3628 Bedrock Way,Silverado,Aubrey,348990,343990,5000,37,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/3628-bedrock-way
+2026-11-25 14:12,D.R. Horton,4078 Sparrow St,Cardinal Hills,Dallas,297360,297360,0,21,0,https://www.drhorton.com/texas/dallas/dallas/cardinal-hills/qmis/4078-sparrow-st
+2026-11-25 14:12,D.R. Horton,917 Milkweed Dr,Waterbend,Euless,474535,474535,0,3,0,https://www.drhorton.com/texas/fort-worth/euless/waterbend/qmis/917-milkweed-dr
+2026-11-25 14:12,D.R. Horton,4845 Silver Chute Ave,Silverado,Aubrey,377990,377990,0,8,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4845-silver-chute-ave
+2026-11-25 14:12,Beazer Homes,3316 Cloyce Box Drive,Churchill,Anna,379990,399990,-20000,25,1,https://www.beazer.com/dallas-TX/anna/churchill/cascade/1607
 2026-11-25 11:31,Riverside Homebuilders,104 Snowy Owl Trail,,New Fairview,459900,479900,-20000,37,3,https://www.riversidehomebuilders.com/quick-move-in/104-snowy-owl-trail/
 2026-11-25 11:31,Riverside Homebuilders,1205 Colca Drive,,Springtown,399900,414900,-15000,37,2,https://www.riversidehomebuilders.com/quick-move-in/1205-colca-drive/
 2026-11-25 11:31,Riverside Homebuilders,1229 Colca Drive,,Springtown,339900,349900,-10000,37,2,https://www.riversidehomebuilders.com/quick-move-in/1229-colca-drive/
@@ -750,7 +757,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-02 18:02,D.R. Horton,1915 Glory Dr,Asher Oaks,Dallas,250490,279325,-28835,14,1,https://www.drhorton.com/texas/dallas/bonham/asher-oaks/qmis/1915-glory-dr
 2026-11-02 18:02,Meritage Homes,201 Decoursey Drive,,Princeton,322660,322660,0,14,0,https://www.meritagehomes.com/state/tx/dallasft-worth/201-decoursey-drive
 2026-11-02 18:02,Meritage Homes,3502 Bridgeport Drive,,Farmersville,232389,242389,-10000,14,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3502-bridgeport-drive
-2026-11-02 15:52,K. Hovnanian Homes,208 Newman Court,,Wylie,649000,649000,0,14,0,
 2026-11-02 15:52,Meritage Homes,3045 O Pines Drive,,Farmersville,245435,245435,0,14,0,https://www.meritagehomes.com/state/tx/dallasft-worth/3045-o-pines-drive
 2026-11-02 15:52,D.R. Horton,2023 Ketchum Lane,Liberty Crossing,Royse City,371490,371490,0,1,0,http://www.drhorton.com/texas/dallas/royse-city/liberty-crossing/qmis/2023-ketchum-lane
 2026-11-02 15:52,D.R. Horton,1325 North Carolina Avenue,Boardwalk,Lancaster,348990,348990,0,14,0,https://www.drhorton.com/texas/dallas/lancaster/boardwalk/qmis/1325-north-carolina-avenue
@@ -841,7 +847,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-31 06:51,Coventry Homes,1620 Peridot Parkway,Solterra 40,Mesquite,359990,359990,0,12,0,https://www.coventryhomes.com/new-homes/tx/mesquite/solterra-40/stephens/1620-peridot-parkway/
 2026-10-31 02:30,Perry Homes,540 Stark Mews,The Heights at Uptown Celina 40 45,Celina,484900,477900,7000,12,0,https://www.perryhomes.com/new-homes/texas/dallas/the-heights-at-uptown-celina/the-heights-at-uptown-celina-40-45/540-stark-mews
 2026-10-31 01:45,Highland Homes,1820 Drover Street,Pecan Square,Northlake,598990,630000,-31010,12,2,https://www.highlandhomes.com/dfw/northlake/pecan-square/815-089
-2026-10-31 01:45,Beazer Homes,3426 Hillingdon Road,Churchill,Anna,369990,369990,0,11,0,https://www.beazer.com/dallas-TX/anna/churchill/bluebell/2227
 2026-10-30 21:20,K. Hovnanian Homes,11536 Jackloe Street,,Haslet,550000,550000,0,4,0,
 2026-10-30 21:20,David Weekley Homes,1820 Tye Street,Pecan Square,Northlake,599000,672089,-73089,10,1,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/northlake/pecan-square/19160220
 2026-10-30 19:32,D.R. Horton,341 Deaf Smith Street,Lonestar at Liberty Trails,Justin,350990,350990,0,11,0,https://www.drhorton.com/texas/fort-worth/fort-worth/lonestar-at-liberty-trails/qmis/341-deaf-smith-street
