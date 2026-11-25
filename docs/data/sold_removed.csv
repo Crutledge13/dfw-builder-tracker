@@ -1,4 +1,10 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-24 23:36,Beazer Homes,2232 Corbera Drive,Valencia on the Lake,Little Elm,544990,579990,-35000,36,2,https://www.beazer.com/dallas-TX/little-elm/valencia-on-the-lake/summerfield/1327
+2026-11-24 23:36,Perry Homes,2715 Kirkhill Lane,Devonshire 55,Forney,541900,532900,9000,37,0,https://www.perryhomes.com/new-homes/texas/dallas/devonshire/devonshire-55/2715-kirkhill-lane
+2026-11-24 23:36,Perry Homes,129 Enclave Drive,Lakewood Village 50,Dallas,616900,612900,4000,37,0,https://www.perryhomes.com/new-homes/texas/dallas/lakewood-village/lakewood-village-50/129-enclave-drive
+2026-11-24 23:36,Meritage Homes,1015 Angel Street,,Josephine,224656,242156,-17500,37,2,https://www.meritagehomes.com/state/tx/dallasft-worth/1015-angel-street
+2026-11-24 23:36,Meritage Homes,1720 Gardendale Hollow Lane,,Anna,404990,407490,-2500,37,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1720-gardendale-hollow-lane
+2026-11-24 23:36,David Weekley Homes,2404 Painted Sky Trail,Walsh Classic,Fort Worth,584178,610762,-26584,35,2,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/fort-worth/walsh-classic/18950222
 2026-11-24 19:06,D.R. Horton,3128 Catamount Dr,Sweetwater Springs,Sherman,262550,262550,0,36,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3128-catamount-dr
 2026-11-24 19:06,D.R. Horton,2024 Willow Drift St,Windchime,Celina,374490,382155,-7665,29,1,https://www.drhorton.com/texas/dallas/celina/windchime/qmis/2024-willow-drift-st
 2026-11-24 19:06,D.R. Horton,1302 Wolfcity Dr,Winchester Crossing,Princeton,283845,283845,0,21,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1302-wolfcity-dr
@@ -667,7 +673,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-03 13:43,D.R. Horton,2220 Chloe Ln,Woods at Lindsey Place,Anna,331990,331990,0,15,0,https://www.drhorton.com/texas/dallas/anna/woods-at-lindsey-place/qmis/2220-chloe-ln
 2026-11-03 13:43,D.R. Horton,462 Sweet Spring Drive,Elevon,Lavon,242140,252140,-10000,15,1,https://www.drhorton.com/texas/dallas/lavon/elevon/qmis/462-sweet-spring-drive
 2026-11-03 13:43,D.R. Horton,212 Whispering Pine Drive,Wildwood,Royse City,243490,253490,-10000,15,1,https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/212-whispering-pine-drive
-2026-11-03 13:43,D.R. Horton,215 Desert Willow Way,Wildwood,Royse City,232950,242950,-10000,15,1,https://www.drhorton.com/texas/dallas/royse-city/wildwood/qmis/215-desert-willow-way
 2026-11-03 13:43,M/I Homes,122 Hudson Lane,The Preserve,Justin,434990,439990,-5000,15,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/justin/the-preserve/arlington-plan/122-hudson-lane
 2026-11-03 13:43,M/I Homes,1712 Deciduous Drive,Sanderos,Fort Worth,389990,392990,-3000,15,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/fort-worth/sanderos/moscoso-plan/1712-deciduous-drive
 2026-11-03 13:43,M/I Homes,5337 Hybern Avenue,Lily Creek at Sutton Fields,Aubrey,499990,499990,0,15,0,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/celina/lily-creek-at-sutton-fields/balcones-plan/5337-hybern-avenue
