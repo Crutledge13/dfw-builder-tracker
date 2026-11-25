@@ -1,4 +1,11 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-24 19:06,D.R. Horton,3128 Catamount Dr,Sweetwater Springs,Sherman,262550,262550,0,36,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3128-catamount-dr
+2026-11-24 19:06,D.R. Horton,2024 Willow Drift St,Windchime,Celina,374490,382155,-7665,29,1,https://www.drhorton.com/texas/dallas/celina/windchime/qmis/2024-willow-drift-st
+2026-11-24 19:06,D.R. Horton,1302 Wolfcity Dr,Winchester Crossing,Princeton,283845,283845,0,21,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1302-wolfcity-dr
+2026-11-24 19:06,D.R. Horton,1307 Dry Brook Way,Winchester Crossing,Princeton,320490,320490,0,14,0,https://www.drhorton.com/texas/dallas/princeton/winchester-crossing/qmis/1307-dry-brook-way
+2026-11-24 19:06,D.R. Horton,1506 Aquilla Ln,Creekside Ranch,Rowlett,247990,247990,0,14,0,https://www.drhorton.com/texas/dallas/blue-ridge/creekside-ranch/qmis/1506-aquilla-ln
+2026-11-24 19:06,Beazer Homes,3726 Pinyon Pine Way,Goodland,Midlothian,474990,518432,-43442,33,3,https://www.beazer.com/dallas-TX/midlothian/goodland/avalon3/1019
+2026-11-24 19:06,Beazer Homes,3911 Jimson Avenue,Goodland,Midlothian,565990,585936,-19946,19,1,https://www.beazer.com/dallas-TX/midlothian/goodland/summerfield3/1005
 2026-11-24 17:13,Century Communities,352 Sun Harvest Dr.,Ambergrove,Royse City,324900,339900,-15000,36,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/royse-city/ambergrove/lots/340b01-352-sun-harvest-dr
 2026-11-24 17:13,Century Communities,738 Carson Drive,Overland Grove,Forney,299888,335900,-36012,36,2,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/classic-series---50-/lots/2jj21-738-carson-drive
 2026-11-24 17:13,Meritage Homes,2102 Santa Anita Street,,Seagoville,375490,392990,-17500,36,3,https://www.meritagehomes.com/state/tx/dallasft-worth/2102-santa-anita-street
@@ -942,6 +949,7 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-10-27 11:37,D.R. Horton,133 Hawksbill Lane,Bluestem,Rhome,358990,358990,0,8,0,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/133-hawksbill-lane
 2026-10-27 11:37,D.R. Horton,100 Silvergrass Road,Verandah,Royse City,289990,289990,0,8,0,https://www.drhorton.com/texas/dallas/royse-city/verandah/qmis/100-silvergrass-road
 2026-10-27 11:37,D.R. Horton,3120 Catamount Dr,Sweetwater Springs,Sherman,287990,287990,0,8,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3120-catamount-dr
+2026-10-27 11:37,D.R. Horton,3128 Catamount Dr,Sweetwater Springs,Sherman,254990,262550,-7560,8,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3128-catamount-dr
 2026-10-27 11:37,D.R. Horton,3238 Hilltop Dr,Sweetwater Springs,Sherman,285490,285490,0,8,0,https://www.drhorton.com/texas/dallas/sherman/sweetwater-springs/qmis/3238-hilltop-dr
 2026-10-27 11:37,D.R. Horton,4829 Silver Touch Rd,Silverado,Aubrey,369990,369990,0,8,0,https://www.drhorton.com/texas/dallas/aubrey/silverado/qmis/4829-silver-touch-rd
 2026-10-27 11:37,David Weekley Homes,2122 Grand Ave,The Terraces Estates,Rockwall,690012,690012,0,7,0,https://www.davidweekleyhomes.com/homes-ready-soon/tx/dallas-ft-worth/rockwall/the-terraces-estates/19780024
