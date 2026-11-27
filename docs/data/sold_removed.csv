@@ -1,4 +1,5 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-26 17:50,Beazer Homes,106 National Court,Brookville Estates,Forney,349990,369990,-20000,38,2,https://www.beazer.com/dallas-TX/forney/brookville-estates/carson/0343
 2026-11-26 16:37,HistoryMaker Homes,758 Embrace Court,Elevon,Lavon,428900,444900,-16000,30,1,https://www.historymaker.com/new-homes/dallas-fort-worth/lavon/elevon/758-embrace-court-91
 2026-11-26 13:45,Century Communities,732 Ashley Gardens Drive,Overland Grove,Forney,344900,344900,0,38,0,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/forney/overland-grove/classic-series---50-/lots/2kk07-732-ashley-gardens-drive
 2026-11-26 13:45,Meritage Homes,3268 Mint Springs Street,,Fort Worth,397344,415844,-18500,38,2,https://www.meritagehomes.com/state/tx/dallasft-worth/3268-mint-springs-street
@@ -502,6 +503,7 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-12 21:15,Century Communities,605 Teardrop Ct.,Ambergrove,Royse City,299900,305900,-6000,25,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/royse-city/ambergrove/lots/460b01-605-teardrop-ct
 2026-11-12 21:15,Beazer Homes,1700 Calanques Street,Verandah,Royse City,349990,339990,10000,24,0,https://www.beazer.com/dallas-TX/royse-city/verandah/cascade2/2809
 2026-11-12 21:15,Beazer Homes,3603 Tapestry Sky Court,Heath Golf and Yacht Club,Heath,689990,699990,-10000,24,1,https://www.beazer.com/dallas-TX/heath/heath-golf-and-yacht-club/lockhart/0213
+2026-11-12 21:15,Beazer Homes,106 National Court,Brookville Estates,Forney,349990,369990,-20000,24,2,https://www.beazer.com/dallas-TX/forney/brookville-estates/carson/0343
 2026-11-12 21:15,Meritage Homes,4036 Palestine Drive,,Farmersville,301937,311937,-10000,25,1,https://www.meritagehomes.com/state/tx/dallasft-worth/4036-palestine-drive
 2026-11-12 21:15,Meritage Homes,211 Decoursey Drive,,Princeton,333157,333157,0,14,0,https://www.meritagehomes.com/state/tx/dallasft-worth/211-decoursey-drive
 2026-11-12 21:15,Meritage Homes,1586 Coldwater Way,,Crandall,305130,307630,-2500,8,1,https://www.meritagehomes.com/state/tx/dallasft-worth/1586-coldwater-way
