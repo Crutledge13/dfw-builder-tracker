@@ -1,4 +1,10 @@
 at,builder,address,community,city,last_price,first_price,total_change,days_listed,cuts,url
+2026-11-27 22:07,Beazer Homes,3904 Jade Drive,Chalk Hill,Celina,404990,439990,-35000,39,4,https://www.beazer.com/dallas-TX/celina/chalk-hill/rainier/2708
+2026-11-27 22:07,Beazer Homes,2101 Naples Drive,Bayside,Rowlett,379990,431990,-52000,39,2,https://www.beazer.com/dallas-TX/rowlett/bayside/baltic/0231
+2026-11-27 22:07,Beazer Homes,3746 Pinyon Pine Way,Goodland,Midlothian,541990,541990,0,10,0,https://www.beazer.com/dallas-TX/midlothian/goodland/summerfield3/1024
+2026-11-27 22:07,Meritage Homes,3026 O Pines Drive,,Farmersville,283232,288232,-5000,40,1,https://www.meritagehomes.com/state/tx/dallasft-worth/3026-o-pines-drive
+2026-11-27 22:07,Meritage Homes,2307 Windsong Path,,Princeton,424639,424639,0,40,0,https://www.meritagehomes.com/state/tx/dallasft-worth/2307-windsong-path
+2026-11-27 22:07,Perry Homes,8301 Autumn Sage Trail,Landmark 60,Denton,813900,782900,31000,40,0,https://www.perryhomes.com/new-homes/texas/dallas/landmark/landmark-60/8301-autumn-sage-trail
 2026-11-27 16:15,Century Communities,3518 Middlefield Road,Middlefield Village,Dallas,374900,399900,-25000,39,1,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/dallas/middlefield-village/lots/a030-3518-middlefield-road
 2026-11-27 16:15,Century Communities,905 Ironwood Drive,Lone Oak 50s,Alvarado,279888,309900,-30012,39,3,https://www.centurycommunities.com/find-your-new-home/texas/dallas-fort-worth-metro/alvarado/lone-oak/lone-oak-50s/lots/1a18--
 2026-11-27 16:15,M/I Homes,7428 Sunset Valley Lane,Meadow Park,Ponder,317990,319990,-2000,39,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/denton/meadow-park/polo-ii-plan/7428-sunset-valley-lane
@@ -252,7 +258,6 @@ at,builder,address,community,city,last_price,first_price,total_change,days_liste
 2026-11-20 12:24,M/I Homes,12660 Poplar Creek Drive,Laprelle,Haslet,484990,507229,-22239,32,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/fort-worth/laprelle/nolan-plan/12660-poplar-creek-drive
 2026-11-20 07:28,D.R. Horton,133 Ringtrail Drive,Bluestem,Rhome,363990,363990,0,32,0,https://www.drhorton.com/texas/fort-worth/rhome/bluestem/qmis/133-ringtrail-drive
 2026-11-20 05:35,Highland Homes,2929 Mother Nature Drive,Ridgeline,McKinney,761100,761100,0,2,0,https://www.highlandhomes.com/dfw/mckinney/ridgeline/8008-059
-2026-11-20 05:35,D.R. Horton,8413 Bluebonnet Bend Road,Rosewood at Beltmill,Fort Worth,359990,359990,0,32,0,https://www.drhorton.com/texas/fort-worth/fort-worth/rosewood-at-beltmill/qmis/8413-bluebonnet-bend-road
 2026-11-20 05:35,D.R. Horton,1005 Hollyn Drive,Vista Park,Decatur,332990,332990,0,20,0,https://www.drhorton.com/texas/fort-worth/decatur/vista-park/qmis/1005-hollyn-drive
 2026-11-20 05:35,D.R. Horton,1229 Hollyn Drive,Vista Park,Decatur,333990,333990,0,17,0,https://www.drhorton.com/texas/fort-worth/decatur/vista-park/qmis/1229-hollyn-drive
 2026-11-20 05:35,M/I Homes,2032 Paradise Valley Drive,Valleybrooke,Mesquite,346990,349990,-3000,32,1,https://www.mihomes.com/new-homes/texas/dallas-fort-worth-metroplex/mesquite/valleybrooke/shipton-plan/2032-paradise-valley-drive
